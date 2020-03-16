@@ -6,6 +6,7 @@ const passport = require('passport')
 const db = require('./config/keys').mongoURI;
 const users = require("./routes/api/users")
 const tickets = require("./routes/api/tickets")
+const tags = require('./routes/api/tags')
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -17,6 +18,7 @@ require('./config/passport')(passport);
 
 app.use("/api/users", users)    
 app.use("/api/tickets", tickets)
+app.use('api/tags', tags)
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
 

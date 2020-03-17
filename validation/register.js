@@ -12,7 +12,6 @@ module.exports = function validateRegisterInput(data) {
     data.email = validText(data.email) ? data.email : '';
     let orgName = data.email.slice(data.email.search("@"));
     orgName = validText(orgName) ? orgName : '';
-    data.organization = validText(orgName) ? orgName : '';
     data.password = validText(data.password) ? data.password : '';
     data.password2 = validText(data.password2) ? data.password2 : '';
 

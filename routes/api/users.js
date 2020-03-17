@@ -21,6 +21,8 @@ router.post("/register", (req, res) => {
             return res.status(400).json(errors);
         } else {
             const newUser = new User({
+                first_name: req.body.first_name,
+                last_name: req.body.last_name,
                 email: req.body.email,
                 password: req.body.password
             });

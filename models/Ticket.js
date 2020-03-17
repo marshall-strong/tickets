@@ -24,7 +24,7 @@ const TicketSchema = new Schema({
     },
     owner: {
         type: Schema.Types.ObjectId,
-        default: createdDate
+        ref: 'User'
     },
     title: {
         type: String
@@ -55,11 +55,11 @@ const TicketSchema = new Schema({
     },
     startDate: {
         type: Date,
-        default: Date.now
+        default: undefined
     },
     endDate: {
         type: Date,
-        default: Date.now
+        default: undefined
     },
 })
 

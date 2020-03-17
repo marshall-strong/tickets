@@ -30,7 +30,6 @@ class SignupForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        debugger
         let user = {
             first_name: this.state.firstName,
             last_name: this.state.lastName,

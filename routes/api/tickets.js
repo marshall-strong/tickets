@@ -25,7 +25,7 @@ router.post('/tickets',
             dependsOn: req.body.dependsOn,
             blocks: req.body.blocks,
             startDate: req.body.startDate,
-            endDate: req.bodu.endDate,
+            endDate: req.body.endDate,
             user: req.user.id
         });
 

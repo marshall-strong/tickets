@@ -20,10 +20,12 @@ router.post("/register", (req, res) => {
             errors.email = "User already exists";
             return res.status(400).json(errors);
         } else {
+            const orgName = req.body.email.slice(req.body.email.search("@"));
             const newUser = new User({
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
                 email: req.body.email,
+                organization: orgName,
                 password: req.body.password
             });
 

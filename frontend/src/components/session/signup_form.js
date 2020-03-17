@@ -30,15 +30,16 @@ class SignupForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        debugger
         let user = {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
+            first_name: this.state.firstName,
+            last_name: this.state.lastName,
             email: this.state.email,
             password: this.state.password,
             password2: this.state.password2
         };
 
-        this.props.signup(user, this.props.history);
+        this.props.signup(user);
     }
 
     render() {

@@ -4,35 +4,30 @@ const Schema = mongoose.Schema;
 const TicketSchema = new Schema({
     creator: {
         type: Schema.Types.ObjectId,
-        required: true
+        ref: 'User'
     },
     createdDate: {
         type: Date,
-        default: Date.now,
-        required: true
+        default: Date.now
     },
     updatedDate: {
         type: Date,
-        default: createdDate,
-        required: true
+        default: Date.now
     },
     tags: {
         type: Array,
-        default: [],
-        required: true
+        default: []
     },
     subscribers: {
         type: Array,
-        default: [],
-        required: true
+        default: []
     },
     owner: {
         type: Schema.Types.ObjectId,
         default: createdDate
     },
     title: {
-        type: String,
-        required: true
+        type: String
     },
     body: {
         type: String,
@@ -40,36 +35,31 @@ const TicketSchema = new Schema({
     },
     lastUpdateSeenBy: {
         type: Array,
-        default: [],
-        required: true
+        default: []
     },
     status: {
-        type: Array,
-        default: "No Progress",
-        required: true
+        type: String,
+        default: "No Progress"
     },
     prority: {
-        type: Array,
-        default: "Low",
-        required: true
+        type: String,
+        default: "Low"
     },
     dependsOn: {
         type: Schema.Types.ObjectId,
-        required: false
+        ref: 'Ticket'
     },
     blocks: {
         type: Schema.Types.ObjectId,
-        required: true
+        ref: 'Ticket'
     },
     startDate: {
         type: Date,
-        default: Date.now,
-        required: false
+        default: Date.now
     },
     endDate: {
-        type: Array,
-        default: startDate,
-        required: false
+        type: Date,
+        default: Date.now
     },
 })
 

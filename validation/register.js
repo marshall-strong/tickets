@@ -32,6 +32,13 @@ module.exports = function validateRegisterInput(data) {
         errors.email = 'Email is invalid';
     }
 
+    User.findOne({ email: data.email }).then(user => {
+        if (!user) {
+            errors.user = "a user with this email already exists";
+            return res.status(400).json(errors);
+        }
+    })
+
     Organization.findOne({ handle: organizationHandle }).then(organization => {
         if (!organization) {
             errors.organization = "your organization is not registered";

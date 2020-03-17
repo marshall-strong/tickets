@@ -6,9 +6,19 @@ const validText = require('./valid_text');
 module.exports = function validateRegisterInput(data) {
     let errors = {};
 
+    data.first_name = validText(data.first_name) ? data.first_name : '';
+    data.last_name = validText(data.last_name) ? data.last_name : '';
     data.email = validText(data.email) ? data.email : '';
     data.password = validText(data.password) ? data.password : '';
     data.password2 = validText(data.password2) ? data.password2 : '';
+
+    if (Validator.isEmpty(data.first_name)) {
+        errors.first_name = 'first_name field is required';
+    }
+
+    if (Validator.isEmpty(data.last_name)) {
+        errors.last_name = 'last_name field is required';
+    }
 
     if (Validator.isEmpty(data.email)) {
         errors.email = 'Email field is required';

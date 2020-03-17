@@ -20,6 +20,12 @@ router.post('/tickets',
         const newTicket = new Ticket({
             title: req.body.title,
             body: req.body.body,
+            status: req.body.status,
+            priority: req.body.priority,
+            dependsOn: req.body.dependsOn,
+            blocks: req.body.blocks,
+            startDate: req.body.startDate,
+            endDate: req.bodu.endDate,
             user: req.user.id
         });
 
@@ -38,7 +44,7 @@ router.patch('/tickets',
 
       const updateTicket = req.body
 
-      
+      updateTicket.save().then(ticket => res.json(ticket))
     }
 );
 

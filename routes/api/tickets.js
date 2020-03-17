@@ -33,21 +33,6 @@ router.post('/tickets',
     }
 );
 
-router.patch('/tickets',
-    passport.authenticate('jwt', { session: false }),
-    (req, res) => {
-        const { errors, isValid } = validateTicketInput(req.body);
-
-        if (!isValid) {
-            return res.status(400).json(errors);
-        }
-
-      const updateTicket = req.body
-
-      updateTicket.save().then(ticket => res.json(ticket))
-    }
-);
-
 router.get("/ticket/:id", (req, res) => {
     Ticket
         .find({ id: req.params.id })

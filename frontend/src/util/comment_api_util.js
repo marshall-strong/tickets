@@ -10,7 +10,7 @@ export const writeComment = (comment) => {
 }
 
 export const updateComment = (comment) => {
-    return axios.patch(`api/comments/`, comment)
+    return axios.patch(`api/comments/${comment.id}`, comment)
 }
 
 export const deleteComment = id => {

@@ -5,13 +5,6 @@ const validateCommentInput = require("../../validation/comment")
 const Comment = require("../../models/Comment")
 
 
-router.get("/", (req, res) => {
-    Comment 
-        .find()
-        .sort({ createdAt: -1 })
-        .then(tickets => res.json(tickets))
-})
-
 router.post("/",  
     passport.authenticate("jwt", {session: false}),
     (req, res) => {
@@ -35,7 +28,9 @@ router.get("/tickets/:ticket_id", (req, res) => {
         .sort({ createdAt: -1 })
         .then(comments => res.send(comments))
         .catch(err => 
-            res.status(404).json({ nocommentsfound: "No comments found for that ticket" }))
+            res
+                .status(404)
+                .json({ nocommentsfound: "No comments found for that ticket" }))
 })
 
 
@@ -47,18 +42,13 @@ router.patch("/:id",
             .findById(req.params.id)
             .then(comment => {
                 if (comment.user.equals(req.user.id)) {
-                    comment.update(req.body.body, req.body.updateAt)
-                        Comment
-                            .find()
-                            .sort({updateAt: -1})
-                            .then(comments => res.json(comments))
-
+                    comment.update(req.body.body)
                 } else {
                     res
-                      .status(403)
-                      .json({
+                        .status(403)
+                        .json({
                         permissionconflict:
-                          "You do not have permission to delete"
+                        "You do not have permission to delete"
                       });
                 }
             })
@@ -72,18 +62,11 @@ router.delete("/:id",
         .then(comment => {
             if (comment.user.equals(req.user.id)) {
                 comment.remove()
-                    Comment
-                        .find()
-                        .sort({createdDate: -1})
-                        .then(comments => res.json(comments))
-                        .catch(err => 
-                            res
-                                .status(404)
-                                .json({ nocommentsfound: "No Comments found"}))
             } else {
                 res
                 .status(403)
-                .json({permissionconflict: "You do not have permission to delete"})
+                .json({permissionconflict: 
+                "You do not have permission to delete"})
             }
         })  
     })

@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import '../app.css'
 
 class SignupForm extends React.Component {
     constructor(props) {
@@ -51,34 +52,34 @@ class SignupForm extends React.Component {
                         <input type="text"
                             value={this.state.firstName}
                             onChange={this.update('firstName')}
-                            placeholder="firstName"
+                            placeholder={ this.props.errors.firstName ? this.props.errors.firstName : "firstName"}
                         />
                         <br />
                         <input type="text"
                             value={this.state.lastName}
                             onChange={this.update('lastName')}
-                            placeholder="lastName"
+                            placeholder={this.props.errors.lastName ? this.props.errors.lastName : "lastName"}
                         />
                         <br />
                         <input type="text"
                             value={this.state.email}
                             onChange={this.update('email')}
-                            placeholder="email"
+                            placeholder={this.props.errors.email ? this.props.errors.email : "email"}
                         />
                         <br />
                         <input type="password"
                             value={this.state.password}
                             onChange={this.update('password')}
-                            placeholder="Password"
+                            placeholder={this.props.errors.password ? this.props.errors.password : "Password"}
                         />
                         <br />
                         <input type="password"
                             value={this.state.password2}
                             onChange={this.update('password2')}
-                            placeholder="Confirm Password"
+                            placeholder={this.props.errors.password2 ? this.props.errors.password2 : "Confirm Password"}
                         />
                         <br />
-                        <input type="submit" value="Submit" />
+                        <button className="button1">Submit</button>
                     </div>
                 </form>
             </div>

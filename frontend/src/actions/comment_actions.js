@@ -25,7 +25,7 @@ const receiveCommentErrors = (errors) => ({
     errors
 })
 
-export const recieveTicketComments = (id) => dispatch => (
+export const getTicketComments = (id) => dispatch => (
     commentAPIUtil.getTicketComments(id)
         .then(comments => dispatch(receiveTicketComments(comments)))
         .catch(errors => dispatch(receiveCommentErrors(errors)))

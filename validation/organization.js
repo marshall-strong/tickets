@@ -11,24 +11,24 @@ module.exports = function validateNewOrg(data) {
     data.motto = validText(data.motto) ? data.motto : '';
 
     if (Validator.isEmpty(data.handle)) {
-        errors.organization = 'a new Organzation must have a handle';
+        errors.handle = 'An Organization needs a handle to use for emails.';
     }
 
     Organization.findOne({ handle: data.handle }).then(org => {
         if (org) {
-            errors.organization = "an Organization with this email domain already exists";
+            errors.handle = "An Organization with this handle already exists";
             return res.status(400).json(errors);
         }
     })
 
 
     if (Validator.isEmpty(data.name)) {
-        errors.organization = 'a new Organzation must have a name';
+        errors.name = 'A new Organzation must have a name.';
     }
 
 
     if (Validator.isEmpty(data.motto)) {
-        errors.organization = 'a new Organzation MUST have a motto';
+        errors.motto = 'A new Organzation MUST have a motto!';
     }
 
     return {

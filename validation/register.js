@@ -15,53 +15,53 @@ module.exports = function validateRegisterInput(data) {
     data.password2 = validText(data.password2) ? data.password2 : '';
     
     if (Validator.isEmpty(data.firstName)) {
-        errors.firstName = 'a first name is required';
+        errors.firstName = 'A first name is required.';
     }
 
     if (Validator.isEmpty(data.lastName)) {
-        errors.lastName = 'a last name is required';
+        errors.lastName = 'A last name is required.';
     }
 
     if (Validator.isEmpty(data.email)) {
-        errors.email = 'an email is required';
+        errors.email = 'An email is required.';
     }
 
     if (!Validator.isEmail(data.email)) {
-        errors.email = 'unrecognized email address';
+        errors.email = 'The format of your email@address may be incorrect.';
     }
 
     User.findOne({ email: data.email }).then(user => {
         if (!user) {
-            errors.user = "a User with this email already exists";
+            errors.email = "A User with this email already exists.";
             return res.status(400).json(errors);
         }
     })
 
     Organization.findOne({ handle: organizationHandle }).then(organization => {
         if (!organization) {
-            errors.organization = "your Organization is not registered";
+            errors.handle = "Your Organization is not registered.";
             return res.status(400).json(errors);
         }
     })
 
     if (Validator.isEmpty(data.password)) {
-        errors.password = 'a password is required';
+        errors.password = 'A password is required.';
     }
 
     if (!Validator.isLength(data.password, { min: 6 })) {
-        errors.password = 'password must have least 6 characters';
+        errors.password = 'Your password must have least 6 characters.';
     }
 
     if (!Validator.isLength(data.password, { max: 30 })) {
-        errors.password = 'password must have fewer than 30 characters';
+        errors.password = 'Your password must have fewer than 30 characters.';
     }
 
     if (Validator.isEmpty(data.password2)) {
-        errors.password2 = 'please reenter your password';
+        errors.password2 = 'Please confirm your password by reentering it.';
     }
 
     if (!Validator.equals(data.password, data.password2)) {
-        errors.password2 = 'passwords must match';
+        errors.password2 = 'The passwords you entered do not match.';
     }
 
     return {

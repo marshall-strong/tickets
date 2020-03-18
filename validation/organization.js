@@ -11,7 +11,7 @@ module.exports = function validateNewOrg(data) {
     data.motto = validText(data.motto) ? data.motto : '';
 
     if (Validator.isEmpty(data.handle)) {
-        errors.handle = 'a new Organzation must have a handle';
+        errors.organization = 'a new Organzation must have a handle';
     }
 
     Organization.findOne({ handle: data.handle }).then(org => {

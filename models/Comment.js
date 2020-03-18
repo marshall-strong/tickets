@@ -14,11 +14,11 @@ const CommentSchema = new Schema({
         type: String, 
         required: true
     }, 
-    createdDate: {
+    createdAt: {
         type: Date, 
         default: Date.now
     }, 
-    updatedDate: {
+    updatedAt: {
         type: Date, 
         default: Date.now
     }

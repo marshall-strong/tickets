@@ -30,8 +30,6 @@
     "mongoose": "^5.9.4",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
-    "redux": "^4.0.5",
-    "thunk": "0.0.1",
     "validator": "^12.2.0"
   },
   "devDependencies": {

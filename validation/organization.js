@@ -1,6 +1,6 @@
 const Validator = require('validator');
 const validText = require('./valid_text');
-const Organization = require('../models/Organization');
+const Organization = require('../models/organization');
 
 
 module.exports = function validateNewOrg(data) {

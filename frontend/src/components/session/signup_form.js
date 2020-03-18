@@ -41,6 +41,7 @@ class SignupForm extends React.Component {
         this.props.signup(user);
     }
 
+
     render() {
         return (
             <div className="signup-form-container">

@@ -16,7 +16,7 @@ module.exports = function validateNewOrg(data) {
 
     Organization.findOne({ handle: data.handle }).then(org => {
         if (org) {
-            errors.handle = "An Organization with this handle already exists";
+            errors.handle = "An Organization with this handle already exists.";
             return res.status(400).json(errors);
         }
     })

@@ -15,13 +15,13 @@ export const createTicket = ticket => (
 
 export const getTicket = id => (
     axios.get(
-        `/api/ticket/${id}`
+        `/api/tickets/${id}`
     )
 )
 
 export const updateTicket = (ticket) => (
     axios.patch(
-        `/api/ticket/${ticket.id}`,
+        `/api/tickets/${ticket.id}`,
         ticket
     )
 )

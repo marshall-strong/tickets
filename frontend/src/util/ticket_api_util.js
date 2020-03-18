@@ -25,3 +25,8 @@ export const updateTicket = (ticket) => (
         ticket
     )
 )
+
+export const getUserTickets = id => (
+     axios.get(
+         `/api/tickets/user/${id}`)
+);

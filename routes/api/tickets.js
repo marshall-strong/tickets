@@ -49,5 +49,15 @@ router.patch("/:id", (req, res) => {
 })
 
 
+router.get("/user/:user_id", (req, res) => {
+  Ticket.find({ user: req.params.user_id })
+    .sort({ createdAt: -1 })
+    .then(tickets => res.json(tickets))
+    .catch(err =>
+      res.status(404).json({ noticketsfound: "No tickets found from that user" })
+    );
+});
+
+
 
 module.exports = router;

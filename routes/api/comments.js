@@ -34,7 +34,6 @@ router.get("/tickets/:ticket_id", (req, res) => {
 })
 
 
-
 router.patch("/:id",
         passport.authenticate('jwt', { session: false }),
         (req, res) => {

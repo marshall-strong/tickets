@@ -16,3 +16,5 @@ export const updateComment = (comment) => {
 export const deleteComment = id => {
   return axios.delete(`/api/comments/${id}`);
 };
+
+

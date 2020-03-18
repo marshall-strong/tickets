@@ -17,7 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const decodedUser = jwt_decode(localStorage.jwtToken);
 
-        const preloadedState = {  session: { isAuthenticated: true, user: decodedUser } };
+        const preloadedState = {  
+            entities: {
+                users: { 
+                    [decodedUser.id]: decodedUser
+                }
+            },
+            session: { isAuthenticated: true, user: decodedUser.id } };
 
         store = configureStore(preloadedState);
 
@@ -30,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         store = configureStore({});
     }
-
+    window.state = store.getState()
     const root = document.getElementById('root');
     
     ReactDOM.render(<Root store={store} />, root);

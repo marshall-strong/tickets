@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import '../app.css'
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -12,7 +13,6 @@ class LoginForm extends React.Component {
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.renderErrors = this.renderErrors.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -39,18 +39,6 @@ class LoginForm extends React.Component {
         this.props.login(user);
     }
 
-    renderErrors() {
-        return (
-            <ul>
-                {Object.keys(this.state.errors).map((error, i) => (
-                    <li key={`error-${i}`}>
-                        {this.state.errors[error]}
-                    </li>
-                ))}
-            </ul>
-        );
-    }
-
     render() {
         return (
             <div>
@@ -59,17 +47,16 @@ class LoginForm extends React.Component {
                         <input type="text"
                             value={this.state.email}
                             onChange={this.update('email')}
-                            placeholder="Email"
+                            placeholder={this.props.errors.email ? this.props.errors.email : "Email"}
                         />
                         <br />
                         <input type="password"
                             value={this.state.password}
                             onChange={this.update('password')}
-                            placeholder="Password"
+                            placeholder={this.props.errors.email ? this.props.errors.email : "Password"}
                         />
                         <br />
-                        <input type="submit" value="Submit" />
-                        {this.renderErrors()}
+                        <button className="button1">Log In</button>
                     </div>
                 </form>
             </div>

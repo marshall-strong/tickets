@@ -1,6 +1,6 @@
 const Validator = require('validator');
 const validText = require('./valid_text');
-const User = require('../models/User');
+const User = require('../models/user');
 const Organization = require('../models/organization');
 
 module.exports = function validateRegisterInput(data) {

@@ -6,7 +6,7 @@ import tagsReducer from './tags_reducer';
 const entitiesReducer = combineReducers({
     users: usersReducer,
     tickets: ticketsReducer,
-    tags: tagsReducer,
+    tags: tagsReducer
 })
 
 export default entitiesReducer;

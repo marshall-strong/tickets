@@ -6,7 +6,7 @@ export const DELETE_COMMENT = "DELETE_COMMENT"
 export const RECEIVE_COMMENT_ERRORS = "RECEIVE_COMMENT_ERRORS";
 
 const receiveTicketComments = (comment) => ({
-    type: RECEIVE_TICKET_COMMENT, 
+    type: RECEIVE_TICKET_COMMENTS, 
     comment
 })
 
@@ -15,7 +15,7 @@ const receiveNewComment = (comment) => ({
     comment 
 })
 
-const deleteComment = (id) => ({
+const removeComment = (id) => ({
     type: DELETE_COMMENT, 
     id
 })
@@ -45,7 +45,7 @@ export const updateComment = (comment) => dispatch => (
 
 export const deleteComment = (id) => dispatch => (
     commentAPIUtil.deleteComment(id) 
-        .then(() => dispatch(deleteComment(comment)))
+        .then(() => dispatch(removeComment(id)))
         .catch((errors) => dispatch(receiveCommentErrors(errors)))
 )
 

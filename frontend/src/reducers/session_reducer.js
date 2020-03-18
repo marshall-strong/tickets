@@ -10,13 +10,13 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
+    Object.freeze(state);
+    let newState = Object.assign({}, state)
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
-            return {
-                ...state,
-                isAuthenticated: !!action.payload,
-                user: action.payload.id
-            };
+            newState.isAuthenticated = !!action.payload
+            newState.user = action.payload.id
+            return newState;
         case RECEIVE_USER_LOGOUT:
             return {
                 isAuthenticated: false,

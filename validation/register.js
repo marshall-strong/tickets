@@ -32,7 +32,7 @@ module.exports = function validateRegisterInput(data) {
 
     User.findOne({ email: data.email }).then(user => {
         if (!user) {
-            errors.user = "a user with this email already exists";
+            errors.user = "a User with this email already exists";
             return res.status(400).json(errors);
         }
     })

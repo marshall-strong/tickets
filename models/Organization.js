@@ -6,6 +6,14 @@ const OrganizationSchema = new Schema({
         type: String,
         required: true
     },
+    name: {
+        type: String,
+        required: true
+    },
+    motto: {
+        type: String,
+        required: true
+    },
     createdAt: {
         type: Date,
         default: Date.now

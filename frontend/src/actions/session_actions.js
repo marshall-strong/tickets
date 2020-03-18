@@ -36,6 +36,9 @@ export const signup = user => dispatch => (
         const decoded = jwt_decode(token);
         dispatch(receiveCurrentUser(decoded))
     })
+    .catch(err => {
+        dispatch(receiveErrors(err.response.data));
+    })
 ); 
 
 

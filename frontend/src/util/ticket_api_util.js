@@ -1,27 +1,27 @@
 import axios from 'axios'
 
 export const getTickets = () => (
-    axios.get({
-        url: '/api/tickets'
-    })
+    axios.get(
+        '/api/tickets'
+    )
 )
 
 export const createTicket = ticket => (
-    axios.post({
-        url: '/api/tickets',
-        data: { ticket }
-    })
+    axios.post(
+        '/api/tickets',
+        ticket 
+    )
 )
 
 export const getTicket = id => (
-    axios.get({
-        url: `/api/ticket/${id}`
-    })
+    axios.get(
+        `/api/ticket/${id}`
+    )
 )
 
 export const updateTicket = (ticket) => (
-    axios.patch({
-        url: `/api/ticket/${ticket.id}`,
-        data: { ticket }
-    })
+    axios.patch(
+        `/api/ticket/${ticket.id}`,
+        ticket
+    )
 )

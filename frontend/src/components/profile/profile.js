@@ -4,12 +4,13 @@ import { Link } from "react-router-dom"
 class Profile extends React.Component {
     constructor(props) {
         super(props)
+      
     }
 
-    componentDidMount() {
-        this.props.fetchCreatedTickets(this.props.params.match.userId)
-        this.props.fetchUserComments(this.props.params.match.userId)
-    }
+    // componentDidMount() {
+    //     this.props.fetchCreatedTickets(this.props.params.match.userId)
+    //     this.props.fetchUserComments(this.props.params.match.userId)
+    // }
 
     render() {
         const {user, comments, tickets} = this.props;
@@ -43,8 +44,8 @@ class Profile extends React.Component {
                 <div className="profile-header-container">
                     <h1>
                     Hello! {user.firstName} {user.lastName}
-                </h1>
-            </div>
+                    </h1>
+                </div>
 
             <div>{userTicketInfo}</div>
             <div>{userCommentInfo}</div>

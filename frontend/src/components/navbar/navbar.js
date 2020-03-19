@@ -40,6 +40,7 @@ class NavBar extends React.Component {
                 {this.props.currentUser.lastName}
                 {this.props.currentUser.orgHandle}
               </Link>
+              <button onClick={this.handleClick}> Write Ticket </button>
               <Link to={"/"}>Write a Ticket</Link>
               <button className="button1" onClick={this.logoutUser}>
                 Logout

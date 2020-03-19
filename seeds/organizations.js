@@ -1,22 +1,27 @@
-import seeder from "mongoose-seed";
-
-const db = require('./config/keys').mongoURI;
-
-const Organization = require('');
-const User = require('../models/user');
-
 const organizationSeeds = {
-    'model': 'Organization',
-    'documents': [
+    "model": "Organization",
+    "documents": [
         {
-            'name': 'Doc1',
-            'value': 200
+            "handle": "cats4humanity.org",
+            "name": "Cats for Humanity",
+            "motto": "a cat in every household!"
         },
         {
-            'name': 'Doc2',
-            'value': 400
-        }
+            "handle": "address",
+            "name": "ACME",
+            "motto": "just follow the directions"
+        },
+        {
+            "handle": "gmail.com",
+            "name": "Google",
+            "motto": "if you have a gmail account, you work at Google!"
+        },
+        {
+            "handle": "appacademy.io",
+            "name": "appAcademy",
+            "motto": "appAcademy: if you liked your old life, you wouldn't be here."
+        },
     ]
 };
 
-export default organizationSeeds;
+module.exports = organizationSeeds;

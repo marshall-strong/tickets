@@ -39,6 +39,13 @@ const userSeeds = {
             "password": "password"
         },
         {
+            "firstName": "Seeded",
+            "lastName": "User",
+            "email": "seeded-user@cats4humanity.org",
+            "orgHandle": "cats4humanity.org",
+            "password": "password"
+        },
+        {
             "firstName": "ACME",
             "lastName": "User",
             "email": "email@address",

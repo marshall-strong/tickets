@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, matchPath } from 'react-router-dom'
 import '../app.css'
 import './navbar.css'
 
@@ -44,6 +44,8 @@ class NavBar extends React.Component {
                 </div>
             );
         } else {
+            // if (location.pathname === '/signup')
+            const match = matchPath
             return (
                 <div className="header">
                     <div className="nav">
@@ -52,6 +54,7 @@ class NavBar extends React.Component {
                         </div>
 
                         <div className="right-nav">
+                            {/* if (location.pathname === '/signup') */}
                             <Link to={'/signup'}>Signup</Link>
                             <Link to={'/login'}>Login</Link>
                             <button onClick={this.handleDemo}>login as a demo user</button>

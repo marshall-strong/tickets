@@ -4,10 +4,6 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 
 const db = require('./config/keys').mongoURI;
-const seeder = require('mongoose-seed');
-const organizationSeeds = require('./seeds/organizations');
-const userSeeds = require('./seeds/users');
-
 const users = require("./routes/api/users")
 const tickets = require("./routes/api/tickets")
 const tags = require('./routes/api/tags')
@@ -32,21 +28,3 @@ mongoose
     .connect(db, { useNewUrlParser: true })
     .then(() => console.log("Connected to MongoDB successfully"))
     .catch(err => console.log(err));
-
-const seedData = [
-    organizationSeeds,
-    userSeeds
-];
-
-seeder.connect(db, () => {
-    seeder.loadModels([
-        './models/organization.js',
-        './models/user.js'
-    ]);
-    
-    seeder.clearModels(['Organization', 'User'], () => {
-        seeder.populateModels(seedData, () => {
-            seeder.disconnect();
-        });
-    });
-});

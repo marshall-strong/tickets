@@ -21,8 +21,8 @@ require('./config/passport')(passport);
 
 app.use("/api/users", users)    
 app.use("/api/tickets", tickets)
-app.use('api/tags', tags)
-app.use('api/comments', comments)
+app.use('/api/tags', tags)
+app.use('/api/comments', comments)
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
 

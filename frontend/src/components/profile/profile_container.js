@@ -10,7 +10,7 @@ const mSTP = (state, ownProps) => ({
     tickets: Object.values(state.entities.tickets),
     loggedIn: state.session.isAuthenticated
     }
-}
+)
 
 const mDTP = (dispatch) => ({
     fetchCreatedTickets: (userId) => dispatch(fetchCreatedTickets(userId)),

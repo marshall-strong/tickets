@@ -6,7 +6,7 @@ export const RECEIVE_TICKET_ERRORS = "RECEIVE_TICKET_ERRORS";
 
 const receiveTickets = tickets => ({
     type: RECEIVE_TICKETS,
-    tickets: tickets
+    tickets: tickets.data
 })
 
 const receiveTicket = ticket => ({

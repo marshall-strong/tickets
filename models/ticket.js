@@ -6,11 +6,11 @@ const ticketSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    createdDate: {
+    createdAt: {
         type: Date,
         default: Date.now
     },
-    updatedDate: {
+    updatedAt: {
         type: Date,
         default: Date.now
     },
@@ -36,6 +36,10 @@ const ticketSchema = new Schema({
     lastUpdateSeenBy: {
         type: Array,
         default: []
+    },
+    updatedBy: {
+        type: Array,
+        default: [] 
     },
     status: {
         type: String,

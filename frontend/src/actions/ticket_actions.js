@@ -19,7 +19,7 @@ const receiveTicketErrors = errors => ({
     erros: errors
 })
 
-export const requestTickets = () => dispatch => (
+export const getTickets = () => dispatch => (
     TicketAPIUtil.getTickets()
     .then(tickets => dispatch(receiveAllTickets(tickets)))
 ) 
@@ -30,7 +30,7 @@ export const createTicket = ticket => dispatch => (
     .catch(errors => dispatch(receiveTicketErrors(errors)))
 ) 
 
-export const requestTicket = id => dispatch => (
+export const getTicket = id => dispatch => (
     TicketAPIUtil.getTicket(id)
     .then(ticket => dispatch(receiveTicket(ticket)))
     .catch(errors => dispatch(receiveTicketErrors(errors)))

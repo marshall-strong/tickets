@@ -45,7 +45,7 @@ const ticketSchema = new Schema({
         type: String,
         default: "No Progress"
     },
-    prority: {
+    priority: {
         type: String,
         default: "Low"
     },

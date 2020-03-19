@@ -4,7 +4,7 @@ export const RECEIVE_TICKETS = "RECEIVE_TICKETS";
 export const RECEIVE_TICKET = "RECEIVE_TICKET";
 export const RECEIVE_TICKET_ERRORS = "RECEIVE_TICKET_ERRORS";
 
-const receiveAllTickets = tickets => ({
+const receiveTickets = tickets => ({
     type: RECEIVE_TICKETS,
     tickets: tickets
 })
@@ -21,7 +21,7 @@ const receiveTicketErrors = errors => ({
 
 export const getTickets = () => dispatch => (
     TicketAPIUtil.getTickets()
-    .then(tickets => dispatch(receiveAllTickets(tickets)))
+    .then(tickets => dispatch(receiveTickets(tickets)))
 ) 
 
 export const createTicket = ticket => dispatch => (
@@ -42,3 +42,8 @@ export const updateTicket = ticket => dispatch => (
     .catch(errors => dispatch(receiveTicketErrors(errors)))
 ) 
 
+export const fetchCreatedTickets = userId => dispatch => (
+    TicketAPIUtil.getCreatedTickets(userId)
+    .then(tickets => dispatch(receiveTickets(tickets)))
+    .catch(errors => dispatch(receiveTicketErrors(errors)))
+)

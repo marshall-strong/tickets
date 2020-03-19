@@ -50,4 +50,15 @@ router.patch("/:id", (req, res) => {
 
 
 
+router.get("/creator/:userId", (req, res) => {
+  Ticket.find({ creatorId: req.params.userId})
+    .sort({ createdAt: -1 })
+    .then(tickets => res.json(tickets))
+    .catch(err =>
+      res.status(404).json({ noticketsfound: "No tickets found from that user" })
+    );
+});
+
+
+
 module.exports = router;

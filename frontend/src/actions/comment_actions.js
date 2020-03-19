@@ -1,14 +1,15 @@
 import * as commentAPIUtil from "../util/comment_api_util"
 
-export const RECEIVE_TICKET_COMMENTS = "RECEIVE_COMMENTS";
 export const RECEIVE_NEW_COMMENT = "RECEIVE_NEW_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT"
 export const RECEIVE_COMMENT_ERRORS = "RECEIVE_COMMENT_ERRORS";
+export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS"
 
-const receiveTicketComments = (comment) => ({
-    type: RECEIVE_TICKET_COMMENTS, 
-    comment
-})
+
+const receiveComments = comment => ({
+  type: RECEIVE_COMMENTS,
+  comment
+});
 
 const receiveNewComment = (comment) => ({
     type: RECEIVE_NEW_COMMENT, 
@@ -25,11 +26,18 @@ const receiveCommentErrors = (errors) => ({
     errors
 })
 
-export const getTicketComments = (id) => dispatch => (
-    commentAPIUtil.getTicketComments(id)
-        .then(comments => dispatch(receiveTicketComments(comments)))
+export const fetchTicketComments = (id) => dispatch => (
+    commentAPIUtil.fetchTicketComments(id)
+        .then(comments => dispatch(receiveComments(comments)))
         .catch(errors => dispatch(receiveCommentErrors(errors)))
 )
+
+export const fetchUserComments = userId => dispatch =>
+  commentAPIUtil
+    .fetchUserComments(userId)
+    .then(comments => dispatch(receiveComments(comments)))
+    .catch(errors => dispatch(receiveCommentErrors(errors)));
+
 
 export const createComment = (comment) => dispatch => (
     commentAPIUtil.writeComment(comment)

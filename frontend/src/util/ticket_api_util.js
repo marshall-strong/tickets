@@ -25,3 +25,10 @@ export const updateTicket = (ticket) => (
         ticket
     )
 )
+
+export const getCreatedTickets = userId => (
+     axios.get(
+         `/api/tickets/creator/${userId}`)
+);
+
+

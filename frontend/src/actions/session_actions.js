@@ -28,11 +28,11 @@ export const logoutUser = () => ({
 });
 
 const demoUser = {
-  first_name: "Demo",
-  last_name: "User",
-  email: "demoUser@Cats4Humanity.org",
+//   firstName: "user",
+//   lastName: "user",
+  email: "user@gmail.com",
   password: "password",
-  password2: "password"
+//   password2: "password"
 };
 
 export const signup = user => dispatch => (
@@ -64,7 +64,7 @@ export const login = user => dispatch => {
     })
 }
 
-export const loginDemoUser = demoUser => dispatch => {
+export const loginDemoUser = () => dispatch => {
     return dispatch(login(demoUser))
 }
 

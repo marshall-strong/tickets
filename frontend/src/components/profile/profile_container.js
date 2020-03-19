@@ -4,11 +4,15 @@ import { fetchUserComments } from "../../actions/comment_actions"
 import Profile from "./profile"
 
 
-const mSTP = (state, ownProps) => ({
+const mSTP = (state, ownProps) => {
+    debugger
+    return{
     user: state.entities[ownProps.match.params.userId],
     comments: Object.values(state.entities.comments),
-    tickets: Object.values(state.entities.tickets)
-})
+    tickets: Object.values(state.entities.tickets),
+    loggedIn: state.session.isAuthenticated
+    }
+}
 
 const mDTP = (dispatch) => ({
     fetchCreatedTickets: (userId) => dispatch(fetchCreatedTickets(userId)),

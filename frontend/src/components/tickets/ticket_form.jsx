@@ -48,20 +48,20 @@ class TicketForm extends React.Component {
         }
     }
 
-    view() {
-        if (!this.state.lastUpdateSeenBy.includes(this.props.currentUser.id)) {
-            this.state.lastUpdateSeenBy.push(this.props.currentUser.id)
-            this.props.updateTicket(this.state)
-        }
-    }
+    // view() {
+    //     if (!this.state.lastUpdateSeenBy.includes(this.props.currentUser.id)) {
+    //         this.state.lastUpdateSeenBy.push(this.props.currentUser.id)
+    //         this.props.updateTicket(this.state)
+    //     }
+    // }
 
     render(){
 
         
-        if (this.props.ticketId !== 'new') {
-            this.view();
-            if (!this.props.ticket) return null
-        }
+        // if (this.props.ticketId !== 'new') {
+        //     this.view();
+        //     if (!this.props.ticket) return null
+        // }
         
         return(
             <div className="form-container">

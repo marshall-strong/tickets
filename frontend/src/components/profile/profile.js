@@ -7,11 +7,13 @@ class Profile extends React.Component {
     }
 
     componentDidMount() {
+        debugger
         this.props.fetchCreatedTickets(this.props.params.match.userId)
         this.props.fetchUserComments(this.props.params.match.userId)
     }
 
     render() {
+        debugger
         const {user, comments, tickets} = this.props;
 
         const userCommentInfo = comments.map(ticket => (

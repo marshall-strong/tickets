@@ -42,8 +42,14 @@ export const updateTicket = ticket => dispatch => (
     .catch(errors => dispatch(receiveTicketErrors(errors)))
 ) 
 
-export const fetchCreatedTickets = userId => dispatch => (
-    TicketAPIUtil.getCreatedTickets(userId)
+export const fetchOwnerTickets = userId => dispatch => (
+    TicketAPIUtil.fetchOwnerTickets(userId)
     .then(tickets => dispatch(receiveTickets(tickets)))
     .catch(errors => dispatch(receiveTicketErrors(errors)))
+)
+
+export const fetchCreatedTickets = userId => dispatch => (
+    TicketAPIUtil.getCreatedTickets(userId)
+        .then(tickets => dispatch(receiveTickets(tickets)))
+        .catch(errors => dispatch(receiveTicketErrors(errors)))
 )

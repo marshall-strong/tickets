@@ -50,12 +50,12 @@ const ticketSchema = new Schema({
         default: "Low"
     },
     dependsOn: {
-        type: Schema.Types.ObjectId,
-        ref: 'Ticket'
+        type: Array,
+        default: []
     },
     blocks: {
-        type: Schema.Types.ObjectId,
-        ref: 'Ticket'
+        type: Array,
+        default: []
     },
     startDate: {
         type: Date,

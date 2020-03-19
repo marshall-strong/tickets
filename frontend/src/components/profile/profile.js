@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-class Profile extends React.Compenent {
+class Profile extends React.Component {
     constructor(props) {
         super(props)
     }
@@ -14,14 +14,14 @@ class Profile extends React.Compenent {
     render() {
         const {user, comments, tickets} = this.props;
 
-        const userCommentInfo = comments.map(comment => (
+        const userCommentInfo = comments.map(ticket => (
           <div>
             <span>
               {ticket.createdAt}
               {ticket.author.firstName}
               {ticket.author.lastName} commented on
             </span>
-            <Link to={`/comments/${comment.id}`}>{comment.id}</Link>
+            <Link to={`/comments/${ticket.id}`}>{ticket.id}</Link>
           </div>
         )); 
 

@@ -52,42 +52,34 @@ class SignupForm extends React.Component {
 
     render() {
         return (
-            <div className="signup-form-container">
-                <form onSubmit={this.handleSubmit}>
-                    <div className="signup-form">
-                        <br />
-                        <input type="text"
-                            value={this.state.firstName}
-                            onChange={this.update('firstName')}
-                            placeholder={ this.props.errors.firstName ? this.props.errors.firstName : "firstName"}
-                        />
-                        <br />
-                        <input type="text"
-                            value={this.state.lastName}
-                            onChange={this.update('lastName')}
-                            placeholder={this.props.errors.lastName ? this.props.errors.lastName : "lastName"}
-                        />
-                        <br />
-                        <input type="text"
-                            value={this.state.email}
-                            onChange={this.update('email')}
-                            placeholder={this.props.errors.email ? this.props.errors.email : "email"}
-                        />
-                        <br />
-                        <input type="password"
-                            value={this.state.password}
-                            onChange={this.update('password')}
-                            placeholder={this.props.errors.password ? this.props.errors.password : "Password"}
-                        />
-                        <br />
-                        <input type="password"
-                            value={this.state.password2}
-                            onChange={this.update('password2')}
-                            placeholder={this.props.errors.password2 ? this.props.errors.password2 : "Confirm Password"}
-                        />
-                        <br />
-                        <button className="button1">Submit</button>
-                    </div>
+            <div className="form-container">
+                <form className="form">
+                    <input type="text"
+                        value={this.state.firstName}
+                        onChange={this.update('firstName')}
+                        placeholder={ this.props.errors.firstName ? this.props.errors.firstName : "firstName"}
+                    />
+                    <input type="text"
+                        value={this.state.lastName}
+                        onChange={this.update('lastName')}
+                        placeholder={this.props.errors.lastName ? this.props.errors.lastName : "lastName"}
+                    />
+                    <input type="text"
+                        value={this.state.email}
+                        onChange={this.update('email')}
+                        placeholder={this.props.errors.email ? this.props.errors.email : "email"}
+                    />
+                    <input type="password"
+                        value={this.state.password}
+                        onChange={this.update('password')}
+                        placeholder={this.props.errors.password ? this.props.errors.password : "Password"}
+                    />
+                    <input type="password"
+                        value={this.state.password2}
+                        onChange={this.update('password2')}
+                        placeholder={this.props.errors.password2 ? this.props.errors.password2 : "Confirm Password"}
+                    />
+                    <button className="button1" onClick={this.handleSubmit}>Submit</button>
                 </form>
             </div>
         );

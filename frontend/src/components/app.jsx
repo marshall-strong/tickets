@@ -10,7 +10,7 @@ import SignupFormContainer from './session/signup_form_container';
 import ProfileContainer from './profile/profile_container';
 import TicketFormContainer from './tickets/ticket_form_container';
 import NotFound from './errors/not_found';
-
+import './reset.css'
 import './app.css'
 
 

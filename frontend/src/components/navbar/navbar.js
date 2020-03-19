@@ -24,6 +24,8 @@ class NavBar extends React.Component {
     this.props.history.push("/tickets/new")
   }
 
+
+
   handleDemo(e) {
     e.preventDefault();
     this.props.loginDemoUser();

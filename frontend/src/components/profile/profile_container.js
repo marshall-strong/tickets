@@ -5,7 +5,6 @@ import Profile from "./profile"
 
 
 const mSTP = (state, ownProps) => {
-    debugger
     return{
     user: state.entities[ownProps.match.params.userId],
     comments: Object.values(state.entities.comments),

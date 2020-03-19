@@ -38,7 +38,7 @@ class NavBar extends React.Component {
               <Link to={`/users/${this.props.currentUser.id}`}>
                 {this.props.currentUser.firstName}
                 {this.props.currentUser.lastName}
-                {this.props.currentUser.organization}
+                {this.props.currentUser.orgHandle}
               </Link>
               <Link to={"/"}>Write a Ticket</Link>
               <button className="button1" onClick={this.logoutUser}>

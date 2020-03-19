@@ -6,11 +6,11 @@ const ticketSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    createdDate: {
+    createdAt: {
         type: Date,
         default: Date.now
     },
-    updatedDate: {
+    updatedAt: {
         type: Date,
         default: Date.now
     },
@@ -41,7 +41,7 @@ const ticketSchema = new Schema({
         type: String,
         default: "No Progress"
     },
-    prority: {
+    priority: {
         type: String,
         default: "Low"
     },

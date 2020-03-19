@@ -1,0 +1,20 @@
+import { connect } from "react-redux"
+import { fetchCreatedTickets} from "../../actions/ticket_actions"
+import { fetchUserComments } from "../../actions/comment_actions"
+import Profile from "./profile"
+
+
+const mSTP = (state, ownProps) => ({
+    user: state.entities[ownProps.match.params.userId],
+    comments: Object.values(state.entities.comments),
+    tickets: Object.values(state.entities.tickets)
+})
+
+const mDTP = (dispatch) => ({
+    fetchCreatedTickets: (userId) => dispatch(fetchCreatedTickets(userId)),
+    fetchUserComments: (userId) => dispatch(fetchUserComments(userId))
+})
+
+
+
+export default connect(mSTP, mDTP)(Profile);

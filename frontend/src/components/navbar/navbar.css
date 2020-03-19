@@ -3,6 +3,7 @@
     justify-content: center;
     background-color: rgb(61, 204, 123);
     color: white;
+    min-width: 1200px;
 }
 
 .nav {
@@ -18,11 +19,13 @@
 
 .nav .left-nav {
     font-size: 30px;
+    margin-left: 30px;
 }
 
 .nav .right-nav {
     display: flex;
     justify-content: space-between;
+    margin-right: 30px;
 }
 
 .nav .right-nav a {

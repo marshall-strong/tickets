@@ -9,6 +9,8 @@ const tickets = require("./routes/api/tickets")
 const tags = require('./routes/api/tags')
 const comments = require('./routes/api/comments')
 
+const seedTheDatabase = require('./backend/seeds/seeder');
+
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -28,3 +30,5 @@ mongoose
     .connect(db, { useNewUrlParser: true })
     .then(() => console.log("Connected to MongoDB successfully"))
     .catch(err => console.log(err));
+
+seedTheDatabase();

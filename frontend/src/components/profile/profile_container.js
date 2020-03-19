@@ -5,7 +5,7 @@ import Profile from "./profile"
 
 
 const mSTP = (state, ownProps) => ({
-    user: state.entities[ownProps.match.params.userId],
+    user: state.entities.users[ownProps.match.params.userId],
     comments: Object.values(state.entities.comments),
     tickets: Object.values(state.entities.tickets)
 })

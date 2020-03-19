@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
         .then(tickets => res.json(tickets))
 }
 )
-router.post('/',
+router.post('/tickets/new',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
         const { errors, isValid } = validateTicketInput(req.body);

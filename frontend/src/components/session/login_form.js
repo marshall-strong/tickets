@@ -8,8 +8,7 @@ class LoginForm extends React.Component {
 
         this.state = {
             email: '',
-            password: '',
-            errors: {}
+            password: ''
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,7 +19,6 @@ class LoginForm extends React.Component {
             this.props.history.push('/tickets');
         }
 
-        this.setState({ errors: nextProps.errors })
     }
 
     update(field) {
@@ -36,7 +34,11 @@ class LoginForm extends React.Component {
             password: this.state.password
         };
         
-        this.props.login(user);
+        this.props.login(user)
+        this.setState({
+            email: '',
+            password: ''
+        });
     }
 
     render() {

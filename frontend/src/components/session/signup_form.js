@@ -10,7 +10,7 @@ class SignupForm extends React.Component {
             lastName: '',
             email: '',
             password: '',
-            password2: '',
+            password2: ''
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,7 +39,14 @@ class SignupForm extends React.Component {
             password2: this.state.password2
         };
 
-        this.props.signup(user);
+        this.props.signup(user)
+        this.setState({
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            password2: ''
+        });
     }
 
     render() {

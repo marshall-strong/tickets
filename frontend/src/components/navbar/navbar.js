@@ -7,6 +7,7 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props);
    
+    this.writeTicket = this.writeTicket.bind(this)
     this.logoutUser = this.logoutUser.bind(this);
     this.getLinks = this.getLinks.bind(this);
     this.handleDemo = this.handleDemo.bind(this);
@@ -18,6 +19,10 @@ class NavBar extends React.Component {
     this.props.history.push("/")
   }
 
+  writeTicket(e) {
+    e.preventDefault()
+    this.props.history.push("/tickets/new")
+  }
 
   handleDemo(e) {
     e.preventDefault();
@@ -40,8 +45,12 @@ class NavBar extends React.Component {
                 {this.props.currentUser.lastName}
                 {this.props.currentUser.orgHandle}
               </Link>
-              <button onClick={this.handleClick}> Write Ticket </button>
-              <Link to={"/"}>Write a Ticket</Link>
+
+              
+              <button className="button1" onClick={this.writeTicket}> 
+                + 
+              </button>
+      
               <button className="button1" onClick={this.logoutUser}>
                 Logout
               </button>

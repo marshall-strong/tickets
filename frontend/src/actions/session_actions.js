@@ -27,6 +27,14 @@ export const logoutUser = () => ({
     type: RECEIVE_USER_LOGOUT
 });
 
+const demoUser = {
+  first_name: "Demo",
+  last_name: "User",
+  email: "demoUser@Cats4Humanity.org",
+  password: "password",
+  password2: "password"
+};
+
 export const signup = user => dispatch => (
     sessionAPIUtil.signup(user)
     .then(res => {
@@ -54,6 +62,10 @@ export const login = user => dispatch => {
     .catch(err => {
         dispatch(receiveErrors(err.response.data));
     })
+}
+
+export const loginDemoUser = demoUser => dispatch => {
+    return dispatch(login(demoUser))
 }
 
 

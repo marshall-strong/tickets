@@ -8,7 +8,7 @@ const usersReducer = (state = {}, action) => {
             newState[action.payload.id] = action.payload
             return newState;
         default:
-            return state;
+            return newState;
     }
 }
 

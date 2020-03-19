@@ -44,8 +44,8 @@ class NavBar extends React.Component {
                 </div>
             );
         } else {
-            // if (location.pathname === '/signup')
-            const match = matchPath
+            // if (this.props.location.pathname === '/signup')
+            // const match = matchPath
             return (
                 <div className="header">
                     <div className="nav">

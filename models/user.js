@@ -14,7 +14,7 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    orgHandle: {
+    organization: {
         type: String,
         required: true
     },

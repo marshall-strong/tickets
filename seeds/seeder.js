@@ -1,5 +1,9 @@
-const organizationSeeds = require('./organizations');
-const userSeeds = require('./users');
+import seeder from "mongoose-seed";
+
+const db = require('./config/keys').mongoURI;
+const Organization = require('../models/organization');
+const Organizations = require('./organizations');
+const User = require('./users');
 
 const data = [
     {

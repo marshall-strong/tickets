@@ -59,6 +59,15 @@ router.get("/creator/:userId", (req, res) => {
     );
 });
 
+router.get("/owner/:userId", (req, res) => {
+    Ticket.find({ ownerId: req.params.userId })
+        .sort({ createdAt: -1 })
+        .then(tickets => res.json(tickets))
+        .catch(err =>
+            res.status(404).json({ noticketsfound: "No tickets found from that user" })
+        );
+});
+
 
 
 module.exports = router;

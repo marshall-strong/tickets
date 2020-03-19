@@ -38,15 +38,15 @@ class NavBar extends React.Component {
       return (
         <div className="header">
           <div className="nav">
-            <div className="left-nav">Tickets</div>
-
+            <Link className="left-nav" to="/tickets/owner"> Tickets</Link>
+  
             <div className="right-nav">
-              <Link to="/tickets/owner">tickets</Link>
+              
               <Link to={`/users/${this.props.currentUser.id}`}>
                 {this.props.currentUser.firstName}
                 {this.props.currentUser.lastName}
-                {this.props.currentUser.orgHandle}
               </Link>
+                {this.props.currentUser.organization}
 
               
               <button className="button1" onClick={this.writeTicket}> 

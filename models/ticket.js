@@ -6,11 +6,11 @@ const ticketSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    createdDate: {
+    createdAt: {
         type: Date,
         default: Date.now
     },
-    updatedDate: {
+    updatedAt: {
         type: Date,
         default: Date.now
     },
@@ -37,21 +37,25 @@ const ticketSchema = new Schema({
         type: Array,
         default: []
     },
+    updatedBy: {
+        type: Array,
+        default: [] 
+    },
     status: {
         type: String,
         default: "No Progress"
     },
-    prority: {
+    priority: {
         type: String,
         default: "Low"
     },
     dependsOn: {
-        type: Schema.Types.ObjectId,
-        ref: 'Ticket'
+        type: Array,
+        default: []
     },
     blocks: {
-        type: Schema.Types.ObjectId,
-        ref: 'Ticket'
+        type: Array,
+        default: []
     },
     startDate: {
         type: Date,

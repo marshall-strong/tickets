@@ -42,11 +42,22 @@ router.get("/:id", (req, res) => {
         .catch(err => err.status(400).json(err))
 })
 
-router.patch("/:id", (req, res) => {
-        Ticket.updateOne({ id: req.params.id })
+router.patch("/:ticketId", (req, res) => {
+        Ticket.updateOne({ id: req.params.ticketId })
         .then(ticket => res.json(ticket))
         .catch(err => err.status(400).json(err))
 })
+
+
+
+router.get("/creator/:userId", (req, res) => {
+  Ticket.find({ creatorId: req.params.userId})
+    .sort({ createdAt: -1 })
+    .then(tickets => res.json(tickets))
+    .catch(err =>
+      res.status(404).json({ noticketsfound: "No tickets found from that user" })
+    );
+});
 
 
 

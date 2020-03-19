@@ -42,8 +42,8 @@ router.get("/:id", (req, res) => {
         .catch(err => err.status(400).json(err))
 })
 
-router.patch("/:id", (req, res) => {
-        Ticket.updateOne({ id: req.params.id })
+router.patch("/:ticketId", (req, res) => {
+        Ticket.updateOne({ id: req.params.ticketId })
         .then(ticket => res.json(ticket))
         .catch(err => err.status(400).json(err))
 })

@@ -1,9 +1,9 @@
 import seeder from "mongoose-seed";
 
 const db = require('./config/keys').mongoURI;
-
-const Organization = require('');
-const User = require('../models/user');
+const Organization = require('../models/organization');
+const Organizations = require('./organizations');
+const User = require('./users');
 
 const data = [
     {

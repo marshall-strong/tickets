@@ -26,8 +26,31 @@
     display: flex;
     justify-content: space-between;
     margin-right: 30px;
+    align-items: center;
+}
+
+.right-nav {
+    justify-content: space-around;
 }
 
 .nav .right-nav a {
     padding: 10px
+}
+
+.link-style-header{
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+.link-style{
+    color: white;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+.right-nav button{
+    margin-left: 10px;
+    margin-right: 10px;
 }

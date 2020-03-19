@@ -13,6 +13,7 @@ class NavBar extends React.Component {
     this.handleDemo = this.handleDemo.bind(this);
   }
 
+
   logoutUser(e) {
     e.preventDefault();
     this.props.logout();
@@ -24,12 +25,12 @@ class NavBar extends React.Component {
     this.props.history.push("/tickets/new")
   }
 
-
-
   handleDemo(e) {
+    debugger
     e.preventDefault();
-    this.props.loginDemoUser();
+    this.props.loginDemoUser()
     this.props.history.push("/tickets/owner");
+    debugger
   }
 
   // Selectively render links dependent on whether the user is logged in
@@ -38,12 +39,12 @@ class NavBar extends React.Component {
       return (
         <div className="header">
           <div className="nav">
-            <Link className="left-nav" to="/tickets/owner"> Tickets</Link>
+            <Link className="link-style-header" to="/tickets/owner"> Tickets</Link>
   
             <div className="right-nav">
               
-              <Link to={`/users/${this.props.currentUser.id}`}>
-                {this.props.currentUser.firstName}
+              <Link className="link-style"to={`/users/${this.props.currentUser.id}`}>
+                {this.props.currentUser.firstName} &nbsp;
                 {this.props.currentUser.lastName}
               </Link>
                 {this.props.currentUser.organization}
@@ -56,6 +57,7 @@ class NavBar extends React.Component {
               <button className="button1" onClick={this.logoutUser}>
                 Logout
               </button>
+              
             </div>
           </div>
         </div>

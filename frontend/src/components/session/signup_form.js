@@ -16,6 +16,10 @@ class SignupForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentWillUnmount() {
+        this.props.clearErrors()
+    }
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.signedIn === true) {
             this.props.history.push('/login');
@@ -47,6 +51,7 @@ class SignupForm extends React.Component {
             password: '',
             password2: ''
         });
+        this.props.clearErrors()
     }
 
 

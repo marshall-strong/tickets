@@ -1,11 +1,11 @@
 
-import { RECEIVE_TICKET_COMMENTS, RECEIVE_NEW_COMMENT, DELETE_COMMENT } from "../actions/comment_actions";
+import { RECEIVE_COMMENTS, RECEIVE_NEW_COMMENT, DELETE_COMMENT } from "../actions/comment_actions";
 
 const commentReducer = (state = {}, action) => {
     Object.freeze(state)
     let nextState = Object.assign({}, state)
     switch(action.type) {
-        case RECEIVE_TICKET_COMMENTS: 
+        case RECEIVE_COMMENTS: 
             for (let i = 0; i < action.comments.length; i++) {
                 nextState[action.comments[i].id] = action.comments[i]
             }

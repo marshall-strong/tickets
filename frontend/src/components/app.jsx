@@ -21,6 +21,7 @@ const NoMatch = ({ location }) => (
 const App = () => (
     <div>
         <NavBarContainer />
+        
         <div className="app-container">
             <div className="page-container">
             <Switch>
@@ -31,6 +32,7 @@ const App = () => (
             </Switch>
             </div>
         </div>
+
     </div>
 );
 

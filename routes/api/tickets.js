@@ -49,8 +49,8 @@ router.patch("/:id", (req, res) => {
 })
 
 
-router.get("/user/:user_id", (req, res) => {
-  Ticket.find({ user: req.params.user_id })
+router.get("/creator/:userId", (req, res) => {
+  Ticket.find({ creatorId: req.params.userId})
     .sort({ createdAt: -1 })
     .then(tickets => res.json(tickets))
     .catch(err =>

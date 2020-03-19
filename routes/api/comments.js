@@ -22,16 +22,16 @@ router.post("/",
     }
 )
 
-router.get("/tickets/:ticket_id", (req, res) => {
-    Comment
-        .find({ ticket: req.params.ticket_id})
-        .sort({ createdAt: -1 })
-        .then(comments => res.send(comments))
-        .catch(err => 
-            res
-                .status(404)
-                .json({ nocommentsfound: "No comments found for that ticket" }))
-})
+router.get("/author/:userId", (req, res) => {
+  Ticket.find({ authorId: req.params.userId })
+    .sort({ createdAt: -1 })
+    .then(tickets => res.json(tickets))
+    .catch(err =>
+      res
+        .status(404)
+        .json({ noticketsfound: "No tickets found from that user" })
+    );
+});
 
 
 router.patch("/:id",

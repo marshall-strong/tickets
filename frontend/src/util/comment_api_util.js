@@ -1,8 +1,8 @@
 import axios from "axios";
 
 
-export const getTicketComments = (id) => {
-    return axios.get(`/api/comments/tickets/${id}`)
+export const fetchUserComments = (userId) => {
+    return axios.get(`/api/comments/author/${userId}`)
 }
 
 export const writeComment = (comment) => {
@@ -17,4 +17,7 @@ export const deleteComment = id => {
   return axios.delete(`/api/comments/${id}`);
 };
 
+
+
+//fetchusercomments
 

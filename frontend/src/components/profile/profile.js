@@ -7,54 +7,47 @@ class Profile extends React.Compenent {
     }
 
     componentDidMount() {
-        this.props.fetchUserTickets(this.props.params.match.creatorId)
-        this.props.fetchTicketComments(this.props.params.match.authorId)
+        this.props.fetchCreatedTickets(this.props.params.match.userId)
+        this.props.fetchUserComments(this.props.params.match.userId)
     }
 
     render() {
-        const {user, ticketComments, tickets} = this.props;
+        const {user, comments, tickets} = this.props;
 
-        const userTicketComments = [];
-        for (let i = 0; i < ticketComments.length; i++) {
-            if( user.id === ticketComments[i].author_Id) {
-                userTicketComments.push(ticketComments[i]);
-            }
-        }
+        const userCommentInfo = comments.map(comment => (
+          <div>
+            <span>
+              {ticket.createdAt}
+              {ticket.author.firstName}
+              {ticket.author.lastName} commented on
+            </span>
+            <Link to={`/comments/${comment.id}`}>{comment.id}</Link>
+          </div>
+        )); 
 
-        const userTicketInfo1 = tickets.map( ticket =>  <div>
-                                <span> {ticket.createdAt} 
-                                       {ticket.user.firstName}  
-                                       {ticket.user.lastName} created
-                                </span>
-                                <Link 
-                                to={`/ticket/${ticket.id}`}>{ticket.id}</Link> 
-                            </div>
-                            )
-        
-         const userTicketInfo2 = ticket.map( <div>
-                                <span> {ticket.updatedAt} 
-                                       {ticket.user.firstName}  
-                                       {ticket.user.lastName} updated the 
-                                       {ticket.title}
-                                </span>
-                                <Link 
-                                to={`/ticket/${ticket.id}`}>{ticket.id}</Link> 
-                            </div>
-                            )
-        
-
+        const userTicketInfo = tickets.map( ticket =>  
+            <div>
+                <span> 
+                    {ticket.createdAt} 
+                    {ticket.creator.firstName}  
+                    {ticket.creator.lastName} created
+                </span>
+                <Link to={`/tickets/${ticket.id}`}>
+                    {ticket.id}
+                </Link> 
+            </div>
+        ) 
 
         return (
-          <div>
-            <div className="profile-header-container">
-              <h1>
-                Hello! {user.firstName} {user.lastName}
-              </h1>
+            <div>
+                <div className="profile-header-container">
+                    <h1>
+                    Hello! {user.firstName} {user.lastName}
+                </h1>
             </div>
 
-            <div>{userTicketInfo1}</div>
-            <div>{userTicketInfo2}</div>
-            <div>{userComments}</div>
+            <div>{userTicketInfo}</div>
+            <div>{userCommentInfo}</div>
         </div>
         );
     }

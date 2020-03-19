@@ -22,6 +22,17 @@ router.post("/",
     }
 )
 
+router.get("/tickets/:ticketId", (req, res) => {
+    Comment
+        .find({ ticket: req.params.ticked})
+        .sort({ createdAt: -1 })
+        .then(comments => res.send(comments))
+        .catch(err => 
+            res
+                .status(404)
+                .json({ nocommentsfound: "No comments found for that ticket" }))
+})
+
 router.get("/author/:userId", (req, res) => {
   Ticket.find({ authorId: req.params.userId })
     .sort({ createdAt: -1 })
@@ -32,7 +43,6 @@ router.get("/author/:userId", (req, res) => {
         .json({ noticketsfound: "No tickets found from that user" })
     );
 });
-
 
 router.patch("/:id",
         passport.authenticate('jwt', { session: false }),

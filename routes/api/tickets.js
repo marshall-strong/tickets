@@ -49,6 +49,7 @@ router.patch("/:id", (req, res) => {
 })
 
 
+
 router.get("/creator/:userId", (req, res) => {
   Ticket.find({ creatorId: req.params.userId})
     .sort({ createdAt: -1 })

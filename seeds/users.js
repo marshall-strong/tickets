@@ -6,70 +6,70 @@ const userSeeds = {
             "lastName": "Linder",
             "email": "hayden@cats4humanity.org",
             "orgHandle": "cats4humanity.org",
-            "password": "password"
+            "password": "$2a$10$7zOMKgSFsf8RMWhF9XIMSe35w5nk93RSpiFINE2zmVqZ7XtzQOzxi"
         },
         {
             "firstName": "Brad",
             "lastName": "Nelson",
             "email": "brad@cats4humanity.org",
             "orgHandle": "cats4humanity.org",
-            "password": "password"
+            "password": "$2a$10$7zOMKgSFsf8RMWhF9XIMSe35w5nk93RSpiFINE2zmVqZ7XtzQOzxi"
         },
         {
             "firstName": "Joe",
             "lastName": "Johnston",
             "email": "joe@cats4humanity.org",
             "orgHandle": "cats4humanity.org",
-            "password": "password"
+            "password": "$2a$10$7zOMKgSFsf8RMWhF9XIMSe35w5nk93RSpiFINE2zmVqZ7XtzQOzxi"
         },
         {
             "firstName": "Marshall",
             "lastName": "Strong",
             "email": "marshall@cats4humanity.org",
             "orgHandle": "cats4humanity.org",
-            "password": "password"
+            "password": "$2a$10$7zOMKgSFsf8RMWhF9XIMSe35w5nk93RSpiFINE2zmVqZ7XtzQOzxi"
         },
         {
             "firstName": "Demo",
             "lastName": "User",
             "email": "user@cats4humanity.org",
             "orgHandle": "cats4humanity.org",
-            "password": "password"
+            "password": "$2a$10$7zOMKgSFsf8RMWhF9XIMSe35w5nk93RSpiFINE2zmVqZ7XtzQOzxi"
         },
         {
             "firstName": "ACME",
             "lastName": "User",
             "email": "email@address",
             "orgHandle": "address",
-            "password": "password"
+            "password": "$2a$10$7zOMKgSFsf8RMWhF9XIMSe35w5nk93RSpiFINE2zmVqZ7XtzQOzxi"
         },
         {
             "firstName": "gmail",
             "lastName": "User",
             "email": "user@gmail.com",
             "orgHandle": "gmail.com",
-            "password": "password"
+            "password": "$2a$10$7zOMKgSFsf8RMWhF9XIMSe35w5nk93RSpiFINE2zmVqZ7XtzQOzxi"
         },
         {
             "firstName": "Carlos",
             "lastName": "Garcia",
             "email": "carlos@appacademy.io",
             "orgHandle": "appacademy.io",
-            "password": "password"
+            "password": "$2a$10$7zOMKgSFsf8RMWhF9XIMSe35w5nk93RSpiFINE2zmVqZ7XtzQOzxi"
         },
         {
             "firstName": "Julia",
             "lastName": "Wang",
             "email": "julia@appacademy.io",
             "orgHandle": "appacademy.io",
-            "password": "password"
+            "password": "$2a$10$7zOMKgSFsf8RMWhF9XIMSe35w5nk93RSpiFINE2zmVqZ7XtzQOzxi"
         },
         {
             "firstName": "Mike",
             "lastName": "Madsen",
             "email": "mike@appacademy.io",
             "orgHandle": "appacademy.io",
-            "password": "password"
+            "password": "$2a$10$7zOMKgSFsf8RMWhF9XIMSe35w5nk93RSpiFINE2zmVqZ7XtzQOzxi"
         },
     ]
 };

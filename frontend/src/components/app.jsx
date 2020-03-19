@@ -8,6 +8,8 @@ import MainPage from './main/main_page';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 
+import './app.css'
+
 const NoMatch = ({ location }) => (
     <div>
         <h1>Oops! Page Not Found</h1>
@@ -19,16 +21,18 @@ const NoMatch = ({ location }) => (
 const App = () => (
     <div>
         <NavBarContainer />
-        <Switch>
-            <AuthRoute exact path="/" component={MainPage} />
-            <AuthRoute exact path="/login" component={LoginFormContainer} />
-            <AuthRoute exact path="/signup" component={SignupFormContainer} />
-<<<<<<< HEAD
-            <ProtectedRoute exact path="/profile" component={ProfileContainer} />
-=======
-            <Route component={NoMatch} />
->>>>>>> master
-        </Switch>
+        
+        <div className="app-container">
+            <div className="page-container">
+            <Switch>
+                <AuthRoute exact path="/" component={MainPage} />
+                <AuthRoute exact path="/login" component={LoginFormContainer} />
+                <AuthRoute exact path="/signup" component={SignupFormContainer} />
+                <Route component={NoMatch} />
+            </Switch>
+            </div>
+        </div>
+
     </div>
 );
 

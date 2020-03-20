@@ -57,6 +57,8 @@ class TicketForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        this.state.updatedAt.unshift(Date.now());
+        this.state.updatedBy.unshift(this.props.currentUser.id)
         if (this.props.ticketId !== "new") {
             this.props.updateTicket(this.state)
         } else {
@@ -75,7 +77,7 @@ class TicketForm extends React.Component {
 
         if (this.props.ticketId !== 'new') {
             if (!this.props.ticket) return null
-            // this.view();
+            this.view();
         }
         const statusSelect = (
             <select 

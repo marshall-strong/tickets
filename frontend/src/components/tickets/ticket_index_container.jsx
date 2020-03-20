@@ -1,7 +1,9 @@
 import { connect } from 'react-redux'
 import TicketIndex from './ticket_index'
+import { withRouter } from 'react-router-dom'
 
-const mstp = state => ({
+const mstp = (state, ownProps) => ({
+    user: state.entities.users[ownProps.match.params.userId],
     tickets: Object.values(state.entities.tickets)
 })
 
@@ -11,4 +13,4 @@ const mdtp = dispatch => ({
     getTickets: () => dispatch(getTickets())
 })
 
-export default connect(mstp, mdtp)(TicketIndex)
+export default withRouter(connect(mstp, mdtp)(TicketIndex))

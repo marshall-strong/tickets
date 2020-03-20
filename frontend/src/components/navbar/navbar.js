@@ -68,8 +68,8 @@ class NavBar extends React.Component {
             <div className="left-nav">Tickets</div>
 
             <div className="right-nav">
-              {this.props.path === "/signup" ? <Link to={"/login"}>Login</Link> : <Link to={"/signup"}>Signup</Link> }
-              {this.props.path === "/" ? <Link to={"/login"}>Login</Link> : null}
+              {this.props.path === "/signup" ? <Link className="link-style" to={"/login"}>Login</Link> : <Link className="link-style" to={"/signup"}>Signup</Link> }
+              {this.props.path === "/" ? <Link className="link-style" to={"/login"}>Login</Link> : null}
               <button className="button1" onClick={this.handleDemo}>
                 login as a demo user
               </button>

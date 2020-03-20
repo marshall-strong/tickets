@@ -61,6 +61,8 @@
     color: white;
     text-decoration: none;
     font-family: sans-serif;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .right-nav button{

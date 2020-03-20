@@ -42,7 +42,7 @@ class TicketIndex extends React.Component {
                     {tickets.map(ticket => <li><TicketIndexItem key={ticket.id} ticket={ticket} /></li>)}
                 </ul>
                 <button onClick={this.handleClick}>ticket form for ticket</button>
-                {this.state.showComponent ? <TicketFrom /> : null}
+                {this.state.showComponent ? <TicketForm /> : null}
                 {/* <Link to={`/tickets/${props.ticket.id}`} onClick={e => this.handleClick(e)}>ticket form for ticket</Link> */}
             </div>
         )

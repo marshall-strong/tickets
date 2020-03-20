@@ -12,7 +12,7 @@ class TicketCommentIndex extends React.Component {
     }
 
     render() {
-        const { comments, deleteComment, updateComment }
+        const { comments, deleteComment, updateComment } = this.props
         return(
             <ul>
                 {comments.map(comment => <li><CommentIndexItem 

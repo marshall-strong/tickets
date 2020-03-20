@@ -15,6 +15,10 @@ class LoginForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentWillUnmount() {
+        this.props.clearErrors()
+    }
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.currentUser === true) {
             this.props.history.push('/tickets');
@@ -40,13 +44,14 @@ class LoginForm extends React.Component {
             email: '',
             password: ''
         });
+        this.props.clearErrors()
     }
 
     render() {
         return (
             <div className="form-container">
                 <form className="form" >
-                        <input type="text"
+                        <input className="form-box" type="text"
                             value={this.state.email}
                             onChange={this.update('email')}
                             placeholder={this.props.errors.email ? this.props.errors.email : "Email"}

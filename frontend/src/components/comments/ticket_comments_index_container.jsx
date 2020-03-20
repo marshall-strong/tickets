@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { deleteComment, fetchTicketComments } from '../../actions/comment_actions'
-import CommentForm from './comment_form'
+import CommentIndex from './ticket_comment_index'
 
 const mSTP = (state, ownProps) => ({
     ticket: state.entities.tickets[ownProps.match.params.ticketId],
@@ -9,7 +9,8 @@ const mSTP = (state, ownProps) => ({
 
 const mDTP = dispatch => ({
     deleteComment: id => dispatch(deleteComment(id)),
-    fetchTicketComments: id => dispatch(fetchTicketComments(id))
+    fetchTicketComments: id => dispatch(fetchTicketComments(id)),
+    updateComment: comment => dispatch(updateComment(comment))
 })
 
-export default connect(mSTP, mDTP)(CommentForm)
+export default connect(mSTP, mDTP)(CommentIndex)

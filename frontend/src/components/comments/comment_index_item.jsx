@@ -3,7 +3,9 @@ import React from 'react'
 const CommentIndexItem = props => {
     return (
         <div>
-            {comment}
+            {props.ticket.comments}
         </div>
     )
 } 
+
+export default CommentIndexItem

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { logout, loginDemoUser } from '../../actions/session_actions';
+import { logout, loginDemoUser, clearErrors } from '../../actions/session_actions';
 import { withRouter } from 'react-router-dom'
 
 import NavBar from './navbar';
@@ -14,7 +14,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     logout: () => dispatch(logout()),
-    loginDemoUser: () => dispatch(loginDemoUser())
+    loginDemoUser: () => dispatch(loginDemoUser()),
+    clearErrors: () => dispatch(clearErrors())
 })
 
 export default withRouter(connect(

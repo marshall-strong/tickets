@@ -5,7 +5,8 @@ import jwt_decode from 'jwt-decode';
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
-// export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
+export const CLEAR_ERRORS = "CLEAR_ERRORS"
+export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
 
 export const receiveCurrentUser = payload => ({
     type: RECEIVE_CURRENT_USER,
@@ -13,9 +14,9 @@ export const receiveCurrentUser = payload => ({
 });
 
 
-// export const receiveUserSignIn = () => ({
-//     type: RECEIVE_USER_SIGN_IN
-// });
+export const receiveUserSignIn = () => ({
+    type: RECEIVE_USER_SIGN_IN
+});
 
 
 export const receiveErrors = errors => ({
@@ -27,12 +28,13 @@ export const logoutUser = () => ({
     type: RECEIVE_USER_LOGOUT
 });
 
+export const clearErrors = () => ({
+    type: CLEAR_ERRORS
+})
+
 const demoUser = {
-//   firstName: "user",
-//   lastName: "user",
-  email: "user@gmail.com",
-  password: "password",
-//   password2: "password"
+  email: "user@cats4humanity.org",
+  password: "password"
 };
 
 export const signup = user => dispatch => (

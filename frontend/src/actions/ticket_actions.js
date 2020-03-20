@@ -11,12 +11,12 @@ const receiveTickets = tickets => ({
 
 const receiveTicket = ticket => ({
     type: RECEIVE_TICKET,
-    ticket: ticket
+    ticket: ticket.data
 })
 
 const receiveTicketErrors = errors => ({
     type: RECEIVE_TICKET_ERRORS,
-    erros: errors
+    errors: errors.response.data
 })
 
 export const getTickets = () => dispatch => (

@@ -1,11 +1,15 @@
 import {
-    RECEIVE_SESSION_ERRORS
+    RECEIVE_SESSION_ERRORS, CLEAR_ERRORS, RECEIVE_CURRENT_USER
 } from '../actions/session_actions';
 
-export default function (state = {}, action) {
+export default function (state = [], action) {
     switch (action.type) {
         case RECEIVE_SESSION_ERRORS:
            return action.errors
+        case CLEAR_ERRORS: 
+            return [];
+        case RECEIVE_CURRENT_USER:
+            return [];
         default:
             return state;
     }

@@ -11,28 +11,43 @@ router.get("/", (req, res) => {
         .then(tickets => res.json(tickets))
 }
 )
-router.post('/tickets/new',
-    passport.authenticate('jwt', { session: false }),
+router.post("/",
+    // passport.authenticate('jwt', { session: false }),
     (req, res) => {
+        
         const { errors, isValid } = validateTicketInput(req.body);
 
         if (!isValid) {
-            return res.status(400).json(errors);
+            return res.status(422).json(errors);
         }
-
         const newTicket = new Ticket({
             title: req.body.title,
+            owner: req.body.owner,
             body: req.body.body,
             status: req.body.status,
             priority: req.body.priority,
+            tags: req.body.tags,
+            subscribers: req.body.subscribers,
             dependsOn: req.body.dependsOn,
             blocks: req.body.blocks,
             startDate: req.body.startDate,
             endDate: req.body.endDate,
-            user: req.user.id
+            creator: req.body.creator
         });
 
-        newTicket.save().then(ticket => res.json(ticket));
+
+        // newTicket.save().then(ticket => res.json(ticket));
+        newTicket.save()
+        .then(ticket => {
+            Ticket.findById(ticket._id)
+            .populate('creator') 
+            .exec() 
+            .then(populated =>{
+                console.log(populated)
+                return res.json(populated)
+            }
+            )
+        });
     }
 );
 
@@ -53,6 +68,7 @@ router.patch("/:ticketId", (req, res) => {
 
 router.get("/creator/:userId", (req, res) => {
   Ticket.find({ creator: req.params.userId})
+    .populate('creator')
     .sort({ createdAt: -1 })
     .then(tickets => res.json(tickets))
     .catch(err =>

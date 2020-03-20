@@ -3,12 +3,11 @@ import React from 'react';
 class TicketForm extends React.Component {
     constructor(props) {
         super(props)
-
         this.state = {
             updatedAt: Date.now,
             tags: [],
             subscribers: [],
-            owner: '',
+            owner: undefined,
             title: '',
             body: '',
             lastUpdateSeenBy: [],
@@ -18,8 +17,10 @@ class TicketForm extends React.Component {
             dependsOn: [],
             blocks: [],
             startDate: undefined,
-            endDate: undefined
+            endDate: undefined,
+            creator: this.props.currentUser.id
         }
+        this.handlesubmit = this.handlesubmit.bind(this)
     }
 
     componentDidMount() {
@@ -42,7 +43,7 @@ class TicketForm extends React.Component {
                     blocks: ticket.blocks,
                     startDate: ticket.startDate,
                     endDate: ticket.endDate,
-                
+                    creator: ticket.creator
                 })
             })
         }
@@ -55,6 +56,11 @@ class TicketForm extends React.Component {
         }
     }
 
+    handlesubmit(e) {
+        e.preventDefault();
+        this.props.createTicket(this.state)
+    }
+
     update(field) {
         return e => this.setState({
             [field]: e.currentTarget.value
@@ -63,44 +69,41 @@ class TicketForm extends React.Component {
 
     render(){
 
-        
         if (this.props.ticketId !== 'new') {
             this.view();
             if (!this.props.ticket) return null
         }
 
         const statusSelect = (
-            <select onChange={this.update('status')}>
+            <select 
+                defaultValue={this.state.status}
+                onChange={this.update('status')}
+            >
                 <option 
-                    selected={this.state.status === "No Progress"} 
                     value="No Progress"
                 >
                     No Progress
                 </option>
 
                 <option 
-                    selected={this.state.status === "Planned"} 
                     value="Planned"
                 >
                     Planned
                 </option>
 
                 <option 
-                    selected={this.state.status === "Blocked"} 
                     value="Blocked"
                 >
                     Blocked
                 </option>
 
                 <option 
-                    selected={this.state.status === "In Progress"} 
                     value="In Progress"
                 >
                     In Progress
                 </option>
 
                 <option 
-                    selected={this.state.status === "Closed"} 
                     value="Closed"
                 >
                     Closed
@@ -110,30 +113,29 @@ class TicketForm extends React.Component {
         )
 
         const prioritySelect = (
-            <select onChange={this.update('priority')}>
+            <select 
+                defaultValue={this.state.priority} 
+                onChange={this.update('priority')}
+            >
                 <option 
-                    selected={this.state.priority === "Low"}
                     value="Low"
                 >
                     Low
                 </option>
 
                 <option 
-                    selected={this.state.priority === "Medium"}
                     value="Medium"
                 >
                     Medium
                 </option>
 
                 <option 
-                    selected={this.state.priority === "High"}
                     value="High"
                 >
                     High
                 </option>
 
                 <option 
-                    selected={this.state.priority === "CATastrophic"}
                     value="CATastrophic"
                 >
                     CATastrophic
@@ -198,7 +200,11 @@ class TicketForm extends React.Component {
                         onChange={this.update('endDate')}
                     />
 
-                    
+                    <button 
+                        onClick={this.handlesubmit}
+                        className="button1">
+                        {this.props.ticketId === 'new' ? 'create' : 'save'}
+                    </button>
                 </form>
             </div>
         )

@@ -9,6 +9,8 @@ const tickets = require("./routes/api/tickets")
 const tags = require('./routes/api/tags')
 const comments = require('./routes/api/comments')
 
+const seedTheDatabase = require('./backend/seeds/seeder');
+
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -19,8 +21,8 @@ require('./config/passport')(passport);
 
 app.use("/api/users", users)    
 app.use("/api/tickets", tickets)
-app.use('api/tags', tags)
-app.use('api/comments', comments)
+app.use('/api/tags', tags)
+app.use('/api/comments', comments)
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
 
@@ -28,3 +30,5 @@ mongoose
     .connect(db, { useNewUrlParser: true })
     .then(() => console.log("Connected to MongoDB successfully"))
     .catch(err => console.log(err));
+
+seedTheDatabase();

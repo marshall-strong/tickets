@@ -63,15 +63,20 @@ router.get("/:ticketId", (req, res) => {
 })
 
 router.patch("/:ticketId", (req, res) => {
-    Ticket.updateOne({id: req.params.ticketId})
-    .populate('creator')
-    .populate('updatedBy')
-    .populate('lastUpdateSeenBy')
-    .populate('subscribers')
-    .then(ticket => res.json(ticket))
-    .catch(err => err.status(400).json(err))
+    Ticket.findByIdAndUpdate(
+        req.params.ticketId,
+        req.body,
+        { new: true },
+        (err, ticket) => res.json(ticket)
+    )
+    // Ticket.findById(req.params.ticketId)
+    // .then(ticket => {
+    //     ticket.update(req.body)
+    //     debugger
+    //     return res.json(ticket)
+    // })
+    // .catch(err => err.status(400).json(err))
 })
-
 
 
 router.get("/creator/:userId", (req, res) => {

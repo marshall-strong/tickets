@@ -15,6 +15,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
     logout: () => dispatch(logout()),
     loginDemoUser: () => dispatch(loginDemoUser()),
+    clearErrors: () => dispatch(clearErrors())
 })
 
 export default withRouter(connect(

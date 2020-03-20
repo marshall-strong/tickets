@@ -26,11 +26,10 @@ class NavBar extends React.Component {
   }
 
   handleDemo(e) {
-    debugger
     e.preventDefault();
     this.props.loginDemoUser()
     this.props.history.push("/tickets/owner");
-    debugger
+    this.props.clearErrors()
   }
 
   // Selectively render links dependent on whether the user is logged in

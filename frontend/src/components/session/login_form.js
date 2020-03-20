@@ -51,12 +51,13 @@ class LoginForm extends React.Component {
         return (
             <div className="form-container">
                 <form className="form" >
-                        <input className="form-box" type="text"
+                    <img className="cat-hat" src="https://i.pinimg.com/originals/cd/db/80/cddb8020bf0d4605c1e11fc6d97eaace.png"></img>
+                    <input className="form-box-login" type="text"
                             value={this.state.email}
                             onChange={this.update('email')}
                             placeholder={this.props.errors.email ? this.props.errors.email : "Email"}
                         />
-                        <input type="password"
+                    <input className="form-box-login" type="password"
                             value={this.state.password}
                             onChange={this.update('password')}
                             placeholder={this.props.errors.password ? this.props.errors.password : "Password"}

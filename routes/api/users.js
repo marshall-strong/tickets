@@ -20,12 +20,12 @@ router.post("/register", (req, res) => {
             errors.email = "User already exists";
             return res.status(400).json(errors);
         } else {
-            const orgHandle = req.body.email.slice(req.body.email.search("@"));
+            const orgName = req.body.email.slice(req.body.email.search("@"));
             const newUser = new User({
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 email: req.body.email,
-                orgHandle: orgHandle,
+                organization: orgName,
                 password: req.body.password
             });
 
@@ -39,7 +39,7 @@ router.post("/register", (req, res) => {
                             id: user.id,
                             firstName: user.firstName,
                             lastName: user.lastName,
-                            orgHandle: user.orgHandle
+                            organization: user.organization
                         };
 
                         jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
@@ -78,7 +78,7 @@ router.post("/login", (req, res) => {
                     id: user.id,
                     firstName: user.firstName,
                     lastName: user.lastName,
-                    organization: user.organization
+                    orgHandle: user.orgHandle
                 };
 
                 jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {

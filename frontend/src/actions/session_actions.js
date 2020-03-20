@@ -34,6 +34,7 @@ export const clearErrors = () => ({
 
 const demoUser = {
   email: "email@gmail.com",
+  email: "user@cats4humanity.org",
   password: "password"
 };
 

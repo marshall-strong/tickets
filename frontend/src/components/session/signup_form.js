@@ -59,27 +59,29 @@ class SignupForm extends React.Component {
         return (
             <div className="form-container">
                 <form className="form">
-                    <input type="text"
+
+                    <img className="cat-hat" src="https://i.pinimg.com/originals/cd/db/80/cddb8020bf0d4605c1e11fc6d97eaace.png"></img>
+                    <input className="form-box-signup" type="text"
                         value={this.state.firstName}
                         onChange={this.update('firstName')}
                         placeholder={ this.props.errors.firstName ? this.props.errors.firstName : "firstName"}
                     />
-                    <input type="text"
+                    <input className="form-box-signup" type="text"
                         value={this.state.lastName}
                         onChange={this.update('lastName')}
                         placeholder={this.props.errors.lastName ? this.props.errors.lastName : "lastName"}
                     />
-                    <input type="text"
+                    <input className="form-box-signup" type="text"
                         value={this.state.email}
                         onChange={this.update('email')}
                         placeholder={this.props.errors.email ? this.props.errors.email : "email"}
                     />
-                    <input type="password"
+                    <input className="form-box-signup" type="password"
                         value={this.state.password}
                         onChange={this.update('password')}
                         placeholder={this.props.errors.password ? this.props.errors.password : "Password"}
                     />
-                    <input type="password"
+                    <input className="form-box-signup" type="password"
                         value={this.state.password2}
                         onChange={this.update('password2')}
                         placeholder={this.props.errors.password2 ? this.props.errors.password2 : "Confirm Password"}

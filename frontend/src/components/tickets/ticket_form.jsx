@@ -44,7 +44,6 @@ class TicketForm extends React.Component {
                     blocks: ticket.blocks,
                     startDate: ticket.startDate,
                     endDate: ticket.endDate,
-                    creator: this.props.currentUser.id
                 })
             })
         }

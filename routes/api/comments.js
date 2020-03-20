@@ -24,7 +24,7 @@ router.post("/",
 
 router.get("/tickets/:ticketId", (req, res) => {
     Comment
-        .find({ ticket: req.params.ticket})
+        .find({ ticket: req.params.ticketId})
         .sort({ createdAt: -1 })
         .then(comments => res.send(comments))
         .catch(err => 

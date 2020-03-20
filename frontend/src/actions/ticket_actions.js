@@ -11,7 +11,7 @@ const receiveTickets = tickets => ({
 
 const receiveTicket = ticket => ({
     type: RECEIVE_TICKET,
-    ticket: ticket
+    ticket: ticket.data
 })
 
 const receiveTicketErrors = errors => ({

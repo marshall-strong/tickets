@@ -12,24 +12,27 @@ router.get("/", (req, res) => {
 }
 )
 router.post("/",
-    passport.authenticate('jwt', { session: false }),
+    // passport.authenticate('jwt', { session: false }),
     (req, res) => {
         const { errors, isValid } = validateTicketInput(req.body);
 
         if (!isValid) {
-            return res.status(400).json(errors);
+            return res.status(422).json(errors);
         }
 
         const newTicket = new Ticket({
             title: req.body.title,
+            owner: req.body.owner,
             body: req.body.body,
             status: req.body.status,
             priority: req.body.priority,
+            tags: req.body.tags,
+            subscribers: req.body.subscribers,
             dependsOn: req.body.dependsOn,
             blocks: req.body.blocks,
             startDate: req.body.startDate,
             endDate: req.body.endDate,
-            user: req.user.id
+            creator: req.creator
         });
 
         newTicket.save().then(ticket => res.json(ticket));

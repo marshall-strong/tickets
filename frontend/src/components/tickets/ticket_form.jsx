@@ -8,7 +8,7 @@ class TicketForm extends React.Component {
             updatedAt: Date.now,
             tags: [],
             subscribers: [],
-            owner: '',
+            owner: undefined,
             title: '',
             body: '',
             lastUpdateSeenBy: [],
@@ -18,7 +18,8 @@ class TicketForm extends React.Component {
             dependsOn: [],
             blocks: [],
             startDate: undefined,
-            endDate: undefined
+            endDate: undefined,
+            creator: this.props.currentUser.id
         }
         this.handlesubmit = this.handlesubmit.bind(this)
     }
@@ -43,7 +44,7 @@ class TicketForm extends React.Component {
                     blocks: ticket.blocks,
                     startDate: ticket.startDate,
                     endDate: ticket.endDate,
-                
+                    creator: this.props.currentUser.id
                 })
             })
         }

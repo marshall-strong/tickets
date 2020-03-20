@@ -13,6 +13,7 @@ class NavBar extends React.Component {
     this.handleDemo = this.handleDemo.bind(this);
   }
 
+
   logoutUser(e) {
     e.preventDefault();
     this.props.logout();
@@ -24,12 +25,11 @@ class NavBar extends React.Component {
     this.props.history.push("/tickets/new")
   }
 
-
-
   handleDemo(e) {
     e.preventDefault();
-    this.props.loginDemoUser();
+    this.props.loginDemoUser()
     this.props.history.push("/tickets/owner");
+    this.props.clearErrors()
   }
 
   // Selectively render links dependent on whether the user is logged in
@@ -38,15 +38,15 @@ class NavBar extends React.Component {
       return (
         <div className="header">
           <div className="nav">
-            <div className="left-nav">Tickets</div>
-
+            <Link className="link-style-header" to="/tickets/owner"> Tickets</Link>
+  
             <div className="right-nav">
-              <Link to="/tickets/owner">tickets</Link>
-              <Link to={`/users/${this.props.currentUser.id}`}>
-                {this.props.currentUser.firstName}
+              
+              <Link className="link-style"to={`/users/${this.props.currentUser.id}`}>
+                {this.props.currentUser.firstName} &nbsp;
                 {this.props.currentUser.lastName}
-                {this.props.currentUser.orgHandle}
               </Link>
+                {this.props.currentUser.organization}
 
               
               <button className="button1" onClick={this.writeTicket}> 
@@ -56,6 +56,7 @@ class NavBar extends React.Component {
               <button className="button1" onClick={this.logoutUser}>
                 Logout
               </button>
+              
             </div>
           </div>
         </div>
@@ -67,8 +68,8 @@ class NavBar extends React.Component {
             <div className="left-nav">Tickets</div>
 
             <div className="right-nav">
-              {this.props.path === "/signup" ? <Link to={"/login"}>Login</Link> : <Link to={"/signup"}>Signup</Link> }
-              {this.props.path === "/" ? <Link to={"/login"}>Login</Link> : null}
+              {this.props.path === "/signup" ? <Link className="link-style" to={"/login"}>Login</Link> : <Link className="link-style" to={"/signup"}>Signup</Link> }
+              {this.props.path === "/" ? <Link className="link-style" to={"/login"}>Login</Link> : null}
               <button className="button1" onClick={this.handleDemo}>
                 login as a demo user
               </button>

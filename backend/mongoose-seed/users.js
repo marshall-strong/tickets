@@ -39,21 +39,14 @@ const userSeeds = {
             password: genPasswordDigest("password")
         },
         {
-            firstName: "Seeded",
-            lastName: "User",
-            email: "seeded-user@cats4humanity.org",
-            organization: "cats4humanity.org",
-            password: genPasswordDigest("password")
-        },
-        {
             firstName: "ACME",
             lastName: "User",
-            email: "email@address",
-            organization: "address",
+            email: "user@acme.boom",
+            organization: "acme.boom",
             password: genPasswordDigest("password")
         },
         {
-            firstName: "gmail",
+            firstName: "Gmail",
             lastName: "User",
             email: "user@gmail.com",
             organization: "gmail.com",
@@ -63,20 +56,6 @@ const userSeeds = {
             firstName: "Carlos",
             lastName: "Garcia",
             email: "carlos@appacademy.io",
-            organization: "appacademy.io",
-            password: genPasswordDigest("password")
-        },
-        {
-            firstName: "Julia",
-            lastName: "Wang",
-            email: "julia@appacademy.io",
-            organization: "appacademy.io",
-            password: genPasswordDigest("password")
-        },
-        {
-            firstName: "Mike",
-            lastName: "Madsen",
-            email: "mike@appacademy.io",
             organization: "appacademy.io",
             password: genPasswordDigest("password")
         },

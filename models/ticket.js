@@ -8,10 +8,10 @@ const ticketSchema = new Schema({
     },
     createdAt: {
         type: Date,
-        default: Date.now
+        default: Date.now()
     },
     updatedAt: [{
-        type: Date,
+        type: Date
     }],
     tags: {
         type: Array,

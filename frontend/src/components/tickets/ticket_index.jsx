@@ -7,22 +7,22 @@ class TicketIndex extends React.Component {
     constructor(props) {
         super(props)
 
-        // this.state = this.props.tickets.filter(ticket => )
+        this.state = {}
         this.handleClick = this.handleClick.bind(this)
     }
 
     componentDidMount() {
         switch (this.props.location.pathname) {
-            case '/tickets/folders/owner':
+            case '/tickets/owner':
                 return this.props.fetchOwnerTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
-            case '/tickets/folders/subscribers':
-                return this.props.fetchSubscribedTickets(this.props.match.params.userId)
-            case '/tickets/folders/created':
-                return this.props.fetchCreatedTickets(this.props.match.params.userId)
-            case '/tickets/folders/starred': 
-                return this.props.fetchStarredTickets(this.props.match.params.userId)
+            case '/tickets/subscribed':
+                return this.props.fetchSubscribedTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
+            case '/tickets/creator':
+                return this.props.fetchCreatedTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
+            case '/tickets/starred': 
+                return this.props.fetchStarredTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
             default:
-                return this.props.getTickets()
+                return this.props.getTickets().then(tickets => this.setState(tickets))
         }
     }
 
@@ -32,8 +32,9 @@ class TicketIndex extends React.Component {
     }
 
     render() {
-        if (!this.props.tickets) return null
-        const { tickets } = this.props
+        debugger
+        if (!this.state.tickets) return null
+        const { tickets } = this.state
         return(
             <div>
                 <ul>

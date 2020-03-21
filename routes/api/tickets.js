@@ -79,13 +79,19 @@ router.patch("/:ticketId", (req, res) => {
     })
 })
 
-router.get("/creator/:userId", (req, res) => {
-  Ticket.find({ creator: req.params.userId})
-    .populate('creator', ['firstName', 'lastName', '_id'])
-    .populate('updatedBy', ['firstName', 'lastName', '_id'])
-    .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
-    .populate('subscribers', ['firstName', 'lastName', '_id'])
-    .sort({ createdAt: -1 })
+router.get("/:folder/:userId", (req, res) => {
+    debugger
+    Ticket.find({ [req.params.folder]: req.params.userId})
+    .populate({ 
+        path: 'creator', 
+        model: 'User',
+        select: 'firstName' 
+ 
+    })
+    // .populate('creator', ['firstName', 'lastName', '_id'])
+    // .populate('updatedBy', ['firstName', 'lastName', '_id'])
+    // .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
+    // .populate('subscribers', ['firstName', 'lastName', '_id'])
     .then(tickets => res.json(tickets))
     .catch(err =>
       res.status(404).json({ noticketsfound: "No tickets found from that user" })
@@ -110,7 +116,7 @@ router.get("/starred/:userId", (req, res) => {
     );
 });
 
-router.get("/subscribers/:userId", (req, res) => {
+router.get("/subscribed/:userId", (req, res) => {
     Ticket.find({ subscribers: req.params.userId })
     // .populate('subscribers', ['firstName', 'lastName', '_id'])
     .sort({ createdAt: -1 })

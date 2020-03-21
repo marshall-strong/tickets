@@ -1,10 +1,11 @@
 import React from 'react'
 
 const TicketIndexItem = props => {
+    debugger
     return (
         <ul>
             <li>{props.ticket.id}</li>
-            <li>{props.ticket.creator.firstName}</li>
+            {/* <li>{props.ticket.creator.firstName}</li> */}
             <li>{props.ticket.createdAt}</li>
             <li>{props.ticket.updatedAt[0]}</li>
             <li>{props.ticket.owner}</li>

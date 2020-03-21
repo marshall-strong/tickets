@@ -14,7 +14,7 @@ class TicketIndex extends React.Component {
     componentDidMount() {
         switch (this.props.location.pathname) {
             case '/tickets/folders/owner':
-                return this.props.fetchOwnerTickets(this.props.match.params.userId)
+                return this.props.fetchOwnerTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
             case '/tickets/folders/subscribers':
                 return this.props.fetchSubscribedTickets(this.props.match.params.userId)
             case '/tickets/folders/created':
@@ -32,6 +32,7 @@ class TicketIndex extends React.Component {
     }
 
     render() {
+        if (!this.props.tickets) return null
         const { tickets } = this.props
         return(
             <div>

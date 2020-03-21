@@ -2,7 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
 const passport = require('passport')
-const db = require('./config/keys').test.mongoURI;
+
+const db = require('./config/keys').mongoURI;
 const users = require("./routes/api/users")
 const tickets = require("./routes/api/tickets")
 const tags = require('./routes/api/tags')
@@ -21,9 +22,11 @@ app.use("/api/tickets", tickets)
 app.use('/api/tags', tags)
 app.use('/api/comments', comments)
 
-app.listen(port, () => console.log(`app.listen: Server is running on port ${port}`));
+app.listen(port, () => 
+    console.log(`Entry file: Server is running. App is listening on port ${port}`)
+    );
 
 mongoose
     .connect(db, { useNewUrlParser: true })
-    .then(() => console.log("Mongoose has connected to MongoDB successfully"))
+    .then(() => console.log("Entry file: Successfully connected to MongoDB"))
     .catch(err => console.log(err));

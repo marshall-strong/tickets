@@ -1,14 +1,19 @@
+// https://github.com/pkosiec/mongo-seeding
+// to seed (according to the package README), run the following command from the seed dir
+// DEBUG=mongo-seeding node index.js
+
+const mongoURI = require('../config/keys').mongoURI;
 const { Seeder } = require('mongo-seeding');
 
 const config = {
-    database: "mongodb+srv://dev:uQ1Ak6eYRdFq0hWq@tickets-tgtki.mongodb.net/test?retryWrites=true&w=majority",
+    database: mongoURI,
     dropDatabase: true,
 };
 
 const seeder = new Seeder(config);
 
 const path = require('path');
-const collections = seeder.readCollectionsFromPath(path.resolve('./seed_data'));
+const collections = seeder.readCollectionsFromPath(path.resolve('./seeds/seed_data'));
 
 seeder
     .import(collections)

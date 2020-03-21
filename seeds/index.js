@@ -1,5 +1,6 @@
 // https://github.com/pkosiec/mongo-seeding
-// to seed (according to the package README), run the following command from the seed dir
+// to seed (according to the package README), run the following command.
+// you should be in the root directory of the app: 
 // DEBUG=mongo-seeding node index.js
 
 const mongoURI = require('../config/keys').mongoURI;

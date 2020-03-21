@@ -6,32 +6,29 @@ import TicketForm from './ticket_form'
 class TicketIndex extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            showComponent: false
-        }
 
+        // this.state = this.props.tickets.filter(ticket => )
         this.handleClick = this.handleClick.bind(this)
     }
 
     componentDidMount() {
         switch (this.props.location.pathname) {
-            case '/owner':
+            case '/tickets/folders/owner':
                 return this.props.fetchOwnerTickets(this.props.match.params.userId)
-            case '/subscriber':
-                return 
-            case '/created':
+            case '/tickets/folders/subscribers':
+                return this.props.fetchSubscribedTickets(this.props.match.params.userId)
+            case '/tickets/folders/created':
                 return this.props.fetchCreatedTickets(this.props.match.params.userId)
-            case '/starred': 
-                return 
+            case '/tickets/folders/starred': 
+                return this.props.fetchStarredTickets(this.props.match.params.userId)
             default:
                 return this.props.getTickets()
         }
     }
 
-    handleClick() {
-        this.setState({
-            showComponent: true
-        })    
+    handleClick(e) {
+        e.preventDefault()
+        this.props.history.push(`/tickets/${this.props.ticketId}`)
     }
 
     render() {
@@ -42,8 +39,6 @@ class TicketIndex extends React.Component {
                     {tickets.map(ticket => <li><TicketIndexItem key={ticket.id} ticket={ticket} /></li>)}
                 </ul>
                 <button onClick={this.handleClick}>ticket form for ticket</button>
-                {this.state.showComponent ? <TicketForm /> : null}
-                {/* <Link to={`/tickets/${props.ticket.id}`} onClick={e => this.handleClick(e)}>ticket form for ticket</Link> */}
             </div>
         )
     }

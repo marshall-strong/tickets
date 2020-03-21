@@ -10,6 +10,7 @@ import SignupFormContainer from './session/signup_form_container';
 import ProfileContainer from './profile/profile_container';
 import TicketFormContainer from './tickets/ticket_form_container';
 import CommentFormContainer from './comments/comment_form_container'
+import TicketIndexContainer from './tickets/ticket_index_container'
 import NotFound from './errors/not_found';
 import './reset.css'
 import './app.css'
@@ -28,7 +29,8 @@ const App = () => (
                 <AuthRoute exact path="/signup" component={SignupFormContainer} />
                 <ProtectedRoute exact path="/users/:userId" component={ProfileContainer} />
                 <ProtectedRoute exact path="/tickets/:ticketId" component={TicketFormContainer} />
-                <ProtectedRoute exact path="/tickets/:ticketId" component={CommentFormContainer} />
+                <ProtectedRoute exact path="/tickets" component={TicketIndexContainer} />
+                {/* <ProtectedRoute exact path="/tickets/:ticketId" component={CommentFormContainer} /> */}
                 <Route component={NotFound} />
             </Switch>
             </div>

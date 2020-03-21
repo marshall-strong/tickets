@@ -101,4 +101,23 @@ router.get("/owner/:userId", (req, res) => {
     );
 });
 
+router.get("/starred/:userId", (req, res) => {
+    Ticket.find({ starred: req.params.userId })
+    .sort({ createdAt: -1 })
+    .then(tickets => res.json(tickets))
+    .catch(err =>
+        res.status(404).json({ noticketsfound: "No starred tickets found from that user" })
+    );
+});
+
+router.get("/subscribers/:userId", (req, res) => {
+    Ticket.find({ subscribers: req.params.userId })
+    // .populate('subscribers', ['firstName', 'lastName', '_id'])
+    .sort({ createdAt: -1 })
+    .then(tickets => res.json(tickets))
+    .catch(err =>
+        res.status(404).json({ noticketsfound: "No tickets found from that user" })
+    );
+});
+
 module.exports = router;

@@ -1,52 +1,34 @@
 const seeder = require('mongoose-seed');
-const mongoDbUri = require('./config/keys').test.mongoURI;
+const mongoDbUri = require('./config/keys').development.mongoURI;
+
+const organizationSeeds = require('./backend/mongoose-seed/organizations');
+const userSeeds = require('./backend/mongoose-seed/users');
 
 // Data array containing seed data - documents organized by Model
 const data = [
-    {
-        model: 'Organization',
-        documents: [
-            {
-                handle: "cats4humanity.org",
-                name: "Cats for Humanity",
-                motto: "a cat in every household!"
-            },
-            {
-                handle: "acme.boom",
-                name: "ACME",
-                motto: "next time..."
-            },
-            {
-                handle: "gmail.com",
-                name: "Google",
-                motto: "if you have a gmail account, you work at Google!"
-            },
-            {
-                handle: "appacademy.io",
-                name: "appAcademy",
-                motto: "appAcademy: if you liked your old life, you wouldn't be here."
-            },
-        ]
-    }
+    organizationSeeds,
+    userSeeds,
 ];
 
+
 // Connect to MogoDB via Mongoose
-const runMongooseSeed = seeder.connect(mongoDbUri, function () {
+seeder.connect(mongoDbUri, function () {
 
     // Load Mongoose models
     seeder.loadModels([
-        '../models/organization.js',
+        './models/organization.js',
+        // './models/user.js',
     ]);
 
     // Clear specified collections
-    seeder.clearModels(['Organization',], function () {
+    // seeder.clearModels(['Organization', 'User'], function () {
 
         // Callback function to populate DB once collections have been cleared
-        seeder.populateModels(data, function () {
-            seeder.disconnect();
-        });
+        seeder.populateModels(data, () => console.log("models populated"));
 
-    });
+    // });
+
+    seeder.disconnect(() => console.log("seeder disconnected"));
 });
 
 
@@ -56,7 +38,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
 const passport = require('passport')
 
-const db = require('./config/keys').mongoURI;
+const db = require('./config/keys').stage.mongoURI;
 const users = require("./routes/api/users")
 const tickets = require("./routes/api/tickets")
 const tags = require('./routes/api/tags')

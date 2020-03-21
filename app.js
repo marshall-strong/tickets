@@ -10,29 +10,6 @@ const data = [
     userSeeds,
 ];
 
-
-// Connect to MogoDB via Mongoose
-seeder.connect(mongoDbUri, function () {
-
-    // Load Mongoose models
-    seeder.loadModels([
-        './models/organization.js',
-        // './models/user.js',
-    ]);
-
-    // Clear specified collections
-    // seeder.clearModels(['Organization', 'User'], function () {
-
-        // Callback function to populate DB once collections have been cleared
-        seeder.populateModels(data, () => console.log("models populated"));
-
-    // });
-
-    seeder.disconnect(() => console.log("seeder disconnected"));
-});
-
-
-
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
@@ -43,6 +20,32 @@ const users = require("./routes/api/users")
 const tickets = require("./routes/api/tickets")
 const tags = require('./routes/api/tags')
 const comments = require('./routes/api/comments')
+
+// // Connect to MogoDB via Mongoose
+// seeder.connect(mongoDbUri, function () {
+
+//     // Load Mongoose models
+//     seeder.loadModels([
+//         './models/organization.js',
+//         './models/user.js',
+//     ]);
+
+//     // Clear specified collections
+//     seeder.clearModels(['Organization', 'User'], function () {
+
+//         // Callback function to populate DB once collections have been cleared
+//         seeder.populateModels(data, () => {
+//             seeder.disconnect();
+//             console.log("seeder disconnected");
+//         });
+
+//     });
+
+//     // seeder.disconnect(() => console.log("seeder disconnected 2"));
+// });
+
+
+
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -57,10 +60,10 @@ app.use("/api/tickets", tickets)
 app.use('/api/tags', tags)
 app.use('/api/comments', comments)
 
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+app.listen(port, () => console.log(`app.listen: Server is running on port ${port}`));
 
 
 mongoose
     .connect(db, { useNewUrlParser: true })
-    .then(() => console.log("Connected to MongoDB successfully"))
+    .then(() => console.log("Mongoose has connected to MongoDB successfully"))
     .catch(err => console.log(err));

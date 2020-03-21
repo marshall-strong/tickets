@@ -28,25 +28,11 @@ seeder.connect(mongoDbUri, function () {
         './models/tag.js'
     ]);
 
-    // Clear specified collections
-    seeder.clearModels([
-        'Organization', 
-        'User',
-        'Ticket',
-        'Comment',
-        'Tag',
-    ], function () {
-
-        // Callback function to populate DB once collections have been cleared
-        seeder.populateModels(data, () => {
-            seeder.disconnect();
-            console.log("seeder disconnected");
-        });
-
+    // Populate modesl without destroying first
+    seeder.populateModels(data, () => {
+        seeder.disconnect();
+        console.log("seeder disconnected");
     });
 
 });
-
-
-
 

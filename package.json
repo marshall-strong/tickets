@@ -11,7 +11,8 @@
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",
     "dev-debugger": "concurrently \"npm run server:debug\" \"npm run frontend\"",
-    "mongoose-seed": "node backend/mongoose-seed/seeder.js"
+    "seed": "node backend/mongoose-seed/seeder.js",
+    "seed-no-destroy": "node backend/mongoose-seed/seeder_no_destroy.js"
   },
   "repository": {
     "type": "git",

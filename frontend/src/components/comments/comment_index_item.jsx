@@ -1,7 +1,6 @@
 import React from 'react'
 
 const CommentIndexItem = props => {
-    debugger
     return (
         <div className="comment-activity">
 

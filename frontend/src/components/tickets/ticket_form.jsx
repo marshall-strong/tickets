@@ -82,39 +82,66 @@ class TicketForm extends React.Component {
 
         let type = this.props.ticketId === 'new' ? 'new' : 'show';
 
+        // const getUsersInCurrUserOrg = (this.props.currentUser.organization) => {
+
+        // };
+
+        // const ownerSelect = (
+        //     <select
+        //         className={type}
+        //         defaultValue={this.state.priority}
+        //         onChange={this.update('priority')}
+        //     >
+        //         <option
+        //             value="Low"
+        //         >
+        //             Low
+        //         </option>
+
+        //         <option
+        //             value="Medium"
+        //         >
+        //             Medium
+        //         </option>
+
+        //         <option
+        //             value="High"
+        //         >
+        //             High
+        //         </option>
+
+        //         <option
+        //             value="CATastrophic"
+        //         >
+        //             CATastrophic
+        //         </option>
+
+        //     </select>
+        // )
+
         const statusSelect = (
             <select 
                 className={type}
                 defaultValue={this.state.status}
                 onChange={this.update('status')}
             >
-                <option 
-                    value="No Progress"
-                >
+                <option value="No Progress">
                     No Progress
                 </option>
 
-                <option 
-                    value="Planned"
-                >
+                <option value="Planned">
                     Planned
                 </option>
 
-                <option 
-                    value="Blocked"
-                >
+                <option value="Blocked">
                     Blocked
                 </option>
 
-                <option 
-                    value="In Progress"
-                >
+                <option value="In Progress">
                     In Progress
                 </option>
 
-                <option 
-                    value="Closed"
-                >
+                <option value="Closed">
                     Closed
                 </option>
             </select>
@@ -127,27 +154,19 @@ class TicketForm extends React.Component {
                 defaultValue={this.state.priority} 
                 onChange={this.update('priority')}
             >
-                <option 
-                    value="Low"
-                >
+                <option value="Low">
                     Low
                 </option>
 
-                <option 
-                    value="Medium"
-                >
+                <option value="Medium">
                     Medium
                 </option>
 
-                <option 
-                    value="High"
-                >
+                <option value="High">
                     High
                 </option>
 
-                <option 
-                    value="CATastrophic"
-                >
+                <option value="CATastrophic">
                     CATastrophic
                 </option>
 
@@ -166,13 +185,14 @@ class TicketForm extends React.Component {
                             onChange={this.update('title')}
                         />
 
-                        <input
+                        {/* <input
                             className={type} 
                             type="text" 
                             placeholder="owner" 
                             value={this.state.owner}
                             onChange={this.update('owner')}
-                        />
+                        /> */}
+                        {/* { ownerSelect } */}
 
                         <textarea 
                             className={type}

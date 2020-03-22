@@ -78,7 +78,8 @@ usersRouter.post("/login", (req, res) => {
                     id: user.id,
                     firstName: user.firstName,
                     lastName: user.lastName,
-                    orgHandle: user.orgHandle
+                    email: user.email,
+                    organization: user.organization,
                 };
 
                 jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
@@ -98,14 +99,17 @@ usersRouter.post("/login", (req, res) => {
 usersRouter.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
     res.json({
         id: req.user.id,
-        email: req.user.email
+        firstName: req.user.firstName,
+        lastName: req.user.lastName,
+        email: req.user.email,
+        organization: req.user.organization,
     });
 })
 
 usersRouter.get("/:curUserOrgHandle", (req, res) => {
     User.find(
         { organization: req.params.curUserOrgHandle }, 
-        'firstName lastName',
+        'firstName lastName email organization',
         (err, docs) => {
             if (err) throw err;
             return res.json(docs);

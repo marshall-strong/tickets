@@ -137,6 +137,16 @@ input[type=button] {width: auto; overflow: visible;}
 .ie6 html {filter: expression(document.execCommand("BackgroundImageCache", false, true));}
 */
 
+button {
+	outline: none;
+}
+
+button:active {
+	outline: none
+}
+
+
+
 /* let's clear some floats */
 .clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
 .clearfix:after { clear: both; }

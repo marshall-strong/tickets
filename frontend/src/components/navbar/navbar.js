@@ -38,7 +38,7 @@ class NavBar extends React.Component {
       return (
         <div className="header">
           <div className="nav">
-            <Link className="link-style-header" to="/tickets/owner"> Tickets</Link>
+            <Link className="link-style-header" to={`/tickets/owner/${this.props.currentUser.id}`}> Tickets</Link>
   
             <div className="right-nav">
               

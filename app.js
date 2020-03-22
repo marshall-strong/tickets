@@ -22,9 +22,11 @@ app.use("/api/tickets", tickets)
 app.use('/api/tags', tags)
 app.use('/api/comments', comments)
 
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+app.listen(port, () => 
+    console.log(`Entry file: Server is running. App is listening on port ${port}`)
+    );
 
 mongoose
     .connect(db, { useNewUrlParser: true })
-    .then(() => console.log("Connected to MongoDB successfully"))
+    .then(() => console.log("Entry file: Successfully connected to MongoDB"))
     .catch(err => console.log(err));

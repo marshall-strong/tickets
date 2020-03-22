@@ -5,7 +5,7 @@ const validateCommentInput = require("../../validation/comment")
 const Comment = require("../../models/Comment")
 
 
-router.post("/",  
+router.post("/ticket/:ticketId",  
     // passport.authenticate("jwt", {session: false}),
     (req, res) => {
         const { errors, isValid } = validateCommentInput(req.body)
@@ -17,7 +17,7 @@ router.post("/",
         const newComment = new Comment ({
             body: req.body.body,
             author: req.body.author,
-            ticket: req.body.ticketId
+            ticket: req.params.ticketId
         })
 
         newComment.save()

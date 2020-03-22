@@ -7,13 +7,13 @@ export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS"
 
 
 const receiveComments = comments => ({
-  type: RECEIVE_COMMENTS,
-  comments
+    type: RECEIVE_COMMENTS,
+    comments: comments.data
 });
 
 const receiveNewComment = (comment) => ({
     type: RECEIVE_NEW_COMMENT, 
-    comment 
+    comment: comment.data
 })
 
 const removeComment = (id) => ({
@@ -26,8 +26,8 @@ const receiveCommentErrors = (errors) => ({
     errors
 })
 
-export const fetchTicketComments = (id) => dispatch => (
-    commentAPIUtil.fetchTicketComments(id)
+export const fetchTicketComments = (ticketId) => dispatch => (
+    commentAPIUtil.fetchTicketComments(ticketId)
         .then(comments => dispatch(receiveComments(comments)))
         .catch(errors => dispatch(receiveCommentErrors(errors)))
 )

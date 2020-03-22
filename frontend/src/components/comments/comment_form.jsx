@@ -1,12 +1,20 @@
 import React from 'react'
+import {withRouter} from 'react-router-dom'
 
 class CommentForm extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = { body: ''}
+        this.state = { 
+            body: '',
+            author: this.props.currentUser.id,
+            ticketId: this.props.ticketId
+        }
+
         this.handleSubmit = this.handleSubmit.bind(this)
     }
+
+    navigate
 
     handleSubmit() {
         this.props.createComment(this.state)
@@ -29,4 +37,4 @@ class CommentForm extends React.Component {
   
 }
 
-export default CommentForm
+export default withRouter(CommentForm)

@@ -76,6 +76,7 @@ router.get("/:folder/:userId", (req, res) => {
     
     Ticket.find({ [req.params.folder]: req.params.userId })
       .populate('creator')
+      .populate('owner')
       .then(tickets => res.json(tickets))
       .catch(err =>
         res

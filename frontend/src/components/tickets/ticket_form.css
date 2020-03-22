@@ -1,0 +1,28 @@
+input, textarea {
+    border-radius: 5px;
+    resize: none;
+}
+
+.show{
+    outline: none;
+    border: 1px solid rgb(240, 240, 240);
+}
+
+.new{
+    outline: none;
+    border: 1px solid rgb(226, 225, 225);
+}
+
+
+input:focus, textarea:focus {
+    border: 1px solid rgb(184, 183, 183);
+}
+
+
+.edited {
+    border: 1px solid yellow;
+}
+
+input.edited:focus, textarea.edited:focus {
+    border: 1px solid yellow;
+}

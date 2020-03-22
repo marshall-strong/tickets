@@ -6,10 +6,10 @@ import './left_panel.css'
 
 const LeftPanel = ({ userId }) => (
     <div className="left-panel-container">
-        <Link to={`tickets/owner/${userId}`}>Owner</Link>
-        <Link to={`tickets/subscriber/${userId}`}>Subscriber</Link>
-        <Link to={`tickets/creator/${userId}`}>Creator</Link>
-        <Link to={`tickets/starred/${userId}`}>Starred</Link>
+        <Link to={`/tickets/owner/${userId}`}>Owner</Link>
+        <Link to={`/tickets/subscriber/${userId}`}>Subscriber</Link>
+        <Link to={`/tickets/creator/${userId}`}>Creator</Link>
+        <Link to={`/tickets/starred/${userId}`}>Starred</Link>
     </div>
 )
 

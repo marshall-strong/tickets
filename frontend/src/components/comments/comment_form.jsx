@@ -4,9 +4,14 @@ class CommentForm extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = { body: ''}
+        this.state = { 
+            body: '',
+            author: this.props.currentUser.id
+        }
+
         this.handleSubmit = this.handleSubmit.bind(this)
     }
+
 
     handleSubmit() {
         this.props.createComment(this.state)
@@ -29,4 +34,4 @@ class CommentForm extends React.Component {
   
 }
 
-export default CommentForm
+export default (CommentForm)

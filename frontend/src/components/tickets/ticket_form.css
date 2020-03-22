@@ -1,0 +1,12 @@
+.form-container{
+    flex-direction: column;
+}
+
+.form-innards{
+    display: flex; 
+    flex-direction: column;
+}
+
+.bottom-form{
+    display: inline-block;
+}

@@ -7,13 +7,13 @@ export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS"
 
 
 const receiveComments = comments => ({
-  type: RECEIVE_COMMENTS,
-  comments
+    type: RECEIVE_COMMENTS,
+    comments: comments.data
 });
 
 const receiveNewComment = (comment) => ({
     type: RECEIVE_NEW_COMMENT, 
-    comment 
+    comment: comment.data
 })
 
 const removeComment = (id) => ({

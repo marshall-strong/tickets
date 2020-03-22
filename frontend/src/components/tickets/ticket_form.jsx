@@ -1,6 +1,6 @@
 import React from 'react';
 import TicketActivityIndex from "./ticket_activity_index"
-
+import '../app.css'
 import './ticket_form.css'
 class TicketForm extends React.Component {
     constructor(props) {
@@ -45,13 +45,17 @@ class TicketForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        if (e.target.classList.contains('not-edited')) return null
         this.state.updatedAt.unshift(Date.now());
         this.state.updatedBy.unshift(this.props.currentUser.id)
+        this.state.lastUpdateSeenBy = []
+
         let edits = document.getElementsByClassName('edited')
         for (let i = 0; i < edits.length; i++) {
             edits[i].classList.remove('edited')
+            edits[i].classList.add('not-edited')
         }
-        this.state.lastUpdateSeenBy = []
+
         if (this.props.ticketId !== "new") {
             this.props.updateTicket(this.state)
         } else {
@@ -69,6 +73,9 @@ class TicketForm extends React.Component {
             this.setState({ [field]: e.currentTarget.value });
             this.edited = 'edited';
             e.currentTarget.classList.add(this.edited);
+            let button = document.getElementById('ticket-submit-button');
+            button.classList.remove('not-edited')
+            button.classList.add('edited')
         };
     }
 
@@ -220,7 +227,10 @@ class TicketForm extends React.Component {
 
                         <button 
                             onClick={this.handleSubmit}
-                            className="button1">
+                            className={`button1 not-edited`}
+                            id="ticket-submit-button"
+                        >
+                            
                             {this.props.ticketId === 'new' ? 'create' : 'save'}
                         </button>
                     </form>

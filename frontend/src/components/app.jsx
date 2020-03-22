@@ -14,6 +14,7 @@ import TicketIndexContainer from './tickets/ticket_index_container'
 import NotFound from './errors/not_found';
 import './reset.css'
 import './app.css'
+import LeftPanelContainer from './left_panel/left_panel_container';
 
 
 
@@ -22,6 +23,7 @@ const App = () => (
         <NavBarContainer />
         
         <div className="app-container">
+            <ProtectedRoute path="/tickets" component={LeftPanelContainer} />
             <div className="page-container">
             <Switch>
                 <AuthRoute exact path="/" component={MainPage} />

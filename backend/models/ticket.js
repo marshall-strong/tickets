@@ -79,6 +79,5 @@ const ticketSchema = new Schema({
 
 Ticket = mongoose.model('Ticket', ticketSchema, "tickets");
 
-ticketSchema.plugin(require("mongoose-autopopulate"));
 
 module.exports = Ticket;

@@ -50,7 +50,7 @@ class NavBar extends React.Component {
 
               
               <button className="button1" onClick={this.writeTicket}> 
-                + 
+                + new ticket
               </button>
       
               <button className="button1" onClick={this.logoutUser}>

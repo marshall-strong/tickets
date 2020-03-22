@@ -1,0 +1,22 @@
+.left-panel-container {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    background-color: rgb(8, 148, 118);
+    padding-top: 30px;
+}
+
+.left-panel-container a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    border-bottom: 1px solid black;
+    padding-right: 30px;
+    font-weight: 600;
+    background-color: rgb(227, 241, 235);
+}
+
+.left-panel-container a:hover {
+    cursor: pointer;
+    background-color: rgb(192, 204, 199);
+}

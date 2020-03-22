@@ -50,7 +50,7 @@ class NavBar extends React.Component {
 
               
               <button className="button1" onClick={this.writeTicket}> 
-                + 
+                + new ticket
               </button>
       
               <button className="button1" onClick={this.logoutUser}>
@@ -70,7 +70,7 @@ class NavBar extends React.Component {
             <div className="right-nav">
               {this.props.path === "/signup" ? <Link className="link-style" to={"/login"}>Login</Link> : <Link className="link-style" to={"/signup"}>Signup</Link> }
               {this.props.path === "/" ? <Link className="link-style" to={"/login"}>Login</Link> : null}
-              <button className="button1" onClick={this.handleClick}>
+              <button className="button1 " onClick={this.handleClick}>
                 login as a demo user
               </button>
             </div>

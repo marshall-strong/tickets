@@ -107,12 +107,12 @@ usersRouter.get('/current', passport.authenticate('jwt', { session: false }), (r
 })
 
 usersRouter.get("/:orgHandle", (req, res) => {
-    debugger
+    //debugger
     User.find(
         { organization: req.params.orgHandle }, 
         'firstName lastName email organization',
         (err, docs) => {
-            debugger
+            //debugger
             if (err) throw err;
             return res.json(docs);
         }

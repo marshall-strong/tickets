@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const fetchOrgUsers = orgHandle => {
-    debugger
+    //debugger
     return axios.get(
         `/api/users/${orgHandle}`
     )

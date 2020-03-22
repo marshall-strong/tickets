@@ -3,18 +3,23 @@ import { RECEIVE_ORG_USERS } from '../actions/user_actions';
 
 const usersReducer = (state = {}, action) => {
     Object.freeze(state);
-    let newState = Object.assign({}, state) 
+    let nextState = Object.assign({}, state) 
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
-            newState[action.payload.id] = action.payload
-            return newState;
+            nextState[action.payload.id] = action.payload
+            return nextState;
         case RECEIVE_ORG_USERS:
-            action.users.forEach(user => {
-                newState[user.id] = user
-            })
-            return newState;
+            for (let i = 0; i < action.users.length; i++) {
+                nextState[action.users[i]._id] = action.users[i]
+            };
+            return nextState;
+        // case RECEIVE_ORG_USERS:
+        //     action.users.forEach(user => {
+        //         nextState[user.id] = user
+        //     })
+        //     return nextState;
         default:
-            return newState;
+            return nextState;
     }
 }
 

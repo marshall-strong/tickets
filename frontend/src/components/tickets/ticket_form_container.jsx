@@ -2,6 +2,8 @@ import { createTicket, getTicket, updateTicket } from "../../actions/ticket_acti
 import { getOrgUsers } from '../../actions/user_actions';
 import { connect } from "react-redux";
 import TicketForm from "./ticket_form";
+import {withRouter} from "react-router-dom";
+import {fetchTicketComments} from "../../actions/comment_actions"
 
 const msp = (state, ownProps) => ({
     ticketId: ownProps.match.params.ticketId,
@@ -15,9 +17,12 @@ const mdp = dispatch => ({
     createTicket: ticket => dispatch(createTicket(ticket)),
     getTicket: id => dispatch(getTicket(id)),
     updateTicket: ticket => dispatch(updateTicket(ticket)),
-    getOrgUsers: org => dispatch(getOrgUsers(org))
+    fetchTicketComments: id => dispatch(fetchTicketComments(id)),
+    getOrgUsers: org => dispatch(getOrgUsers(org)),
+
+
 });
 
-const TicketFormContainer = connect(msp, mdp)(TicketForm);
+const TicketFormContainer = withRouter(connect(msp, mdp)(TicketForm));
 
 export default TicketFormContainer;

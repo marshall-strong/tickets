@@ -10,7 +10,7 @@ export const fetchUserComments = userId => {
 };
 
 export const writeComment = (comment) => {
-    return axios.post("/api/comments", comment)
+    return axios.post(`/api/comments/`, comment)
 }
 
 export const updateComment = (comment) => {

@@ -23,6 +23,7 @@ const App = () => (
         
         <div className="app-container">
             <div className="page-container">
+                <img src="https://onthetools.tv/wp-content/uploads/cat-feature-image.png" alt=""></img>
             <Switch>
                 <AuthRoute exact path="/" component={MainPage} />
                 <AuthRoute exact path="/login" component={LoginFormContainer} />

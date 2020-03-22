@@ -56,13 +56,7 @@ class TicketIndex extends React.Component {
               <th>Starred</th>
 
               {tickets.map(ticket => (
-<<<<<<< HEAD
-                <li className="index-item-container">
-                  <TicketIndexItem key={ticket._id} ticket={ticket} />
-                </li>
-=======
                   <TicketIndexItem key={ticket.id} ticket={ticket} />
->>>>>>> master
               ))}
             </table>
           </div>

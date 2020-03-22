@@ -30,9 +30,11 @@ class TicketForm extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getOrgUsers(this.props.currentOrg)
-        .then(orgUsers => {
-            this.setState(this.props.orgUsers)
+        debugger
+        this.props.getOrgUsers(this.props.currentUser.organization)
+        .then(response => {
+            debugger
+            this.setState(this.props.response.users)
         })
 
         if (this.props.ticketId !== 'new') {
@@ -263,87 +265,8 @@ class TicketForm extends React.Component {
             </div>
             {this.props.ticketId !== "new" ? (
             <div>
-<<<<<<< HEAD
-                <div className="form-container">
-                    <form className="form">
-                        <input
-                            className={type} 
-                            type="text" 
-                            placeholder="title" 
-                            value={this.state.title}
-                            onChange={this.update('title')}
-                        />
-
-                        {/* <input
-                            className={type} 
-                            type="text" 
-                            placeholder="owner" 
-                            value={this.state.owner}
-                            onChange={this.update('owner')}
-                        /> */}
-                        {/* { ownerSelect } */}
-
-                        <textarea 
-                            className={type}
-                            cols="30" rows="10"
-                            value={this.state.body}
-                            placeholder="body"
-                            onChange={this.update('body')}
-                        >
-
-                        </textarea>
-
-                        {statusSelect}
-
-                        {prioritySelect}
-
-                        <input
-                            className={type} 
-                            type="text"
-                            placeholder="depends on" 
-                            onChange={this.update('dependsOn')}
-                        />
-
-                        <input
-                            className={type} 
-                            type="text"
-                            value={this.state.blocks}
-                            placeholder="blocks" 
-                            onChange={this.update('blocks')}
-                        />
-
-                        
-                        <input
-                            className={type} 
-                            type="date"
-                            value={this.state.startDate}
-                            onChange={this.update('startDate')}
-                        />
-
-                        <input
-                            className={type} 
-                            type="date"
-                            value={this.state.endDate}
-                            onChange={this.update('endDate')}
-                        />
-
-                        <button 
-                            onClick={this.handleSubmit}
-                            className={`button1 not-edited`}
-                            id="ticket-submit-button"
-                        >
-                            
-                            {this.props.ticketId === 'new' ? 'create' : 'save'}
-                        </button>
-                    </form>
-                </div>
-                {this.props.ticketId !== "new" ? (
-                    <TicketActivityIndex ticket={this.props.ticket} />
-                ) : null}
-=======
                 <TicketActivityContainer />
                 <CommentFormContainer />
->>>>>>> master
             </div>
             ) : null}
           </div>

@@ -10,7 +10,6 @@ export const fetchUserComments = userId => {
 };
 
 export const writeComment = (comment) => {
-    debugger
     return axios.post(`/api/comments/`, comment)
 }
 

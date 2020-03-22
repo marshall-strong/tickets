@@ -17,7 +17,6 @@ class CommentForm extends React.Component {
     navigate
 
     handleSubmit() {
-        debugger
         this.props.createComment(this.state)
     }
 

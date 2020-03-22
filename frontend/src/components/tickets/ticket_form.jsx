@@ -1,5 +1,5 @@
 import React from 'react';
-import TicketActivityIndex from "./ticket_activity_index"
+import TicketActivityContainer from "./ticket_activity_container"
 import CommentFormContainer from "../comments/comment_form_container"
 import {withRouter} from "react-router-dom"
 
@@ -226,14 +226,19 @@ class TicketForm extends React.Component {
                   onChange={this.update("endDate")}
                 />
 
-                <button onClick={this.handleSubmit} className="button1">
-                  {this.props.ticketId === "new" ? "create" : "save"}
+                <button 
+                    onClick={this.handleSubmit} 
+                    className="button1"
+                    id="ticket-submit-button"
+                >
+
+                {this.props.ticketId === "new" ? "create" : "save"}
                 </button>
               </form>
             </div>
             {this.props.ticketId !== "new" ? (
             <div>
-                <TicketActivityIndex ticket={this.props.ticket} />
+                <TicketActivityContainer />
                 <CommentFormContainer />
             </div>
             ) : null}

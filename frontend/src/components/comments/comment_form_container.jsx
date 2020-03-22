@@ -4,7 +4,6 @@ import CommentForm from './comment_form'
 import {withRouter} from "react-router-dom"
 
 const mSTP = (state, ownProps) => {
-    debugger
     return {
     currentUser: state.entities.users[state.session.user],
     ticketId: ownProps.match.params.ticketId

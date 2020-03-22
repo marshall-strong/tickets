@@ -4,10 +4,10 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 
 const db = require('./config/keys').mongoURI;
-const users = require("./routes/api/users")
-const tickets = require("./routes/api/tickets")
-const tags = require('./routes/api/tags')
-const comments = require('./routes/api/comments')
+const users = require("./backend/routes/api/users")
+const tickets = require("./backend/routes/api/tickets")
+const tags = require('./backend/routes/api/tags')
+const comments = require('./backend/routes/api/comments')
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -22,9 +22,11 @@ app.use("/api/tickets", tickets)
 app.use('/api/tags', tags)
 app.use('/api/comments', comments)
 
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+app.listen(port, () => 
+    console.log(`Entry file: Server is running. App is listening on port ${port}`)
+    );
 
 mongoose
     .connect(db, { useNewUrlParser: true })
-    .then(() => console.log("Connected to MongoDB successfully"))
+    .then(() => console.log("Entry file: Successfully connected to MongoDB"))
     .catch(err => console.log(err));

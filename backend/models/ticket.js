@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const ticketSchema = new Schema({
     creator: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        autopopulate: true
     },
     createdAt: {
         type: Date,
@@ -28,6 +29,10 @@ const ticketSchema = new Schema({
     owner: {
         type: Schema.Types.ObjectId,
         ref: 'User'
+    },
+    starred: {
+        type: Boolean,
+        default: false
     },
     title: {
         type: String,
@@ -73,4 +78,6 @@ const ticketSchema = new Schema({
 });
 
 Ticket = mongoose.model('Ticket', ticketSchema, "tickets");
+
+
 module.exports = Ticket;

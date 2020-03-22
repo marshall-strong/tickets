@@ -31,10 +31,19 @@ export const fetchOwnerTickets = userId => (
         `/api/tickets/owner/${userId}`)
 );
 
-
 export const getCreatedTickets = userId => (
      axios.get(
          `/api/tickets/creator/${userId}`)
+);
+
+export const getSubscribedTickets = userId => (
+     axios.get(
+         `/api/tickets/subscribed/${userId}`)
+);
+
+export const getStarredTickets = userId => (
+     axios.get(
+         `/api/tickets/starred/${userId}`)
 );
 
 

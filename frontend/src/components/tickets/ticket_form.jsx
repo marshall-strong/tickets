@@ -2,6 +2,7 @@ import React from 'react';
 import TicketActivityIndex from "./ticket_activity_index"
 import '../app.css'
 import './ticket_form.css'
+
 class TicketForm extends React.Component {
     constructor(props) {
         super(props)

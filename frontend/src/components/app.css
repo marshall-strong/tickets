@@ -1,4 +1,3 @@
-
 .app-container {
     display: flex;
     justify-content: center;
@@ -72,4 +71,8 @@
 
 
 
+
+.button1.not-edited {
+    background-color: rgb(114, 144, 163);
+}
 

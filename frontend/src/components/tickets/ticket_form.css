@@ -26,4 +26,3 @@ input:focus, textarea:focus {
 input.edited:focus, textarea.edited:focus {
     border: 1px solid yellow;
 }
-

@@ -102,4 +102,40 @@ usersRouter.get('/current', passport.authenticate('jwt', { session: false }), (r
     });
 })
 
+usersRouter.get("/:curUserOrgHandle", (req, res) => {
+    User.find(
+        { organization: req.params.curUserOrgHandle }, 
+        'firstName lastName',
+        (err, docs) => {
+            if (err) throw err;
+            return res.json(docs);
+        }
+    )
+})
+
 module.exports = usersRouter;
+
+
+// // named john and at least 18
+// MyModel.find({ name: 'john', age: { $gte: 18 } });
+
+// // executes, passing results to callback
+// MyModel.find({ name: 'john', age: { $gte: 18 } }, function (err, docs) { });
+
+// // executes, name LIKE john and only selecting the "name" and "friends" fields
+// MyModel.find({ name: /john/i }, 'name friends', function (err, docs) { })
+
+// // passing options
+// MyModel.find({ name: /john/i }, null, { skip: 10 })
+
+// // passing options and executes
+// MyModel.find({ name: /john/i }, null, { skip: 10 }, function (err, docs) { });
+
+// // executing a query explicitly
+// var query = MyModel.find({ name: /john/i }, null, { skip: 10 })
+// query.exec(function (err, docs) { });
+
+// // using the promise returned from executing a query
+// var query = MyModel.find({ name: /john/i }, null, { skip: 10 });
+// var promise = query.exec();
+// promise.addBack(function (err, docs) { });

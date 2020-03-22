@@ -4,13 +4,6 @@ const passport = require('passport');
 const validateTicketInput = require('../../validation/ticket')
 const Ticket = require('../../models/ticket')
 
-router.get("/", (req, res) => {
-    Ticket
-        .find()
-        .sort({ createdDate: -1 })
-        .then(tickets => res.json(tickets))
-}
-)
 router.post("/",
     // passport.authenticate('jwt', { session: false }),
     (req, res) => {
@@ -80,50 +73,43 @@ router.patch("/:ticketId", (req, res) => {
 })
 
 router.get("/:folder/:userId", (req, res) => {
-    debugger
-    Ticket.find({ [req.params.folder]: req.params.userId})
-    .populate({ 
-        path: 'creator', 
-        model: 'User',
-        select: 'firstName' 
- 
-    })
-    // .populate('creator', ['firstName', 'lastName', '_id'])
-    // .populate('updatedBy', ['firstName', 'lastName', '_id'])
-    // .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
-    // .populate('subscribers', ['firstName', 'lastName', '_id'])
-    .then(tickets => res.json(tickets))
-    .catch(err =>
-      res.status(404).json({ noticketsfound: "No tickets found from that user" })
-    );
+    
+    Ticket.find({ [req.params.folder]: req.params.userId })
+      .populate('creator')
+      .then(tickets => res.json(tickets))
+      .catch(err =>
+        res
+          .status(404)
+          .json({ noticketsfound: "No tickets found from that user" })
+      );
 });
 
-router.get("/owner/:userId", (req, res) => {
-    Ticket.find({ owner: req.params.userId })
-    .sort({ createdAt: -1 })
-    .then(tickets => res.json(tickets))
-    .catch(err =>
-        res.status(404).json({ noticketsfound: "No tickets found from that user" })
-    );
-});
+// router.get("/owner/:userId", (req, res) => {
+//     Ticket.find({ owner: req.params.userId })
+//     .sort({ createdAt: -1 })
+//     .then(tickets => res.json(tickets))
+//     .catch(err =>
+//         res.status(404).json({ noticketsfound: "No tickets found from that user" })
+//     );
+// });
 
-router.get("/starred/:userId", (req, res) => {
-    Ticket.find({ starred: req.params.userId })
-    .sort({ createdAt: -1 })
-    .then(tickets => res.json(tickets))
-    .catch(err =>
-        res.status(404).json({ noticketsfound: "No starred tickets found from that user" })
-    );
-});
+// router.get("/starred/:userId", (req, res) => {
+//     Ticket.find({ starred: req.params.userId })
+//     .sort({ createdAt: -1 })
+//     .then(tickets => res.json(tickets))
+//     .catch(err =>
+//         res.status(404).json({ noticketsfound: "No starred tickets found from that user" })
+//     );
+// });
 
-router.get("/subscribed/:userId", (req, res) => {
-    Ticket.find({ subscribers: req.params.userId })
-    // .populate('subscribers', ['firstName', 'lastName', '_id'])
-    .sort({ createdAt: -1 })
-    .then(tickets => res.json(tickets))
-    .catch(err =>
-        res.status(404).json({ noticketsfound: "No tickets found from that user" })
-    );
-});
+// router.get("/subscribed/:userId", (req, res) => {
+//     Ticket.find({ subscribers: req.params.userId })
+//     // .populate('subscribers', ['firstName', 'lastName', '_id'])
+//     .sort({ createdAt: -1 })
+//     .then(tickets => res.json(tickets))
+//     .catch(err =>
+//         res.status(404).json({ noticketsfound: "No tickets found from that user" })
+//     );
+// });
 
 module.exports = router;

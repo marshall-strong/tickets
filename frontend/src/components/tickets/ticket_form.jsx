@@ -1,9 +1,10 @@
 import React from 'react';
 import TicketActivityIndex from "./ticket_activity_index"
+import CommentFormContainer from "../comments/comment_form_container"
+import {withRouter} from "react-router-dom"
+
 import '../app.css'
 import './ticket_form.css'
-import {withRouter} from "react"
-
 class TicketForm extends React.Component {
     constructor(props) {
         super(props)
@@ -232,81 +233,8 @@ class TicketForm extends React.Component {
             </div>
             {this.props.ticketId !== "new" ? (
             <div>
-                <div className="form-container">
-                    <form className="form">
-                        <input
-                            className={type} 
-                            type="text" 
-                            placeholder="title" 
-                            value={this.state.title}
-                            onChange={this.update('title')}
-                        />
-
-                        <input
-                            className={type} 
-                            type="text" 
-                            placeholder="owner" 
-                            value={this.state.owner}
-                            onChange={this.update('owner')}
-                        />
-
-                        <textarea 
-                            className={type}
-                            cols="30" rows="10"
-                            value={this.state.body}
-                            placeholder="body"
-                            onChange={this.update('body')}
-                        >
-
-                        </textarea>
-
-                        {statusSelect}
-
-                        {prioritySelect}
-
-                        <input
-                            className={type} 
-                            type="text"
-                            placeholder="depends on" 
-                            onChange={this.update('dependsOn')}
-                        />
-
-                        <input
-                            className={type} 
-                            type="text"
-                            value={this.state.blocks}
-                            placeholder="blocks" 
-                            onChange={this.update('blocks')}
-                        />
-
-                        
-                        <input
-                            className={type} 
-                            type="date"
-                            value={this.state.startDate}
-                            onChange={this.update('startDate')}
-                        />
-
-                        <input
-                            className={type} 
-                            type="date"
-                            value={this.state.endDate}
-                            onChange={this.update('endDate')}
-                        />
-
-                        <button 
-                            onClick={this.handleSubmit}
-                            className={`button1 not-edited`}
-                            id="ticket-submit-button"
-                        >
-                            
-                            {this.props.ticketId === 'new' ? 'create' : 'save'}
-                        </button>
-                    </form>
-                </div>
-                {this.props.ticketId !== "new" ? (
-                    <TicketActivityIndex ticket={this.props.ticket} />
-                ) : null}
+                <TicketActivityIndex ticket={this.props.ticket} />
+                <CommentFormContainer />
             </div>
             ) : null}
           </div>

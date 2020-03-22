@@ -25,9 +25,12 @@ class TicketActivityIndex extends React.Component {
 
         let comments = this.state.comments
         let ticket = this.props.ticket
+        debugger
 
         let commentsArr = comments.map(comment => ({
             author: comment.author,
+            firstName: this.props.currentUser.firstName,
+            lastName: this.props.currentUser.lastName,
             time: comment.createdAt,
             body: comment.body
         }));

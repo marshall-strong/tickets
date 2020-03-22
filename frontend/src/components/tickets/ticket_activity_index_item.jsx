@@ -7,10 +7,21 @@ class ActivityIndexItem extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.props.update.actor.firstName}
-        {this.props.update.actor.lastName}
-        updated the ticket at {this.props.update.time}
+      <div className="update-activity">
+          
+        <span className="update-text">
+            {this.props.update.actor.firstName}
+        </span>
+
+        <span className="update-text">
+            {this.props.update.actor.lastName}
+        </span>
+
+        updated the ticket at:
+
+        <span className="update-text">
+            {this.props.update.time}
+        </span>
       </div>
     );
   }

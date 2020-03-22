@@ -1,13 +1,17 @@
 import { connect } from 'react-redux'
 import { createComment } from '../../actions/comment_actions'
 import CommentForm from './comment_form'
+import {withRouter} from "react-router-dom"
 
-// const mstp = (state, ownProps) => ({
-//     ticket: state.entites.tickets[ownProps.match.params.ticketId]
-// })
+const mSTP = (state, ownProps) => {
+    return {
+    currentUser: state.entities.users[state.session.user],
+    ticketId: ownProps.match.params.ticketId
+    }
+}
 
-const mdtp = dispatch => ({
+const mDTP = dispatch => ({
     createComment: comment => dispatch(createComment(comment))
 })
 
-export default connect(null, mdtp)(CommentForm)
+export default withRouter(connect(mSTP, mDTP)(CommentForm))

@@ -39,7 +39,7 @@ class TicketIndex extends React.Component {
           <div>
             <ul className="index-container">
               {tickets.map(ticket => (
-                <li>
+                <li className="index-item">
                   <TicketIndexItem key={ticket.id} ticket={ticket} />
                 </li>
               ))}

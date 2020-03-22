@@ -21,11 +21,6 @@ const organizationSeeds = {
             name: "appAcademy",
             motto: "appAcademy: if you liked your old life, you wouldn't be here."
         },
-        {
-            handle: "fuck.it",
-            name: "Fuck The Noise",
-            motto: "haters gonna hate"
-        },
     ]
 };
 

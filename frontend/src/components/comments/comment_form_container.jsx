@@ -3,10 +3,13 @@ import { createComment } from '../../actions/comment_actions'
 import CommentForm from './comment_form'
 import {withRouter} from "react-router-dom"
 
-const mSTP = (state, ownProps) => ({
+const mSTP = (state, ownProps) => {
+    debugger
+    return {
     currentUser: state.entities.users[state.session.user],
-    ticket: ownProps.match.params.ticketId
-})
+    ticketId: ownProps.match.params.ticketId
+    }
+}
 
 const mDTP = dispatch => ({
     createComment: comment => dispatch(createComment(comment))

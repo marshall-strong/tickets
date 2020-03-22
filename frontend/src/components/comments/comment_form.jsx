@@ -1,4 +1,5 @@
 import React from 'react'
+import {withRouter} from 'react-router-dom'
 
 class CommentForm extends React.Component {
     constructor(props) {
@@ -6,14 +7,17 @@ class CommentForm extends React.Component {
 
         this.state = { 
             body: '',
-            author: this.props.currentUser.id
+            author: this.props.currentUser.id,
+            ticketId: this.props.ticketId
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
+    navigate
 
     handleSubmit() {
+        debugger
         this.props.createComment(this.state)
     }
 
@@ -34,4 +38,4 @@ class CommentForm extends React.Component {
   
 }
 
-export default (CommentForm)
+export default withRouter(CommentForm)

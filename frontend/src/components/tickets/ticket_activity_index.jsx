@@ -4,7 +4,7 @@ import CommentIndexItem from "../comments/comment_index_item";
 
 const TicketActivityIndex = ({ ticket }) => {
   let comments = ticket.comments;
-
+  debugger
   let commentsArr = comments.map(comment => ({
     author: comment.author,
     time: comment.createdAt,
@@ -24,11 +24,11 @@ const TicketActivityIndex = ({ ticket }) => {
   let feedList = sortedFeed.map((feedItem, i) => {
     return (
       <ul>
-        {feedItem.body ? (
+        {feedItem.body ? 
           <CommentIndexItem comment={feedItem} />
-        ) : (
+         : 
           <ActivityIndexItem update={feedItem} />
-        )}
+        }
       </ul>
     );
   });

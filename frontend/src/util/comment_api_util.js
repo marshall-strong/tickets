@@ -9,8 +9,9 @@ export const fetchUserComments = userId => {
   return axios.get(`/api/comments/author/${userId}`);
 };
 
-export const writeComment = (comment, ticketId) => {
-    return axios.post(`/api/comments/ticket/${ticketId}`, comment)
+export const writeComment = (comment) => {
+    debugger
+    return axios.post(`/api/comments/`, comment)
 }
 
 export const updateComment = (comment) => {

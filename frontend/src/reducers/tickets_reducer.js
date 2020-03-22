@@ -18,6 +18,3 @@ const ticketsReducer = (defaultState = {}, action) => {
 }
 
 export default ticketsReducer;
-
-
-

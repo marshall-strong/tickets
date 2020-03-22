@@ -18,7 +18,4 @@ const mapDispatchToProps = dispatch => ({
     clearErrors: () => dispatch(clearErrors())
 })
 
-export default withRouter(connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(NavBar))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar));

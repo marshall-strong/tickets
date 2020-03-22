@@ -13,11 +13,6 @@ const usersReducer = (state = {}, action) => {
                 nextState[action.users[i]._id] = action.users[i]
             };
             return nextState;
-        // case RECEIVE_ORG_USERS:
-        //     action.users.forEach(user => {
-        //         nextState[user.id] = user
-        //     })
-        //     return nextState;
         default:
             return nextState;
     }

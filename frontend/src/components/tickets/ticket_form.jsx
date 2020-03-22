@@ -104,38 +104,42 @@ class TicketForm extends React.Component {
 
         // };
 
-        // const ownerSelect = (
-        //     <select
-        //         className={type}
-        //         defaultValue={this.state.priority}
-        //         onChange={this.update('priority')}
-        //     >
-        //         <option
-        //             value="Low"
-        //         >
-        //             Low
-        //         </option>
+        for (let i = 0; i < this.props.ownerUsers.length; i++) {
+            
+        }
 
-        //         <option
-        //             value="Medium"
-        //         >
-        //             Medium
-        //         </option>
+        const ownerSelect = (
+            <select
+                className={type}
+                defaultValue={this.state.owner}
+                onChange={this.update('owner')}
+            >
+                <option
+                    value="Low"
+                >
+                    Low
+                </option>
 
-        //         <option
-        //             value="High"
-        //         >
-        //             High
-        //         </option>
+                <option
+                    value="Medium"
+                >
+                    Medium
+                </option>
 
-        //         <option
-        //             value="CATastrophic"
-        //         >
-        //             CATastrophic
-        //         </option>
+                <option
+                    value="High"
+                >
+                    High
+                </option>
 
-        //     </select>
-        // )
+                <option
+                    value="CATastrophic"
+                >
+                    CATastrophic
+                </option>
+
+            </select>
+        )
 
         const statusSelect = (
             <select 
@@ -203,6 +207,7 @@ class TicketForm extends React.Component {
                   onChange={this.update("title")}
                 />
 
+                {/* ownerSelect */}
                 <input
                   className={type}
                   type="text"

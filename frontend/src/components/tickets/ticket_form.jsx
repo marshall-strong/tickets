@@ -1,5 +1,7 @@
 import React from 'react';
+import TicketActivityIndex from "./ticket_activity_index"
 
+import './ticket_form.css'
 class TicketForm extends React.Component {
     constructor(props) {
         super(props)
@@ -29,6 +31,7 @@ class TicketForm extends React.Component {
             .then(ticket => {
                 this.setState(this.props.ticket)
             })
+            .then(() => this.view());
         }
     }
 
@@ -44,6 +47,10 @@ class TicketForm extends React.Component {
         e.preventDefault();
         this.state.updatedAt.unshift(Date.now());
         this.state.updatedBy.unshift(this.props.currentUser.id)
+        let edits = document.getElementsByClassName('edited')
+        for (let i = 0; i < edits.length; i++) {
+            edits[i].classList.remove('edited')
+        }
         this.state.lastUpdateSeenBy = []
         if (this.props.ticketId !== "new") {
             this.props.updateTicket(this.state)
@@ -58,19 +65,26 @@ class TicketForm extends React.Component {
     }
 
     update(field) {
-        return e => this.setState({
-            [field]: e.currentTarget.value
-        });
+        return e => {
+            this.setState({ [field]: e.currentTarget.value });
+            this.edited = 'edited';
+            e.currentTarget.classList.add(this.edited);
+        };
     }
 
     render(){
-
+        
         if (this.props.ticketId !== 'new') {
-            if (!this.props.ticket) return null
-            this.view();
+            if (!this.props.ticket) return null;
         }
+
+        this.edited = 'not-edited';
+
+        let type = this.props.ticketId === 'new' ? 'new' : 'show';
+
         const statusSelect = (
             <select 
+                className={type}
                 defaultValue={this.state.status}
                 onChange={this.update('status')}
             >
@@ -109,6 +123,7 @@ class TicketForm extends React.Component {
 
         const prioritySelect = (
             <select 
+                className={type}
                 defaultValue={this.state.priority} 
                 onChange={this.update('priority')}
             >
@@ -140,70 +155,81 @@ class TicketForm extends React.Component {
         )
 
         return(
-            <div className="form-container">
-                <form className="form">
-                    <input 
-                        type="text" 
-                        placeholder="title" 
-                        value={this.state.title}
-                        onChange={this.update('title')}
-                    />
+            <div>
+                <div className="form-container">
+                    <form className="form">
+                        <input
+                            className={type} 
+                            type="text" 
+                            placeholder="title" 
+                            value={this.state.title}
+                            onChange={this.update('title')}
+                        />
 
-                    <input 
-                        type="text" 
-                        placeholder="owner" 
-                        value={this.state.owner}
-                        onChange={this.update('owner')}
-                    />
+                        <input
+                            className={type} 
+                            type="text" 
+                            placeholder="owner" 
+                            value={this.state.owner}
+                            onChange={this.update('owner')}
+                        />
 
-                    <textarea 
-                        cols="30" rows="10"
-                        value={this.state.body}
-                        placeholder="body"
-                        onChange={this.update('body')}
-                    >
+                        <textarea 
+                            className={type}
+                            cols="30" rows="10"
+                            value={this.state.body}
+                            placeholder="body"
+                            onChange={this.update('body')}
+                        >
 
-                    </textarea>
+                        </textarea>
 
-                    {statusSelect}
+                        {statusSelect}
 
-                    {prioritySelect}
+                        {prioritySelect}
 
-                    <input 
-                        type="text"
-                        placeholder="depends on" 
-                        onChange={this.update('dependsOn')}
-                    />
+                        <input
+                            className={type} 
+                            type="text"
+                            placeholder="depends on" 
+                            onChange={this.update('dependsOn')}
+                        />
 
-                    <input 
-                        type="text"
-                        value={this.state.blocks}
-                        placeholder="blocks" 
-                        onChange={this.update('blocks')}
-                    />
+                        <input
+                            className={type} 
+                            type="text"
+                            value={this.state.blocks}
+                            placeholder="blocks" 
+                            onChange={this.update('blocks')}
+                        />
 
-                    
-                    <input 
-                        type="date"
-                        value={this.state.startDate}
-                        onChange={this.update('startDate')}
-                    />
+                        
+                        <input
+                            className={type} 
+                            type="date"
+                            value={this.state.startDate}
+                            onChange={this.update('startDate')}
+                        />
 
-                    <input 
-                        type="date"
-                        value={this.state.endDate}
-                        onChange={this.update('endDate')}
-                    />
+                        <input
+                            className={type} 
+                            type="date"
+                            value={this.state.endDate}
+                            onChange={this.update('endDate')}
+                        />
 
-                    <button 
-                        onClick={this.handleSubmit}
-                        className="button1">
-                        {this.props.ticketId === 'new' ? 'create' : 'save'}
-                    </button>
-                </form>
+                        <button 
+                            onClick={this.handleSubmit}
+                            className="button1">
+                            {this.props.ticketId === 'new' ? 'create' : 'save'}
+                        </button>
+                    </form>
+                </div>
+                {this.props.ticketId !== "new" ? (
+                    <TicketActivityIndex ticket={this.props.ticket} />
+                ) : null}
             </div>
-        )
-        
+        )        
         
     }
 

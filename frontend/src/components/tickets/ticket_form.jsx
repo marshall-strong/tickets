@@ -100,46 +100,45 @@ class TicketForm extends React.Component {
 
         let type = this.props.ticketId === 'new' ? 'new' : 'show';
 
-        // const getUsersInCurrUserOrg = (this.props.currentUser.organization) => {
+        // const getUsersInCurrUserOrg = (this.props.currentUser.organization) => {};
 
-        // };
+        // let usersArr = []
+        // for (let i = 0; i < this.props.ownerUsers.length; i++) {
+        //     user = this.props.ownerUsers[i];
+        // }
 
-        for (let i = 0; i < this.props.ownerUsers.length; i++) {
-            
-        }
+        // const ownerSelect = (
+        //     <select
+        //         className={type}
+        //         defaultValue={this.state.owner}
+        //         onChange={this.update('owner')}
+        //     >
+        //         <option
+        //             value="Low"
+        //         >
+        //             Low
+        //         </option>
 
-        const ownerSelect = (
-            <select
-                className={type}
-                defaultValue={this.state.owner}
-                onChange={this.update('owner')}
-            >
-                <option
-                    value="Low"
-                >
-                    Low
-                </option>
+        //         <option
+        //             value="Medium"
+        //         >
+        //             Medium
+        //         </option>
 
-                <option
-                    value="Medium"
-                >
-                    Medium
-                </option>
+        //         <option
+        //             value="High"
+        //         >
+        //             High
+        //         </option>
 
-                <option
-                    value="High"
-                >
-                    High
-                </option>
+        //         <option
+        //             value="CATastrophic"
+        //         >
+        //             CATastrophic
+        //         </option>
 
-                <option
-                    value="CATastrophic"
-                >
-                    CATastrophic
-                </option>
-
-            </select>
-        )
+        //     </select>
+        // )
 
         const statusSelect = (
             <select 

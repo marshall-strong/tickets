@@ -4,10 +4,10 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 
 const db = require('./config/keys').mongoURI;
-const users = require("./routes/api/users")
-const tickets = require("./routes/api/tickets")
-const tags = require('./routes/api/tags')
-const comments = require('./routes/api/comments')
+const users = require("./backend/routes/api/users")
+const tickets = require("./backend/routes/api/tickets")
+const tags = require('./backend/routes/api/tags')
+const comments = require('./backend/routes/api/comments')
 
 const app = express();
 const port = process.env.PORT || 5000;

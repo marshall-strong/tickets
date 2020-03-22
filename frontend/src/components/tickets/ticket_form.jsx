@@ -9,7 +9,8 @@ class TicketForm extends React.Component {
             updatedAt: [],
             tags: [],
             subscribers: [this.props.currentUser.id],
-            owner: undefined,
+            organization: this.props.currentOrg,
+            owner: this.props.currentUser.id,
             title: '',
             body: '',
             lastUpdateSeenBy: [],
@@ -26,6 +27,11 @@ class TicketForm extends React.Component {
     }
 
     componentDidMount() {
+        this.props.getOrgUsers(this.props.currentOrg)
+        .then(orgUsers => {
+            this.setState(this.props.orgUsers)
+        })
+
         if (this.props.ticketId !== 'new') {
             this.props.getTicket(this.props.ticketId)
             .then(ticket => {

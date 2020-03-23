@@ -12,7 +12,7 @@ class TicketForm extends React.Component {
         this.state = {
             updatedAt: [],
             tags: [],
-            subscribers: [this.props.currentUser.id],
+            subscribers: [this.props.currentUser._id],
             owner: this.props.currentUser.firstName + ' ' + this.props.currentUser.lastName,
             title: '',
             body: '',
@@ -24,7 +24,7 @@ class TicketForm extends React.Component {
             blocks: [],
             startDate: undefined,
             endDate: undefined,
-            creator: this.props.currentUser.id
+            creator: this.props.currentUser._id
         }
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -48,8 +48,8 @@ class TicketForm extends React.Component {
 
     view() {
         let viewerIds = this.props.ticket.lastUpdateSeenBy.map(viewer => viewer._id)
-        if (!viewerIds.includes(this.props.currentUser.id)) {
-            this.props.ticket.lastUpdateSeenBy.push(this.props.currentUser.id)
+        if (!viewerIds.includes(this.props.currentUser._id)) {
+            this.props.ticket.lastUpdateSeenBy.push(this.props.currentUser._id)
             this.props.updateTicket(this.props.ticket)
         }
     }
@@ -58,7 +58,8 @@ class TicketForm extends React.Component {
         e.preventDefault();
         if (e.target.classList.contains('not-edited')) return null
         this.state.updatedAt.unshift(Date.now());
-        this.state.updatedBy.unshift(this.props.currentUser.id)
+        debugger
+        this.state.updatedBy.unshift(this.props.currentUser._id)
         this.state.lastUpdateSeenBy = []
 
         let edits = document.getElementsByClassName('edited')

@@ -15,7 +15,7 @@ const LeftPanel = ({ userId }) => (
 )
 
 const msp = state => ({
-    userId: state.session.user
+    userId: state.session._id
 })
 
 const LeftPanelContainer = connect(msp, null)(LeftPanel);

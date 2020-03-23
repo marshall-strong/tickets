@@ -27,9 +27,11 @@ class NavBar extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    this.props.loginDemoUser()
-    this.props.history.push("/tickets/owner");
     this.props.clearErrors()
+    this.props.loginDemoUser()
+    .then(() => 
+      this.props.history.push(`/tickets/owner/${this.props.currentUser._id}`)
+    )
   }
 
   // Selectively render links dependent on whether the user is logged in

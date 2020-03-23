@@ -73,45 +73,17 @@ router.patch("/:ticketId", (req, res) => {
 })
 
 router.get("/:folder/:userId", (req, res) => {
-
-    if (Array.isArray(req.params.folder)) {
-        
-        Ticket.find({ [req.params.folder]: { $elemMatch: { _id: req.params.userId } } })
-            .populate('subscribers')
-            .populate('starred')
-            .then(tickets => res.json(tickets))
-            .catch(err =>
-                res
-                    .status(404)
-                    .json({ noticketsfound: "No tickets found from that user" })
-            );
-    } else {
-
-        Ticket.find({ [req.params.folder]: req.params.userId })
-          .populate('creator')
-          .populate('owner')
-          .then(tickets => res.json(tickets))
-          .catch(err =>
-            res
-              .status(404)
-              .json({ noticketsfound: "No tickets found from that user" })
-          );
-    }
     
+    Ticket.find({ [req.params.folder]: req.params.userId })
+      .populate('creator')
+      .populate('owner')
+      .then(tickets => res.json(tickets))
+      .catch(err =>
+        res
+          .status(404)
+          .json({ noticketsfound: "No tickets found from that user" })
+      );
 });
-
-// router.get("/:folder/:userId", (req, res) => {
-    
-//     Ticket.find({ [req.params.folder]: { $elemMatch: {_id: req.params.userId } } })
-//       .populate('subscribers')
-//       .populate('starred')
-//       .then(tickets => res.json(tickets))
-//       .catch(err =>
-//         res
-//           .status(404)
-//           .json({ noticketsfound: "No tickets found from that user" })
-//       );
-// });
 
 // router.get("/owner/:userId", (req, res) => {
 //     Ticket.find({ owner: req.params.userId })

@@ -1,9 +1,5 @@
-
-
-
 table {
     border-collapse: collapse;
-    /* border: 1px solid black; */
     text-align: center;
 }
 
@@ -15,4 +11,8 @@ tr {
 tr:hover {
     background-color: blanchedalmond;
     cursor: pointer;
+}
+
+div.starred:hover {
+    color: red;
 }

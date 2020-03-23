@@ -46,7 +46,6 @@ class TicketIndex extends React.Component {
               <th>Created At</th>
               <th>Updated At</th>
               <th>Status</th>
-              <th>Status</th>
               <th>Priority</th>
               <th>Start Date</th>
               <th>End Date</th>

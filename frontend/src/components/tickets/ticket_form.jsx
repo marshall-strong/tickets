@@ -169,6 +169,7 @@ class TicketForm extends React.Component {
           <div>
             <div className="form-container">
               <form className="form">
+                {/* <div className="starred">{this.props.currentUser.starred.includes(this.props.ticketId) ? '★' : '☆' }</div> */}
                 <input
                   className={type}
                   type="text"

@@ -96,12 +96,17 @@ router.post("/login", (req, res) => {
     });
 });
 
-
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
     res.json({
         id: req.user.id,
         email: req.user.email
     });
 })
+
+router.get('/:userId', (req, res) => {});
+
+router.get('/:orgHandle', (req, res) => {
+    User.finde()
+});
 
 module.exports = router;

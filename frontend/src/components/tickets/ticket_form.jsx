@@ -13,7 +13,6 @@ class TicketForm extends React.Component {
             updatedAt: [],
             tags: [],
             subscribed: [this.props.currentUser._id],
-            // owner: this.props.currentUser.firstName + ' ' + this.props.currentUser.lastName,
             owner: this.props.currentUser._id,
             title: '',
             body: '',

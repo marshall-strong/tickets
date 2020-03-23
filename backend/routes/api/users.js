@@ -98,12 +98,25 @@ router.post("/login", (req, res) => {
     });
 });
 
-
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
     res.json({
         _id: req.user._id,
         email: req.user.email
     });
 })
+
+router.get('/:userId', (req, res) => {});
+
+router.get('/:orgHandle', (req, res) => {
+    //debugger
+    User.find(
+        { organization: req.params.orgHandle },
+        'firstName lastName email organization',
+        (err, users) => {
+            if (err) throw err;
+            return res.json(users);
+        }
+    )
+});
 
 module.exports = router;

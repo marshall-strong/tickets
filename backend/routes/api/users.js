@@ -20,12 +20,12 @@ router.post("/register", (req, res) => {
             errors.email = "User already exists";
             return res.status(400).json(errors);
         } else {
-            const orgName = req.body.email.slice(req.body.email.search("@"));
+            const orgHandle = req.body.email.slice(req.body.email.search("@"));
             const newUser = new User({
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 email: req.body.email,
-                organization: orgName,
+                orgHandle: orgHandle,
                 password: req.body.password
             });
 
@@ -39,7 +39,7 @@ router.post("/register", (req, res) => {
                             _id: user._id,
                             firstName: user.firstName,
                             lastName: user.lastName,
-                            organization: user.organization,
+                            orgHandle: user.orgHandle,
                             starred: user.starred
                         };
 
@@ -110,8 +110,8 @@ router.get('/:userId', (req, res) => {});
 router.get('/:orgHandle', (req, res) => {
     //debugger
     User.find(
-        { organization: req.params.orgHandle },
-        'firstName lastName email organization',
+        { orgHandle: req.params.orgHandle },
+        'firstName lastName email orgHandle',
         (err, users) => {
             if (err) throw err;
             return res.json(users);

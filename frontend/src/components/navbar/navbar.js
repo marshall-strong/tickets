@@ -46,7 +46,7 @@ class NavBar extends React.Component {
                 {this.props.currentUser.firstName} &nbsp;
                 {this.props.currentUser.lastName}
               </Link>
-                {this.props.currentUser.organization}
+                {this.props.currentUser.orgHandle}
 
               
               <button className="button1" onClick={this.writeTicket}> 

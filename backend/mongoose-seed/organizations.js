@@ -9,7 +9,7 @@ const organizationSeeds = {
         {
             handle: "acme.boom",
             name: "ACME",
-            motto: "next time, baby..."
+            motto: "next time..."
         },
         {
             handle: "gmail.com",

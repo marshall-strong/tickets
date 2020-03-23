@@ -28,4 +28,4 @@ export const getOrgUsers = orgHandle => dispatch => (
     UserAPIUtil.fetchOrgUsers(orgHandle)
     .then(users => dispatch(receiveOrgUsers(users)))
     .catch(errors => dispatch(receiveUserErrors(errors)))
-)
+);

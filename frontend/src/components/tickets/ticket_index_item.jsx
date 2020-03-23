@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import ticket_form from './ticket_form'
 
 const TicketIndexItem = ({ ticket, history }) => {
     ticket.owner = ticket.owner ? ticket.owner : ""

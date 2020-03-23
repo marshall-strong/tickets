@@ -51,7 +51,7 @@ class LoginForm extends React.Component {
         return (
             <div className="form-container">
                 <form className="form" >
-                    <img className="cat-hat" src="https://i.pinimg.com/originals/cd/db/80/cddb8020bf0d4605c1e11fc6d97eaace.png"></img>
+                    <img className="cat-hat" alt="cat" src="https://i.pinimg.com/originals/cd/db/80/cddb8020bf0d4605c1e11fc6d97eaace.png"></img>
                     <input className="form-box-login" type="text"
                             value={this.state.email}
                             onChange={this.update('email')}

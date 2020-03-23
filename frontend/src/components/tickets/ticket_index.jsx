@@ -1,7 +1,5 @@
 import React from 'react'
 import TicketIndexItem from './ticket_index_item'
-import { Link } from 'react-router-dom'
-import TicketForm from './ticket_form'
 import './ticket_index.css'
 
 import './ticket_index.css'

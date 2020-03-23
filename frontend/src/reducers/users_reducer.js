@@ -7,6 +7,8 @@ const usersReducer = (state = {}, action) => {
         case RECEIVE_CURRENT_USER:
             newState[action.payload._id] = action.payload
             return newState;
+        case RECEIVE_USER_LOGOUT:
+            return {}
         default:
             return newState;
     }

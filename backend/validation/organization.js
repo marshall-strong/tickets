@@ -3,7 +3,7 @@ const validText = require('./valid_text');
 const Organization = require('../models/organization');
 
 
-const validateNewOrg = (data) => {
+module.exports = function validateNewOrg(data) {
     let errors = {};
 
     data.handle = validText(data.handle) ? data.handle : '';
@@ -36,5 +36,3 @@ const validateNewOrg = (data) => {
         isValid: Object.keys(errors).length === 0
     };
 };
-
-module.exports = validateNewOrg;

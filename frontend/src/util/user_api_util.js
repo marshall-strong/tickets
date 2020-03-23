@@ -7,7 +7,6 @@ export const fetchOneUser = userId => {
 };
 
 export const fetchOrgUsers = orgHandle => {
-    //debugger
     return axios.get(
         `/api/users/${orgHandle}`
     )

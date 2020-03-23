@@ -50,18 +50,18 @@ export const fetchOwnerTickets = userId => dispatch => (
 
 export const fetchCreatedTickets = userId => dispatch => (
     TicketAPIUtil.getCreatedTickets(userId)
-        .then(tickets => dispatch(receiveTickets(tickets)))
-        .catch(errors => dispatch(receiveTicketErrors(errors)))
+    .then(tickets => dispatch(receiveTickets(tickets)))
+    .catch(errors => dispatch(receiveTicketErrors(errors)))
 )
 
 export const fetchSubscribedTickets = userId => dispatch => (
     TicketAPIUtil.getSubscribedTickets(userId)
-        .then(tickets => dispatch(receiveTickets(tickets)))
-        .catch(errors => dispatch(receiveTicketErrors(errors)))
+    .then(tickets => dispatch(receiveTickets(tickets)))
+    .catch(errors => dispatch(receiveTicketErrors(errors)))
 )
 
 export const fetchStarredTickets = userId => dispatch => (
     TicketAPIUtil.getStarredTickets(userId)
-        .then(tickets => dispatch(receiveTickets(tickets)))
-        .catch(errors => dispatch(receiveTicketErrors(errors)))
+    .then(tickets => dispatch(receiveTickets(tickets)))
+    .catch(errors => dispatch(receiveTicketErrors(errors)))
 )

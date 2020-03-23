@@ -1,4 +1,4 @@
-import * as userApiUtil from '../util/user_api_util';
+import * as UserAPIUtil from '../util/user_api_util';
 
 export const RECEIVE_ONE_USER = "RECEIVE_ONE_USER";
 export const RECEIVE_ORG_USERS = "RECEIVE_ORG_USERS";
@@ -18,10 +18,14 @@ const receiveUserErrors = errors => ({
     errors: errors.response.data
 })
 
-export const getOneUser ;
+export const getOneUser = userId => dispatch => (
+    UserAPIUtil.fetchOneUser(userId)
+    .then(user => dispatch(receiveOneUser(user)))
+    .catch(errors => dispatch(receiveUserErrors(errors)))
+);
 
 export const getOrgUsers = orgHandle => dispatch => (
-    userApiUtil.fetchOrgUsers(orgHandle)
+    UserAPIUtil.fetchOrgUsers(orgHandle)
     .then(users => dispatch(receiveOrgUsers(users)))
     .catch(errors => dispatch(receiveUserErrors(errors)))
 )

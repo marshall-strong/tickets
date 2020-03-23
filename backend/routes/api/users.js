@@ -106,7 +106,15 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
 router.get('/:userId', (req, res) => {});
 
 router.get('/:orgHandle', (req, res) => {
-    User.finde()
+    //debugger
+    User.find(
+        { organization: req.params.orgHandle },
+        'firstName lastName email organization',
+        (err, users) => {
+            if (err) throw err;
+            return res.json(users);
+        }
+    )
 });
 
 module.exports = router;

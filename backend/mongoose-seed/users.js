@@ -39,9 +39,23 @@ const userSeeds = {
             password: genPasswordDigest("password")
         },
         {
-            firstName: "ACME",
-            lastName: "User",
-            email: "user@acme.boom",
+            firstName: "Wiley",
+            lastName: "Coyote",
+            email: "wc@acme.boom",
+            organization: "acme.boom",
+            password: genPasswordDigest("password")
+        },
+        {
+            firstName: "Road",
+            lastName: "Runner",
+            email: "rr@acme.boom",
+            organization: "acme.boom",
+            password: genPasswordDigest("password")
+        },
+        {
+            firstName: "Marvin",
+            lastName: "The Martian",
+            email: "mtm@acme.boom",
             organization: "acme.boom",
             password: genPasswordDigest("password")
         },

@@ -1,6 +1,5 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import "./profile.css"
 
 class Profile extends React.Component {
     constructor(props) {
@@ -15,122 +14,43 @@ class Profile extends React.Component {
     }
 
     render() {
-        const {user, comments, tickets, currentUser} = this.props;
-
-        if(!user) {
-            return null
-        }
+        const {user, comments, tickets} = this.props;
 
         const userCommentInfo = comments.map(ticket => (
-          <div className="user-comments-container">
-            
-            <span className="user-comments"
-                > 
-                {user.firstName} 
+          <div>
+            <span>
+              {ticket.createdAt}
+              {ticket.author.firstName}
+              {ticket.author.lastName} commented on
             </span>
-            
-            <span className="user-comments"
-                > 
-                {user.lastName} 
-            </span>
-
-            <span className="text"
-                > 
-                commented: 
-            </span>
-
-            <span className="user-comments"
-                > 
-                {comments.body} 
-            </span>
-
-             <span className="text"
-                > 
-                on
-            </span>
-
-            <Link to={`/ticket/${ticket._id}`}
-                >{ticket.title}
-            </Link>
-
-             <span className="text"
-                > 
-                at: 
-            </span>
-
-            <span className="user-comments"
-                > 
-                {ticket.createdAt} 
-            </span>
-
-
+            <Link to={`/comments/${ticket.id}`}>{ticket.id}</Link>
           </div>
         )); 
 
-        const userTicketInfo = tickets.map(ticket => (
-            <div className="user-update-container">
-
-                <span className="user-updates"
-                    >
-                    {ticket.creator.firstName}
-                </span>
-
-                <span className="user-updates"
-                    > 
-                    {ticket.creator.lastName}
-                </span>
-
-                <span className="text"
-                    >
-                    created the ticket:
-                </span>
-
-                 <Link to={`/tickets/${ticket._id}`}
-                    >
-                    {ticket.title}
-                </Link>
-
-                <span className="text"
-                    >
-                    at:
-                </span>
-
-                <span className="user-updates"
-                    >
+        const userTicketInfo = tickets.map(ticket => (  
+            <div>
+                <span> 
                     {ticket.createdAt} 
+                    {ticket.creator.firstName}  
+                    {ticket.creator.lastName} created
                 </span>
-
-          </div>
+                <Link to={`/tickets/${ticket.id}`}>
+                    {ticket.id}
+                </Link> 
+            </div>
         )); 
 
         return (
-          <div>
- 
-            <div className="profile-header-container">
-
-                <h1 className="welcome-message">
-                       
-                    <span className="header-text"
-                        >
-                        {user.firstName} 
-                    </span>
-
-                    <span className="header-text"
-                        >
-                        {user.lastName}
-                    </span>
-
-                </h1>
-                    <img className="garfield" src=
-                    "https://www.catster.com/wp-content/uploads/2018/09/garfield-final.jpg"
-                    >
-                    </img>
-            </div>
+            <div>
+                <div className="profile-header-container">
+                    <h1>
+                    Hello! {user.firstName} {user.lastName}
+                    </h1>
+                </div>
 
             <div>{userTicketInfo}</div>
-
             <div>{userCommentInfo}</div>
-          </div>
+        </div>
         );
     }
 }

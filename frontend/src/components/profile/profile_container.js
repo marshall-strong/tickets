@@ -9,8 +9,7 @@ const mSTP = (state, ownProps) => ({
     user: state.entities.users[ownProps.match.params.userId],
     comments: Object.values(state.entities.comments),
     tickets: Object.values(state.entities.tickets),
-    loggedIn: state.session.isAuthenticated,
-    currentUser: state.entities.users[state.session.user]
+    loggedIn: state.session.isAuthenticated
     }
 )
 
@@ -21,4 +20,4 @@ const mDTP = (dispatch) => ({
 
 
 
-export default withRouter(connect(mSTP, mDTP)(Profile));
+export default connect(mSTP, mDTP)(Profile);

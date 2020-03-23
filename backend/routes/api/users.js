@@ -2,13 +2,13 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const express = require("express");
-const router = express.Router();
+const usersRouter = express.Router();
 const keys = require('../../../config/keys')
 const validateRegisterInput = require("../../validation/register")
 const validateLoginInput = require("../../validation/login")
 const User = require('../../models/user')
 
-router.post("/register", (req, res) => {
+usersRouter.post("/register", (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
 
     if (!isValid) {
@@ -56,7 +56,7 @@ router.post("/register", (req, res) => {
     });
 });
 
-router.post("/login", (req, res) => {
+usersRouter.post("/login", (req, res) => {
     const { errors, isValid } = validateLoginInput(req.body);
     if (!isValid) {
         return res.status(400).json(errors);
@@ -78,7 +78,8 @@ router.post("/login", (req, res) => {
                     id: user.id,
                     firstName: user.firstName,
                     lastName: user.lastName,
-                    orgHandle: user.orgHandle
+                    email: user.email,
+                    organization: user.organization,
                 };
 
                 jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
@@ -95,12 +96,27 @@ router.post("/login", (req, res) => {
     });
 });
 
-
-router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
+usersRouter.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
     res.json({
         id: req.user.id,
-        email: req.user.email
+        firstName: req.user.firstName,
+        lastName: req.user.lastName,
+        email: req.user.email,
+        organization: req.user.organization,
     });
 })
 
-module.exports = router;
+usersRouter.get("/:orgHandle", (req, res) => {
+    //debugger
+    User.find(
+        { organization: req.params.orgHandle }, 
+        'firstName lastName email organization',
+        (err, docs) => {
+            //debugger
+            if (err) throw err;
+            return res.json(docs);
+        }
+    )
+})
+
+module.exports = usersRouter;

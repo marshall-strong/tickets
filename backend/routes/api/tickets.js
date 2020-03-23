@@ -76,7 +76,6 @@ router.patch("/:ticketId", (req, res) => {
 })
 
 router.get("/:folder/:userId", (req, res) => {
-
     if (req.params.folder === 'subscribed') {
         
         Ticket.find({ [req.params.folder]: { $elemMatch: { _id: req.params.userId } } })
@@ -91,14 +90,15 @@ router.get("/:folder/:userId", (req, res) => {
             .json({ noticketsfound: "No tickets found from that user" })
         );
     } else {
-
         Ticket.find({ [req.params.folder]: req.params.userId })
         .populate('creator', ['firstName', 'lastName', '_id'])
         .populate('owner', ['firstName', 'lastName', '_id'])
         .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
         .populate('subscribed', ['firstName', 'lastName', '_id'])
         .populate('updatedBy', ['firstName', 'lastName', '_id'])
-        .then(tickets => res.json(tickets))
+        .then(tickets =>{
+            res.json(tickets)
+        })
         .catch(err => res
             .status(404)
             .json({ noticketsfound: "No tickets found from that user" })

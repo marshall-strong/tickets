@@ -4,7 +4,8 @@ import { withRouter } from 'react-router-dom'
 import { fetchOwnerTickets, fetchCreatedTickets, getTickets, fetchSubscribedTickets, fetchStarredTickets } from '../../actions/ticket_actions'
 
 const mstp = (state, ownProps) => ({
-    userId: ownProps.match.params.userId
+    userId: ownProps.match.params.userId,
+    ticketId: ownProps.match.params.ticketId
 })
 
 const mdtp = dispatch => ({

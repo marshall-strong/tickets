@@ -2,6 +2,7 @@ import React from 'react'
 import TicketIndexItem from './ticket_index_item'
 import { Link } from 'react-router-dom'
 import TicketForm from './ticket_form'
+import './ticket_index.css'
 
 import './ticket_index.css'
 
@@ -28,6 +29,23 @@ class TicketIndex extends React.Component {
         }
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.location.pathname !== prevProps.location.pathname) {
+          switch (this.props.location.pathname) {
+            case `/tickets/owner/${this.props.userId}`:
+              return this.props.fetchOwnerTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
+            case `/tickets/subscribed/${this.props.userId}`:
+              return this.props.fetchSubscribedTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
+            case `/tickets/creator/${this.props.userId}`:
+              return this.props.fetchCreatedTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
+            case `/tickets/starred/${this.props.userId}`:
+              return this.props.fetchStarredTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
+            default:
+              return null
+          }
+        }
+    }
+
     handleClick(e) {
         e.preventDefault()
         this.props.history.push(`/tickets/${this.props.ticketId}`)
@@ -37,6 +55,7 @@ class TicketIndex extends React.Component {
         
         if (!this.state.tickets) return null
         const { tickets } = this.state
+        // console.log(tickets[0]._id)
         return (
           <div>
             <table className="ticket-index">

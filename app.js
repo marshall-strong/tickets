@@ -39,3 +39,5 @@ mongoose
     .connect(db, { useNewUrlParser: true })
     .then(() => console.log("Entry file: Successfully connected to MongoDB"))
     .catch(err => console.log(err));
+
+    

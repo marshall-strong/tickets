@@ -1,5 +1,6 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
+import comments from "./comments.css"
 
 class CommentForm extends React.Component {
     constructor(props) {
@@ -28,9 +29,9 @@ class CommentForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input type="textarea" value={this.state.body} onChange={this.update('body')}/>
-                <button className="button1">Create Comment</button>
+            <form className="comment-form" onSubmit={this.handleSubmit}>
+                <textarea className="comment-text-area" type="textarea" value={this.state.body} onChange={this.update('body')}> </textarea>
+                <button className="comment-button">Create Comment</button>
             </form>
         )
     }

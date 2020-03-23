@@ -26,3 +26,43 @@ input:focus, textarea:focus {
 input.edited:focus, textarea.edited:focus {
     border: 1px solid yellow;
 }
+
+
+.update-activity {
+    background-color: rgb(83, 161, 5);
+    margin-left: 250px;
+    margin-right: 250px;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+}
+
+.comment-activity {
+    background-color: blueviolet;
+    margin-left: 250px;
+    margin-right: 250px;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+}
+
+.update-text {
+    padding-left: 3px;
+    padding-right: 3px;
+    color: white;
+    font-family: sans-serif;
+}
+
+.comment-text{
+    padding-left: 3px;
+    padding-right: 3px;
+    color: white;
+    font-family: sans-serif;
+}
+

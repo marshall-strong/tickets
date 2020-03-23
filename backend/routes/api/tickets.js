@@ -32,6 +32,7 @@ router.post("/",
         .then(ticket => {
             Ticket.findById(ticket._id)
             .populate('creator', ['firstName', 'lastName', '_id'])
+            .populate('owner', ['firstName', 'lastName', '_id'])
             .populate('updatedBy', ['firstName', 'lastName', '_id'])
             .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
             .populate('subscribers', ['firstName', 'lastName', '_id'])  
@@ -47,6 +48,7 @@ router.get("/:ticketId", (req, res) => {
     Ticket
     .findById(req.params.ticketId)
     .populate('creator', ['firstName', 'lastName', '_id'])
+    .populate('owner', ['firstName', 'lastName', '_id'])
     .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
     .populate('subscribers', ['firstName', 'lastName', '_id'])
     .populate('updatedBy', ['firstName', 'lastName', '_id'])
@@ -63,6 +65,7 @@ router.patch("/:ticketId", (req, res) => {
         { new: true }
     )
     .populate('creator', ['firstName', 'lastName', '_id'])
+    .populate('owner', ['firstName', 'lastName', '_id'])
     .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
     .populate('subscribers', ['firstName', 'lastName', '_id'])
     .populate('updatedBy', ['firstName', 'lastName', '_id'])

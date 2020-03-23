@@ -51,7 +51,6 @@ class TicketForm extends React.Component {
         e.preventDefault();
         if (e.target.classList.contains('not-edited')) return null
         this.state.updatedAt.unshift(Date.now());
-        debugger
         this.state.updatedBy.unshift(this.props.currentUser._id)
         this.state.lastUpdateSeenBy = []
 

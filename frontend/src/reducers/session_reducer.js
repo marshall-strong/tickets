@@ -6,7 +6,7 @@ import {
 
 const initialState = {
     isAuthenticated: false,
-    user: {}
+    _id: {}
 };
 
 export default function (state = initialState, action) {
@@ -15,12 +15,12 @@ export default function (state = initialState, action) {
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
             newState.isAuthenticated = !!action.payload
-            newState.user = action.payload._id
+            newState._id = action.payload._id
             return newState;
         case RECEIVE_USER_LOGOUT:
             return {
                 isAuthenticated: false,
-                user: undefined
+                _id: undefined
             };
         case RECEIVE_USER_SIGN_IN:
             return {

@@ -81,6 +81,7 @@ class NavBar extends React.Component {
   }
 
   render() {
+    debugger
     return <div className="hover-pointer container">{this.getLinks()}</div>;
   }
 }

@@ -66,6 +66,7 @@ router.post("/login", (req, res) => {
     const password = req.body.password;
 
     User.findOne({ email })
+    .populate('starred')
     .then(user => {
         if (!user) {
             errors.email = "There is no account associated with that email";

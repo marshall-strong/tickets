@@ -56,8 +56,8 @@ class TicketForm extends React.Component {
 
         let edits = document.getElementsByClassName('edited')
         for (let i = 0; i < edits.length; i++) {
-            edits[i].classList.remove('edited')
             edits[i].classList.add('not-edited')
+            edits[i].classList.remove('edited')
         }
 
         if (this.props.ticketId !== "new") {

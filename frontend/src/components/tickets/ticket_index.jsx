@@ -3,6 +3,8 @@ import TicketIndexItem from './ticket_index_item'
 import { Link } from 'react-router-dom'
 import TicketForm from './ticket_form'
 
+import './ticket_index.css'
+
 class TicketIndex extends React.Component {
     constructor(props) {
         super(props)
@@ -37,14 +39,22 @@ class TicketIndex extends React.Component {
         const { tickets } = this.state
         return (
           <div>
-            <ul className="index-container">
+            <table className="ticket-index">
+              <th>Creator</th>
+              <th>Owner</th>
+              <th>Title</th>
+              <th>Created At</th>
+              <th>Updated At</th>
+              <th>Status</th>
+              <th>Priority</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Starred</th>
+
               {tickets.map(ticket => (
-                <li className="index-item">
                   <TicketIndexItem key={ticket.id} ticket={ticket} />
-                </li>
               ))}
-            </ul>
-            <button onClick={this.handleClick}>ticket form for ticket</button>
+            </table>
           </div>
         );
     }

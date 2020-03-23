@@ -6,6 +6,7 @@ import './left_panel.css'
 
 const LeftPanel = ({ userId }) => (
     <div className="left-panel-container">
+        <h1 className="folders">Folders</h1>
         <Link to={`/tickets/owner/${userId}`}>Owner</Link>
         <Link to={`/tickets/subscriber/${userId}`}>Subscriber</Link>
         <Link to={`/tickets/creator/${userId}`}>Creator</Link>

@@ -1,0 +1,18 @@
+table {
+    border-collapse: collapse;
+    text-align: center;
+}
+
+tr {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+tr:hover {
+    background-color: blanchedalmond;
+    cursor: pointer;
+}
+
+div.starred:hover {
+    color: red;
+}

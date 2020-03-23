@@ -20,4 +20,4 @@ export const login = (userData) => {
         '/api/users/login', 
         userData
     );
-}
+};

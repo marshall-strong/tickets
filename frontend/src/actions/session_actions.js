@@ -64,15 +64,15 @@ export const login = user => dispatch => {
     .catch(err => {
         dispatch(receiveErrors(err.response.data));
     })
-}
+};
 
 export const loginDemoUser = () => dispatch => {
     return dispatch(login(demoUser))
-}
+};
 
 
 export const logout = () => dispatch => {
     localStorage.removeItem('jwtToken')
     sessionAPIUtil.setAuthToken(false)
     dispatch(logoutUser())
-}
+};

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class ActivityIndexItem extends React.Component {
   constructor(props) {
@@ -9,15 +10,21 @@ class ActivityIndexItem extends React.Component {
     return (
         <div className="update-activity">
           
-            <span className="update-text"
+            <Link to={`/users/${this.props.update.actor.id}`} 
                 >
-                {this.props.update.actor.firstName}
-            </span>
 
-            <span className="update-text"
-                >
-                {this.props.update.actor.lastName}
-            </span>
+                <span className="update-text"
+                    >
+                    {this.props.update.actor.firstName}
+                </span>
+
+                <span className="update-text"
+                    >
+                    {this.props.update.actor.lastName}
+                </span>
+
+            </Link>
+
 
             <span className=""
                 >

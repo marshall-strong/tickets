@@ -15,8 +15,11 @@ class Profile extends React.Component {
     }
 
     render() {
-        const {user, comments, tickets} = this.props;
-        debugger
+        const {user, comments, tickets, currentUser} = this.props;
+
+        if(!user) {
+            return null
+        }
 
         const userCommentInfo = comments.map(ticket => (
           <div className="user-comments-container">
@@ -46,7 +49,7 @@ class Profile extends React.Component {
                 on
             </span>
 
-            <Link to={`/comments/${ticket.id}`}
+            <Link to={`/ticket/${ticket._id}`}
                 >{ticket.title}
             </Link>
 
@@ -82,7 +85,7 @@ class Profile extends React.Component {
                     created the ticket:
                 </span>
 
-                 <Link to={`/tickets/${ticket.id}`}
+                 <Link to={`/tickets/${ticket._id}`}
                     >
                     {ticket.title}
                 </Link>
@@ -102,16 +105,11 @@ class Profile extends React.Component {
 
         return (
           <div>
+ 
             <div className="profile-header-container">
 
-                <h1 className="welcome-message"
-                >
-
-                    <span className="header-text"
-                        >
-                        Hello! 
-                    </span>
-
+                <h1 className="welcome-message">
+                       
                     <span className="header-text"
                         >
                         {user.firstName} 

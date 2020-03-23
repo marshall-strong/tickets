@@ -38,7 +38,7 @@ module.exports = function validateRegisterInput(data) {
 
     Organization.findOne({ handle: orgHandle })
     .then(orgData => {
-        debugger
+        // debugger
         if (orgData == null) {
             errors.handle = "Your company is not registered.";
         }

@@ -29,6 +29,22 @@ class TicketIndex extends React.Component {
         }
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.location.pathname !== prevProps.location.pathname) {
+          switch (this.props.location.pathname) {
+            case `/tickets/owner/${this.props.userId}`:
+              return this.props.fetchOwnerTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
+            case `/tickets/subscribed/${this.props.userId}`:
+              return this.props.fetchSubscribedTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
+            case `/tickets/creator/${this.props.userId}`:
+              return this.props.fetchCreatedTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
+            case `/tickets/starred/${this.props.userId}`:
+              return this.props.fetchStarredTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
+            default:
+              return null
+          }
+        }
+    }
 
     handleClick(e) {
         e.preventDefault()

@@ -21,11 +21,11 @@ seeder.connect(mongoDbUri, function () {
 
     // Load Mongoose models
     seeder.loadModels([
-        './backend/models/organization.js',
-        './backend/models/user.js',
-        // './backend/models/ticket.js',
-        // './backend/models/comment.js',
-        // './backend/models/tag.js'
+        './models/organization.js',
+        './models/user.js',
+        // './models/ticket.js',
+        // './models/comment.js',
+        // './models/tag.js'
     ]);
 
     // Clear specified collections

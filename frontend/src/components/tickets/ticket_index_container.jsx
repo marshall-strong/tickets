@@ -5,7 +5,6 @@ import { fetchOwnerTickets, fetchCreatedTickets, getTickets, fetchSubscribedTick
 
 const mstp = (state, ownProps) => ({
     userId: ownProps.match.params.userId,
-    ticketId: ownProps.match.params.ticketId
 })
 
 const mdtp = dispatch => ({

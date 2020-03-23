@@ -25,7 +25,11 @@ const userSchema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now
-    }
+    },
+    starred: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Ticket'
+    }]
 });
 
 User = mongoose.model('User', userSchema) //"users");

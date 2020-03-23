@@ -30,10 +30,6 @@ const ticketSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    starred: {
-        type: Boolean,
-        default: false
-    },
     title: {
         type: String,
         required: true

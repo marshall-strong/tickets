@@ -77,8 +77,8 @@ router.patch("/:ticketId", (req, res) => {
 
 router.get("/:folder/:userId", (req, res) => {
     if (req.params.folder === 'subscribed') {
-        
-        Ticket.find({ [req.params.folder]: { $elemMatch: { _id: req.params.userId } } })
+        debugger
+        Ticket.find({ [req.params.folder]: { $in: [req.params.userId] } })
         .populate('creator', ['firstName', 'lastName', '_id'])
         .populate('owner', ['firstName', 'lastName', '_id'])
         .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])

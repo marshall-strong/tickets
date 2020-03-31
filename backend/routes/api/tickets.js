@@ -59,6 +59,7 @@ router.get("/:ticketId", (req, res) => {
 })
 
 router.patch("/:ticketId", (req, res) => {
+    debugger
     Ticket.findByIdAndUpdate(
         req.params.ticketId,
         req.body,
@@ -71,6 +72,7 @@ router.patch("/:ticketId", (req, res) => {
     .populate('updatedBy', ['firstName', 'lastName', '_id'])
     .then(ticket => res.json(ticket))
     .catch(err => {
+        debugger
         return res.status(422).json({ badrequest: err })
     })
 })

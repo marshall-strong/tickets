@@ -1,6 +1,57 @@
+.outer-container {
+    background-color: rgb(209, 241, 222);
+}
+
+.form-container, form {
+    display: flex;
+    flex-direction: column;
+}
+
 input, textarea {
     border-radius: 5px;
     resize: none;
+    width: 400px;
+}
+
+input:focus, textarea:focus {
+    border: 1px solid rgb(184, 183, 183);
+}
+
+.title-star {
+    display: flex;
+    width: 400px;
+}
+.form .title {
+    font-size: 24px;
+}
+
+
+.selectors {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    height: 40px;
+}
+
+select {
+    background-color: lightgrey;
+}
+
+.owner {
+    width: 150px;
+}
+
+.schedule {
+    font-size: 10px;
+    font-weight: 600;
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.schedule input {
+    width: 170px;
+    margin-right: 10px;
 }
 
 .show{
@@ -14,15 +65,19 @@ input, textarea {
 }
 
 
-input:focus, textarea:focus {
-    border: 1px solid rgb(184, 183, 183);
-}
 
 
 .edited {
     border: 1px solid yellow;
+    background-color: rgb(248, 248, 218);
 }
 
 input.edited:focus, textarea.edited:focus {
-    border: 1px solid yellow;
+    border: 1px solid rgb(251, 251, 212);
+}
+
+.activity-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

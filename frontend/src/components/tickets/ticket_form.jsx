@@ -37,8 +37,6 @@ class TicketForm extends React.Component {
             })
             .then(() => this.view());
         }
-
-        this.props.fetchTicketComments(this.props.match.params.ticketId)
     }
 
     componentDidUpdate(prevProps) {
@@ -87,6 +85,7 @@ class TicketForm extends React.Component {
             this.props.createTicket(this.state)
             .then(res => {
                 if (res.errors) return null 
+                this.setState(res.ticket)
                 this.props.history.push(`${res.ticket._id}`)
             })
             .catch(err => console.log(err))
@@ -115,13 +114,15 @@ class TicketForm extends React.Component {
             if (!this.props.ticket) return null;
         }
 
+        let starredIds = this.props.currentUser.starred.map(ticket => ticket._id)
+
         this.edited = 'not-edited';
 
         let type = this.props.ticketId === 'new' ? 'new' : 'show';
 
         const statusSelect = (
             <select 
-                className={type}
+                className={`${type} status`}
                 defaultValue={this.state.status}
                 onChange={this.update('status')}
             >
@@ -160,7 +161,7 @@ class TicketForm extends React.Component {
 
         const prioritySelect = (
             <select 
-                className={type}
+                className={`${type} priority`}
                 defaultValue={this.state.priority} 
                 onChange={this.update('priority')}
             >
@@ -191,26 +192,71 @@ class TicketForm extends React.Component {
             </select>
         )
 
+        
+            let star = this.props.ticket ? (
+            <div
+                className="star"
+                onClick={(e) => {
+                    e.stopPropagation();
+                    let i = starredIds.indexOf(this.props.ticket._id);
+                    if (i === -1) {
+                        this.props.currentUser.starred.push(this.props.ticket._id);
+                    } else {
+                        this.props.currentUser.starred.splice(i, 1);
+                    }
+                    this.props.updateUser(this.props.currentUser);
+                }}
+            >
+                {starredIds.includes(this.props.ticket._id) ? "★" : "☆"}
+            </div> 
+            ) : null
+        
+
         return (
-          <div>
+          <div className="outer-container">
             <div className="form-container">
               <form className="form">
-                {/* <div className="starred">{this.props.currentUser.starred.includes(this.props.ticketId) ? '★' : '☆' }</div> */}
-                <input
-                  className={type}
-                  type="text"
-                  placeholder="title"
-                  value={this.state.title}
-                  onChange={this.update("title")}
-                />
+                <div className="title-star">
+                    <input
+                        className={`${type} title`}
+                        type="text"
+                        placeholder="title"
+                        value={this.state.title}
+                        onChange={this.update("title")}
+                    />
 
-                <input
-                  className={type}
-                  type="text"
-                  placeholder="owner"
-                  value={this.state.owner}
-                  onChange={this.update("owner")}
-                />
+                    {this.props.ticket ? star : null}
+                </div>
+
+                <div className="selectors">
+                    {statusSelect}
+
+                    <input
+                        className={`${type} owner`}
+                        type="text"
+                        placeholder="owner"
+                        value={this.state.owner}
+                        onChange={this.update("owner")}
+                    />
+
+                    {prioritySelect}
+                </div>
+                <div className="schedule">
+                    Start Date
+                    <input
+                        className={type}
+                        type="date"
+                        value={this.state.startDate}
+                        onChange={this.update("startDate")}
+                    />
+                    End Date
+                    <input
+                        className={type}
+                        type="date"
+                        value={this.state.endDate}
+                        onChange={this.update("endDate")}
+                    />
+                </div>
 
                 <textarea
                   className={type}
@@ -221,9 +267,6 @@ class TicketForm extends React.Component {
                   onChange={this.update("body")}
                 ></textarea>
 
-                {statusSelect}
-
-                {prioritySelect}
 
                 <input
                   className={type}
@@ -240,19 +283,6 @@ class TicketForm extends React.Component {
                   onChange={this.update("blocks")}
                 />
 
-                <input
-                  className={type}
-                  type="date"
-                  value={this.state.startDate}
-                  onChange={this.update("startDate")}
-                />
-
-                <input
-                  className={type}
-                  type="date"
-                  value={this.state.endDate}
-                  onChange={this.update("endDate")}
-                />
 
                 <button 
                     onClick={this.handleSubmit} 
@@ -265,9 +295,9 @@ class TicketForm extends React.Component {
               </form>
             </div>
             {this.props.ticketId !== "new" ? (
-            <div>
-                <TicketActivityContainer currentUser={this.props.currentUser}/>
+            <div className="activity-container">
                 <CommentFormContainer />
+                <TicketActivityContainer currentUser={this.props.currentUser}/>
             </div>
             ) : null}
           </div>

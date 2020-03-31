@@ -21,7 +21,7 @@ class TicketIndex extends React.Component {
             case `/tickets/creator/${this.props.userId}`:
                 return this.props.fetchCreatedTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
             case `/tickets/starred/${this.props.userId}`: 
-                return this.props.fetchStarredTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
+                 this.setState({ tickets: this.props.currentUser.starred })
             default:
                 return null
         }
@@ -37,7 +37,7 @@ class TicketIndex extends React.Component {
             case `/tickets/creator/${this.props.userId}`:
               return this.props.fetchCreatedTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
             case `/tickets/starred/${this.props.userId}`:
-              return this.props.fetchStarredTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
+              return this.setState({tickets: prevProps.currentUser.starred})
             default:
               return null
           }
@@ -50,7 +50,6 @@ class TicketIndex extends React.Component {
     }
 
     render() {
-        
       if (!this.state.tickets) return null
       const { tickets } = this.state
       const { currentUser, updateUser } = this.props

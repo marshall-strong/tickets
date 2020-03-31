@@ -1,5 +1,5 @@
 import React from 'react'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Redirect} from 'react-router-dom'
 
 class CommentForm extends React.Component {
     constructor(props) {
@@ -20,11 +20,15 @@ class CommentForm extends React.Component {
         this.props.createComment(this.state)
     }
 
+
+    
     update(field) {
-        return e => {
+       return e => {
             this.setState({ [field]: e.currentTarget.value})
-        }
+        } 
+        
     }
+
 
     render() {
         return (

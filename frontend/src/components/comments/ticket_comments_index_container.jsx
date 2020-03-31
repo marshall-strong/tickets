@@ -1,11 +1,15 @@
 import { connect } from 'react-redux'
 import { deleteComment, fetchTicketComments } from '../../actions/comment_actions'
 import CommentIndex from './ticket_comment_index'
+import {withRouter} from "react-router-dom"
 
-const mSTP = (state, ownProps) => ({
+const mSTP = (state, ownProps) => {
+    return {
     ticket: state.entities.tickets[ownProps.match.params.ticketId],
-    comments: Object.values(state.entities.comments)
-})
+    comments: Object.values(state.entities.comments),
+    users: Object.values(state.entities.users)
+    }
+}
 
 const mDTP = dispatch => ({
     deleteComment: id => dispatch(deleteComment(id)),
@@ -13,4 +17,4 @@ const mDTP = dispatch => ({
     updateComment: comment => dispatch(updateComment(comment))
 })
 
-export default connect(mSTP, mDTP)(CommentIndex)
+export default withRouter(connect(mSTP, mDTP)(CommentIndex))

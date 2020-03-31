@@ -37,6 +37,8 @@ class TicketForm extends React.Component {
             })
             .then(() => this.view());
         }
+
+        this.props.fetchTicketComments(this.props.match.params.ticketId)
     }
 
     componentDidUpdate(prevProps) {
@@ -109,8 +111,7 @@ class TicketForm extends React.Component {
     }
 
     render(){
-        
-        if (this.props.ticketId !== 'new') {
+            if (this.props.ticketId !== 'new') {
             if (!this.props.ticket) return null;
         }
 
@@ -265,7 +266,7 @@ class TicketForm extends React.Component {
             </div>
             {this.props.ticketId !== "new" ? (
             <div>
-                <TicketActivityContainer />
+                <TicketActivityContainer currentUser={this.props.currentUser}/>
                 <CommentFormContainer />
             </div>
             ) : null}

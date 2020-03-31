@@ -1,6 +1,7 @@
 import React from "react";
 import ActivityIndexItem from "./ticket_activity_index_item";
 import CommentIndexItem from "../comments/comment_index_item";
+import { receiveCurrentUser } from "../../actions/session_actions";
 
 class TicketActivityIndex extends React.Component {
     constructor(props) {
@@ -17,14 +18,15 @@ class TicketActivityIndex extends React.Component {
         if(!this.props.comments || !this.props.ticket) {
             return null
         } 
-
         let comments = this.props.comments
         let ticket = this.props.ticket
 
         let commentsArr = comments.map(comment => ({
-            author: comment.author,
+            firstName: this.props.currentUser.firstName,
+            lastName: this.props.currentUser.lastName,
             time: comment.createdAt,
-            body: comment.body
+            body: comment.body,
+            ticketId: this.props.ticketId
         }));
 
         let ticketsArr = ticket.updatedBy.map((actor, i) => ({

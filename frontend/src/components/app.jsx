@@ -11,6 +11,7 @@ import TicketFormContainer from './tickets/ticket_form_container';
 import TicketIndexContainer from './tickets/ticket_index_container'
 import LeftPanelContainer from './left_panel/left_panel_container';
 import NotFound from './errors/not_found';
+import CommentFormContainer from "./comments/comment_form_container"
 
 import './reset.css'
 import './app.css'

@@ -5,10 +5,15 @@ export const DELETE_COMMENT = "DELETE_COMMENT";
 export const RECEIVE_COMMENT_ERRORS = "RECEIVE_COMMENT_ERRORS";
 export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS";
 
-const receiveComments = comments => ({
-    type: RECEIVE_COMMENTS,
-    comments: comments.data
-});
+const receiveComments = comments => {
+    let payload = {}
+    comments.data.forEach(comment => payload[comment._id] = comment)
+    return({
+        type: RECEIVE_COMMENTS,
+        payload
+    });
+} 
+
 
 const receiveNewComment = (comment) => ({
     type: RECEIVE_NEW_COMMENT, 

@@ -6,10 +6,7 @@ const commentReducer = (state = {}, action) => {
     let nextState = Object.assign({}, state)
     switch(action.type) {
         case RECEIVE_COMMENTS: 
-            for (let i = 0; i < action.comments.length; i++) {
-                nextState[action.comments[i]._id] = action.comments[i]
-            }
-            return nextState;
+            return action.payload
         case RECEIVE_NEW_COMMENT: 
             nextState[action.comment._id] = action.comment;
             return nextState

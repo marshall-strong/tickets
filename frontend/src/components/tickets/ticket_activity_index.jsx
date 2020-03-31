@@ -1,35 +1,32 @@
 import React from "react";
 import ActivityIndexItem from "./ticket_activity_index_item";
 import CommentIndexItem from "../comments/comment_index_item";
+import { receiveCurrentUser } from "../../actions/session_actions";
 
 class TicketActivityIndex extends React.Component {
     constructor(props) {
         super(props)
-
-        this.state = {
-            comments: undefined
-        }
     }
 
     componentDidMount() {
         this.props.getTicket(this.props.ticketId)
 
         this.props.fetchTicketComments(this.props.ticketId)
-        .then((res) => this.setState({comments: res.comments}))
     }
 
     render() {
-        if(!this.state.comments || !this.props.ticket) {
+        if(!this.props.comments || !this.props.ticket) {
             return null
         } 
-
-        let comments = this.state.comments
+        let comments = this.props.comments
         let ticket = this.props.ticket
 
         let commentsArr = comments.map(comment => ({
-            author: comment.author,
+            firstName: this.props.currentUser.firstName,
+            lastName: this.props.currentUser.lastName,
             time: comment.createdAt,
-            body: comment.body
+            body: comment.body,
+            ticketId: this.props.ticketId
         }));
 
         let ticketsArr = ticket.updatedBy.map((actor, i) => ({

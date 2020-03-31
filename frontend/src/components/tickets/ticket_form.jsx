@@ -39,11 +39,34 @@ class TicketForm extends React.Component {
         }
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.ticketId !== prevProps.ticketId
+            && this.props.ticketId === 'new') {
+            this.setState({
+                updatedAt: [],
+                tags: [],
+                subscribed: [this.props.currentUser._id],
+                owner: this.props.currentUser._id,
+                title: '',
+                body: '',
+                lastUpdateSeenBy: [],
+                updatedBy: [],
+                status: 'No Progress',
+                priority: 'Low',
+                dependsOn: [],
+                blocks: [],
+                startDate: undefined,
+                endDate: undefined,
+                creator: this.props.currentUser._id
+            });
+        }
+    }
+
     view() {
-        let viewerIds = this.props.ticket.lastUpdateSeenBy.map(viewer => viewer._id)
+        let viewerIds = this.props.ticket.lastUpdateSeenBy.map(viewer => viewer._id);
         if (!viewerIds.includes(this.props.currentUser._id)) {
-            this.props.ticket.lastUpdateSeenBy.push(this.props.currentUser._id)
-            this.props.updateTicket(this.props.ticket)
+            this.props.ticket.lastUpdateSeenBy.push(this.props.currentUser._id);
+            this.props.updateTicket(this.props.ticket);
         }
     }
 
@@ -62,6 +85,7 @@ class TicketForm extends React.Component {
             this.props.createTicket(this.state)
             .then(res => {
                 if (res.errors) return null 
+                this.setState(res.ticket)
                 this.props.history.push(`${res.ticket._id}`)
             })
             .catch(err => console.log(err))
@@ -86,8 +110,7 @@ class TicketForm extends React.Component {
     }
 
     render(){
-        
-        if (this.props.ticketId !== 'new') {
+            if (this.props.ticketId !== 'new') {
             if (!this.props.ticket) return null;
         }
 
@@ -166,7 +189,6 @@ class TicketForm extends React.Component {
 
             </select>
         )
-
         return (
           <div>
             <div className="form-container">
@@ -242,7 +264,7 @@ class TicketForm extends React.Component {
             </div>
             {this.props.ticketId !== "new" ? (
             <div>
-                <TicketActivityContainer />
+                <TicketActivityContainer currentUser={this.props.currentUser}/>
                 <CommentFormContainer />
             </div>
             ) : null}

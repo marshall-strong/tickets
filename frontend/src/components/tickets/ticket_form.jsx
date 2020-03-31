@@ -41,11 +41,36 @@ class TicketForm extends React.Component {
         this.props.fetchTicketComments(this.props.match.params.ticketId)
     }
 
+    componentDidUpdate(prevProps) {
+        debugger
+        if (this.props.ticketId !== prevProps.ticketId
+            && this.props.ticketId === 'new') {
+            debugger
+            this.setState({
+                updatedAt: [],
+                tags: [],
+                subscribed: [this.props.currentUser._id],
+                owner: this.props.currentUser._id,
+                title: '',
+                body: '',
+                lastUpdateSeenBy: [],
+                updatedBy: [],
+                status: 'No Progress',
+                priority: 'Low',
+                dependsOn: [],
+                blocks: [],
+                startDate: undefined,
+                endDate: undefined,
+                creator: this.props.currentUser._id
+            });
+        }
+    }
+
     view() {
-        let viewerIds = this.props.ticket.lastUpdateSeenBy.map(viewer => viewer._id)
+        let viewerIds = this.props.ticket.lastUpdateSeenBy.map(viewer => viewer._id);
         if (!viewerIds.includes(this.props.currentUser._id)) {
-            this.props.ticket.lastUpdateSeenBy.push(this.props.currentUser._id)
-            this.props.updateTicket(this.props.ticket)
+            this.props.ticket.lastUpdateSeenBy.push(this.props.currentUser._id);
+            this.props.updateTicket(this.props.ticket);
         }
     }
 

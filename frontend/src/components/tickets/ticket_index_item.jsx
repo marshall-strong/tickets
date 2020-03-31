@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 
-const TicketIndexItem = ({ ticket, history }) => {
+const TicketIndexItem = ({ ticket, history, currentUser, starredIds, updateUser }) => {
     ticket.owner = ticket.owner ? ticket.owner : ""
     return (
         <tr onClick={() => history.push(`/tickets/${ticket._id}`)} className="ticket-index-item">
@@ -14,7 +14,23 @@ const TicketIndexItem = ({ ticket, history }) => {
             <td className="priority">{ticket.priority ? ticket.priority : '--'}</td>
             <td className="start-date">{ticket.startDate ? ticket.startDate : '--'}</td>
             <td className="end-date">{ticket.endDate ? ticket.endDate : '--'}</td>
-            {/* <td className="starred">  <div className="starred">{ticket.starred ?"★" : "☆"}</div> </td> */}
+            <td className="starred">  
+                <div 
+                    className="star"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        let i = starredIds.indexOf(ticket._id);
+                        if (i === -1) {
+                            currentUser.starred.push(ticket._id);
+                        } else {
+                            currentUser.starred.splice(i, 1);
+                        }
+                        updateUser(currentUser);
+                    }} 
+                >
+                    { starredIds.includes(ticket._id) ? "★" : "☆" }
+                </div> 
+            </td>
         </tr>
     )
 }

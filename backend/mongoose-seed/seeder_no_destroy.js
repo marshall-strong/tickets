@@ -35,4 +35,3 @@ seeder.connect(mongoDbUri, function () {
     });
 
 });
-

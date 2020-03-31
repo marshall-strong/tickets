@@ -6,17 +6,12 @@ import { receiveCurrentUser } from "../../actions/session_actions";
 class TicketActivityIndex extends React.Component {
     constructor(props) {
         super(props)
-
-        // this.state = {
-        //     comments: undefined
-        // }
     }
 
     componentDidMount() {
         this.props.getTicket(this.props.ticketId)
 
         this.props.fetchTicketComments(this.props.ticketId)
-        // .then((res) => this.setState({comments: res.comments}))
     }
 
     render() {

@@ -1,12 +1,12 @@
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcryptjs')
-const passport = require('passport')
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
 const express = require("express");
 const router = express.Router();
-const keys = require('../../../config/keys')
-const validateRegisterInput = require("../../validation/register")
-const validateLoginInput = require("../../validation/login")
-const User = require('../../models/user')
+const keys = require('../../../config/keys');
+const validateRegisterInput = require("../../validation/register");
+const validateLoginInput = require("../../validation/login");
+const User = require('../../models/user');
 
 router.post("/register", (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
@@ -103,12 +103,27 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
         _id: req.user._id,
         email: req.user.email
     });
-})
+});
 
-router.get('/:userId', (req, res) => {});
+router.get('/:userId', (req, res) => {
+    User.findById(req.params.userId)
+    .populate('starred')
+    .then(user => res.json(user))
+    .catch(err => err.status(404).json(err));
+});
+
+router.patch('/:userId', (req, res) => {
+    User.findByIdAndUpdate(
+        req.params.userId,
+        req.body,
+        { new: true }
+    )
+    .populate('starred')
+    .then(user => res.json(user))
+    .catch(err => err.status(422).json(err));
+});
 
 router.get('/:orgHandle', (req, res) => {
-    //debugger
     User.find(
         { organization: req.params.orgHandle },
         'firstName lastName email organization',
@@ -116,7 +131,8 @@ router.get('/:orgHandle', (req, res) => {
             if (err) throw err;
             return res.json(users);
         }
-    )
+    );
 });
+
 
 module.exports = router;

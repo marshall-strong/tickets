@@ -120,7 +120,7 @@ class TicketForm extends React.Component {
 
         const statusSelect = (
             <select 
-                className={type}
+                className={`${type} status`}
                 defaultValue={this.state.status}
                 onChange={this.update('status')}
             >
@@ -159,7 +159,7 @@ class TicketForm extends React.Component {
 
         const prioritySelect = (
             <select 
-                className={type}
+                className={`${type} priority`}
                 defaultValue={this.state.priority} 
                 onChange={this.update('priority')}
             >
@@ -195,20 +195,41 @@ class TicketForm extends React.Component {
               <form className="form">
                 {/* <div className="starred">{this.props.currentUser.starred.includes(this.props.ticketId) ? '★' : '☆' }</div> */}
                 <input
-                  className={type}
+                  className={`${type} title`}
                   type="text"
                   placeholder="title"
                   value={this.state.title}
                   onChange={this.update("title")}
                 />
+                <div className="selectors">
+                    {statusSelect}
 
-                <input
-                  className={type}
-                  type="text"
-                  placeholder="owner"
-                  value={this.state.owner}
-                  onChange={this.update("owner")}
-                />
+                    <input
+                        className={`${type} owner`}
+                        type="text"
+                        placeholder="owner"
+                        value={this.state.owner}
+                        onChange={this.update("owner")}
+                    />
+
+                    {prioritySelect}
+                </div>
+                <div className="schedule">
+                    Start Date
+                    <input
+                        className={type}
+                        type="date"
+                        value={this.state.startDate}
+                        onChange={this.update("startDate")}
+                    />
+                    End Date
+                    <input
+                        className={type}
+                        type="date"
+                        value={this.state.endDate}
+                        onChange={this.update("endDate")}
+                    />
+                </div>
 
                 <textarea
                   className={type}
@@ -219,9 +240,6 @@ class TicketForm extends React.Component {
                   onChange={this.update("body")}
                 ></textarea>
 
-                {statusSelect}
-
-                {prioritySelect}
 
                 <input
                   className={type}
@@ -238,19 +256,6 @@ class TicketForm extends React.Component {
                   onChange={this.update("blocks")}
                 />
 
-                <input
-                  className={type}
-                  type="date"
-                  value={this.state.startDate}
-                  onChange={this.update("startDate")}
-                />
-
-                <input
-                  className={type}
-                  type="date"
-                  value={this.state.endDate}
-                  onChange={this.update("endDate")}
-                />
 
                 <button 
                     onClick={this.handleSubmit} 
@@ -263,9 +268,9 @@ class TicketForm extends React.Component {
               </form>
             </div>
             {this.props.ticketId !== "new" ? (
-            <div>
-                <TicketActivityContainer currentUser={this.props.currentUser}/>
+            <div className="activity-container">
                 <CommentFormContainer />
+                <TicketActivityContainer currentUser={this.props.currentUser}/>
             </div>
             ) : null}
           </div>

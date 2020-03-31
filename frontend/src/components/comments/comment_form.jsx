@@ -18,8 +18,6 @@ class CommentForm extends React.Component {
 
     handleSubmit() {
         this.props.createComment(this.state)
-        // this.props.history.push(`/tickets/${this.props.ticketId}`)
-            // <Redirect to={`/tickets/${this.props.ticketId}`}/>
     }
 
 

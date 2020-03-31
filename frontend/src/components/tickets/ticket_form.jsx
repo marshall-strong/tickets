@@ -38,7 +38,7 @@ class TicketForm extends React.Component {
             .then(() => this.view());
         }
 
-        this.props.fetchTicketComments(this.props.match.params.ticketId)
+        // this.props.fetchTicketComments(this.props.match.params.ticketId)
     }
 
     componentDidUpdate(prevProps) {
@@ -190,7 +190,7 @@ class TicketForm extends React.Component {
 
             </select>
         )
-
+            debugger
         return (
           <div>
             <div className="form-container">

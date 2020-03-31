@@ -114,6 +114,8 @@ class TicketForm extends React.Component {
             if (!this.props.ticket) return null;
         }
 
+        let starredIds = this.props.currentUser.starred.map(ticket => ticket._id)
+
         this.edited = 'not-edited';
 
         let type = this.props.ticketId === 'new' ? 'new' : 'show';
@@ -189,18 +191,43 @@ class TicketForm extends React.Component {
 
             </select>
         )
+
+        
+            let star = this.props.ticket ? (
+            <div
+                className="star"
+                onClick={(e) => {
+                    e.stopPropagation();
+                    let i = starredIds.indexOf(this.props.ticket._id);
+                    if (i === -1) {
+                        this.props.currentUser.starred.push(this.props.ticket._id);
+                    } else {
+                        this.props.currentUser.starred.splice(i, 1);
+                    }
+                    this.props.updateUser(this.props.currentUser);
+                }}
+            >
+                {starredIds.includes(this.props.ticket._id) ? "★" : "☆"}
+            </div> 
+            ) : null
+        
+
         return (
-          <div>
+          <div className="outer-container">
             <div className="form-container">
               <form className="form">
-                {/* <div className="starred">{this.props.currentUser.starred.includes(this.props.ticketId) ? '★' : '☆' }</div> */}
-                <input
-                  className={`${type} title`}
-                  type="text"
-                  placeholder="title"
-                  value={this.state.title}
-                  onChange={this.update("title")}
-                />
+                <div className="title-star">
+                    <input
+                        className={`${type} title`}
+                        type="text"
+                        placeholder="title"
+                        value={this.state.title}
+                        onChange={this.update("title")}
+                    />
+
+                    {this.props.ticket ? star : null}
+                </div>
+
                 <div className="selectors">
                     {statusSelect}
 

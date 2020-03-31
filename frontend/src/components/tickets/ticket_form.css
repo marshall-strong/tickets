@@ -1,3 +1,7 @@
+.outer-container {
+    background-color: rgb(209, 241, 222);
+}
+
 .form-container, form {
     display: flex;
     flex-direction: column;
@@ -13,8 +17,12 @@ input:focus, textarea:focus {
     border: 1px solid rgb(184, 183, 183);
 }
 
-.title {
-    font-size: 20px;
+.title-star {
+    display: flex;
+    width: 400px;
+}
+.form .title {
+    font-size: 24px;
 }
 
 
@@ -25,12 +33,17 @@ input:focus, textarea:focus {
     height: 40px;
 }
 
+select {
+    background-color: lightgrey;
+}
+
 .owner {
-    width: 100px;
+    width: 150px;
 }
 
 .schedule {
     font-size: 10px;
+    font-weight: 600;
     width: 400px;
     display: flex;
     justify-content: space-between;

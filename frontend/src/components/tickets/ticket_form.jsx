@@ -42,10 +42,8 @@ class TicketForm extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        debugger
         if (this.props.ticketId !== prevProps.ticketId
             && this.props.ticketId === 'new') {
-            debugger
             this.setState({
                 updatedAt: [],
                 tags: [],

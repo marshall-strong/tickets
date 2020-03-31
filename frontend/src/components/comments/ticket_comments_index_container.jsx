@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { deleteComment, fetchTicketComments } from '../../actions/comment_actions'
-import CommentIndex from './ticket_comment_index'
+import CommentIndexItem from './ticket_comment_index'
 import {withRouter} from "react-router-dom"
 
 const mSTP = (state, ownProps) => {
@@ -11,10 +11,11 @@ const mSTP = (state, ownProps) => {
     }
 }
 
-const mDTP = dispatch => ({
-    deleteComment: id => dispatch(deleteComment(id)),
-    fetchTicketComments: id => dispatch(fetchTicketComments(id)),
+const mDTP = dispatch => {
+    return{
+    // deleteComment: id => dispatch(deleteComment(id)),
+    // fetchTicketComments: id => dispatch(fetchTicketComments(id)),
     updateComment: comment => dispatch(updateComment(comment))
-})
-
-export default withRouter(connect(mSTP, mDTP)(CommentIndex))
+}
+}
+export default withRouter(connect(mSTP, mDTP))(CommentIndexItem)

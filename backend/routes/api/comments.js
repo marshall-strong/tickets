@@ -76,21 +76,42 @@ router.patch("/:id",
         }
 )
 
-router.delete("/:id", 
-    passport.authenticate('jwt', { session: false }),
+// router.delete("/:id", 
+//     // passport.authenticate('jwt', { session: false }),
+//     (req, res) => {
+//         Comment
+//         .findById(req.params.id) 
+//         .then(comment => {
+//             if (comment.user.equals(req.user._id)) {
+//                 comment.remove()
+//             } else {
+//                 res
+//                 .status(403)
+//                 .json({permissionconflict: 
+//                 "You do not have permission to delete"})
+//             }
+//         })  
+//     }
+// )
+
+router.delete("/:id",
+
+    // passport.authenticate('jwt', { session: false }),
     (req, res) => {
         Comment
-        .findById(req.params.id) 
-        .then(comment => {
-            if (comment.user.equals(req.user._id)) {
+            .findById(req.params.id)
+            .then(comment => {
+                // if (comment.user.equals(req.user._id)) {
                 comment.remove()
-            } else {
-                res
-                .status(403)
-                .json({permissionconflict: 
-                "You do not have permission to delete"})
-            }
-        })  
+                return res.json("success")
+                // } else {
+                //     res
+                //     .status(403)
+                //     .json({permissionconflict: 
+                //     "You do not have permission to delete"})
+                // }
+            })
+            .catch((errors) => {console.log(errors)})
     }
 )
  

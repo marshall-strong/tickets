@@ -6,11 +6,11 @@ import { receiveCurrentUser } from "../../actions/session_actions";
 class TicketActivityIndex extends React.Component {
     constructor(props) {
         super(props)
+
     }
 
     componentDidMount() {
         this.props.getTicket(this.props.ticketId)
-
         this.props.fetchTicketComments(this.props.ticketId)
     }
 
@@ -20,8 +20,8 @@ class TicketActivityIndex extends React.Component {
         } 
         let comments = this.props.comments
         let ticket = this.props.ticket
-
         let commentsArr = comments.map(comment => ({
+            commentId: comment._id,
             firstName: this.props.currentUser.firstName,
             lastName: this.props.currentUser.lastName,
             time: comment.createdAt,
@@ -41,15 +41,19 @@ class TicketActivityIndex extends React.Component {
 
         let feedList = sortedFeed.map((feedItem, i) => {
             return (
-            <ul>
-                {feedItem.body ? 
-                <CommentIndexItem key={i + new Date().getTime()} comment={feedItem} />
-                : 
-                <ActivityIndexItem key={i + new Date().getTime()} update={feedItem} />
-                }
-            </ul>
+                <div>
+                    <ul>
+                        {feedItem.body ? 
+                        <CommentIndexItem key={i + new Date().getTime()} comment={feedItem} deleteComment={this.props.deleteComment} fetchTicketComments={this.props.fetchTicketComments} ticketId={this.props.ticketId} />
+                        : 
+                        <ActivityIndexItem key={i + new Date().getTime()} update={feedItem} />
+                        }
+                    </ul>
+                </div>
             );
         });
+
+            
 
         return <div>{feedList}</div>;
     }

@@ -17,8 +17,6 @@ const mdp = dispatch => ({
     getTicket: id => dispatch(getTicket(id)),
     updateTicket: ticket => dispatch(updateTicket(ticket)), 
     fetchTicketComments: id => dispatch(fetchTicketComments(id))
-
-
 });
 
 const TicketFormContainer = withRouter(connect(msp, mdp)(TicketForm));

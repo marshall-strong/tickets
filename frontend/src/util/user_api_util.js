@@ -11,3 +11,10 @@ export const fetchOrgUsers = orgHandle => {
         `/api/users/${orgHandle}`
     )
 };
+
+export const updateUser = user => {
+    return axios.patch(
+        `/api/users/${user._id}`,
+        user
+    )
+};

@@ -1,12 +1,12 @@
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcryptjs')
-const passport = require('passport')
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
 const express = require("express");
 const router = express.Router();
-const keys = require('../../../config/keys')
-const validateRegisterInput = require("../../validation/register")
-const validateLoginInput = require("../../validation/login")
-const User = require('../../models/user')
+const keys = require('../../../config/keys');
+const validateRegisterInput = require("../../validation/register");
+const validateLoginInput = require("../../validation/login");
+const User = require('../../models/user');
 
 router.post("/register", (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
@@ -20,12 +20,12 @@ router.post("/register", (req, res) => {
             errors.email = "User already exists";
             return res.status(400).json(errors);
         } else {
-            const orgName = req.body.email.slice(req.body.email.search("@"));
+            const orgHandle = req.body.email.slice(req.body.email.search("@"));
             const newUser = new User({
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 email: req.body.email,
-                organization: orgName,
+                orgHandle: orgHandle,
                 password: req.body.password
             });
 
@@ -39,7 +39,7 @@ router.post("/register", (req, res) => {
                             _id: user._id,
                             firstName: user.firstName,
                             lastName: user.lastName,
-                            organization: user.organization,
+                            orgHandle: user.orgHandle,
                             starred: user.starred
                         };
 
@@ -103,20 +103,36 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
         _id: req.user._id,
         email: req.user.email
     });
-})
+});
 
-router.get('/:userId', (req, res) => {});
+router.get('/:userId', (req, res) => {
+    User.findById(req.params.userId)
+    .populate('starred')
+    .then(user => res.json(user))
+    .catch(err => err.status(404).json(err));
+});
+
+router.patch('/:userId', (req, res) => {
+    User.findByIdAndUpdate(
+        req.params.userId,
+        req.body,
+        { new: true }
+    )
+    .populate('starred')
+    .then(user => res.json(user))
+    .catch(err => err.status(422).json(err));
+});
 
 router.get('/:orgHandle', (req, res) => {
-    //debugger
     User.find(
-        { organization: req.params.orgHandle },
-        'firstName lastName email organization',
+        { orgHandle: req.params.orgHandle },
+        'firstName lastName email orgHandle',
         (err, users) => {
             if (err) throw err;
             return res.json(users);
         }
-    )
+    );
 });
+
 
 module.exports = router;

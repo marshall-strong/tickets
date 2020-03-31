@@ -51,28 +51,38 @@ class TicketIndex extends React.Component {
 
     render() {
         
-        if (!this.state.tickets) return null
-        const { tickets } = this.state
-        return (
-          <div>
-            <table className="ticket-index">
-              <th>Creator</th>
-              <th>Owner</th>
-              <th>Title</th>
-              <th>Created At</th>
-              <th>Updated At</th>
-              <th>Status</th>
-              <th>Priority</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-              <th>Starred</th>
+      if (!this.state.tickets) return null
+      const { tickets } = this.state
+      const { currentUser, updateUser } = this.props
+      let starredIds = currentUser.starred.map(ticket => ticket._id)
+      return (
+        <div>
 
-              {tickets.map(ticket => (
-                  <TicketIndexItem key={ticket._id} ticket={ticket} />
-              ))}
-            </table>
-          </div>
-        );
+          <table className="ticket-index">
+            <th>Creator</th>
+            <th>Owner</th>
+            <th>Title</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Starred</th>
+
+            {tickets.map(ticket => (
+              <TicketIndexItem 
+                key={ticket._id} 
+                ticket={ticket} 
+                currentUser={currentUser}
+                starredIds={starredIds}
+                updateUser={updateUser}
+              />
+            ))}
+          </table>
+          
+        </div>
+      );
     }
 }
 

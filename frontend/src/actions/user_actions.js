@@ -6,11 +6,11 @@ export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
 
 const receiveOneUser = user => ({
     type: RECEIVE_ONE_USER,
-    users: user.data
+    payload: user.data
 })
 const receiveOrgUsers = users => ({
     type: RECEIVE_ORG_USERS,
-    users: users.data
+    payload: users.data
 });
 
 const receiveUserErrors = errors => ({
@@ -29,3 +29,9 @@ export const getOrgUsers = orgHandle => dispatch => (
     .then(users => dispatch(receiveOrgUsers(users)))
     .catch(errors => dispatch(receiveUserErrors(errors)))
 );
+
+export const updateUser = user => dispatch => (
+    UserAPIUtil.updateUser(user)
+    .then(user => dispatch(receiveOneUser(user)))
+    .catch(errors => dispatch(receiveUserErrors(errors)))
+)

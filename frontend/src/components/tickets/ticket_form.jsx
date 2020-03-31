@@ -37,8 +37,6 @@ class TicketForm extends React.Component {
             })
             .then(() => this.view());
         }
-
-        // this.props.fetchTicketComments(this.props.match.params.ticketId)
     }
 
     componentDidUpdate(prevProps) {
@@ -87,6 +85,7 @@ class TicketForm extends React.Component {
             this.props.createTicket(this.state)
             .then(res => {
                 if (res.errors) return null 
+                this.setState(res.ticket)
                 this.props.history.push(`${res.ticket._id}`)
             })
             .catch(err => console.log(err))
@@ -190,7 +189,6 @@ class TicketForm extends React.Component {
 
             </select>
         )
-            debugger
         return (
           <div>
             <div className="form-container">

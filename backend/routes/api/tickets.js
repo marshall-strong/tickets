@@ -88,7 +88,8 @@ router.get("/:folder/:userId", (req, res) => {
             .status(404)
             .json({ noticketsfound: "No tickets found from that user" })
         );
-    } else {
+    } 
+    else {
         Ticket.find({ [req.params.folder]: req.params.userId })
         .populate('creator', ['firstName', 'lastName', '_id'])
         .populate('owner', ['firstName', 'lastName', '_id'])

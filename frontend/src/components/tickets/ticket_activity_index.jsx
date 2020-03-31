@@ -5,25 +5,20 @@ import CommentIndexItem from "../comments/comment_index_item";
 class TicketActivityIndex extends React.Component {
     constructor(props) {
         super(props)
-
-        this.state = {
-            comments: undefined
-        }
     }
 
     componentDidMount() {
         this.props.getTicket(this.props.ticketId)
 
         this.props.fetchTicketComments(this.props.ticketId)
-        .then((res) => this.setState({comments: res.comments}))
     }
 
     render() {
-        if(!this.state.comments || !this.props.ticket) {
+        if(!this.props.comments || !this.props.ticket) {
             return null
         } 
 
-        let comments = this.state.comments
+        let comments = this.props.comments
         let ticket = this.props.ticket
 
         let commentsArr = comments.map(comment => ({

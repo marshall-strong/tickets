@@ -95,7 +95,7 @@ router.get("/:folder/:userId", (req, res) => {
             starredIds = Array.from(user.starred)
             debugger
         })
-        Ticket.find({ _id: { $in: [starredIds] } })
+        Ticket.find({ _id: { $in: starredIds } })
         .populate("creator", ["firstName", "lastName", "_id"])
         .populate("owner", ["firstName", "lastName", "_id"])
         .populate("lastUpdateSeenBy", ["firstName", "lastName", "_id"])

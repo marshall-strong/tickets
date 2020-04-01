@@ -56,33 +56,35 @@ class TicketIndex extends React.Component {
       const { tickets } = this.state
       const { currentUser, updateUser } = this.props
       
-      let starredIds = currentUser.starred.map(ticket => ticket._id)
       return (
         <div>
-
           <table className="ticket-index">
-            <th>Creator</th>
-            <th>Owner</th>
-            <th>Title</th>
-            <th>Created At</th>
-            <th>Updated At</th>
-            <th>Status</th>
-            <th>Priority</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Starred</th>
-
-            {tickets.map(ticket => (
-              <TicketIndexItem 
-                key={ticket._id} 
-                ticket={ticket} 
-                currentUser={currentUser}
-                starredIds={starredIds}
-                updateUser={updateUser}
-              />
-            ))}
+            <thead>
+              <tr>
+                <th>Creator</th>
+                <th>Owner</th>
+                <th>Title</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+                <th>Status</th>
+                <th>Priority</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Starred</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tickets.map(ticket => (
+                <TicketIndexItem 
+                  key={ticket._id} 
+                  ticket={ticket} 
+                  currentUser={currentUser}
+                  starredIds={currentUser.starred}
+                  updateUser={updateUser}
+                />
+              ))}
+            </tbody>
           </table>
-          
         </div>
       );
     }

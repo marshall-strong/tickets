@@ -21,7 +21,7 @@ convertDate(time) {
         "03": "March", 
         "04": "April", 
         "05": "May", 
-        "05": "June", 
+        "06": "June", 
         "07": "July", 
         "08": "August", 
         "09": "September", 

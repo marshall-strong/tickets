@@ -7,8 +7,8 @@ class Profile extends React.Component {
         this.props.fetchCreatedTickets(this.props.match.params.userId)
         this.props.fetchUserComments(this.props.match.params.userId)
     }
-
     render() {
+
         const {user, comments, tickets} = this.props;
 
         const userCommentInfo = comments.map(ticket => (

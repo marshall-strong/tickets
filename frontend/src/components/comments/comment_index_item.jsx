@@ -1,5 +1,5 @@
 import React from 'react'
-import {withRouter} from "react-router-dom"
+import {Link, withRouter} from "react-router-dom"
 
 class CommentIndexItem extends React.Component{ 
      constructor(props) {
@@ -15,26 +15,29 @@ class CommentIndexItem extends React.Component{
     }
 
 convertDate(time) {
-    let months = {
-        "01": "January", 
-        "02": "February", 
-        "03": "March", 
-        "04": "April", 
-        "05": "May", 
-        "05": "June", 
-        "07": "July", 
-        "08": "August", 
-        "09": "September", 
-        "10": "October", 
-        "11": "November", 
-        "12": "December"
-    }
-    let slicedTime = time.slice(0, 10)
-    let timeArr = slicedTime.split("-")
-    let month = timeArr[1]
-    let monthStr = months[month.toString()]
+    let date = new Date(time)
+    let year = date.getYear() + 1900
+    let month = date.getMonth()
+    let day = date.getDate()
 
-    return monthStr + " " + timeArr[2].toString() + " " + timeArr[0].toString()
+    let months = {
+        "0": "January", 
+        "1": "February", 
+        "2": "March", 
+        "3": "April", 
+        "4": "May", 
+        "5": "June", 
+        "6": "July", 
+        "7": "August", 
+        "8": "September", 
+        "9": "October", 
+        "10": "November", 
+        "11": "December"
+    }
+  
+    let monthStr = months[month].toString()
+
+    return `${monthStr} ${day} ${year}`
 }
 
 convertTime(time) {
@@ -61,8 +64,8 @@ convertTime(time) {
     render() {
         return (
         <div>
-            {this.props.comment.firstName} 
-                {this.props.comment.lastName} &nbsp;
+                <Link to={`/users/${this.props.comment.userId}`}>{this.props.comment.firstName}  {this.props.comment.lastName}</Link>
+               &nbsp;
             commented &nbsp;
                 "{this.props.comment.body}" &nbsp;
             on &nbsp;

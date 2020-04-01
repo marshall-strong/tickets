@@ -15,7 +15,6 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => ({
     getTicket: (id) => dispatch(getTicket()),
-    // deleteComment: (id) => dispatch(deleteComment(id)),
     createComment: comment => dispatch(createComment(comment)),
 })
 

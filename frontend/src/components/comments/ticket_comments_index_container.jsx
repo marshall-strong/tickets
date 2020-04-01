@@ -13,8 +13,6 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => {
     return{
-    // deleteComment: id => dispatch(deleteComment(id)),
-    // fetchTicketComments: id => dispatch(fetchTicketComments(id)),
     updateComment: comment => dispatch(updateComment(comment))
 }
 }

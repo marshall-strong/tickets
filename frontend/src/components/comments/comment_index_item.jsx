@@ -1,6 +1,5 @@
 import React from 'react'
 import {withRouter} from "react-router-dom"
-// import * as CommentAPIUtil from '../util/comment_api_util';
 
 class CommentIndexItem extends React.Component{ 
      constructor(props) {
@@ -60,10 +59,6 @@ convertTime(time) {
 }
 
     render() {
-        // if(!this.props.comments) {
-        //     return null
-        // }
-
         return (
         <div>
             {this.props.comment.firstName} 
@@ -71,7 +66,6 @@ convertTime(time) {
             commented &nbsp;
                 "{this.props.comment.body}" &nbsp;
             on &nbsp;
-            {/* { hours }:{minutes}: PDT */}
             {this.convertDate(this.props.comment.time)} at 
             {this.convertTime(this.props.comment.time)}
 

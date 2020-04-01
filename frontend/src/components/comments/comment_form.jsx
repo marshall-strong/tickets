@@ -14,7 +14,7 @@ class CommentForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    navigate
+    // navigate
 
     handleSubmit() {
         this.props.createComment(this.state)
@@ -32,7 +32,7 @@ class CommentForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form className="comment-form" onSubmit={this.handleSubmit}>
                 <input type="textarea" value={this.state.body} onChange={this.update('body')}/>
                 <button className="button1">Create Comment</button>
             </form>

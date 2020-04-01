@@ -4,10 +4,14 @@ export const RECEIVE_TICKETS = "RECEIVE_TICKETS";
 export const RECEIVE_TICKET = "RECEIVE_TICKET";
 export const RECEIVE_TICKET_ERRORS = "RECEIVE_TICKET_ERRORS";
 
-const receiveTickets = tickets => ({
-    type: RECEIVE_TICKETS,
-    tickets: tickets.data
-});
+const receiveTickets = tickets => {
+    let payload = {};
+    tickets.data.map(ticket => payload[ticket._id] = ticket);
+    return({
+        type: RECEIVE_TICKETS,
+        tickets: payload
+    })
+};
 
 const receiveTicket = ticket => ({
     type: RECEIVE_TICKET,

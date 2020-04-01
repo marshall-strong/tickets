@@ -77,7 +77,7 @@ class TicketForm extends React.Component {
 
         this.state.updatedAt.unshift(Date.now());
         this.state.updatedBy.unshift(this.props.currentUser._id)
-        this.state.lastUpdateSeenBy = []
+        this.setState({lastUpdateSeenBy: []})
 
         
         if (this.props.ticketId !== "new") {
@@ -114,8 +114,6 @@ class TicketForm extends React.Component {
             if (this.props.ticketId !== 'new') {
             if (!this.props.ticket) return null;
         }
-
-        let starredIds = this.props.currentUser.starred.map(ticket => ticket._id)
 
         this.edited = 'not-edited';
 
@@ -204,7 +202,7 @@ class TicketForm extends React.Component {
             className="star"
             onClick={(e) => {
                 e.stopPropagation();
-                let i = starredIds.indexOf(this.props.ticket._id);
+                let i = this.props.currentUser.starred.indexOf(this.props.ticket._id);
                 if (i === -1) {
                     this.props.currentUser.starred.push(this.props.ticket._id);
                 } else {
@@ -213,7 +211,7 @@ class TicketForm extends React.Component {
                 this.props.updateUser(this.props.currentUser);
             }}
         >
-            {starredIds.includes(this.props.ticket._id) ? "★" : "☆"}
+            {this.props.currentUser.starred.includes(this.props.ticket._id) ? "★" : "☆"}
         </div> 
         ) : null
         

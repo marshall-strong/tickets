@@ -1,15 +1,11 @@
 import React from "react";
 
-class ActivityIndexItem extends React.Component {
-  render() {
-    return (
-      <div>
-        {this.props.update.actor.firstName}
-        {this.props.update.actor.lastName}
-        updated the ticket at {this.props.update.time}
-      </div>
-    );
-  }
-}
+const ActivityIndexItem = (props) => (
+  <div>
+    {props.update.actor.firstName}
+    {props.update.actor.lastName}
+    updated the ticket at {props.update.time}
+  </div>
+);
 
 export default ActivityIndexItem;

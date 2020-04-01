@@ -48,6 +48,9 @@ input:focus, textarea:focus {
     cursor: pointer;
 }
 
+select {
+    background-color: lightgrey;
+}
 .selectors {
     display: flex;
     justify-content: space-between;

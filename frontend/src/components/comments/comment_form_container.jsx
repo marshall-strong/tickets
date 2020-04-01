@@ -2,7 +2,6 @@ import { connect } from 'react-redux'
 import { createComment} from '../../actions/comment_actions'
 import CommentForm from './comment_form'
 import {withRouter} from "react-router-dom"
-import { deleteComment } from '../../util/comment_api_util'
 import {getTicket} from "../../util/ticket_api_util"
 
 const mSTP = (state, ownProps) => {

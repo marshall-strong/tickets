@@ -73,7 +73,6 @@ select {
 .schedule {
     font-size: 10px;
     font-weight: 600;
-    /* width: 800px; */
     display: flex;
     justify-content: space-between;
     margin: 10px;

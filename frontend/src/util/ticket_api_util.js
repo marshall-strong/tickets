@@ -28,26 +28,28 @@ export const updateTicket = (ticket) => (
 
 export const fetchOwnerTickets = userId => (
     axios.get(
-        `/api/tickets/owner/${userId}`)
+        `/api/tickets/owner/${userId}`
+    )
 );
 
 export const getCreatedTickets = userId => (
-     axios.get(
-         `/api/tickets/creator/${userId}`)
+    axios.get(
+        `/api/tickets/creator/${userId}`
+    )
 );
 
 export const getSubscribedTickets = userId => (
-     axios.get(
-         `/api/tickets/subscribed/${userId}`)
+    axios.get(
+        `/api/tickets/subscribed/${userId}`
+    )
 );
 
 export const getStarredTickets = currentUser => {
-debugger
     return (
-    axios.get(
-         `/api/tickets/starred/${currentUser._id}`
-         )
-)
+        axios.get(
+            `/api/tickets/starred/${currentUser._id}`
+        )
+    )
 }
 
 

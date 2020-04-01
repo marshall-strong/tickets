@@ -93,23 +93,21 @@ router.get("/:folder/:userId", (req, res) => {
         User.findById(req.params.userId)
         .exec((err, user) => {
             starredIds = Array.from(user.starred)
-            debugger
+            Ticket.find({ _id: { $in: starredIds } })
+            .populate("creator", ["firstName", "lastName", "_id"])
+            .populate("owner", ["firstName", "lastName", "_id"])
+            .populate("lastUpdateSeenBy", ["firstName", "lastName", "_id"])
+            .populate("subscribed", ["firstName", "lastName", "_id"])
+            .populate("updatedBy", ["firstName", "lastName", "_id"])
+            .then(tickets => {
+                res.json(tickets)
+            })
+            .catch(err =>
+                res
+                .status(404)
+                .json({ noticketsfound: "No tickets found from that user" })
+            );
         })
-        Ticket.find({ _id: { $in: starredIds } })
-        .populate("creator", ["firstName", "lastName", "_id"])
-        .populate("owner", ["firstName", "lastName", "_id"])
-        .populate("lastUpdateSeenBy", ["firstName", "lastName", "_id"])
-        .populate("subscribed", ["firstName", "lastName", "_id"])
-        .populate("updatedBy", ["firstName", "lastName", "_id"])
-        .then(tickets => {
-            debugger
-            res.json(tickets)
-        })
-        .catch(err =>
-            res
-            .status(404)
-            .json({ noticketsfound: "No tickets found from that user" })
-        );
     } else {
         Ticket.find({ [req.params.folder]: req.params.userId })
         .populate("creator", ["firstName", "lastName", "_id"])

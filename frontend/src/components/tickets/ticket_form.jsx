@@ -32,7 +32,7 @@ class TicketForm extends React.Component {
     componentDidMount() {
         // in case of page refresh, fetch the current user to overwrite 
         // stale preloaded state from login and get updated starred list
-        this.props.getOneUser()
+        this.props.getOneUser(this.props.currentUser._id)
         if (this.props.ticketId !== 'new') {
             this.props.getTicket(this.props.ticketId)
             .then(ticket => {

@@ -60,8 +60,8 @@ export const fetchSubscribedTickets = userId => dispatch => (
     .catch(errors => dispatch(receiveTicketErrors(errors)))
 );
 
-export const fetchStarredTickets = userId => dispatch => (
-    TicketAPIUtil.getStarredTickets(userId)
+export const fetchStarredTickets = currentUser => dispatch => (
+    TicketAPIUtil.getStarredTickets(currentUser)
     .then(tickets => dispatch(receiveTickets(tickets)))
     .catch(errors => dispatch(receiveTicketErrors(errors)))
 );

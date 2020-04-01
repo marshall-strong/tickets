@@ -7,6 +7,8 @@ const keys = require('../../../config/keys');
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 const User = require('../../models/user');
+// const deepPopulate = require('mongoose-deep-populate')
+// User.plugin(deepPopulate)
 
 router.post("/register", (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
@@ -67,7 +69,6 @@ router.post("/login", (req, res) => {
     const password = req.body.password;
 
     User.findOne({ email })
-    .populate('starred')
     .then(user => {
         if (!user) {
             errors.email = "There is no account associated with that email";
@@ -107,20 +108,14 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
 
 router.get('/:userId', (req, res) => {
     User.findById(req.params.userId)
-    .populate('starred')
-    .then(user => res.json(user))
-    .catch(err => err.status(404).json(err));
+      .then(user => res.json(user))
+      .catch(err => err.status(404).json(err));
 });
 
 router.patch('/:userId', (req, res) => {
-    User.findByIdAndUpdate(
-        req.params.userId,
-        req.body,
-        { new: true }
-    )
-    .populate('starred')
-    .then(user => res.json(user))
-    .catch(err => err.status(422).json(err));
+    User.findByIdAndUpdate(req.params.userId, req.body, { new: true })
+      .then(user => res.json(user))
+      .catch(err => err.status(422).json(err));
 });
 
 router.get('/:orgHandle', (req, res) => {

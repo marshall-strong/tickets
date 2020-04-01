@@ -4,8 +4,7 @@ const Schema = mongoose.Schema;
 const ticketSchema = new Schema({
     creator: {
         type: Schema.Types.ObjectId,
-        ref: 'User',
-        autopopulate: true
+        ref: 'User'
     },
     createdAt: {
         type: Date,

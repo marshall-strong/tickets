@@ -100,7 +100,8 @@ select {
 
 
 .activity-container {
-    margin: 10px;
+    padding: 10px;
+    background-color: lightgrey;
 }
 .comment-form {
     display: flex;

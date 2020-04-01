@@ -25,6 +25,7 @@ class TicketForm extends React.Component {
             startDate: undefined,
             endDate: undefined,
             creator: this.props.currentUser._id
+
         }
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -222,6 +223,11 @@ class TicketForm extends React.Component {
 
             <div className="form-and-activity-container">
               <form className="form">
+              
+              <div className="ticket-errors">
+                <p>{this.props.errors.title}</p>
+              </div>
+
                 <div className="title-star">
                     <input
                         className={`${type} title`}
@@ -262,6 +268,11 @@ class TicketForm extends React.Component {
                         {this.props.ticketId === "new" ? "create" : "save"}
                     </button>
                 </div>
+
+                <div className="ticket-errors">
+                    <p>{this.props.errors.date}</p>
+                </div>
+
                 <div className="schedule">
                     Start<br/>Date
                     <input

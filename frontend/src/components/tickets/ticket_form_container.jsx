@@ -11,8 +11,6 @@ const msp = (state, ownProps) => {
     ticketId: ownProps.match.params.ticketId,
     ticket: state.entities.tickets[ownProps.match.params.ticketId],
     currentUser: state.entities.users[state.session._id],
-
-    // ownerUsegirs: state.entities.users
     });
 }
 
@@ -22,7 +20,6 @@ const mdp = dispatch => ({
     updateTicket: ticket => dispatch(updateTicket(ticket)), 
     fetchTicketComments: id => dispatch(fetchTicketComments(id)),
     updateUser: user => dispatch(updateUser(user))
-
 });
 
 const TicketFormContainer = withRouter(connect(msp, mdp)(TicketForm));

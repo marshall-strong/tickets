@@ -2,8 +2,6 @@
     background-color: rgb(209, 241, 222);
     display: flex;
     justify-content: center;
-    /* width: 800px; */
-    /* padding: 30px; */
 }
 
 .form-and-activity-container {
@@ -50,6 +48,9 @@ input:focus, textarea:focus {
     cursor: pointer;
 }
 
+select {
+    background-color: lightgrey;
+}
 .selectors {
     display: flex;
     justify-content: space-between;
@@ -58,12 +59,18 @@ input:focus, textarea:focus {
     margin: 10px;
 }
 
-select {
-    background-color: lightgrey;
-}
 
 .owner {
     width: 150px;
+}
+
+.selectors label {
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.selectors select, .selectors input {
+    font-size: 18px;
 }
 
 .selectors button {
@@ -73,13 +80,17 @@ select {
 .schedule {
     font-size: 10px;
     font-weight: 600;
-    /* width: 800px; */
     display: flex;
     justify-content: space-between;
     margin: 10px;
+    align-items: center;
 }
 
+
+
 .schedule input {
+    font-size: 13px;
+    margin-left: 5px;
     width: 170px;
     margin-right: 10px;
 }

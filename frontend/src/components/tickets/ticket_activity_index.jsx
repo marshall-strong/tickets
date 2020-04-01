@@ -1,13 +1,8 @@
 import React from "react";
 import ActivityIndexItem from "./ticket_activity_index_item";
 import CommentIndexItem from "../comments/comment_index_item";
-import { receiveCurrentUser } from "../../actions/session_actions";
 
 class TicketActivityIndex extends React.Component {
-    constructor(props) {
-        super(props)
-
-    }
 
     componentDidMount() {
         this.props.getTicket(this.props.ticketId)

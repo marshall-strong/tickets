@@ -76,7 +76,7 @@ class TicketForm extends React.Component {
 
         this.state.updatedAt.unshift(Date.now());
         this.state.updatedBy.unshift(this.props.currentUser._id)
-        this.state.lastUpdateSeenBy = []
+        this.setState({lastUpdateSeenBy: []})
 
         
         if (this.props.ticketId !== "new") {
@@ -114,8 +114,6 @@ class TicketForm extends React.Component {
             if (!this.props.ticket) return null;
         }
 
-        let starredIds = this.props.currentUser.starred.map(ticket => ticket._id)
-
         this.edited = 'not-edited';
 
         let type = this.props.ticketId === 'new' ? 'new' : 'show';
@@ -128,30 +126,35 @@ class TicketForm extends React.Component {
             >
                 <option 
                     value="No Progress"
+                    className="no-progress"
                 >
                     No Progress
                 </option>
 
                 <option 
                     value="Planned"
+                    className="planned"
                 >
                     Planned
                 </option>
 
                 <option 
                     value="Blocked"
+                    className="blocked"
                 >
                     Blocked
                 </option>
 
                 <option 
                     value="In Progress"
+                    className="in-progress"
                 >
                     In Progress
                 </option>
 
                 <option 
                     value="Closed"
+                    className="closed"
                 >
                     Closed
                 </option>
@@ -193,23 +196,23 @@ class TicketForm extends React.Component {
         )
 
         
-            let star = this.props.ticket ? (
-            <div
-                className="star"
-                onClick={(e) => {
-                    e.stopPropagation();
-                    let i = starredIds.indexOf(this.props.ticket._id);
-                    if (i === -1) {
-                        this.props.currentUser.starred.push(this.props.ticket._id);
-                    } else {
-                        this.props.currentUser.starred.splice(i, 1);
-                    }
-                    this.props.updateUser(this.props.currentUser);
-                }}
-            >
-                {starredIds.includes(this.props.ticket._id) ? "★" : "☆"}
-            </div> 
-            ) : null
+        let star = this.props.ticket ? (
+        <div
+            className="star"
+            onClick={(e) => {
+                e.stopPropagation();
+                let i = this.props.currentUser.starred.indexOf(this.props.ticket._id);
+                if (i === -1) {
+                    this.props.currentUser.starred.push(this.props.ticket._id);
+                } else {
+                    this.props.currentUser.starred.splice(i, 1);
+                }
+                this.props.updateUser(this.props.currentUser);
+            }}
+        >
+            {this.props.currentUser.starred.includes(this.props.ticket._id) ? "★" : "☆"}
+        </div> 
+        ) : null
         
 
         return (
@@ -230,17 +233,23 @@ class TicketForm extends React.Component {
                 </div>
 
                 <div className="selectors">
-                    {statusSelect}
+                    <label>Status
+                        {statusSelect}
+                    </label>
 
-                    <input
-                        className={`${type} owner`}
-                        type="text"
-                        placeholder="owner"
-                        value={this.state.owner}
-                        onChange={this.update("owner")}
-                    />
+                    <label>Owner
+                        <input
+                            className={`${type} owner`}
+                            type="text"
+                            placeholder="owner"
+                            value={this.state.owner}
+                            onChange={this.update("owner")}
+                        />
+                    </label>
 
-                    {prioritySelect}
+                    <label>Priority
+                        {prioritySelect}
+                    </label>
 
                     <button
                         onClick={this.handleSubmit}
@@ -252,14 +261,14 @@ class TicketForm extends React.Component {
                     </button>
                 </div>
                 <div className="schedule">
-                    Start Date
+                    Start<br/>Date
                     <input
                         className={type}
                         type="date"
                         value={this.state.startDate}
                         onChange={this.update("startDate")}
                     />
-                    End Date
+                    End<br/>Date
                     <input
                         className={type}
                         type="date"

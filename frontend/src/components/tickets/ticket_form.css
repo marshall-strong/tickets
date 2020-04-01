@@ -1,17 +1,36 @@
 .outer-container {
     background-color: rgb(209, 241, 222);
+    display: flex;
+    justify-content: center;
+    /* width: 800px; */
+    /* padding: 30px; */
 }
 
-.form-container, form {
+.form-and-activity-container {
+    width: 800px;
+    background-color: rgb(241, 241, 241);
     display: flex;
     flex-direction: column;
+    align-items: baseline;
+}
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    padding: 10px
 }
 
 input, textarea {
     border-radius: 5px;
     resize: none;
-    width: 400px;
+    width: 750px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
+
+
 
 input:focus, textarea:focus {
     border: 1px solid rgb(184, 183, 183);
@@ -19,18 +38,24 @@ input:focus, textarea:focus {
 
 .title-star {
     display: flex;
-    width: 400px;
+    margin: 10px;
 }
 .form .title {
     font-size: 24px;
+    width: 720px;
+    margin-right: 10px;
 }
 
+.star:hover {
+    cursor: pointer;
+}
 
 .selectors {
     display: flex;
     justify-content: space-between;
-    width: 400px;
+    /* width: 800px; */
     height: 40px;
+    margin: 10px;
 }
 
 select {
@@ -41,17 +66,26 @@ select {
     width: 150px;
 }
 
+.selectors button {
+    margin-left: 285px;
+}
+
 .schedule {
     font-size: 10px;
     font-weight: 600;
-    width: 400px;
+    /* width: 800px; */
     display: flex;
     justify-content: space-between;
+    margin: 10px;
 }
 
 .schedule input {
     width: 170px;
     margin-right: 10px;
+}
+
+.margin {
+    margin: 10px;
 }
 
 .show{
@@ -65,12 +99,31 @@ select {
 }
 
 
+.activity-container {
+    padding: 10px;
+    background-color: lightgrey;
+}
+.comment-form {
+    display: flex;
+    flex-direction: row;
+    /* width: 800px; */
+    height: 30px;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
+.comment-form input {
+    width: 650px;
+    margin-right: 10px;
+}
 
 .edited {
     border: 1px solid yellow;
     background-color: rgb(248, 248, 218);
 }
+
+
 
 input.edited:focus, textarea.edited:focus {
     border: 1px solid rgb(251, 251, 212);
@@ -79,5 +132,5 @@ input.edited:focus, textarea.edited:focus {
 .activity-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
 }

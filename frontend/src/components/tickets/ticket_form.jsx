@@ -213,8 +213,9 @@ class TicketForm extends React.Component {
         
 
         return (
-          <div className="outer-container">
-            <div className="form-container">
+        <div className="outer-container">
+
+            <div className="form-and-activity-container">
               <form className="form">
                 <div className="title-star">
                     <input
@@ -240,6 +241,15 @@ class TicketForm extends React.Component {
                     />
 
                     {prioritySelect}
+
+                    <button
+                        onClick={this.handleSubmit}
+                        className="button1"
+                        id="ticket-submit-button"
+                    >
+
+                        {this.props.ticketId === "new" ? "create" : "save"}
+                    </button>
                 </div>
                 <div className="schedule">
                     Start Date
@@ -259,7 +269,7 @@ class TicketForm extends React.Component {
                 </div>
 
                 <textarea
-                  className={type}
+                  className={`${type} margin`}
                   cols="30"
                   rows="10"
                   value={this.state.body}
@@ -269,14 +279,14 @@ class TicketForm extends React.Component {
 
 
                 <input
-                  className={type}
+                  className={`${type} margin`}
                   type="text"
                   placeholder="depends on"
                   onChange={this.update("dependsOn")}
                 />
 
                 <input
-                  className={type}
+                  className={`${type} margin`}
                   type="text"
                   value={this.state.blocks}
                   placeholder="blocks"
@@ -284,23 +294,19 @@ class TicketForm extends React.Component {
                 />
 
 
-                <button 
-                    onClick={this.handleSubmit} 
-                    className="button1"
-                    id="ticket-submit-button"
-                >
-
-                {this.props.ticketId === "new" ? "create" : "save"}
-                </button>
               </form>
+
+                {this.props.ticketId !== "new" ? (
+                <div className="activity-container">
+                    <h1>Comments and activity</h1>
+                    <CommentFormContainer />
+                    <TicketActivityContainer currentUser={this.props.currentUser}/>
+                </div>
+                ) : null}
+
             </div>
-            {this.props.ticketId !== "new" ? (
-            <div className="activity-container">
-                <CommentFormContainer />
-                <TicketActivityContainer currentUser={this.props.currentUser}/>
-            </div>
-            ) : null}
-          </div>
+
+        </div>
         );        
         
     }

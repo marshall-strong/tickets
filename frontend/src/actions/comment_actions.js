@@ -22,7 +22,7 @@ const receiveNewComment = (comment) => ({
 
 const removeComment = (id) => ({
     type: DELETE_COMMENT, 
-    id: id
+    _id: id
 });
 
 const receiveCommentErrors = (errors) => ({
@@ -54,8 +54,10 @@ export const updateComment = (comment) => dispatch => (
     .catch(errors => dispatch(receiveCommentErrors(errors)))
 );
 
-export const deleteComment = (id) => dispatch => (
+export const deleteComment = (id) => dispatch => {
+    return (
     CommentAPIUtil.deleteComment(id) 
     .then(() => dispatch(removeComment(id)))
-    .catch(errors => dispatch(receiveCommentErrors(errors)))
-);
+    .catch(errors => dispatch(receiveCommentErrors(errors)))  
+    )
+};

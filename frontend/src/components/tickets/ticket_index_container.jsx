@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { fetchOwnerTickets, fetchCreatedTickets, getTickets, fetchSubscribedTickets, fetchStarredTickets } from '../../actions/ticket_actions'
 import { updateUser } from '../../actions/user_actions'
 
+
 const mstp = (state, ownProps) => ({
     userId: ownProps.match.params.userId,
     currentUser: state.entities.users[state.session._id]

@@ -2,8 +2,6 @@ import React from 'react'
 import TicketIndexItem from './ticket_index_item'
 import './ticket_index.css'
 
-import './ticket_index.css'
-
 class TicketIndex extends React.Component {
     constructor(props) {
         super(props)

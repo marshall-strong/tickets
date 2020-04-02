@@ -145,3 +145,7 @@ input.edited:focus, textarea.edited:focus {
     flex-direction: column;
     align-items: left;
 }
+
+.ticket-errors {
+    color: red;
+}

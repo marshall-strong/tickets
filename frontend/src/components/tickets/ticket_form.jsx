@@ -42,7 +42,7 @@ class TicketForm extends React.Component {
                     this.props.ticket.startDate ? 
                     this.props.ticket.startDate.slice(0,10) : ''
                 )
-                
+
                 this.props.ticket.endDate = (
                     this.props.ticket.endDate ?
                     this.props.ticket.endDate.slice(0,10) : ''
@@ -105,7 +105,7 @@ class TicketForm extends React.Component {
             })
             .catch(err => console.log(err))
         }
-
+        
         let edits = document.getElementsByClassName('edited')
         for (let i = 0; i < edits.length; i++) {
             edits[i].classList.add('not-edited')
@@ -273,7 +273,7 @@ class TicketForm extends React.Component {
 
                     <button
                         onClick={this.handleSubmit}
-                        className="button1"
+                        className="button1 not-edited"
                         id="ticket-submit-button"
                     >
 

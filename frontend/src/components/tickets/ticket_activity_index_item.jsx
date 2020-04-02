@@ -1,26 +1,5 @@
 import React from "react";
 import {Link, withRouter} from "react-router-dom"
-
-
-const ActivityIndexItem = (props) => {
-  return (
-  <div>
-    <div>
-      {props.update.actor.firstName}
-      {props.update.actor.lastName}
-      updated the ticket at {props.update.time}
-    </div>
-    <div>
-      {props.update.actor.firstName}
-      {props.update.actor.lastName}
-      viewed the ticket at {props.update.time}
-    </div>
-  </div>
-  )
-};
-
-export default ActivityIndexItem;
-
 class ActivityIndexItem extends React.Component {
   constructor(props) {
     super(props)
@@ -69,4 +48,7 @@ class ActivityIndexItem extends React.Component {
 }
 
 export default withRouter(ActivityIndexItem);
+<<<<<<< HEAD
 
+=======
+>>>>>>> master

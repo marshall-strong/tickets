@@ -17,7 +17,6 @@ class CommentForm extends React.Component {
         this.props.action(this.state)
     }
 
-
     update(field) {
        return e => {
             this.setState({ [field]: e.currentTarget.value})
@@ -31,7 +30,7 @@ class CommentForm extends React.Component {
                     {this.props.currentUser.firstName.slice(0, 1)}
                     {this.props.currentUser.lastName.slice(0, 1)}
                 </div> 
-                <input type="textarea" value={this.state.body} onChange={this.update('body')}/>
+                <textarea value={this.state.body} onChange={this.update('body')}></textarea>
                 <button className="button1">Create Comment</button>
             </form>
         )

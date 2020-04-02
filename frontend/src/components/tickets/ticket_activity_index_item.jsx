@@ -48,7 +48,4 @@ class ActivityIndexItem extends React.Component {
 }
 
 export default withRouter(ActivityIndexItem);
-<<<<<<< HEAD
 
-=======
->>>>>>> master

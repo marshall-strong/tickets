@@ -22,7 +22,7 @@ class Profile extends React.Component {
 
     let timeString;
 
-    if (hours == "0") {
+    if (hours === 0) {
       timeString = ` 12:${minutes}am `;
     } else if (hours === 12) {
       timeString = ` ${hours}:${minutes}pm`;
@@ -43,15 +43,10 @@ class Profile extends React.Component {
   render() {
     const { user, comments, tickets } = this.props;
 
-    const sortedTickets = tickets.sort((ticket, ele2) =>
-      ticket.createdAt < ele2.createdAt ? 1 : ticket.createdAt > ele2.createdAt ? -1 : 0);
-
-    const sortedComments = comments.sort((comment1, comment2) => 
-    comment1.createdAt < comment2.createdAt ? 1 : comment1.createdAt > comment2.createdAt ? -1 : 0)
-
-    const sortedArray = sortedTickets.concat(sortedComments).sort((ele1, ele2) =>
+    const sortedArray = tickets.concat(comments).sort((ele1, ele2) =>
     ele1.createdAt < ele2.createdAt ? 1 : ele1.createdAt > ele2.createdAt ? -1 : 0)
     
+    debugger
     return (
       <div>
         <div className="profile-header-container">
@@ -79,9 +74,9 @@ class Profile extends React.Component {
                <span>
                  {item.author.firstName}
                  {item.author.lastName} commented: {" "}
-                 "{item.body}"
+                 "{item.body}" on
                </span>
-               <Link to={`/comments/${item.ticket}`}>{item.ticket}</Link>
+           <Link to={`/tickets/${item.ticket._id}`}>{item.ticket._id} {item.ticket.title}</Link>
                {this.convertDate(item.createdAt)}
                {this.convertTime(item.createdAt)}
              </div>

@@ -1,7 +1,10 @@
 import React from "react";
 
 const ActivityIndexItem = (props) => {
+<<<<<<< HEAD
   
+=======
+>>>>>>> master
   return (
   <div>
     <div>

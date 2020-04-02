@@ -5,7 +5,10 @@ import CommentIndexItem from "../comments/comment_index_item";
 class TicketActivityIndex extends React.Component {
 
     componentDidMount() {
+<<<<<<< HEAD
         
+=======
+>>>>>>> master
         this.props.getTicket(this.props.ticketId)
         this.props.fetchTicketComments(this.props.ticketId)
     }
@@ -34,7 +37,10 @@ class TicketActivityIndex extends React.Component {
             viewer: ticket.lastUpdateSeenBy[i]
         }));
 
+<<<<<<< HEAD
         
+=======
+>>>>>>> master
 
         let feed = ticketsArr.concat(commentsArr);
         let sortedFeed = feed.sort((ele1, ele2) =>
@@ -43,15 +49,14 @@ class TicketActivityIndex extends React.Component {
 
         let feedList = sortedFeed.map((feedItem, i) => {
             return (
-                <div>
-                    <ul>
-                        {feedItem.body ? 
-                        <CommentIndexItem key={i + new Date().getTime()} comment={feedItem} deleteComment={this.props.deleteComment} fetchTicketComments={this.props.fetchTicketComments} ticketId={this.props.ticketId} />
-                        : 
-                        <ActivityIndexItem key={i + new Date().getTime()} update={feedItem} />
-                        }
-                    </ul>
-                </div>
+                <li key={i + new Date().getTime()}>
+                    {feedItem.body ? 
+                    <CommentIndexItem comment={feedItem} deleteComment={this.props.deleteComment} fetchTicketComments={this.props.fetchTicketComments} ticketId={this.props.ticketId} />
+                    : 
+                    <ActivityIndexItem update={feedItem} />
+                    }
+                </li>
+
             );
         });
 

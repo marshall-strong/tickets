@@ -44,18 +44,18 @@ class NavBar extends React.Component {
   
             <div className="right-nav">
               
+
+              
+              <button className="button1 new-ticket" onClick={this.writeTicket}> 
+                + New Ticket
+              </button>
               <Link className="link-style"to={`/users/${this.props.currentUser._id}`}>
                 {this.props.currentUser.firstName} &nbsp;
                 {this.props.currentUser.lastName}
               </Link>
                 {this.props.currentUser.orgHandle}
-
-              
-              <button className="button1" onClick={this.writeTicket}> 
-                + new ticket
-              </button>
       
-              <button className="button1" onClick={this.logoutUser}>
+              <button className="button1 logout" onClick={this.logoutUser}>
                 Logout
               </button>
               
@@ -72,7 +72,7 @@ class NavBar extends React.Component {
             <div className="right-nav">
               {this.props.path === "/signup" ? <Link className="link-style" to={"/login"}>Login</Link> : <Link className="link-style" to={"/signup"}>Signup</Link> }
               {this.props.path === "/" ? <Link className="link-style" to={"/login"}>Login</Link> : null}
-              <button className="button1 " onClick={this.handleClick}>
+              <button className="button1 demo" onClick={this.handleClick}>
                 login as a demo user
               </button>
             </div>

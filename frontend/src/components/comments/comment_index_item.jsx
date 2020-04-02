@@ -25,6 +25,7 @@ class CommentIndexItem extends React.Component {
   handleSubmit(e) {
       e.preventDefault()
       this.props.updateComment(this.state)
+      this.setState({ body: ""})
   }
 
   editCommentDiv() {
@@ -101,7 +102,7 @@ class CommentIndexItem extends React.Component {
 
     let timeString;
 
-    if (hours == "0") {
+    if (hours === 0) {
         timeString = ` 12:${minutes}am `;
     } else if (hours === 12) {
       timeString = ` ${hours}:${minutes}pm`;

@@ -13,8 +13,9 @@ class CommentForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    handleSubmit() {
+    handleSubmit(field) {
         this.props.action(this.state)
+        .then(() => this.setState({ body: "" }))
     }
 
     update(field) {

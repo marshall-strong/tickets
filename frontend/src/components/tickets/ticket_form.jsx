@@ -274,13 +274,8 @@ class TicketForm extends React.Component {
                         className="button1 not-edited"
                         id="ticket-submit-button"
                     >
-<<<<<<< HEAD
-                        
-                        {this.props.ticketId === "new" ? "create" : "save"}
-=======
 
                         {this.props.ticketId === "new" ? "Create" : "Save"}
->>>>>>> master
                     </button>
                 </div>
 

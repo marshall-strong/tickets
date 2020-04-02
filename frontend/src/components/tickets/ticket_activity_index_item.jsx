@@ -1,7 +1,6 @@
 import React from "react";
 
 const ActivityIndexItem = (props) => {
-  debugger
   return (
   <div>
     <div>

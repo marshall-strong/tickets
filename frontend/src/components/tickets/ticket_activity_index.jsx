@@ -26,6 +26,9 @@ class TicketActivityIndex extends React.Component {
             ticketId: this.props.ticketId
         }));
 
+        // do you want a created at here 
+        // dont understand update and viewer
+
         let ticketsArr = ticket.updatedBy.map((actor, i) => ({
             firstName: ticket.updatedBy[i].firstName,
             lastName: ticket.updatedBy[i].lastName,

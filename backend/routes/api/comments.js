@@ -57,24 +57,23 @@ router.get("/author/:userId", (req, res) => {
 
 
 router.patch("/:id",
-        passport.authenticate('jwt', { session: false }),
+        // passport.authenticate('jwt', { session: false }),
+
         (req, res) => {
-            Comment
-            .findById(req.params.id)
-            .then(comment => {
-                if (comment.user.equals(req.user._id)) {
-                    comment.update(req.body.body)
-                } else {
-                    res
-                        .status(403)
-                        .json({
-                        permissionconflict:
-                        "You do not have permission to delete"
-                      });
-                }
-            })
-        }
-)
+            Comment.findOneAndUpdate(req.params.id, req.body, {new: true})
+            .then( comment => res.json(comment) )
+                // if (comment.user.equals(req.user._id)) {
+       
+                // } else {
+                //     res
+                //         .status(403)
+                //         .json({
+                //         permissionconflict:
+                //         "You do not have permission to delete"
+                //       });
+            ;
+        })
+        
 
 
 router.delete("/:id",

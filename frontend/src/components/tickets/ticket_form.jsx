@@ -256,7 +256,7 @@ class TicketForm extends React.Component {
                         className="button1"
                         id="ticket-submit-button"
                     >
-
+                        
                         {this.props.ticketId === "new" ? "create" : "save"}
                     </button>
                 </div>

@@ -15,8 +15,9 @@ class TicketActivityIndex extends React.Component {
         } 
         let comments = this.props.comments
         let ticket = this.props.ticket
+     
         let commentsArr = comments.map(comment => ({
-            userId: this.props.currentUser._id,
+            userId: comment.author,
             commentId: comment._id,
             firstName: this.props.currentUser.firstName,
             lastName: this.props.currentUser.lastName,
@@ -26,9 +27,9 @@ class TicketActivityIndex extends React.Component {
         }));
 
         let ticketsArr = ticket.updatedBy.map((actor, i) => ({
-            firstName: this.props.currentUser.firstName,
-            lastName: this.props.currentUser.lastName,
-            userId: this.props.currentUser._id,
+            firstName: ticket.updatedBy[i].firstName,
+            lastName: ticket.updatedBy[i].lastName,
+            userId: ticket.updatedBy[i]._id,
             actor: ticket.updatedBy[i],
             time: ticket.updatedAt[i]
         }));
@@ -43,7 +44,13 @@ class TicketActivityIndex extends React.Component {
                 <div>
                     <ul>
                         {feedItem.body ? 
-                        <CommentIndexItem key={i + new Date().getTime()} comment={feedItem} deleteComment={this.props.deleteComment} fetchTicketComments={this.props.fetchTicketComments} ticketId={this.props.ticketId} />
+                        <CommentIndexItem key={i + new Date().getTime()} 
+                            comment={feedItem} 
+                            deleteComment={this.props.deleteComment} 
+                            fetchTicketComments={this.props.fetchTicketComments} 
+                            ticketId={this.props.ticketId} 
+                            updateComment={this.props.updateComment} 
+                        />
                         : 
                         <ActivityIndexItem key={i + new Date().getTime()} update={feedItem} />
                         }

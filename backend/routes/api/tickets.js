@@ -93,7 +93,6 @@ router.get("/:folder/:userId", (req, res) => {
         User.findById(req.params.userId)
         .exec((err, user) => {
             starredIds = Array.from(user.starred)
-            debugger
         })
         Ticket.find({ _id: { $in: starredIds } })
         .populate("creator", ["firstName", "lastName", "_id"])
@@ -102,7 +101,6 @@ router.get("/:folder/:userId", (req, res) => {
         .populate("subscribed", ["firstName", "lastName", "_id"])
         .populate("updatedBy", ["firstName", "lastName", "_id"])
         .then(tickets => {
-            debugger
             res.json(tickets)
         })
         .catch(err =>

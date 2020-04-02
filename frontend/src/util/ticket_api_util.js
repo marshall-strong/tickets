@@ -42,7 +42,6 @@ export const getSubscribedTickets = userId => (
 );
 
 export const getStarredTickets = currentUser => {
-debugger
     return (
     axios.get(
          `/api/tickets/starred/${currentUser._id}`

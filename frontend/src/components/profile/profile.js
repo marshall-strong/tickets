@@ -8,7 +8,7 @@ class Profile extends React.Component {
         this.props.fetchUserComments(this.props.match.params.userId)
     }
     render() {
-
+        
         const {user, comments, tickets} = this.props;
 
         const userCommentInfo = comments.map(ticket => (
@@ -34,7 +34,6 @@ class Profile extends React.Component {
                 </Link> 
             </div>
         )); 
-
         return (
             <div>
                 <div className="profile-header-container">

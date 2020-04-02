@@ -59,8 +59,8 @@ class TicketForm extends React.Component {
                 priority: 'Low',
                 dependsOn: [],
                 blocks: [],
-                startDate: undefined,
-                endDate: undefined,
+                startDate: '',
+                endDate: '',
                 creator: this.props.currentUser._id
             });
         }
@@ -104,6 +104,7 @@ class TicketForm extends React.Component {
 
     update(field) {
         return e => {
+            debugger
             this.setState({ [field]: e.currentTarget.value });
             this.edited = 'edited';
             e.currentTarget.classList.add(this.edited);
@@ -320,11 +321,11 @@ class TicketForm extends React.Component {
               </form>
 
                 {this.props.ticketId !== "new" ? (
-                <div className="activity-container">
+                <ul className="activity-container">
                     <h1>Comments and activity</h1>
                     <CommentFormContainer />
                     <TicketActivityContainer currentUser={this.props.currentUser}/>
-                </div>
+                </ul>
                 ) : null}
 
             </div>

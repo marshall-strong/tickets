@@ -22,8 +22,8 @@ class TicketForm extends React.Component {
             priority: 'Low', 
             dependsOn: [],
             blocks: [],
-            startDate: undefined,
-            endDate: undefined,
+            startDate: '',
+            endDate: '',
             creator: this.props.currentUser._id
 
         }
@@ -37,6 +37,17 @@ class TicketForm extends React.Component {
         if (this.props.ticketId !== 'new') {
             this.props.getTicket(this.props.ticketId)
             .then(ticket => {
+                
+                this.props.ticket.startDate = (
+                    this.props.ticket.startDate ? 
+                    this.props.ticket.startDate.slice(0,10) : ''
+                )
+
+                this.props.ticket.endDate = (
+                    this.props.ticket.endDate ?
+                    this.props.ticket.endDate.slice(0,10) : ''
+                )
+
                 this.setState(this.props.ticket)
             })
             .then(() => this.view());
@@ -77,11 +88,9 @@ class TicketForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         if (e.target.classList.contains('not-edited')) return null
-
         this.state.updatedAt.unshift(Date.now());
         this.state.updatedBy.unshift(this.props.currentUser._id)
         this.setState({lastUpdateSeenBy: []})
-
         
         if (this.props.ticketId !== "new") {
             this.props.updateTicket(this.state)
@@ -94,19 +103,20 @@ class TicketForm extends React.Component {
             })
             .catch(err => console.log(err))
         }
-
         let edits = document.getElementsByClassName('edited')
+        
         for (let i = 0; i < edits.length; i++) {
             edits[i].classList.add('not-edited')
-            edits[i].classList.remove('edited')
+        }
+        for (let i = 0; i <= edits.length; i++) {
+            edits[0].classList.remove('edited')
         }
     }
 
     update(field) {
         return e => {
             this.setState({ [field]: e.currentTarget.value });
-            this.edited = 'edited';
-            e.currentTarget.classList.add(this.edited);
+            e.currentTarget.classList.add('edited');
             let button = document.getElementById('ticket-submit-button');
             button.classList.remove('not-edited')
             button.classList.add('edited')
@@ -114,11 +124,10 @@ class TicketForm extends React.Component {
     }
 
     render(){
-            if (this.props.ticketId !== 'new') {
+
+        if (this.props.ticketId !== 'new') {
             if (!this.props.ticket) return null;
         }
-
-        this.edited = 'not-edited';
 
         let type = this.props.ticketId === 'new' ? 'new' : 'show';
 
@@ -262,11 +271,16 @@ class TicketForm extends React.Component {
 
                     <button
                         onClick={this.handleSubmit}
-                        className="button1"
+                        className="button1 not-edited"
                         id="ticket-submit-button"
                     >
+<<<<<<< HEAD
                         
                         {this.props.ticketId === "new" ? "create" : "save"}
+=======
+
+                        {this.props.ticketId === "new" ? "Create" : "Save"}
+>>>>>>> master
                     </button>
                 </div>
 

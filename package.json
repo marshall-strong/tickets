@@ -10,7 +10,7 @@
     "frontend-install": "npm install --prefix frontend",
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",
-    "dev-": "concurrently \"npm run server:debug\" \"npm run frontend\"",
+    "dev-debugger": "concurrently \"npm run server:debug\" \"npm run frontend\"",
     "seed": "node backend/mongoose-seed/seeder.js",
     "seed-no-destroy": "node backend/mongoose-seed/seeder_no_destroy.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"

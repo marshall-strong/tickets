@@ -62,14 +62,14 @@ convertTime(time) {
         return (
         <div>
             {this.props.comment.firstName} 
-                {this.props.comment.lastName} &nbsp;
+            {this.props.comment.lastName} &nbsp;
             commented &nbsp;
-                "{this.props.comment.body}" &nbsp;
+            "{this.props.comment.body}" &nbsp;
             on &nbsp;
             {this.convertDate(this.props.comment.time)} at 
             {this.convertTime(this.props.comment.time)}
 
-                <button className="button1" onClick={this.handleDelete}>Delete Comment</button>
+            <button className="button1" onClick={this.handleDelete}>Delete Comment</button>
         </div>
         )
     }

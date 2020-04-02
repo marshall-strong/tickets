@@ -309,11 +309,11 @@ class TicketForm extends React.Component {
               </form>
 
                 {this.props.ticketId !== "new" ? (
-                <div className="activity-container">
+                <ul className="activity-container">
                     <h1>Comments and activity</h1>
                     <CommentFormContainer />
                     <TicketActivityContainer currentUser={this.props.currentUser}/>
-                </div>
+                </ul>
                 ) : null}
 
             </div>

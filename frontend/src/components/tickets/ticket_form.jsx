@@ -59,8 +59,8 @@ class TicketForm extends React.Component {
                 priority: 'Low',
                 dependsOn: [],
                 blocks: [],
-                startDate: undefined,
-                endDate: undefined,
+                startDate: '',
+                endDate: '',
                 creator: this.props.currentUser._id
             });
         }
@@ -104,6 +104,7 @@ class TicketForm extends React.Component {
 
     update(field) {
         return e => {
+            debugger
             this.setState({ [field]: e.currentTarget.value });
             this.edited = 'edited';
             e.currentTarget.classList.add(this.edited);

@@ -38,8 +38,16 @@ class TicketForm extends React.Component {
             this.props.getTicket(this.props.ticketId)
             .then(ticket => {
                 
-                this.props.ticket.startDate = this.props.ticket.startDate.slice(0,10)
-                this.props.ticket.endDate = this.props.ticket.endDate.slice(0,10)
+                this.props.ticket.startDate = (
+                    this.props.ticket.startDate ? 
+                    this.props.ticket.startDate.slice(0,10) : ''
+                )
+                
+                this.props.ticket.endDate = (
+                    this.props.ticket.endDate ?
+                    this.props.ticket.endDate.slice(0,10) : ''
+                )
+
                 this.setState(this.props.ticket)
             })
             .then(() => this.view());

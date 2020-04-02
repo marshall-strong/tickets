@@ -1,6 +1,5 @@
 import React from "react";
 import {Link, withRouter} from "react-router-dom"
-import ProfileContainer from "../profile/profile_container";
 
 class ActivityIndexItem extends React.Component {
   constructor(props) {

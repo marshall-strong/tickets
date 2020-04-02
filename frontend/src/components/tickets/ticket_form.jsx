@@ -104,7 +104,6 @@ class TicketForm extends React.Component {
 
     update(field) {
         return e => {
-            debugger
             this.setState({ [field]: e.currentTarget.value });
             this.edited = 'edited';
             e.currentTarget.classList.add(this.edited);

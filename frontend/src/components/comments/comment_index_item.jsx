@@ -8,7 +8,7 @@ class CommentIndexItem extends React.Component {
     this.state = {
       edit: false,
       body: this.props.comment.body,
-      id: this.props.comment.commentId
+      _id: this.props.comment.commentId
     };
 
     this.convertDate = this.convertDate.bind(this);
@@ -18,36 +18,57 @@ class CommentIndexItem extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-    handleDelete(e) {
-        this.props.deleteComment(this.props.comment.commentId);
-    }
+  handleDelete(e) {
+      this.props.deleteComment(this.props.comment.commentId);
+  }
 
-    handleSubmit(e) {
-        e.preventDefault()
-        this.props.updateComment(this.state)
-    }
+  handleSubmit(e) {
+      e.preventDefault()
+      this.props.updateComment(this.state)
+  }
 
+  editCommentDiv() {
+      return (
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            <textarea
+              name={this.props.comment.body}
+              value={this.state.body}
+              onChange={this.handleUpdate("body")}
+            />
+            <button type="submit">Save</button>
+          </form>
+        </div>
+      );
+  }
 
-    editCommentDiv() {
-       return (
-         <div>
-           <form onSubmit={this.handleSubmit}>
-             <textarea
-               name={this.props.comment.body}
-               value={this.state.body}
-               onChange={this.handleUpdate("body")}
-             />
-             <button type="submit" >Save</button>
-           </form>
-         </div>
-       );
-    }
+  commentBodyDiv() {
+    return (
+      <div>
+        <Link to={`/users/${this.props.comment.userId}`}>
+          {this.props.comment.firstName} {this.props.comment.lastName}
+        </Link>
+        "{this.props.comment.body}"{this.convertDate(this.props.comment.time)}{" "}
+        at
+        {this.convertTime(this.props.comment.time)}
+        <button className="button1" onClick={this.handleDelete}>
+          Delete
+        </button>
+        <button
+          className="button1"
+          onClick={() => this.setState({ edit: true })}
+        >
+          Edit Comment
+        </button>
+      </div>
+    );
+  }
   
-    handleUpdate(field) {
-        return e => {
-            this.setState({ [field]: e.currentTarget.value });
-        };
-    }
+  handleUpdate(field) {
+      return e => {
+          this.setState({ [field]: e.currentTarget.value });
+      };
+  }
 
   convertDate(time) {
     let date = new Date(time);
@@ -77,28 +98,13 @@ class CommentIndexItem extends React.Component {
   }
 
   render() {
-
     return (
       <div>
-        {this.state.edit ? this.editCommentDiv() : null}
-        <Link to={`/users/${this.props.comment.userId}`}>
-          {this.props.comment.firstName} {this.props.comment.lastName}
-        </Link>
-        "{this.props.comment.body}"{this.convertDate(this.props.comment.time)}{" "}
-        at
-        {this.convertTime(this.props.comment.time)}
-        <button className="button1" onClick={this.handleDelete}>
-          Delete
-        </button>
-        <button
-          className="button1"
-          onClick={() => this.setState({ edit: true })}
-        >
-          Edit Comment
-        </button>
+        {this.state.edit ? this.editCommentDiv() : this.commentBodyDiv()}
       </div>
     );
   }
+  
 } 
 
 export default withRouter(CommentIndexItem)

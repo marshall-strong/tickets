@@ -35,7 +35,7 @@ router.post("/",
 
 router.get("/tickets/:ticketId", (req, res) => {
     Comment
-        .find({ ticket: req.params.ticketId})
+        .find({ ticket: req.params.ticketId })
         .sort({ createdAt: -1 })
         .then(comments => res.send(comments))
         .catch(err => 
@@ -45,8 +45,9 @@ router.get("/tickets/:ticketId", (req, res) => {
 })
 
 router.get("/author/:userId", (req, res) => {
-  Ticket.find({ author: req.params.userId })
+  Comment.find({ author: req.params.userId })
     .sort({ createdAt: -1 })
+    .populate('author', ['firstName', 'lastName', '_id'])
     .then(comments => res.json(comments))
     .catch(err =>
       res
@@ -60,8 +61,9 @@ router.patch("/:id",
         // passport.authenticate('jwt', { session: false }),
 
         (req, res) => {
-            Comment.findOneAndUpdate(req.params.id, req.body, {new: true})
-            .then( comment => res.json(comment) )
+            Comment.findByIdAndUpdate( req.params.id, req.body, {new: true})
+            .then((comment) => res.json(comment))
+            .catch((err) => res.status(422).json(err))
                 // if (comment.user.equals(req.user._id)) {
        
                 // } else {

@@ -25,6 +25,7 @@ class CommentIndexItem extends React.Component {
   handleSubmit(e) {
       e.preventDefault()
       this.props.updateComment(this.state)
+      this.setState({ body: ""})
   }
 
   editCommentDiv() {

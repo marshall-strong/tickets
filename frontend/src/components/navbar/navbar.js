@@ -51,6 +51,9 @@ class NavBar extends React.Component {
                 + New Ticket
               </button>
               <Link className="link-style"to={`/users/${currentUser._id}`}>
+                <div className="avitar">
+                  {currentUser.firstName.slice(0,1)}{currentUser.lastName.slice(0,1)}
+                </div> 
                 {currentUser.firstName} {currentUser.lastName}
               </Link>
                 {currentUser.orgHandle}

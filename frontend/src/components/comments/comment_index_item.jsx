@@ -44,22 +44,35 @@ class CommentIndexItem extends React.Component {
 
   commentBodyDiv() {
     return (
-      <div>
-        <Link to={`/users/${this.props.comment.userId}`}>
-          {this.props.comment.firstName} {this.props.comment.lastName}
-        </Link>
-        "{this.props.comment.body}"{this.convertDate(this.props.comment.time)}{" "}
-        at
-        {this.convertTime(this.props.comment.time)}
-        <button className="button1" onClick={this.handleDelete}>
-          Delete
-        </button>
-        <button
-          className="button1"
-          onClick={() => this.setState({ edit: true })}
-        >
-          Edit Comment
-        </button>
+      <div className="comment-container">
+        <div className="author">
+          <div className="avitar">
+            {this.props.comment.firstName.slice(0,1)}
+            {this.props.comment.lastName.slice(0,1)}
+          </div>
+          <Link to={`/users/${this.props.comment.userId}`}>
+            {this.props.comment.firstName} {this.props.comment.lastName}
+          </Link>
+        </div>
+        <div className="body">
+          {this.props.comment.body}
+        </div>
+        <div className="time">
+          {this.convertDate(this.props.comment.time)}{" "}
+          at
+          {this.convertTime(this.props.comment.time)}
+        </div>
+        <div className="buttons">
+          <button className="button1" onClick={this.handleDelete}>
+            Delete
+          </button>
+          <button
+            className="button1"
+            onClick={() => this.setState({ edit: true })}
+          >
+            Edit Comment
+          </button>
+        </div>
       </div>
     );
   }

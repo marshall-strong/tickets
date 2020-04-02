@@ -74,7 +74,7 @@ select {
 }
 
 .selectors button {
-    margin-left: 285px;
+    margin-left: 160px;
 }
 
 .schedule {
@@ -139,7 +139,7 @@ select {
 }
 
 button.button1.edited:hover {
-    border: 1-x solid black
+    border: 1px solid black
 }
 
 

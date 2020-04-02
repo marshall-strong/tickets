@@ -36,7 +36,7 @@
     color: white;
     text-decoration: none;
     font-family: sans-serif;
-    background: grey;
+    background: black;
     border-radius: 3px;
     border: 1px solid black;
     height: 37px;
@@ -51,11 +51,15 @@
     background-color: green;
 }
 .nav .logout {
-    background-color: grey;
+    background-color: black;
 }
 
 .button1:hover {
     border: 1px solid white;
+}
+
+.button1.demo {
+    background-color: black;
 }
 
 .link-style-header{

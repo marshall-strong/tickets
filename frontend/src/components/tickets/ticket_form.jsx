@@ -88,11 +88,9 @@ class TicketForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         if (e.target.classList.contains('not-edited')) return null
-
         this.state.updatedAt.unshift(Date.now());
         this.state.updatedBy.unshift(this.props.currentUser._id)
         this.setState({lastUpdateSeenBy: []})
-
         
         if (this.props.ticketId !== "new") {
             this.props.updateTicket(this.state)
@@ -105,19 +103,20 @@ class TicketForm extends React.Component {
             })
             .catch(err => console.log(err))
         }
-        
         let edits = document.getElementsByClassName('edited')
+        
         for (let i = 0; i < edits.length; i++) {
             edits[i].classList.add('not-edited')
-            edits[i].classList.remove('edited')
+        }
+        for (let i = 0; i <= edits.length; i++) {
+            edits[0].classList.remove('edited')
         }
     }
 
     update(field) {
         return e => {
             this.setState({ [field]: e.currentTarget.value });
-            this.edited = 'edited';
-            e.currentTarget.classList.add(this.edited);
+            e.currentTarget.classList.add('edited');
             let button = document.getElementById('ticket-submit-button');
             button.classList.remove('not-edited')
             button.classList.add('edited')
@@ -125,11 +124,10 @@ class TicketForm extends React.Component {
     }
 
     render(){
-            if (this.props.ticketId !== 'new') {
+
+        if (this.props.ticketId !== 'new') {
             if (!this.props.ticket) return null;
         }
-
-        this.edited = 'not-edited';
 
         let type = this.props.ticketId === 'new' ? 'new' : 'show';
 
@@ -277,7 +275,7 @@ class TicketForm extends React.Component {
                         id="ticket-submit-button"
                     >
 
-                        {this.props.ticketId === "new" ? "create" : "save"}
+                        {this.props.ticketId === "new" ? "Create" : "Save"}
                     </button>
                 </div>
 

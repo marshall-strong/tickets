@@ -12,7 +12,7 @@ module.exports = function validateTicketInput(ticket) {
     }
 
     if (ticket.startDate > ticket.endDate) {
-        errors.date = "Start date can't be before end date dumbass"
+        errors.date = "Start date can't be before end date"
     }
 
     return {

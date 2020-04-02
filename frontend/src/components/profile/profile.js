@@ -51,7 +51,7 @@ class Profile extends React.Component {
       <div>
         <div className="profile-header-container">
           <h1>
-            {user.firstName} {user.lastName} {user.createdAt}
+            {user.firstName} {user.lastName} started working {this.convertDate(user.createdAt)}
           </h1>
         </div>
         {sortedArray.map(item => {

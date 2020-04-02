@@ -37,7 +37,7 @@
     color: white;
     text-decoration: none;
     font-family: sans-serif;
-    background: rgb(26, 167, 38);
+    background: grey;
     border-radius: 3px;
     border: 1px solid black;
     height: 37px;
@@ -46,6 +46,16 @@
 }
 
 .nav .right-nav a:hover {
+    border: 1px solid white;
+}
+.new-ticket {
+    background-color: green;
+}
+.nav .logout {
+    background-color: grey;
+}
+
+.button1:hover {
     border: 1px solid white;
 }
 

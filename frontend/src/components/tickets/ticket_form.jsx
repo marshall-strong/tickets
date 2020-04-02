@@ -82,6 +82,7 @@ class TicketForm extends React.Component {
         this.state.updatedBy.unshift(this.props.currentUser._id)
         this.setState({lastUpdateSeenBy: []})
 
+        this.props.clearTicketErrors()
         
         if (this.props.ticketId !== "new") {
             this.props.updateTicket(this.state)

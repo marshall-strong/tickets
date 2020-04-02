@@ -7,21 +7,22 @@ class TicketIndex extends React.Component {
         super(props)
 
         this.state = {}
-        this.handleClick = this.handleClick.bind(this)
+        // this.handleClick = this.handleClick.bind(this)
     }
 
     componentDidMount() {
+      // in case of page refresh, fetch the current user to overwrite 
+      // stale preloaded state from login and get updated starred list
+      this.props.getOneUser(this.props.currentUser._id)
         switch (this.props.location.pathname) {
             case `/tickets/owner/${this.props.userId}`:
-                return this.props.fetchOwnerTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
+                return this.props.fetchOwnerTickets(this.props.match.params.userId).then(action => this.setState({tickets: action.tickets}))
             case `/tickets/subscribed/${this.props.userId}`:
-                return this.props.fetchSubscribedTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
+                return this.props.fetchSubscribedTickets(this.props.match.params.userId).then(action => this.setState({tickets: action.tickets}))
             case `/tickets/creator/${this.props.userId}`:
-                return this.props.fetchCreatedTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
+                return this.props.fetchCreatedTickets(this.props.match.params.userId).then(action => this.setState({tickets: action.tickets}))
             case `/tickets/starred/${this.props.userId}`: 
-                 return this.props
-                   .fetchStarredTickets(this.props.currentUser)
-                   .then(tickets => this.setState(tickets));
+                 return this.props.fetchStarredTickets(this.props.currentUser).then(action => this.setState({tickets: action.tickets}));
             default:
                 return null
         }
@@ -31,29 +32,27 @@ class TicketIndex extends React.Component {
         if (this.props.location.pathname !== prevProps.location.pathname) {
           switch (this.props.location.pathname) {
             case `/tickets/owner/${this.props.userId}`:
-              return this.props.fetchOwnerTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
+              return this.props.fetchOwnerTickets(this.props.match.params.userId).then(action => this.setState({tickets: action.tickets}))
             case `/tickets/subscribed/${this.props.userId}`:
-              return this.props.fetchSubscribedTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
+              return this.props.fetchSubscribedTickets(this.props.match.params.userId).then(action => this.setState({tickets: action.tickets}))
             case `/tickets/creator/${this.props.userId}`:
-              return this.props.fetchCreatedTickets(this.props.match.params.userId).then(tickets => this.setState(tickets))
+              return this.props.fetchCreatedTickets(this.props.match.params.userId).then(action => this.setState({tickets: action.tickets}))
             case `/tickets/starred/${this.props.userId}`:
-               return this.props
-                 .fetchStarredTickets(this.props.currentUser)
-                 .then(tickets => this.setState(tickets));
+               return this.props.fetchStarredTickets(this.props.currentUser).then(action => this.setState({tickets: action.tickets}));
             default:
               return null
           }
         }
     }
 
-    handleClick(e) {
-        e.preventDefault()
-        this.props.history.push(`/tickets/${this.props.ticketId}`)
-    }
+    // handleClick(e) {
+    //     e.preventDefault()
+    //     this.props.history.push(`/tickets/${this.props.ticketId}`)
+    // }
 
     render() {
       if (!this.state.tickets) return null
-      const { tickets } = this.state
+      const tickets = Object.values(this.state.tickets);
       const { currentUser, updateUser } = this.props
       
       return (

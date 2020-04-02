@@ -6,11 +6,10 @@ class CommentForm extends React.Component {
         super(props)
 
         this.state = { 
-            body: this.props.body,
+            body: this.props.body || '',
             author: this.props.currentUser._id,
             ticketId: this.props.ticketId
         }
-
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 

@@ -36,7 +36,7 @@ class CommentIndexItem extends React.Component {
               value={this.state.body}
               onChange={this.handleUpdate("body")}
             />
-            <button type="submit">Save</button>
+            <button className="button1" type="submit">Save</button>
           </form>
         </div>
       );

@@ -140,6 +140,7 @@ select {
 .comment-form input {
     width: 600px;
     margin-right: 10px;
+    max-height: 500px;
 }
 
 .edited {
@@ -198,5 +199,11 @@ input.edited:focus, textarea.edited:focus {
 
 .time {
     font-size: 11px;
+    margin-right: 5px;
+}
+
+.buttons .button1 {
+    font-size: 11px;
+    padding: 3px;
     margin-right: 5px;
 }

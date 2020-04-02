@@ -5,6 +5,7 @@ import CommentIndexItem from "../comments/comment_index_item";
 class TicketActivityIndex extends React.Component {
 
     componentDidMount() {
+        debugger
         this.props.getTicket(this.props.ticketId)
         this.props.fetchTicketComments(this.props.ticketId)
     }
@@ -26,8 +27,11 @@ class TicketActivityIndex extends React.Component {
 
         let ticketsArr = ticket.updatedBy.map((actor, i) => ({
             actor: ticket.updatedBy[i],
-            time: ticket.updatedAt[i]
+            time: ticket.updatedAt[i],
+            viewer: ticket.lastUpdateSeenBy[i]
         }));
+
+        debugger
 
         let feed = ticketsArr.concat(commentsArr);
         let sortedFeed = feed.sort((ele1, ele2) =>

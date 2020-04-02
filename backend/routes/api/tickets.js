@@ -59,6 +59,13 @@ router.get("/:ticketId", (req, res) => {
 })
 
 router.patch("/:ticketId", (req, res) => {
+
+      const { errors, isValid } = validateTicketInput(req.body);
+
+      if (!isValid) {
+        return res.status(422).json(errors);
+      }
+
     Ticket.findByIdAndUpdate(
         req.params.ticketId,
         req.body,

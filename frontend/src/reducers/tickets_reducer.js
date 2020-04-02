@@ -5,10 +5,7 @@ const ticketsReducer = (defaultState = {}, action) => {
     let newState = Object.assign({}, defaultState)
     switch (action.type) {
       case RECEIVE_TICKETS:
-        action.tickets.forEach(ticket => {
-          newState[ticket._id] = ticket
-        })
-        return newState
+        return action.tickets
       case RECEIVE_TICKET:
         newState[action.ticket._id] = action.ticket;
         return newState;

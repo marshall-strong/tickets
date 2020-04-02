@@ -6,7 +6,7 @@ class CommentForm extends React.Component {
         super(props)
 
         this.state = { 
-            body: '',
+            body: this.props.body,
             author: this.props.currentUser._id,
             ticketId: this.props.ticketId
         }
@@ -15,14 +15,14 @@ class CommentForm extends React.Component {
     }
 
     handleSubmit() {
-        this.props.createComment(this.state)
+        this.props.action(this.state)
     }
+
 
     update(field) {
        return e => {
             this.setState({ [field]: e.currentTarget.value})
         } 
-        
     }
 
     render() {

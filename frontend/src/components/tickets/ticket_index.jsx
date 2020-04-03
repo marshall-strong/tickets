@@ -50,21 +50,19 @@ class TicketIndex extends React.Component {
     const { currentUser, updateUser } = this.props
 
     return (
-      <table className="ticket-index">
-        <thead>
-          <tr>
-            <th>Creator</th>
-            <th>Owner</th>
-            <th>Title</th>
-            <th>Created At</th>
-            <th>Updated At</th>
-            <th>Status</th>
-            <th>Priority</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Starred</th>
-          </tr>
-        </thead>
+      <div className="table">
+        <div className="table-column-group">
+          <div className="table-cell">Creator</div>
+          <div className="table-cell">Owner</div>
+          <div className="table-cell">Title</div>
+          <div className="table-cell">Created At</div>
+          <div className="table-cell">Updated At</div>
+          <div className="table-cell">Status</div>
+          <div className="table-cell">Priority</div>
+          <div className="table-cell">Start Date</div>
+          <div className="table-cell">End Date</div>
+          <div className="table-cell">Starred</div>
+        </div>
         <tbody>
           {tickets.map(ticket => (
             <TicketIndexItem 
@@ -76,7 +74,7 @@ class TicketIndex extends React.Component {
             />
           ))}
         </tbody>
-      </table>
+      </div>
     );
   }
 }

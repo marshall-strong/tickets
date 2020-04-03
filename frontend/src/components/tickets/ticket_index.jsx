@@ -57,6 +57,7 @@ class TicketIndex extends React.Component {
       
       return (
         <div>
+          <div className="resize">resize me</div>
           <table className="ticket-index">
             <thead>
               <tr>

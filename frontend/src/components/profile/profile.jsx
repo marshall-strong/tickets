@@ -67,14 +67,14 @@ class Profile extends React.Component {
           {sortedArray.map(item => {
             if (item.creator) {
               return (
-                <div className="index-item">
-                  <b className="green">+</b> {item.creator.firstName} {item.creator.lastName} created <Link to={`/tickets/${item._id}`}>{item._id} "{item.title}"</Link> on {this.convertDate(item.createdAt)} at {this.convertTime(item.createdAt)}
+                <div className="ticket">
+                  <b className="green">+</b> {item.creator.firstName} {item.creator.lastName} created <Link to={`/tickets/${item._id}`}>{item._id} - "{item.title}"</Link> on {this.convertDate(item.createdAt)} at {this.convertTime(item.createdAt)}
                 </div>
               )
             } else {
               return (
-                <div className="index-item">
-                  <b className="blue">✎</b> {item.author.firstName} {item.author.lastName} commented <i>"{item.body.length < 25 ? item.body : item.body.slice(0,25) + '...'}"</i> on <Link to={`/tickets/${item.ticket._id}`}>{item.ticket._id} "{item.ticket.title}"</Link> {this.convertDate(item.createdAt)} {this.convertTime(item.createdAt)}
+                <div className="comment">
+                  <b className="blue">✎</b> {item.author.firstName} {item.author.lastName} commented <i>"{item.body.length < 15 ? item.body : item.body.slice(0,15) + '...'}"</i> on <Link to={`/tickets/${item.ticket._id}`}>{item.ticket._id} - "{item.ticket.title}"</Link> on {this.convertDate(item.createdAt)} at {this.convertTime(item.createdAt)}
                 </div>
               );
             }

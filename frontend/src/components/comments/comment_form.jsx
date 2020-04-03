@@ -13,6 +13,10 @@ class CommentForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
+    componentWillUnmount() {
+        this.props.clearCommentErrors()
+    }
+
     handleSubmit(field) {
         this.props.action(this.state)
         .then(() => this.setState({ body: "" }))

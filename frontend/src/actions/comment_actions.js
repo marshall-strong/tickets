@@ -4,6 +4,7 @@ export const RECEIVE_NEW_COMMENT = "RECEIVE_NEW_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
 export const RECEIVE_COMMENT_ERRORS = "RECEIVE_COMMENT_ERRORS";
 export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS";
+export const CLEAR_COMMENT_ERRORS = "CLEAR_COMMENT_ERRORS";
 
 const receiveComments = comments => {
     let payload = {}
@@ -13,7 +14,6 @@ const receiveComments = comments => {
         payload
     });
 } 
-
 
 const receiveNewComment = (comment) => ({
     type: RECEIVE_NEW_COMMENT, 
@@ -25,12 +25,15 @@ const removeComment = (id) => ({
     _id: id
 });
 
-const receiveCommentErrors = (errors) => {
-    return{
+const receiveCommentErrors = (errors) => ({
     type: RECEIVE_COMMENT_ERRORS, 
     errors: errors.response.data
-    }
-};
+})
+
+export const clearCommentErrors = (errors) => ({
+    type: CLEAR_COMMENT_ERRORS,
+    errors
+})
 
 export const fetchTicketComments = (ticketId) => dispatch => (
     CommentAPIUtil.fetchTicketComments(ticketId)

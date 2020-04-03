@@ -15,7 +15,7 @@ const mDTP = (dispatch) => ({
     fetchTicketComments: (ticketId) => dispatch(fetchTicketComments(ticketId)),
     getTicket: (ticketId) => dispatch(getTicket(ticketId)),
     deleteComment: (id) => dispatch(deleteComment(id)),
-    updateComment: (comment) => dispatch(updateComment(comment))
+    updateComment: (comment) => dispatch(updateComment(comment)),
 });
 
 

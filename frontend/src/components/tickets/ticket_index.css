@@ -1,27 +1,26 @@
 table {
     border-collapse: collapse;
-    text-align: center;
+    width: 100%;
+    /* text-align: center; */
 }
 
-tr {
-    border: 1px solid black;
-    border-bottom: 1px solid bloack;
+
+th { 
+    column-width: 10px;
+    overflow: hidden;
 }
 
-tr:hover {
+table,th,td{border:1px solid #000;}
+
+tbody tr:hover {
     background-color: blanchedalmond;
     cursor: pointer;
-}
-
-.resize {
-    resize: both;
 }
 
 div.star {
     z-index: 1;
     font-size: 20px;
     position: relative;
-    resize: both;
 }
 
 div.star:hover {

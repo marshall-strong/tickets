@@ -5,8 +5,8 @@ const TicketIndexItem = ({ ticket, history, currentUser, starredIds, updateUser 
     ticket.owner = ticket.owner ? ticket.owner : ""
     return (
         <tr onClick={() => history.push(`/tickets/${ticket._id}`)} className="ticket-index-item">
-            <td className='creator'> <Link to={`/users/${ticket.creator._id}`}>{ticket.creator.firstName} {ticket.creator.lastName}</Link> </td>
-            <td className='owner'>{ticket.owner ? <Link to={`/users/${ticket.owner._id}`}>{ticket.owner.firstName + ' ' + ticket.owner.lastName}</Link> : '--'}</td>
+            <td className='creator'> <Link onClick={e => e.stopPropagation()} to={`/users/${ticket.creator._id}`}>{ticket.creator.firstName} {ticket.creator.lastName}</Link> </td>
+            <td className='owner'>{ticket.owner ? <Link onClick={e => e.stopPropagation()} to={`/users/${ticket.owner._id}`}>{ticket.owner.firstName + ' ' + ticket.owner.lastName}</Link> : '--'}</td>
             <td className="title">{ticket.title}</td>
             <td className="created-at">{ticket.createdAt.date}</td>
             <td className="updated-at">{ticket.updatedAt[0] ? ticket.updatedAt[0] : '--'}</td>

@@ -1,11 +1,16 @@
 table {
     border-collapse: collapse;
-    text-align: center;
+    width: 100%;
+    /* text-align: center; */
 }
 
-table,th,td{
-    border:1px solid #000;
+
+th { 
+    column-width: 10px;
+    overflow: hidden;
 }
+
+table,th,td{border:1px solid #000;}
 
 tbody tr:hover {
     background-color: blanchedalmond;
@@ -16,7 +21,6 @@ div.star {
     z-index: 1;
     font-size: 20px;
     position: relative;
-    resize: both;
 }
 
 div.star:hover {

@@ -3,18 +3,13 @@ table {
     text-align: center;
 }
 
-tr {
-    border: 1px solid black;
-    border-bottom: 1px solid bloack;
+table,th,td{
+    border:1px solid #000;
 }
 
-tr:hover {
+tbody tr:hover {
     background-color: blanchedalmond;
     cursor: pointer;
-}
-
-.resize {
-    resize: both;
 }
 
 div.star {

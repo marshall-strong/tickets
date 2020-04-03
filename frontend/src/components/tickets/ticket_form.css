@@ -188,11 +188,6 @@ input.edited:focus, textarea.edited:focus {
     border-bottom: 1px solid grey;
 }
 
-.activity-item {
-    margin-left: 40px;
-    font-size: 12px;
-    padding: 5px;
-}
 
 .comment-container .top {
     display: flex;
@@ -216,6 +211,12 @@ input.edited:focus, textarea.edited:focus {
     margin-right: 5px;
     overflow-wrap: anywhere;
     padding-bottom: 5px;
+}
+
+.activity-item {
+    margin-left: 40px;
+    font-size: 12px;
+    padding: 5px;
 }
 
 .time {

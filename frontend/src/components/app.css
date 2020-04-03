@@ -42,3 +42,6 @@ div.starred:hover {
     cursor: pointer;
 }
 
+.comment-errors{
+    color: red;
+}

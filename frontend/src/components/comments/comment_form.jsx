@@ -23,7 +23,6 @@ class CommentForm extends React.Component {
         this.props.clearCommentErrors()
         this.props.action(this.state)
         this.setState({ body: "" })
-        debugger
     }
 
     update(field) {

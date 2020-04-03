@@ -130,7 +130,6 @@ class TicketForm extends React.Component {
     }
 
     render(){
-
         if (this.props.ticketId !== 'new') {
             if (!this.props.ticket) return null;
         }

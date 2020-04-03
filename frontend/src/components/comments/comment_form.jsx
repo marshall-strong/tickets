@@ -8,7 +8,8 @@ class CommentForm extends React.Component {
         this.state = { 
             body: this.props.body || '',
             author: this.props.currentUser._id,
-            ticketId: this.props.ticketId
+            ticketId: this.props.ticketId,
+            errors: this.props.errors
         }
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -17,9 +18,9 @@ class CommentForm extends React.Component {
         this.props.clearCommentErrors()
     }
 
-    handleSubmit(field) {
+    handleSubmit(e) {
+        e.preventDefault()
         this.props.action(this.state)
-        .then(() => this.setState({ body: "" }))
     }
 
     update(field) {
@@ -29,6 +30,9 @@ class CommentForm extends React.Component {
     }
 
     render() {
+        if(!this.props.errors) {
+            return null
+        }
         return (
           <form className="comment-form" onSubmit={this.handleSubmit}>
             <div>

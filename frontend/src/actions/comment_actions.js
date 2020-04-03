@@ -25,7 +25,7 @@ const removeComment = (id) => ({
     _id: id
 });
 
-const receiveCommentErrors = (errors) => ({
+export const receiveCommentErrors = (errors) => ({
     type: RECEIVE_COMMENT_ERRORS, 
     errors: errors.response.data
 })

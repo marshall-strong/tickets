@@ -29,17 +29,16 @@ class TicketActivityIndex extends React.Component {
         // do you want a created at here 
         // dont understand update and viewer
 
-        let ticketsArr = ticket.updatedBy.map((actor, i) => ({
-            firstName: ticket.updatedBy[i].firstName,
-            lastName: ticket.updatedBy[i].lastName,
-            userId: ticket.updatedBy[i]._id,
-            actor: ticket.updatedBy[i],
+        let updatesArr = ticket.updatedBy.map((actor, i) => ({
+            firstName: actor.firstName,
+            lastName: actor.lastName,
+            userId: actor._id,
+            actor: actor,
             time: ticket.updatedAt[i],
-            viewer: ticket.lastUpdateSeenBy[i]
         }));
 
 
-        let feed = ticketsArr.concat(commentsArr);
+        let feed = updatesArr.concat(commentsArr);
         let sortedFeed = feed.sort((ele1, ele2) =>
             ele1.time < ele2.time ? 1 : ele1.time > ele2.time ? -1 : 0
         );

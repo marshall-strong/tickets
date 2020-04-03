@@ -12,6 +12,7 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
+    this.props.getOneUser(this.props.match.params.userId)
     this.props.fetchCreatedTickets(this.props.match.params.userId);
     this.props.fetchUserComments(this.props.match.params.userId);
   }
@@ -44,7 +45,7 @@ class Profile extends React.Component {
 
   render() {
     const { user, comments, tickets } = this.props;
-
+    if (!user) return null 
     const sortedArray = tickets.concat(comments).sort((ele1, ele2) =>
     ele1.createdAt < ele2.createdAt ? 1 : ele1.createdAt > ele2.createdAt ? -1 : 0)
     

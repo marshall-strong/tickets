@@ -4,10 +4,9 @@ import './ticket_index.css'
 
 class TicketIndex extends React.Component {
     constructor(props) {
-        super(props)
+      super(props)
 
-        this.state = {}
-        // this.handleClick = this.handleClick.bind(this)
+      this.state = {}
     }
 
     componentDidMount() {
@@ -45,11 +44,6 @@ class TicketIndex extends React.Component {
         }
     }
 
-    // handleClick(e) {
-    //     e.preventDefault()
-    //     this.props.history.push(`/tickets/${this.props.ticketId}`)
-    // }
-
     render() {
       if (!this.state.tickets) return null
       const tickets = Object.values(this.state.tickets);
@@ -57,7 +51,6 @@ class TicketIndex extends React.Component {
       
       return (
         <div>
-          <div className="resize">resize me</div>
           <table className="ticket-index">
             <thead>
               <tr>

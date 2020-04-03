@@ -37,7 +37,7 @@ class CommentIndexItem extends React.Component {
               value={this.state.body}
               onChange={this.handleUpdate("body")}
             />
-            <button type="submit">Save</button>
+            <button className="button1" type="submit">Save</button>
           </form>
         </div>
       );
@@ -55,24 +55,29 @@ class CommentIndexItem extends React.Component {
             {this.props.comment.firstName} {this.props.comment.lastName}
           </Link>
         </div>
-        <div className="body">
-          {this.props.comment.body}
-        </div>
-        <div className="time">
-          {this.convertDate(this.props.comment.time)}{" "}
-          at
-          {this.convertTime(this.props.comment.time)}
-        </div>
-        <div className="buttons">
-          <button className="button1" onClick={this.handleDelete}>
-            Delete
-          </button>
-          <button
-            className="button1"
-            onClick={() => this.setState({ edit: true })}
-          >
-            Edit Comment
-          </button>
+        <div className="top">
+          <div className="body">
+            {this.props.comment.body}
+          </div>
+          <div className="bottom">
+            <div className="time">
+              {this.convertDate(this.props.comment.time)}{" "}
+              at
+              {this.convertTime(this.props.comment.time)}
+            </div>
+            <div className="buttons">
+              <button className="button1" onClick={this.handleDelete}>
+                Delete
+              </button>
+              <button
+                className="button1"
+                onClick={() => this.setState({ edit: true })}
+              >
+                Edit Comment
+              </button>
+            </div>
+
+          </div>
         </div>
       </div>
     );

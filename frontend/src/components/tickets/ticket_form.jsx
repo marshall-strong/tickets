@@ -91,6 +91,8 @@ class TicketForm extends React.Component {
         this.state.updatedAt.unshift(Date.now());
         this.state.updatedBy.unshift(this.props.currentUser._id)
         this.setState({lastUpdateSeenBy: []})
+
+        this.props.clearTicketErrors()
         
         if (this.props.ticketId !== "new") {
             this.props.updateTicket(this.state)
@@ -308,7 +310,15 @@ class TicketForm extends React.Component {
                   placeholder="body"
                   onChange={this.update("body")}
                 ></textarea>
-
+                <label className="subs-title">
+                    subscribed
+                </label> 
+                <textarea
+                    className={`${type} margin subscribed`}
+                    value={this.state.subscribed}
+                    placeholder="subscribed"
+                    onChange={this.update("subscribed")}
+                ></textarea>
 
                 <input
                   className={`${type} margin`}
@@ -330,7 +340,7 @@ class TicketForm extends React.Component {
 
                 {this.props.ticketId !== "new" ? (
                 <ul className="activity-container">
-                    <h1>Comments and activity</h1>
+                    <h1 className="title">Comments and activity</h1>
                     <CommentFormContainer />
                     <TicketActivityContainer currentUser={this.props.currentUser}/>
                 </ul>

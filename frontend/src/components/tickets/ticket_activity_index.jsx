@@ -19,12 +19,15 @@ class TicketActivityIndex extends React.Component {
         let commentsArr = comments.map(comment => ({
             userId: comment.author,
             commentId: comment._id,
-            firstName: this.props.currentUser.firstName,
-            lastName: this.props.currentUser.lastName,
+            firstName: comment.author.firstName,
+            lastName: comment.author.lastName,
             time: comment.createdAt,
             body: comment.body,
             ticketId: this.props.ticketId
         }));
+
+        // do you want a created at here 
+        // dont understand update and viewer
 
         let ticketsArr = ticket.updatedBy.map((actor, i) => ({
             firstName: ticket.updatedBy[i].firstName,
@@ -43,21 +46,19 @@ class TicketActivityIndex extends React.Component {
 
         let feedList = sortedFeed.map((feedItem, i) => {
             return (
-                <div>
-                    <ul>
-                        {feedItem.body ? 
-                        <CommentIndexItem key={i + new Date().getTime()} 
-                            comment={feedItem} 
-                            deleteComment={this.props.deleteComment} 
-                            fetchTicketComments={this.props.fetchTicketComments} 
-                            ticketId={this.props.ticketId} 
-                            updateComment={this.props.updateComment} 
-                        />
-                        : 
-                        <ActivityIndexItem key={i + new Date().getTime()} update={feedItem} />
-                        }
-                    </ul>
-                </div>
+                <li key={i + new Date().getTime()} >
+                    {feedItem.body ? 
+                    <CommentIndexItem 
+                        comment={feedItem} 
+                        deleteComment={this.props.deleteComment} 
+                        fetchTicketComments={this.props.fetchTicketComments} 
+                        ticketId={this.props.ticketId} 
+                        updateComment={this.props.updateComment} 
+                    />
+                    : 
+                    <ActivityIndexItem update={feedItem} />
+                    }
+                </li>
             );
         });
 

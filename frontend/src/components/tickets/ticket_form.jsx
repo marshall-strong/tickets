@@ -30,6 +30,10 @@ class TicketForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
+    componentWillUnmount(){
+        this.props.clearTicketErrors()
+    }
+
     componentDidMount() {
         // in case of page refresh, fetch the current user to overwrite 
         // stale preloaded state from login and get updated starred list
@@ -126,7 +130,6 @@ class TicketForm extends React.Component {
     }
 
     render(){
-
         if (this.props.ticketId !== 'new') {
             if (!this.props.ticket) return null;
         }

@@ -27,6 +27,7 @@ router.post("/",
             .then(
                 populated => res.json(populated)
             )
+            .catch(err => res.status(422).json(err))
         })
 
     }

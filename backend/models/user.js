@@ -3,8 +3,7 @@ const Schema = mongoose.Schema;
 // const deepPopulate = require("mongoose-deep-populate")(mongoose);
 // userSchema.plugin(deepPopulate);
 
-const userSchema = new Schema(
-  {
+const userSchema = new Schema({
     firstName: {
         type: String,
         required: true
@@ -25,14 +24,16 @@ const userSchema = new Schema(
         type: String,
         required: true
     },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
     starred: [{
         type: String
         // type: Schema.Types.ObjectId,
         // ref: 'Ticket'
     }]
-  },
-  { timestamps: true }
-);
+});
 
-User = mongoose.model('User', userSchema);
+User = mongoose.model('User', userSchema) //"users");
 module.exports = User;

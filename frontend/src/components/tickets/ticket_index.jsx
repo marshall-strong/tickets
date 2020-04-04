@@ -51,19 +51,19 @@ class TicketIndex extends React.Component {
 
     return (
       <div className="table">
-        <div className="table-column-group">
-          <div className="table-cell">Creator</div>
-          <div className="table-cell">Owner</div>
-          <div className="table-cell">Title</div>
-          <div className="table-cell">Created At</div>
-          <div className="table-cell">Updated At</div>
-          <div className="table-cell">Status</div>
-          <div className="table-cell">Priority</div>
-          <div className="table-cell">Start Date</div>
-          <div className="table-cell">End Date</div>
-          <div className="table-cell">Starred</div>
+        <div className="table-header-group">
+          <div className="table-cell">Creator</div><div className="handle"></div>
+          <div className="table-cell">Owner</div><div className="handle"></div>
+          <div className="table-cell">Title</div><div className="handle"></div>
+          <div className="table-cell">Created At</div><div className="handle"></div>
+          <div className="table-cell">Updated At</div><div className="handle"></div>
+          <div className="table-cell">Status</div><div className="handle"></div>
+          <div className="table-cell">Priority</div><div className="handle"></div>
+          <div className="table-cell">Start Date</div><div className="handle"></div>
+          <div className="table-cell">End Date</div><div className="handle"></div>
+          <div className="table-cell">Starred</div><div className="handle"></div>
         </div>
-        <tbody>
+        <div className="table-row-group">
           {tickets.map(ticket => (
             <TicketIndexItem 
               key={ticket._id} 
@@ -73,7 +73,7 @@ class TicketIndex extends React.Component {
               updateUser={updateUser}
             />
           ))}
-        </tbody>
+        </div>
       </div>
     );
   }

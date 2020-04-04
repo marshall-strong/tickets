@@ -1,19 +1,38 @@
-table {
-    border-collapse: collapse;
-    width: 100%;
-    /* text-align: center; */
+.table {
+    display: flex;
+    flex-direction: column;
 }
 
+.table-header-group {
+    display: flex;
+}
 
-th { 
-    column-width: 10px;
+.table-cell {
+    border: 1px solid black;
+    padding: 5px;
     overflow: hidden;
+    width: 100px;
 }
 
-table,th,td{border:1px solid #000;}
+.table-row-group {
+    display: flex;
+    flex-direction: column;
+}
 
-tbody tr:hover {
-    background-color: blanchedalmond;
+.handle{
+    border: 1px solid black;
+}
+
+.handle:hover {
+    cursor: col-resize;
+}
+
+.table-row {
+    display: flex;
+}
+
+.table-row:hover {
+    background-color: lightgrey;
     cursor: pointer;
 }
 

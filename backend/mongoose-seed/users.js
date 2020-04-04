@@ -130,6 +130,14 @@ const userSeeds = {
       email: "foobar@appacademy.io",
       orgHandle: "appacademy.io",
       password: genPasswordDigest("password")
+    },
+    {
+      _id: "999999999999999999999999",
+      firstName: "Carlos",
+      lastName: "Garcia",
+      email: "carlos@appacademy.io",
+      orgHandle: "appacademy.io",
+      password: genPasswordDigest("password")
     }
   ]
 };

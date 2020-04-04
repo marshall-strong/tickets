@@ -15,6 +15,21 @@ const ticketSeeds = {
             "444444444444444444444444",
           ],
         },
+        {
+          title: "Finish MERN project",
+          body: "We need to finish this app so that we can move on",
+          status: "Planned",
+          priority: "CATastrophic",
+          creator: "111111111111111111111111",
+          owner: "111111111111111111111111",
+          subscribed: [
+            "000000000000000000000000",
+            "111111111111111111111111",
+            "222222222222222222222222",
+            "333333333333333333333333",
+            "444444444444444444444444",
+          ],
+        },
     ]
 };
 

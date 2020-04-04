@@ -32,7 +32,7 @@ seeder.connect(mongoDbUri, function () {
     seeder.clearModels([
         'Organization', 
         'User',
-        // 'Ticket',
+        'Ticket',
         // 'Comment',
         'Tag',
     ], function () {

@@ -2,6 +2,7 @@ const ticketSeeds = {
     model: 'Ticket',
     documents: [
         {
+          _id: "5e88f0a6fa087c34ce3d2fa3",
           title: "Place a cat in every household",
           body: "Cats will make life better for all of humanity",
           status: "Planned",

@@ -12,7 +12,7 @@ const data = [
     organizationSeeds,
     userSeeds,
     ticketSeeds,
-    // commentSeeds,
+    commentSeeds,
     tagSeeds
 ];
 
@@ -24,7 +24,7 @@ seeder.connect(mongoDbUri, function () {
         './backend/models/organization.js',
         './backend/models/user.js',
         './backend/models/ticket.js',
-        // './backend/models/comment.js',
+        './backend/models/comment.js',
         './backend/models/tag.js'
     ]);
 
@@ -33,7 +33,7 @@ seeder.connect(mongoDbUri, function () {
         'Organization', 
         'User',
         'Ticket',
-        // 'Comment',
+        'Comment',
         'Tag',
     ], function () {
 

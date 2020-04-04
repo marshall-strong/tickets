@@ -68,7 +68,7 @@ router.get('/handle/:orgHandle/users/name/:name', (req, res) => {
 
   User.find({ 
     orgHandle: orgHandle,
-    firstName: name
+    lastName: name
    })
     .then(users => res.json(users))
     .catch(err => {

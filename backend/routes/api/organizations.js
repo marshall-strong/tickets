@@ -46,4 +46,37 @@ router.get("/handle/:orgHandle", (req, res) => {
 });
 
 
+// Get all users with the specified orgHandle
+router.get('/handle/:orgHandle/users', (req, res) => {
+  const orgHandle = req.params.orgHandle;
+
+  User.find({ orgHandle: orgHandle })
+    .then(users => res.json(users))
+    .catch(err => {
+      res.status(400).json({
+        message:
+          err.message || `No users found with orgHandle=${orgHandle}`
+      });
+    });
+});
+
+
+// Get users with the specified orgHandle and name
+router.get('/handle/:orgHandle/users/name/:name', (req, res) => {
+  const orgHandle = req.params.orgHandle;
+  const name = req.params.name
+
+  User.find({ 
+    orgHandle: orgHandle,
+    firstName: name
+   })
+    .then(users => res.json(users))
+    .catch(err => {
+      res.status(400).json({
+        message:
+          err.message || `No users found with orgHandle=${orgHandle}`
+      });
+    });
+});
+
 module.exports = router;

@@ -67,8 +67,10 @@ router.get('/handle/:orgHandle/users/name/:name', (req, res) => {
   const name = req.params.name
 
   User.find({ 
-    orgHandle: orgHandle,
-    lastName: name
+    $and : [
+      { orgHandle: orgHandle },
+      { $or : [ { firstName: name }, { lastName: name } ] }
+    ]
    })
     .then(users => res.json(users))
     .catch(err => {

@@ -1,12 +1,18 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const ticketSchema = new Schema(
-  {
+const ticketSchema = new Schema({
     creator: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
+    createdAt: {
+        type: Date,
+        default: Date.now()
+    },
+    updatedAt: [{
+        type: Date
+    }],
     tags: {
         type: Array,
         default: []
@@ -64,9 +70,9 @@ const ticketSchema = new Schema(
         type: Date,
         default: undefined
     },
-  },
-  { timestamps: true }
-);
+});
 
-Ticket = mongoose.model('Ticket', ticketSchema);
-module.exports = Ticket;    
+Ticket = mongoose.model('Ticket', ticketSchema, "tickets");
+
+
+module.exports = Ticket;

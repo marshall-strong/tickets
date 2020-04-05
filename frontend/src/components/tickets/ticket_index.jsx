@@ -8,6 +8,7 @@ class TicketIndex extends React.Component {
 
     this.state = {
       tickets: undefined,
+      resizing: false,
       sortedBy: {
         attr: 'creator',
         ord: true
@@ -53,22 +54,45 @@ class TicketIndex extends React.Component {
 
   formatTable() {
     let handles = document.getElementsByClassName('handle');
-    let clickPos;
+    let clickPos, colNum, leftWidth, rightWidth;
 
     for (let i = 0; i < handles.length; i++) {
       handles[i].addEventListener('mousedown', (e) => {
-        e.preventDefault();
+        e.cancelBubble = true;
+        e.stopImmediatePropagation();
+        e.stopPropagation();
+        this.setState({ resizing: true });
         clickPos = e.pageX;
-      })
+        colNum = e.target.classList[1];
+        leftWidth = e.target.previousElementSibling.offsetWidth;
+        rightWidth = e.target.nextElementSibling.offsetWidth;
+      }, false);
 
-      handles[i].addEventListener('mousemove', (e) => {
+      window.addEventListener('mousemove', (e) => {
         if (!clickPos) return 0;
+        e.stopPropagation();
         let dx = e.pageX - clickPos;
-        let leftSib = e.target.previousElementSibling;
-        let colNum = e.target.classList[1];
-        let colHandles = document.getElementsByClassName('colNum')
+        
+        let colHandles = document.getElementsByClassName(colNum)
 
-      })
+        for (let i = 0; i < colHandles.length; i++) {
+          let leftSib = colHandles[i].previousElementSibling;
+          let rightSib = colHandles[i].nextElementSibling;
+  
+          leftSib.style.width = leftWidth + dx + 'px';
+          rightSib.style.width = rightWidth - dx + 'px';
+        }
+      });
+
+      window.addEventListener('mouseup', (e) => {
+        e.stopPropagation();
+        if (!clickPos) return 0
+        e.preventDefault();
+        clickPos = undefined;
+        setTimeout(() => {
+          this.setState({ resizing: false })
+        }, 300)
+      });
     } 
 
   }
@@ -115,32 +139,33 @@ class TicketIndex extends React.Component {
   render() {
     if (!this.state.tickets) return null
     const tickets = Object.values(this.state.tickets);
-    const { currentUser, updateUser } = this.props;
+    const { currentUser, updateUser, history } = this.props;
     const { sortedBy } = this.state;
     return (
       <div className="table">
         <div className="table-header-group">
-          <div className="table-cell" onClick={() => this.sortTicketsBy('creator')}>Creator {sortedBy.attr !== 'creator' ? null : sortedBy.ord ? '▲' : '▼' }</div><div className="handle 1"></div>
-          <div className="table-cell" onClick={() => this.sortTicketsBy('owner')}>Owner {sortedBy.attr !== 'owner' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 2"></div>
-          <div className="table-cell" onClick={() => this.sortTicketsBy('title')}>Title {sortedBy.attr !== 'title' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 3"></div>
+          <div className="table-cell creator" onClick={() => this.sortTicketsBy('creator')}>Creator {sortedBy.attr !== 'creator' ? null : sortedBy.ord ? '▲' : '▼' }</div><div className="handle 1"></div>
+          <div className="table-cell owner" onClick={() => this.sortTicketsBy('owner')}>Owner {sortedBy.attr !== 'owner' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 2"></div>
+          <div className="table-cell title" onClick={() => this.sortTicketsBy('title')}>Title {sortedBy.attr !== 'title' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 3"></div>
           <div className="table-cell" onClick={() => this.sortTicketsBy('createdAt')}>Created At {sortedBy.attr !== 'createdAt' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 4"></div>
-          <div className="table-cell" onClick={() => this.sortTicketsBy('updatedAt')}>Updated At {sortedBy.attr !== 'updatedAt' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 5"></div>
+          <div className="table-cell updated-at" onClick={() => this.sortTicketsBy('updatedAt')}>Updated At {sortedBy.attr !== 'updatedAt' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 5"></div>
           <div className="table-cell" onClick={() => this.sortTicketsBy('status')}>Status {sortedBy.attr !== 'status' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 6"></div>
-          <div className="table-cell" onClick={() => this.sortTicketsBy('priority')}>Priority {sortedBy.attr !== 'priority' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 7"></div>
+          <div className="table-cell priority" onClick={() => this.sortTicketsBy('priority')}>Priority {sortedBy.attr !== 'priority' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 7"></div>
           <div className="table-cell" onClick={() => this.sortTicketsBy('startDate')}>Start Date {sortedBy.attr !== 'startDate' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 8"></div>
           <div className="table-cell" onClick={() => this.sortTicketsBy('endDate')}>End Date {sortedBy.attr !== 'endDate' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 9"></div>
-          <div className="table-cell">Starred</div>
+          <div className="table-cell starred">Starred</div>
         </div>
         <div className="table-row-group">
           {tickets.map(ticket => {
             return (
-              <TicketIndexItem 
-                key={ticket._id} 
-                ticket={ticket} 
-                currentUser={currentUser}
-                starredIds={currentUser.starred}
-                updateUser={updateUser}
-              />
+              <div key={ticket._id} onClick={() => this.state.resizing ? null : history.push(`/tickets/${ticket._id}`)}>
+                <TicketIndexItem 
+                  ticket={ticket} 
+                  currentUser={currentUser}
+                  starredIds={currentUser.starred}
+                  updateUser={updateUser}
+                />
+              </div>
             )
           })}
         </div>

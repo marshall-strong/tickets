@@ -32,8 +32,8 @@ router.get("/:orgId", (req, res) => {
 
 
 // Get one organization, by handle
-router.get("/handle/:orgHandle", (req, res) => {
-  const orgHandle = req.params.orgHandle;
+router.get("/handle/:handle", (req, res) => {
+  const orgHandle = req.params.handle;
 
   Organization.find({ handle: orgHandle })
     .then(organizations => res.json(organizations))
@@ -46,9 +46,9 @@ router.get("/handle/:orgHandle", (req, res) => {
 });
 
 
-// Get all users with the specified orgHandle
-router.get('/handle/:orgHandle/users', (req, res) => {
-  const orgHandle = req.params.orgHandle;
+// Get all users with the specified handle
+router.get('/handle/:handle/users', (req, res) => {
+  const orgHandle = req.params.handle;
 
   User.find({ orgHandle: orgHandle })
     .then(users => res.json(users))
@@ -61,17 +61,17 @@ router.get('/handle/:orgHandle/users', (req, res) => {
 });
 
 
-// Get users with the specified orgHandle and name
-router.get('/handle/:orgHandle/users/name/:name', (req, res) => {
-  const orgHandle = req.params.orgHandle;
-  const name = req.params.name
+// Gets all users where orgHandle matches 
+router.get('/handle/:handle/users/name/:nameFragment', (req, res) => {
+  const orgHandle = req.params.handle;
+  const nameFragment = req.params.nameFragment
 
   User.find({ 
     $and : [
       { orgHandle: orgHandle },
       { $or : [ 
-        { firstName: { "$regex": name, "$options": "i" } }, 
-        { lastName: { "$regex": name, "$options": "i" } }
+        { firstName: { "$regex": nameFragment, "$options": "i" } }, 
+        { lastName: { "$regex": nameFragment, "$options": "i" } }
       ] }
       // { $text: { $search: name } }
     ]
@@ -80,7 +80,7 @@ router.get('/handle/:orgHandle/users/name/:name', (req, res) => {
     .catch(err => {
       res.status(400).json({
         message:
-          err.message || `No users found where orgHandle=${orgHandle} and firstName or lastName contains ${name}`
+          err.message || `No users found where orgHandle=${orgHandle} and firstName or lastName contains ${nameFragment}`
       });
     });
 });

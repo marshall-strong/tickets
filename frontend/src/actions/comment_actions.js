@@ -1,9 +1,11 @@
 import * as CommentAPIUtil from '../util/comment_api_util';
+import { CLEAR_ERRORS } from './session_actions';
 
 export const RECEIVE_NEW_COMMENT = "RECEIVE_NEW_COMMENT";
 export const DELETE_COMMENT = "DELETE_COMMENT";
 export const RECEIVE_COMMENT_ERRORS = "RECEIVE_COMMENT_ERRORS";
 export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS";
+export const CLEAR_COMMENT_ERRORS = "CLEAR_COMMENT_ERRORS";
 
 const receiveComments = comments => {
     let payload = {}
@@ -31,6 +33,10 @@ const receiveCommentErrors = (errors) => {
     errors: errors.response.data
     }
 };
+
+export const clearCommentErrors = () => ({
+    type: CLEAR_COMMENT_ERRORS
+})
 
 export const fetchTicketComments = (ticketId) => dispatch => (
     CommentAPIUtil.fetchTicketComments(ticketId)

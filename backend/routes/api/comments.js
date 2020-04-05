@@ -62,6 +62,13 @@ router.patch("/:id",
         // passport.authenticate('jwt', { session: false }),
 
         (req, res) => {
+            const { errors, isValid } = validateCommentInput(req.body);
+            if (!isValid) {
+              req.body.edit = true;
+              return res.status(422).json(errors);
+            }
+
+
             Comment.findByIdAndUpdate( req.params.id, req.body, {new: true})
             .populate('author', ['firstName', 'lastName', '_id'])
             .then((comment) => res.json(comment))

@@ -39,11 +39,7 @@ const ticketSchema = new Schema({
     },
     lastUpdateSeenBy: [{
         type: Schema.Types.ObjectId,
-<<<<<<< HEAD
         ref: 'User'
-=======
-        ref: 'User',
->>>>>>> master
     }],
     updatedBy: [{
         type: Schema.Types.ObjectId,

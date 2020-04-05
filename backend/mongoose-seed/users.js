@@ -11,7 +11,7 @@ const userSeeds = {
             password: genPasswordDigest("password")
         },
         {
-            firstName: "Hayden",
+            firstName: "Hayden", 
             lastName: "Linder",
             email: "hayden@cats4humanity.org",
             orgHandle: "cats4humanity.org",

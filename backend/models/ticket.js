@@ -40,7 +40,6 @@ const ticketSchema = new Schema({
     lastUpdateSeenBy: [{
         type: Schema.Types.ObjectId,
         ref: 'User',
-        unique: true
     }],
     updatedBy: [{
         type: Schema.Types.ObjectId,

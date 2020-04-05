@@ -22,6 +22,10 @@
     font-weight: 800;
 }
 
+.table-header-group:hover {
+    cursor: pointer;
+}
+
 .table-cell {
     border-top: 1px solid black;
     padding: 5px;

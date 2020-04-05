@@ -132,6 +132,7 @@ class TicketIndex extends React.Component {
   sortTicketsBy(attr) {
     let tickets = Object.values(this.state.tickets);
     let sortedTickets;
+    debugger
     
     sortedTickets = tickets.sort((t1, t2) => {
       let attr1 = t1[attr];

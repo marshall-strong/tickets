@@ -272,7 +272,7 @@ class TicketIndex extends React.Component {
           <div 
             className="table-cell starred"
           >
-            <div className="title">Starred</div>
+            <div className="title starred">Starred</div>
           </div>
         </div>
         <div className="table-row-group">

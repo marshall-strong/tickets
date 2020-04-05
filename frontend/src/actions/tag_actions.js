@@ -1,8 +1,10 @@
 import * as TagAPIUtil from '../util/tag_api_util';
 
+
 export const RECEIVE_TAG = 'RECEIVE_TAG';
 export const RECEIVE_TAGS = 'RECEIVE_TAGS';
 export const RECEIVE_TAG_ERRORS = 'RECEIVE_TAG_ERRORS';
+
 
 const receiveTag = tag => ({
     type: RECEIVE_TAG,
@@ -18,6 +20,7 @@ const receiveTagErrors = errors => ({
     type: RECEIVE_TAG_ERRORS,
     errors: errors
 });
+
 
 export const createTag = tag => dispatch => (
     TagAPIUtil.createTag(tag)

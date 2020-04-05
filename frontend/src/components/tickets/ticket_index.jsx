@@ -144,16 +144,16 @@ class TicketIndex extends React.Component {
     return (
       <div className="table">
         <div className="table-header-group">
-          <div className="table-cell" onClick={() => this.sortTicketsBy('creator')}>Creator {sortedBy.attr !== 'creator' ? null : sortedBy.ord ? '▲' : '▼' }</div><div className="handle 1"></div>
-          <div className="table-cell" onClick={() => this.sortTicketsBy('owner')}>Owner {sortedBy.attr !== 'owner' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 2"></div>
-          <div className="table-cell" onClick={() => this.sortTicketsBy('title')}>Title {sortedBy.attr !== 'title' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 3"></div>
+          <div className="table-cell creator" onClick={() => this.sortTicketsBy('creator')}>Creator {sortedBy.attr !== 'creator' ? null : sortedBy.ord ? '▲' : '▼' }</div><div className="handle 1"></div>
+          <div className="table-cell owner" onClick={() => this.sortTicketsBy('owner')}>Owner {sortedBy.attr !== 'owner' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 2"></div>
+          <div className="table-cell title" onClick={() => this.sortTicketsBy('title')}>Title {sortedBy.attr !== 'title' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 3"></div>
           <div className="table-cell" onClick={() => this.sortTicketsBy('createdAt')}>Created At {sortedBy.attr !== 'createdAt' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 4"></div>
-          <div className="table-cell" onClick={() => this.sortTicketsBy('updatedAt')}>Updated At {sortedBy.attr !== 'updatedAt' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 5"></div>
+          <div className="table-cell updated-at" onClick={() => this.sortTicketsBy('updatedAt')}>Updated At {sortedBy.attr !== 'updatedAt' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 5"></div>
           <div className="table-cell" onClick={() => this.sortTicketsBy('status')}>Status {sortedBy.attr !== 'status' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 6"></div>
-          <div className="table-cell" onClick={() => this.sortTicketsBy('priority')}>Priority {sortedBy.attr !== 'priority' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 7"></div>
+          <div className="table-cell priority" onClick={() => this.sortTicketsBy('priority')}>Priority {sortedBy.attr !== 'priority' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 7"></div>
           <div className="table-cell" onClick={() => this.sortTicketsBy('startDate')}>Start Date {sortedBy.attr !== 'startDate' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 8"></div>
           <div className="table-cell" onClick={() => this.sortTicketsBy('endDate')}>End Date {sortedBy.attr !== 'endDate' ? null : sortedBy.ord ? '▲' : '▼'}</div><div className="handle 9"></div>
-          <div className="table-cell">Starred</div>
+          <div className="table-cell starred">Starred</div>
         </div>
         <div className="table-row-group">
           {tickets.map(ticket => {

@@ -17,10 +17,12 @@ const receiveComments = comments => {
 } 
 
 
-const receiveNewComment = (comment) => ({
+const receiveNewComment = (comment) => {
+    return {
     type: RECEIVE_NEW_COMMENT, 
     comment: comment.data
-});
+    }
+};
 
 const removeComment = (id) => ({
     type: DELETE_COMMENT, 

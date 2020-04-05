@@ -17,7 +17,6 @@ const mDTP = dispatch => ({
     getTicket: (id) => dispatch(getTicket()),
     action: comment => dispatch(createComment(comment)),
     clearCommentErrors: () => dispatch(clearCommentErrors())
-
 })
 
 export default withRouter(connect(mSTP, mDTP)(CommentForm))

@@ -65,9 +65,10 @@ class TicketIndex extends React.Component {
         if (!clickPos) return 0;
         let dx = e.pageX - clickPos;
         let leftSib = e.target.previousElementSibling;
+        let rightSib = e.target.nextElementSibling;
         let colNum = e.target.classList[1];
         let colHandles = document.getElementsByClassName('colNum')
-
+        debugger
       })
     } 
 

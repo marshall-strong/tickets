@@ -1,11 +1,13 @@
 import * as SessionAPIUtil from '../util/session_api_util';
 import jwt_decode from 'jwt-decode';
 
+
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
 export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
+
 
 export const receiveCurrentUser = payload => ({
     type: RECEIVE_CURRENT_USER,
@@ -29,12 +31,8 @@ export const receiveErrors = errors => ({
 
 export const clearErrors = () => ({
     type: CLEAR_ERRORS
-})
+});
 
-const demoUser = {
-  email: "user@cats4humanity.org",
-  password: "password"
-};
 
 export const signup = user => dispatch => (
     SessionAPIUtil.signup(user)
@@ -65,11 +63,16 @@ export const login = user => dispatch => (
 );
 
 export const loginDemoUser = () => dispatch => {
-    return dispatch(login(demoUser))
+  const demoUser = {
+    email: "user@cats4humanity.org",
+    password: "password"
+  };
+  
+  return dispatch(login(demoUser));
 };
 
 export const logout = () => dispatch => {
-    localStorage.removeItem('jwtToken')
-    SessionAPIUtil.setAuthToken(false)
-    dispatch(logoutUser())
+    localStorage.removeItem('jwtToken');
+    SessionAPIUtil.setAuthToken(false);
+    dispatch(logoutUser());
 };

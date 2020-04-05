@@ -1,13 +1,16 @@
 import * as UserAPIUtil from '../util/user_api_util';
 
+
 export const RECEIVE_ONE_USER = "RECEIVE_ONE_USER";
 export const RECEIVE_ORG_USERS = "RECEIVE_ORG_USERS";
 export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
 
+
 const receiveOneUser = user => ({
     type: RECEIVE_ONE_USER,
     payload: user.data
-})
+});
+
 const receiveOrgUsers = users => ({
     type: RECEIVE_ORG_USERS,
     payload: users.data
@@ -16,7 +19,8 @@ const receiveOrgUsers = users => ({
 const receiveUserErrors = errors => ({
     type: RECEIVE_USER_ERRORS,
     errors: errors.response.data
-})
+});
+
 
 export const getOneUser = userId => dispatch => (
     UserAPIUtil.fetchOneUser(userId)
@@ -34,4 +38,4 @@ export const updateUser = user => dispatch => (
     UserAPIUtil.updateUser(user)
     .then(user => dispatch(receiveOneUser(user)))
     .catch(errors => dispatch(receiveUserErrors(errors)))
-)
+);

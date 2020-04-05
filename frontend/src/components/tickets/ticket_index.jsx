@@ -35,27 +35,19 @@ class TicketIndex extends React.Component {
       switch (this.props.location.pathname) {
         case `/tickets/owner/${this.props.userId}`:
           this.props.fetchOwnerTickets(this.props.match.params.userId)
-          .then(action => {
-            this.receiveTickets(action);
-          });
+          .then(action => this.receiveTickets(action))
           break;
         case `/tickets/subscribed/${this.props.userId}`:
           this.props.fetchSubscribedTickets(this.props.match.params.userId)
-          .then(action => {
-            this.receiveTickets(action)
-          });
+          .then(action => this.receiveTickets(action))
           break;
         case `/tickets/creator/${this.props.userId}`:
           this.props.fetchCreatedTickets(this.props.match.params.userId)
-          .then(action => {
-            this.receiveTickets(action)
-          });
+          .then(action => this.receiveTickets(action))
           break;
         case `/tickets/starred/${this.props.userId}`: 
           this.props.fetchStarredTickets(this.props.currentUser)
-          .then(action => {
-            this.receiveTickets(action)
-          });
+          .then(action => this.receiveTickets(action))
           break;
         default:
           break;
@@ -68,27 +60,19 @@ class TicketIndex extends React.Component {
       switch (this.props.location.pathname) {
         case `/tickets/owner/${this.props.userId}`:
           this.props.fetchOwnerTickets(this.props.match.params.userId)
-          .then(action => {
-            this.receiveTickets(action);
-          });
+          .then(action => this.receiveTickets(action))
           break;
         case `/tickets/subscribed/${this.props.userId}`:
           this.props.fetchSubscribedTickets(this.props.match.params.userId)
-          .then(action => {
-            this.receiveTickets(action);
-          });
+          .then(action => this.receiveTickets(action))
           break;
         case `/tickets/creator/${this.props.userId}`:
           this.props.fetchCreatedTickets(this.props.match.params.userId)
-          .then(action => {
-            this.receiveTickets(action);
-          });
+          .then(action => this.receiveTickets(action))
           break;
         case `/tickets/starred/${this.props.userId}`:
           this.props.fetchStarredTickets(this.props.currentUser)
-          .then(action => {
-            this.receiveTickets(action);
-          });
+          .then(action => this.receiveTickets(action))
           break;
         default:
           break;
@@ -154,13 +138,16 @@ class TicketIndex extends React.Component {
       let attr2 = t2[attr];
       switch (attr) {
         case 'owner':
-          attr1 = attr1.firstName;
-          attr2 = attr2.firstName;
+          attr1 = (attr1.firstName + ' ' + attr1.lastName).toLowerCase();
+          attr2 = (attr2.firstName + ' ' + attr2.lastName).toLowerCase();
           break;
         case 'creator':
-          attr1 = attr1.firstName;
-          attr2 = attr2.firstName;
+          attr1 = (attr1.firstName + ' ' + attr1.lastName).toLowerCase();
+          attr2 = (attr2.firstName + ' ' + attr2.lastName).toLowerCase();
           break;
+        case 'title':
+          attr1 = attr1.toLowerCase();
+          attr2 = attr2.toLowerCase();
         case 'updatedAt':
           attr1 = attr1[0];
           attr2 = attr2[0];

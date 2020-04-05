@@ -39,7 +39,7 @@ const ticketSchema = new Schema({
     },
     lastUpdateSeenBy: [{
         type: Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'User'
     }],
     updatedBy: [{
         type: Schema.Types.ObjectId,
@@ -71,7 +71,7 @@ const ticketSchema = new Schema({
     },
 });
 
-Ticket = mongoose.model('Ticket', ticketSchema, "tickets");
+Ticket = mongoose.model('Ticket', ticketSchema);
 
 
 module.exports = Ticket;

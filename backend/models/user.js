@@ -4,11 +4,13 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     firstName: {
         type: String,
-        required: true
+        required: true,
+        // index: true
     },
     lastName: {
         type: String,
-        required: true
+        required: true,
+        // index: true
     },
     email: {
         type: String,
@@ -31,5 +33,7 @@ const userSchema = new Schema({
     }]
 });
 
-User = mongoose.model('User', userSchema) //"users");
+userSchema.index({ firstName: "text", lastName: "text" })
+
+User = mongoose.model('User', userSchema);
 module.exports = User;

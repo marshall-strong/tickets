@@ -6,7 +6,6 @@ import {getTicket} from "../../actions/ticket_actions";
 
 
 const mSTP = (state, ownProps) => {
-    debugger
     return{
     ticketId: ownProps.match.params.ticketId,
     ticket: state.entities.tickets[ownProps.match.params.ticketId],

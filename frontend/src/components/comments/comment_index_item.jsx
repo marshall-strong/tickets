@@ -59,7 +59,6 @@ class CommentIndexItem extends React.Component {
   }
 
   commentBodyDiv() {
-    debugger
     return (
       <div className="comment-container">
         <div className="author">

@@ -1,6 +1,4 @@
 import * as CommentAPIUtil from '../util/comment_api_util';
-import { CLEAR_ERRORS } from './session_actions';
-
 
 // action type constants
 export const RECEIVE_NEW_COMMENT = "RECEIVE_NEW_COMMENT";

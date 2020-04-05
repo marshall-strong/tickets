@@ -1,12 +1,14 @@
 import * as TicketAPIUtil from '../util/ticket_api_util';
 
 
+// action type constants
 export const RECEIVE_TICKETS = "RECEIVE_TICKETS";
 export const RECEIVE_TICKET = "RECEIVE_TICKET";
 export const RECEIVE_TICKET_ERRORS = "RECEIVE_TICKET_ERRORS";
 export const CLEAR_TICKET_ERRORS = "CLEAR_TICKET_ERRORS";
 
 
+// action creators
 const receiveTickets = tickets => {
     let payload = {};
     tickets.data.map(ticket => payload[ticket._id] = ticket);
@@ -27,6 +29,7 @@ const receiveTicketErrors = errors => ({
 });
 
 
+// dispatch asynchronous thunk actions
 export const clearTicketErrors = () => ({
     type: CLEAR_TICKET_ERRORS
 });

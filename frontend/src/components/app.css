@@ -8,8 +8,8 @@
 .page-container {
     display: flex;
     flex-direction: column;
-    max-width: 1200px;
-    min-width: 1000px;
+    /* max-width: 1200px; */
+    width: 1000px;
     overflow: scroll;
     background-color: rgb(227, 241, 235);
 }
@@ -35,11 +35,6 @@
 
 .button1.not-edited {
     background-color: rgb(114, 144, 163);
-}
-
-div.starred:hover {
-    color: red;
-    cursor: pointer;
 }
 
 .comment-errors{

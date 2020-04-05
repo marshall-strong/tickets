@@ -51,11 +51,9 @@ class TicketActivityIndex extends React.Component {
                         currentUserId={this.props.currentUser._id}
                         comment={feedItem} 
                         deleteComment={this.props.deleteComment} 
-                        fetchUserComments={this.props.fetchUserComments} 
                         ticketId={this.props.ticketId} 
                         updateComment={this.props.updateComment} 
                         errors={this.props.errors}
-                        clearCommentErrors={this.props.clearCommentErrors}
                     />
                     : 
                     <ActivityIndexItem update={feedItem} />

@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import TicketActivityIndex from "./ticket_activity_index";
 import {withRouter} from "react-router-dom";
-import {fetchUserComments, deleteComment, updateComment, clearCommentErrors, fetchTicketComments } from "../../actions/comment_actions";
+import {deleteComment, updateComment, fetchTicketComments} from "../../actions/comment_actions";
 import {getTicket} from "../../actions/ticket_actions";
 
 
@@ -20,8 +20,6 @@ const mDTP = (dispatch) => ({
     getTicket: (ticketId) => dispatch(getTicket(ticketId)),
     deleteComment: (id) => dispatch(deleteComment(id)),
     updateComment: (comment) => dispatch(updateComment(comment)),
-    clearCommentErrors: () => dispatch(clearCommentErrors()),
-    fetchUserComments: (userId) => dispatch(fetchUserComments(userId))
 });
 
 

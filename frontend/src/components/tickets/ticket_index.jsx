@@ -8,6 +8,7 @@ class TicketIndex extends React.Component {
 
     this.state = {
       tickets: undefined,
+      resizing: false,
       sortedBy: {
         attr: 'creator',
         ord: true
@@ -60,6 +61,7 @@ class TicketIndex extends React.Component {
         e.cancelBubble = true;
         e.stopImmediatePropagation();
         e.stopPropagation();
+        this.setState({ resizing: true });
         clickPos = e.pageX;
         colNum = e.target.classList[1];
         leftWidth = e.target.previousElementSibling.offsetWidth;
@@ -87,6 +89,9 @@ class TicketIndex extends React.Component {
         if (!clickPos) return 0
         e.preventDefault();
         clickPos = undefined;
+        setTimeout(() => {
+          this.setState({ resizing: false })
+        }, 300)
       });
     } 
 
@@ -134,7 +139,7 @@ class TicketIndex extends React.Component {
   render() {
     if (!this.state.tickets) return null
     const tickets = Object.values(this.state.tickets);
-    const { currentUser, updateUser } = this.props;
+    const { currentUser, updateUser, history } = this.props;
     const { sortedBy } = this.state;
     return (
       <div className="table">
@@ -153,13 +158,14 @@ class TicketIndex extends React.Component {
         <div className="table-row-group">
           {tickets.map(ticket => {
             return (
-              <TicketIndexItem 
-                key={ticket._id} 
-                ticket={ticket} 
-                currentUser={currentUser}
-                starredIds={currentUser.starred}
-                updateUser={updateUser}
-              />
+              <div key={ticket._id} onClick={() => this.state.resizing ? null : history.push(`/tickets/${ticket._id}`)}>
+                <TicketIndexItem 
+                  ticket={ticket} 
+                  currentUser={currentUser}
+                  starredIds={currentUser.starred}
+                  updateUser={updateUser}
+                />
+              </div>
             )
           })}
         </div>

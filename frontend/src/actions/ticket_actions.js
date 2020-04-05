@@ -15,7 +15,7 @@ const receiveTickets = tickets => {
     return({
         type: RECEIVE_TICKETS,
         tickets: payload
-    })
+    });
 };
 
 const receiveTicket = ticket => ({
@@ -37,6 +37,7 @@ export const clearTicketErrors = () => ({
 export const getTickets = () => dispatch => (
     TicketAPIUtil.getTickets()
     .then(tickets => dispatch(receiveTickets(tickets)))
+    .catch(errors => dispatch(receiveTicketErrors(errors)))
 );
 
 export const createTicket = ticket => dispatch => (

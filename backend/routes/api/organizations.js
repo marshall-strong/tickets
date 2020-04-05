@@ -69,14 +69,18 @@ router.get('/handle/:orgHandle/users/name/:name', (req, res) => {
   User.find({ 
     $and : [
       { orgHandle: orgHandle },
-      { $or : [ { firstName: name }, { lastName: name } ] }
+      { $or : [ 
+        { firstName: { "$regex": name, "$options": "i" } }, 
+        { lastName: { "$regex": name, "$options": "i" } }
+      ] }
+      // { $text: { $search: name } }
     ]
    })
     .then(users => res.json(users))
     .catch(err => {
       res.status(400).json({
         message:
-          err.message || `No users found with orgHandle=${orgHandle}`
+          err.message || `No users found where orgHandle=${orgHandle} and firstName or lastName contains ${name}`
       });
     });
 });

@@ -7,12 +7,12 @@ const userSchema = new Schema({
     firstName: {
         type: String,
         required: true,
-        index: true
+        // index: true
     },
     lastName: {
         type: String,
         required: true,
-        index: true
+        // index: true
     },
     email: {
         type: String,
@@ -36,6 +36,8 @@ const userSchema = new Schema({
         // ref: 'Ticket'
     }]
 });
+
+userSchema.index({ firstName: "text", lastName: "text" })
 
 User = mongoose.model('User', userSchema);
 module.exports = User;

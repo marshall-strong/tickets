@@ -20,6 +20,7 @@
     display: flex;
     background-color: lightgrey;
     font-weight: 800;
+    line-height: 15px;
 }
 
 .table-header-group:hover {
@@ -30,7 +31,9 @@
     border-top: 1px solid black;
     padding: 5px;
     overflow: hidden;
+    height: 25px;
     width: 100px;
+    white-space: nowrap;
 }
 
 .table-row-group {
@@ -58,7 +61,7 @@
 div.star {
     z-index: 1;
     font-size: 20px;
-    position: relative;
+    line-height: 15px;
 }
 
 div.star:hover {

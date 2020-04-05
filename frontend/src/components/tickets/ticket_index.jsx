@@ -12,25 +12,25 @@ class TicketIndex extends React.Component {
         attr: 'creator',
         ord: true
       }
-    }
+    };
   }
 
   componentDidMount() {
-    // setTimeout(() => this.formatTable(), 1000);
+    setTimeout(() => this.formatTable(), 1000);
     // in case of page refresh, fetch the current user to overwrite 
     // stale preloaded state from login and get updated starred list
     this.props.getOneUser(this.props.currentUser._id)
       switch (this.props.location.pathname) {
         case `/tickets/owner/${this.props.userId}`:
-          return this.props.fetchOwnerTickets(this.props.match.params.userId).then(action => this.setState({tickets: action.tickets}))
+          return this.props.fetchOwnerTickets(this.props.match.params.userId).then(action => this.setState({tickets: action.tickets}));
         case `/tickets/subscribed/${this.props.userId}`:
-          return this.props.fetchSubscribedTickets(this.props.match.params.userId).then(action => this.setState({tickets: action.tickets}))
+          return this.props.fetchSubscribedTickets(this.props.match.params.userId).then(action => this.setState({tickets: action.tickets}));
         case `/tickets/creator/${this.props.userId}`:
-          return this.props.fetchCreatedTickets(this.props.match.params.userId).then(action => this.setState({tickets: action.tickets}))
+          return this.props.fetchCreatedTickets(this.props.match.params.userId).then(action => this.setState({tickets: action.tickets}));
         case `/tickets/starred/${this.props.userId}`: 
           return this.props.fetchStarredTickets(this.props.currentUser).then(action => this.setState({tickets: action.tickets}));
         default:
-          return null
+          return null;
       }
   }
 
@@ -38,34 +38,38 @@ class TicketIndex extends React.Component {
     if (this.props.location.pathname !== prevProps.location.pathname) {
       switch (this.props.location.pathname) {
         case `/tickets/owner/${this.props.userId}`:
-          return this.props.fetchOwnerTickets(this.props.match.params.userId).then(action => this.setState({tickets: action.tickets}))
+          return this.props.fetchOwnerTickets(this.props.match.params.userId).then(action => this.setState({tickets: action.tickets}));
         case `/tickets/subscribed/${this.props.userId}`:
-          return this.props.fetchSubscribedTickets(this.props.match.params.userId).then(action => this.setState({tickets: action.tickets}))
+          return this.props.fetchSubscribedTickets(this.props.match.params.userId).then(action => this.setState({tickets: action.tickets}));
         case `/tickets/creator/${this.props.userId}`:
-          return this.props.fetchCreatedTickets(this.props.match.params.userId).then(action => this.setState({tickets: action.tickets}))
+          return this.props.fetchCreatedTickets(this.props.match.params.userId).then(action => this.setState({tickets: action.tickets}));
         case `/tickets/starred/${this.props.userId}`:
             return this.props.fetchStarredTickets(this.props.currentUser).then(action => this.setState({tickets: action.tickets}));
         default:
-          return null
+          return null;
       }
     }
   }
 
   formatTable() {
     let handles = document.getElementsByClassName('handle');
+    let clickPos;
 
-    // let clickPos
-    // for (let i = 0; i < handles.length; i++) {
-    //   handles[i].addEventListener('mousedown', (e) => {
-    //     e.preventDefault();
-    //     clickPos = e.pageX
-    //   })
+    for (let i = 0; i < handles.length; i++) {
+      handles[i].addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        clickPos = e.pageX;
+      })
 
-    //   handles[i].addEventListener('mousemove', (e) => {
-    //     if (!clickPos) return 0;
-    //     debugger
-    //   })
-    // }
+      handles[i].addEventListener('mousemove', (e) => {
+        if (!clickPos) return 0;
+        let dx = e.pageX - clickPos;
+        let leftSib = e.target.previousElementSibling;
+        let colNum = e.target.classList[1];
+        let colHandles = document.getElementsByClassName('colNum')
+
+      })
+    } 
 
   }
 

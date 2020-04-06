@@ -50,7 +50,7 @@ const TicketIndexItem = ({ ticket, currentUser, starredIds, updateUser }) => {
                         updateUser(currentUser);
                     }} 
                 >
-                    { starredIds.includes(ticket._id) ? "★" : "☆" }
+                {starredIds.includes(ticket._id) ? "★" : "☆"}
                 </div> 
             </div>
         </div>

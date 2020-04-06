@@ -5,6 +5,7 @@
     background-color: white;
     border: 1px solid black;
     border-top: none;
+    min-width: 958px;
 }
 
 .table a {
@@ -79,14 +80,11 @@
 }
 
 .starred {
-    display: flex;
-    justify-content: center;
+    text-align: center;
     width: 50px;
-    margin-right: 0px;
 }
 
 div.star {
-    z-index: 1;
     font-size: 20px;
 }
 

@@ -32,26 +32,26 @@ class TicketIndex extends React.Component {
     // in case of page refresh, fetch the current user to overwrite 
     // stale preloaded state from login and get updated starred list
     this.props.getOneUser(this.props.currentUser._id)
-      switch (this.props.location.pathname) {
-        case `/tickets/owner/${this.props.userId}`:
-          this.props.fetchOwnerTickets(this.props.match.params.userId)
-          .then(action => this.receiveTickets(action))
-          break;
-        case `/tickets/subscribed/${this.props.userId}`:
-          this.props.fetchSubscribedTickets(this.props.match.params.userId)
-          .then(action => this.receiveTickets(action))
-          break;
-        case `/tickets/creator/${this.props.userId}`:
-          this.props.fetchCreatedTickets(this.props.match.params.userId)
-          .then(action => this.receiveTickets(action))
-          break;
-        case `/tickets/starred/${this.props.userId}`: 
-          this.props.fetchStarredTickets(this.props.currentUser)
-          .then(action => this.receiveTickets(action))
-          break;
-        default:
-          break;
-      }
+    switch (this.props.location.pathname) {
+      case `/tickets/owner/${this.props.userId}`:
+        this.props.fetchOwnerTickets(this.props.match.params.userId)
+        .then(action => this.receiveTickets(action))
+        break;
+      case `/tickets/subscribed/${this.props.userId}`:
+        this.props.fetchSubscribedTickets(this.props.match.params.userId)
+        .then(action => this.receiveTickets(action))
+        break;
+      case `/tickets/creator/${this.props.userId}`:
+        this.props.fetchCreatedTickets(this.props.match.params.userId)
+        .then(action => this.receiveTickets(action))
+        break;
+      case `/tickets/starred/${this.props.userId}`: 
+        this.props.fetchStarredTickets(this.props.currentUser)
+        .then(action => this.receiveTickets(action))
+        break;
+      default:
+        break;
+    }
       
   }
 

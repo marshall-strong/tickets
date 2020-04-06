@@ -345,8 +345,10 @@ class TicketForm extends React.Component {
 
                 {this.props.ticketId !== "new" ? (
                 <ul className="activity-container">
-                    <h1 className="title">Comments and activity</h1>
-                    <LastUpdateSeenByContainer />
+                    <div className="activity-header">
+                        <h1 className="title">Comments and activity</h1>
+                        <LastUpdateSeenByContainer />
+                    </div>
                     <CommentFormContainer />
                     <TicketActivityContainer currentUser={this.props.currentUser}/>
                 </ul>

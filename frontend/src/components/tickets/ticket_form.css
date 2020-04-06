@@ -137,6 +137,45 @@ input.edited:focus, textarea.edited:focus {
     background-color: lightgrey;
 }
 
+.activity-header{
+    display: flex;
+    align-items: baseline;
+}
+
+.lusb-container {
+    font-size: 13px;
+}
+
+.lusb-container a {
+    text-decoration: none;
+    color: black;
+}
+
+.lusb-container a:hover {
+    text-decoration: underline;
+}
+
+.activity-container a {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+
+.activity-container a:hover {
+    text-decoration: underline;
+}
+
+
+
+.toggle-expand {
+    color: blue;
+}
+
+.toggle-expand:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .avitar {
     border: 2px solid black;
     border-radius: 30px;

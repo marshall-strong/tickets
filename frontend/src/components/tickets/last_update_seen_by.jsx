@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 class lastUpdateSeenBy extends React.Component {
     constructor(props) {
@@ -6,54 +7,57 @@ class lastUpdateSeenBy extends React.Component {
 
         this.state = {
             collapsed: true
-        }
-        this.handleClick = this.handleClick.bind(this)
-    }
+        };
+
+    };
 
     componentDidMount() {
-        this.props.getTicket(this.props.match.params.ticketId)
-    }
+        this.props.getTicket(this.props.match.params.ticketId);
+    };
 
     handleClick(e) {
-        e.preventDefault()
-        this.setState({ collapsed: !this.state.collapsed })
+        this.setState({ collapsed: !this.state.collapsed });
+    };
+
+    getViewers() {
+        const { ticket } = this.props;
+        let { collapsed } = this.state;
+        let numViewers = ticket.lastUpdateSeenBy.length;
+
+        return(
+            <span>
+                {collapsed ?
+                    <span>
+                        {ticket.lastUpdateSeenBy.slice(0, 3).map((user, i) => 
+                            <span><Link to={`/users/${user._id}`}>{user.firstName} {user.lastName}</Link>{i === numViewers - 1 ? null : ','} </span>
+                        )}
+                        {numViewers > 3 ? 
+                            <span className='toggle-expand' onClick={() => this.handleClick()}>
+                                + {numViewers - 3} more
+                            </span> : null
+                        }
+                    </span> 
+                :
+                    <span>
+                        {ticket.lastUpdateSeenBy.map((user, i) => 
+                            <span><Link to={`/users/${user._id}`}>{user.firstName} {user.lastName}</Link>{i === numViewers - 1 ? null : ','} </span>
+                        )}
+                        <span className='toggle-expand' onClick={() => this.handleClick()}>
+                            Show less
+                        </span>
+                    </span>
+                }
+            </span>
+        )
     }
 
-    getUpdates() {
-        const { ticket } = this.props
-
-        if (this.state.collapsed) {
-            if (ticket.lastUpdateSeenBy.length <= 3) {
-                return (
-                    <div>
-                        Last Update Seen By:
-                        {ticket.lastUpdateSeenBy.map((user, i) => <span> {ticket.lastUpdateSeenBy[i].firstName} {ticket.lastUpdateSeenBy[i].lastName}, </span>)}
-                    </div>
-                )
-            }
-            return (
-                <div onClick={this.handleClick}>
-                    Last Update Seen By:
-                    {ticket.lastUpdateSeenBy.slice(0, 3).map((user, i) => <span> {ticket.lastUpdateSeenBy[i].firstName} {ticket.lastUpdateSeenBy[i].lastName}, </span>)}
-                    + {ticket.lastUpdateSeenBy.length - 3} more {'▼'}
-                </div>
-            )
-        } else {
-            return (
-                <div onClick={this.handleClick}>
-                    <ul>
-                        Last Update Seen By:
-                        {ticket.lastUpdateSeenBy.map((user, i) => <li> {ticket.lastUpdateSeenBy[i].firstName} {ticket.lastUpdateSeenBy[i].lastName}, </li>)}
-                        {'▲'}
-                    </ul>
-                </div>
-
-            )
-        }
-    }
-
-    render() {
-        return <div>{this.getUpdates()}</div>
+    render() { 
+        return(
+            <div className='lusb-container'>
+                <span>Last update seen by {this.getViewers()} </span>
+            </div>
+        )
+        // return <div>{this.getUpdates()}</div>
     }
 
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-class TicketUpdateItem extends React.Component {
+class lastUpdateSeenBy extends React.Component {
     constructor(props) {
         super(props)
 
@@ -59,4 +59,4 @@ class TicketUpdateItem extends React.Component {
 
 }
 
-export default TicketUpdateItem
+export default lastUpdateSeenBy

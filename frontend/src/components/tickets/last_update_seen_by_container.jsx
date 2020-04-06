@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import TicketUpdateItem from './ticket_update_item'
+import LastUpdateSeenBy from './last_update_seen_by'
 import { getTicket } from '../../actions/ticket_actions'
 import { withRouter } from 'react-router-dom'
 
@@ -13,4 +13,4 @@ const mdtp = dispatch => ({
 })
 
 
-export default withRouter(connect(mstp, mdtp)(TicketUpdateItem))
+export default withRouter(connect(mstp, mdtp)(LastUpdateSeenBy))

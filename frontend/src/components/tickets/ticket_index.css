@@ -31,19 +31,13 @@
 
 .table-header-group .title {
     font-weight: 800;
-    /* margin-right: 10px; */
 }
 
 .triangle {
     width: 15px;
     text-align: center;
     margin-left: 5px;
-    /* background-color: red; */
 }
-
-/* .title.starred {
-    margin-right: 0px;
-} */
 
 .table-cell.ticket-title {
     width: 150px;
@@ -90,7 +84,6 @@
     width: 50px;
     margin-right: 0px;
 }
-
 
 div.star {
     z-index: 1;

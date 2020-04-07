@@ -5,6 +5,7 @@ import LastUpdateSeenBy from './last_update_seen_by'
 import {withRouter} from "react-router-dom"
 import { CopyToClipboard } from "react-copy-to-clipboard"
 import { FaCopy } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 import '../app.css'
 import './ticket_form.css'
@@ -28,7 +29,7 @@ class TicketForm extends React.Component {
             startDate: '',
             endDate: '',
             creator: this.props.currentUser._id,
-            clipboardText: this.props.match.params.ticketId,
+            clipboardText: window.location.href,
             copied: false
 
         }
@@ -238,12 +239,19 @@ class TicketForm extends React.Component {
         </div> 
         ) : null
         
-
+        
         return (
         <div className="outer-container">
 
             <div className="form-and-activity-container">
               <form className="form">
+
+                <div>
+                    <CopyToClipboard text={this.state.clipboardText} onCopy={() => this.setState({ copied: true })}>
+                            <button>T{this.props.match.params.ticketId} - Copy Link to Clipboard <FaCopy /></button>
+                    </CopyToClipboard>
+                    {this.state.copied ? <span style={{ color: "red" }}> Copied to Clipboard!</span> : null}
+                </div>
               
               <div className="ticket-errors">
                 <p>{this.props.errors.title}</p>
@@ -288,13 +296,6 @@ class TicketForm extends React.Component {
 
                         {this.props.ticketId === "new" ? "Create" : "Save"}
                     </button>
-                </div>
-
-                <div>
-                    <CopyToClipboard text={this.state.clipboardText} onCopy={() => this.setState({ copied: true })}>
-                        <button>Copy Link to Clipboard <FaCopy /></button>
-                    </CopyToClipboard>
-                    {this.state.copied ? <span style={{ color: "red" }}> Copied to Clipboard!</span> : null}
                 </div>
 
                 <div className="ticket-errors">

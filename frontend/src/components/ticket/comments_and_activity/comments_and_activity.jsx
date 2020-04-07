@@ -1,7 +1,7 @@
 import React from 'react';
-import TicketActivityContainer from "./ticket_activity_container";
-import CommentFormContainer from "../comments/comment_form_container";
-import LastUpdateSeenBy from './last_update_seen_by';
+import TicketActivityContainer from "./activity/ticket_activity_container";
+import CommentFormContainer from "./comments/comment_form_container";
+import LastUpdateSeenBy from './activity/last_update_seen_by';
 
 const CommentsAndActivity = ({ ticket, type, currentUser }) => {
     return type !== "new" ? (

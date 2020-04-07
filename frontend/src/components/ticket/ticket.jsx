@@ -1,11 +1,11 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
-import CommentsAndActivity from './comments_and_activity';
+import CommentsAndActivity from './comments_and_activity/comments_and_activity';
 import Form from './form/form';
 import '../app.css';
-import './ticket_form.css';
+import './ticket.css';
 
-class TicketForm extends React.Component {
+class Ticket extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -164,4 +164,4 @@ class TicketForm extends React.Component {
     }
 }
 
-export default withRouter(TicketForm);
+export default withRouter(Ticket);

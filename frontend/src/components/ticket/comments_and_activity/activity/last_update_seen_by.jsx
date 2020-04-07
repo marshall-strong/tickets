@@ -25,7 +25,7 @@ class lastUpdateSeenBy extends React.Component {
                 {collapsed ?
                     <span>
                         {ticket.lastUpdateSeenBy.slice(0, 3).map((user, i) => 
-                            <span><Link to={`/users/${user._id}`}>{user.firstName} {user.lastName}</Link>{i === numViewers - 1 ? null : ','} </span>
+                            <span key={user._id}><Link to={`/users/${user._id}`}>{user.firstName} {user.lastName}</Link>{i === numViewers - 1 ? null : ','} </span>
                         )}
                         {numViewers > 3 ? 
                             <span className='toggle-expand' onClick={() => this.handleClick()}>

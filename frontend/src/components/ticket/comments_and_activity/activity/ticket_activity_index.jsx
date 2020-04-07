@@ -1,6 +1,6 @@
 import React from "react";
 import ActivityIndexItem from "./ticket_activity_index_item";
-import CommentIndexItem from "../../comments/comment_index_item";
+import CommentIndexItem from "../comments/comment_index_item";
 
 class TicketActivityIndex extends React.Component {
 

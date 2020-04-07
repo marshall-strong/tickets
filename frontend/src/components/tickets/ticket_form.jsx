@@ -3,6 +3,8 @@ import TicketActivityContainer from "./ticket_activity_container"
 import CommentFormContainer from "../comments/comment_form_container"
 import LastUpdateSeenBy from './last_update_seen_by'
 import {withRouter} from "react-router-dom"
+import { CopyToClipboard } from "react-copy-to-clipboard"
+import { FaCopy } from 'react-icons/fa'
 
 import '../app.css'
 import './ticket_form.css'
@@ -25,7 +27,9 @@ class TicketForm extends React.Component {
             blocks: [],
             startDate: '',
             endDate: '',
-            creator: this.props.currentUser._id
+            creator: this.props.currentUser._id,
+            clipboardText: this.props.match.params.ticketId,
+            copied: false
 
         }
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -284,6 +288,13 @@ class TicketForm extends React.Component {
 
                         {this.props.ticketId === "new" ? "Create" : "Save"}
                     </button>
+                </div>
+
+                <div>
+                    <CopyToClipboard text={this.state.clipboardText} onCopy={() => this.setState({ copied: true })}>
+                        <button>Copy Link to Clipboard <FaCopy /></button>
+                    </CopyToClipboard>
+                    {this.state.copied ? <span style={{ color: "red" }}> Copied to Clipboard!</span> : null}
                 </div>
 
                 <div className="ticket-errors">

@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
 import CommentsAndActivity from './comments_and_activity';
-import Form from './form';
+import Form from './form/form';
 import '../app.css';
 import './ticket_form.css';
 

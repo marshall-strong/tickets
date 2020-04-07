@@ -1,18 +1,19 @@
 import React from 'react';
-import TicketActivityContainer from "./ticket_activity_container"
-import CommentFormContainer from "../comments/comment_form_container"
-import LastUpdateSeenBy from './last_update_seen_by'
-import {withRouter} from "react-router-dom"
-import { CopyToClipboard } from "react-copy-to-clipboard"
-import { FaCopy } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
-
-import '../app.css'
-import './ticket_form.css'
+import { withRouter } from "react-router-dom";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { FaCopy } from 'react-icons/fa';
+import TicketActivityContainer from "./ticket_activity_container";
+import CommentFormContainer from "../comments/comment_form_container";
+import LastUpdateSeenBy from './last_update_seen_by';
+import StatusSelect from './status_select';
+import PrioritySelect from './priority_select';
+import Star from './star';
+import '../app.css';
+import './ticket_form.css';
 
 class TicketForm extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             updatedAt: [],
             tags: [],
@@ -33,12 +34,12 @@ class TicketForm extends React.Component {
             copied: false
 
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
-    }
+        this.handleSubmit = this.handleSubmit.bind(this);
+    };
 
     componentWillUnmount() {
-        this.props.clearTicketErrors()
-    }
+        this.props.clearTicketErrors();
+    };
 
     componentDidMount() {
         // in case of page refresh, fetch the current user to overwrite 
@@ -51,18 +52,18 @@ class TicketForm extends React.Component {
                 this.props.ticket.startDate = (
                     this.props.ticket.startDate ? 
                     this.props.ticket.startDate.slice(0,10) : ''
-                )
+                );
 
                 this.props.ticket.endDate = (
                     this.props.ticket.endDate ?
                     this.props.ticket.endDate.slice(0,10) : ''
-                )
+                );
 
                 this.setState(this.props.ticket)
             })
             .then(() => this.view());
-        }
-    }
+        };
+    };
 
     componentDidUpdate(prevProps) {
         if (this.props.ticketId !== prevProps.ticketId
@@ -84,34 +85,34 @@ class TicketForm extends React.Component {
                 endDate: '',
                 creator: this.props.currentUser._id
             });
-        }
-    }
+        };
+    };
 
     view() {
         let viewerIds = this.props.ticket.lastUpdateSeenBy.map(viewer => viewer._id);
         if (!viewerIds.includes(this.props.currentUser._id)) {
             this.props.ticket.lastUpdateSeenBy.push(this.props.currentUser._id);
             this.props.updateTicket(this.props.ticket);
-        }
-    }
+        };
+    };
 
     handleSubmit(e) {
         e.preventDefault();
-        if (e.target.classList.contains('not-edited')) return null
+        if (e.target.classList.contains('not-edited')) return null;
         this.state.updatedAt.unshift(Date.now());
-        this.state.updatedBy.unshift(this.props.currentUser._id)
-        this.setState({lastUpdateSeenBy: []})
+        this.state.updatedBy.unshift(this.props.currentUser._id);
+        this.setState({lastUpdateSeenBy: []});
         
-        this.props.clearTicketErrors()
+        this.props.clearTicketErrors();
         
         if (this.props.ticketId !== "new") {
-            this.props.updateTicket(this.state)
+            this.props.updateTicket(this.state);
         } else {
             this.props.createTicket(this.state)
             .then(res => {
-                if (res.errors) return null 
-                this.setState(res.ticket)
-                this.props.history.push(`${res.ticket._id}`)
+                if (res.errors) return null;
+                this.setState(res.ticket);
+                this.props.history.push(`${res.ticket._id}`);
             })
             .catch(err => console.log(err))
         }
@@ -136,127 +137,31 @@ class TicketForm extends React.Component {
     }
 
     render(){
-
         if (this.props.ticketId !== 'new') {
             if (!this.props.ticket) return null;
         }
 
+        const { status, priority } = this.state;
+        const { currentUser, updateUser, ticket } = this.props;
+
+        this.update = this.update.bind(this);
+        
         let type = this.props.ticketId === 'new' ? 'new' : 'show';
-
-        const statusSelect = (
-            <select 
-                className={`${type} status`}
-                defaultValue={this.state.status}
-                onChange={this.update('status')}
-            >
-                <option 
-                    value="No Progress"
-                    className="no-progress"
-                >
-                    No Progress
-                </option>
-
-                <option 
-                    value="Planned"
-                    className="planned"
-                >
-                    Planned
-                </option>
-
-                <option 
-                    value="Blocked"
-                    className="blocked"
-                >
-                    Blocked
-                </option>
-
-                <option 
-                    value="In Progress"
-                    className="in-progress"
-                >
-                    In Progress
-                </option>
-
-                <option 
-                    value="Closed"
-                    className="closed"
-                >
-                    Closed
-                </option>
-            </select>
-
-        )
-
-        const prioritySelect = (
-            <select 
-                className={`${type} priority`}
-                defaultValue={this.state.priority} 
-                onChange={this.update('priority')}
-            >
-                <option 
-                    value="Low"
-                >
-                    Low
-                </option>
-
-                <option 
-                    value="Medium"
-                >
-                    Medium
-                </option>
-
-                <option 
-                    value="High"
-                >
-                    High
-                </option>
-
-                <option 
-                    value="CATastrophic"
-                >
-                    CATastrophic
-                </option>
-
-            </select>
-        )
-
-        
-        let star = this.props.ticket ? (
-        <div
-            className="star"
-            onClick={(e) => {
-                e.stopPropagation();
-                let i = this.props.currentUser.starred.indexOf(this.props.ticket._id);
-                if (i === -1) {
-                    this.props.currentUser.starred.push(this.props.ticket._id);
-                } else {
-                    this.props.currentUser.starred.splice(i, 1);
-                }
-                this.props.updateUser(this.props.currentUser);
-            }}
-        >
-            {this.props.currentUser.starred.includes(this.props.ticket._id) ? "★" : "☆"}
-        </div> 
-        ) : null
-        
         
         return (
         <div className="outer-container">
-
             <div className="form-and-activity-container">
               <form className="form">
-
-                <div>
+                <div className="form-header">
+                    <span className="ticket-number">T{this.props.match.params.ticketId} - </span>
                     <CopyToClipboard text={this.state.clipboardText} onCopy={() => this.setState({ copied: true })}>
-                            <button>T{this.props.match.params.ticketId} - Copy Link to Clipboard <FaCopy /></button>
+                            <span className="copy">Copy Link <FaCopy /></span>
                     </CopyToClipboard>
-                    {this.state.copied ? <span style={{ color: "red" }}> Copied to Clipboard!</span> : null}
+                    {this.state.copied ? <span className="copied fade-out"> Copied to Clipboard!</span> : null}
                 </div>
-              
               <div className="ticket-errors">
                 <p>{this.props.errors.title}</p>
               </div>
-
                 <div className="title-star">
                     <input
                         className={`${type} title`}
@@ -265,15 +170,20 @@ class TicketForm extends React.Component {
                         value={this.state.title}
                         onChange={this.update("title")}
                     />
-
-                    {this.props.ticket ? star : null}
+                    <Star 
+                        currentUser={currentUser}
+                        updateUser={updateUser}
+                        ticket={ticket}
+                    />
                 </div>
-
                 <div className="selectors">
                     <label>Status
-                        {statusSelect}
+                        <StatusSelect 
+                            type={type} 
+                            status={status} 
+                            update={this.update} 
+                        />
                     </label>
-
                     <label>Owner
                         <input
                             className={`${type} owner`}
@@ -283,25 +193,24 @@ class TicketForm extends React.Component {
                             onChange={this.update("owner")}
                         />
                     </label>
-
                     <label>Priority
-                        {prioritySelect}
+                        <PrioritySelect 
+                            type={type}
+                            priority={priority}
+                            update={this.update} 
+                        />
                     </label>
-
                     <button
                         onClick={this.handleSubmit}
                         className="button1 not-edited"
                         id="ticket-submit-button"
                     >
-
                         {this.props.ticketId === "new" ? "Create" : "Save"}
                     </button>
                 </div>
-
                 <div className="ticket-errors">
                     <p>{this.props.errors.date}</p>
                 </div>
-
                 <div className="schedule">
                     Start<br/>Date
                     <input
@@ -318,7 +227,6 @@ class TicketForm extends React.Component {
                         onChange={this.update("endDate")}
                     />
                 </div>
-
                 <textarea
                   className={`${type} margin`}
                   cols="30"
@@ -336,14 +244,12 @@ class TicketForm extends React.Component {
                     placeholder="subscribed"
                     onChange={this.update("subscribed")}
                 ></textarea>
-
                 <input
                   className={`${type} margin`}
                   type="text"
                   placeholder="depends on"
                   onChange={this.update("dependsOn")}
                 />
-
                 <input
                   className={`${type} margin`}
                   type="text"
@@ -351,10 +257,7 @@ class TicketForm extends React.Component {
                   placeholder="blocks"
                   onChange={this.update("blocks")}
                 />
-
-
               </form>
-
                 {this.props.ticketId !== "new" ? (
                 <ul className="activity-container">
                     <div className="activity-header">
@@ -365,14 +268,10 @@ class TicketForm extends React.Component {
                     <TicketActivityContainer currentUser={this.props.currentUser}/>
                 </ul>
                 ) : null}
-
             </div>
-
         </div>
-        );        
-        
+        );         
     }
-
 }
 
 export default withRouter(TicketForm);

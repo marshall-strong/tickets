@@ -11,10 +11,6 @@ class lastUpdateSeenBy extends React.Component {
 
     };
 
-    componentDidMount() {
-        this.props.getTicket(this.props.match.params.ticketId);
-    };
-
     handleClick(e) {
         this.setState({ collapsed: !this.state.collapsed });
     };
@@ -57,10 +53,7 @@ class lastUpdateSeenBy extends React.Component {
                 <span>Last update seen by {this.getViewers()} </span>
             </div>
         )
-        // return <div>{this.getUpdates()}</div>
     }
-
-
 }
 
 export default lastUpdateSeenBy

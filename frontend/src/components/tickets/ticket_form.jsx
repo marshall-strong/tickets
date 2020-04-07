@@ -1,7 +1,7 @@
 import React from 'react';
 import TicketActivityContainer from "./ticket_activity_container"
 import CommentFormContainer from "../comments/comment_form_container"
-import LastUpdateSeenByContainer from './last_update_seen_by_container'
+import LastUpdateSeenBy from './last_update_seen_by'
 import {withRouter} from "react-router-dom"
 import { CopyToClipboard } from "react-copy-to-clipboard"
 import { FaCopy } from 'react-icons/fa'
@@ -358,7 +358,7 @@ class TicketForm extends React.Component {
                 <ul className="activity-container">
                     <div className="activity-header">
                         <h1 className="title">Comments and activity</h1>
-                        <LastUpdateSeenByContainer />
+                        <LastUpdateSeenBy ticket={this.props.ticket}/>
                     </div>
                     <CommentFormContainer />
                     <TicketActivityContainer currentUser={this.props.currentUser}/>

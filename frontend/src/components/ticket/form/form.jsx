@@ -22,7 +22,7 @@ const Form = ({ ticket, type, errors, currentUser, state, update, handleSubmit, 
                 className={`${type} title`}
                 type="text"
                 placeholder="title"
-                value={state.title}
+                value={state.ticket.title}
                 onChange={update("title")}
             />
             <Star
@@ -35,7 +35,7 @@ const Form = ({ ticket, type, errors, currentUser, state, update, handleSubmit, 
             <label>Status
                 <StatusSelect
                     type={type}
-                    status={state.status}
+                    status={state.ticket.status}
                     update={update}
                 />
             </label>
@@ -44,14 +44,14 @@ const Form = ({ ticket, type, errors, currentUser, state, update, handleSubmit, 
                     className={`${type} owner`}
                     type="text"
                     placeholder="owner"
-                    value={state.owner}
+                    value={state.ticket.owner}
                     onChange={update("owner")}
                 />
             </label>
             <label>Priority
                                 <PrioritySelect
                     type={type}
-                    priority={state.priority}
+                    priority={state.ticket.priority}
                     update={update}
                 />
             </label>
@@ -71,14 +71,14 @@ const Form = ({ ticket, type, errors, currentUser, state, update, handleSubmit, 
                             <input
                 className={type}
                 type="date"
-                value={state.startDate}
+                value={state.ticket.startDate}
                 onChange={update("startDate")}
             />
                             End<br />Date
                             <input
                 className={type}
                 type="date"
-                value={state.endDate}
+                value={state.ticket.endDate}
                 onChange={update("endDate")}
             />
         </div>
@@ -86,16 +86,16 @@ const Form = ({ ticket, type, errors, currentUser, state, update, handleSubmit, 
             className={`${type} body margin`}
             cols="30"
             rows="10"
-            value={state.body}
+            value={state.ticket.body}
             placeholder="body"
             onChange={update("body")}
         ></textarea>
         <label className="subs-title">
             subscribed
-                        </label>
+        </label>
         <textarea
             className={`${type} subscribed margin`}
-            value={state.subscribed}
+            value={state.ticket.subscribed}
             placeholder="subscribed"
             onChange={update("subscribed")}
         ></textarea>
@@ -108,7 +108,7 @@ const Form = ({ ticket, type, errors, currentUser, state, update, handleSubmit, 
         <input
             className={`${type} blocks margin`}
             type="text"
-            value={state.blocks}
+            value={state.ticket.blocks}
             placeholder="blocks"
             onChange={update("blocks")}
         />

@@ -1,8 +1,6 @@
 import React from 'react';
 
-const PrioritySelect = ({ priority, type, update }) => {
-    debugger
-return(
+const PrioritySelect = ({ priority, type, update }) => (
     <select
         className={`${type} priority`}
         defaultValue={priority}
@@ -29,7 +27,6 @@ return(
             CATastrophic
         </option>
     </select>
-)
-};
+);
 
 export default PrioritySelect;

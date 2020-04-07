@@ -1,10 +1,10 @@
-import { createTicket, getTicket, updateTicket } from "../../actions/ticket_actions";
+import { createTicket, getTicket, updateTicket } from "../../../actions/ticket_actions";
 import { connect } from "react-redux";
 import TicketForm from "./ticket_form";
 import {withRouter} from "react-router-dom";
-import {fetchTicketComments} from "../../actions/comment_actions"
-import { updateUser, getOneUser } from '../../actions/user_actions'
-import { clearTicketErrors } from "../../actions/ticket_actions"
+import {fetchTicketComments} from "../../../actions/comment_actions"
+import { updateUser, getOneUser } from '../../../actions/user_actions'
+import { clearTicketErrors } from "../../../actions/ticket_actions"
 
 const msp = (state, ownProps) => {
 

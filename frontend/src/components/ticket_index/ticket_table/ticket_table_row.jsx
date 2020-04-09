@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-const TicketIndexItem = ({ ticket, currentUser, starredIds, updateUser }) => {
+const TicketTableRow = ({ ticket, currentUser, starredIds, updateUser }) => {
     
     const formatDate = timestamp => {
         let date = new Date(timestamp);
@@ -57,4 +57,4 @@ const TicketIndexItem = ({ ticket, currentUser, starredIds, updateUser }) => {
     );
 };
 
-export default withRouter(TicketIndexItem);
+export default withRouter(TicketTableRow);

@@ -5,6 +5,8 @@
 }
 
 .form-and-activity-container {
+    margin-top: 10px;
+    margin-bottom: 30px;
     width: 800px;
     background-color: rgb(241, 241, 241);
     display: flex;
@@ -124,24 +126,24 @@ input:focus, textarea:focus {
     cursor: pointer;
 }
 
-select {
+.form select {
     background-color: lightgrey;
 }
 
 
 
-.selectors {
+.form .selectors {
     display: flex;
     justify-content: space-between;
     height: 40px;
     margin: 10px;
 }
 
-.owner {
+.form .owner {
     width: 150px;
 }
 
-.selectors label {
+.form .selectors label {
     font-size: 10px;
     font-weight: 600;
 }

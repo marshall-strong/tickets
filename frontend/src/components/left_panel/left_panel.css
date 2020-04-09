@@ -5,6 +5,7 @@
     background-color: rgb(8, 148, 118);
     border-right: 1px solid grey;
     border-left: 1px solid grey;
+    border-bottom: 1px solid grey;
 }
 
 .left-panel-container h1 {

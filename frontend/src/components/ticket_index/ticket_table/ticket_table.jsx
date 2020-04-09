@@ -1,6 +1,5 @@
-import React from 'react'
-import TicketIndexItem from './ticket_index_item'
-import './ticket_index.css'
+import React from 'react';
+import TicketTableRow from './ticket_table_row';
 
 class TicketTable extends React.Component {
   constructor(props) {
@@ -282,7 +281,7 @@ class TicketTable extends React.Component {
           {tickets.map(ticket => {
             return (
               <div key={ticket._id} onClick={() => this.state.resizing ? null : history.push(`/tickets/${ticket._id}`)}>
-                <TicketIndexItem 
+                <TicketTableRow 
                   ticket={ticket} 
                   currentUser={currentUser}
                   starredIds={currentUser.starred}

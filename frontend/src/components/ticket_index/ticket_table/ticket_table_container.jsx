@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
 import TicketTable from './ticket_table'
 import { withRouter } from 'react-router-dom'
-import { fetchOwnerTickets, fetchCreatedTickets, getTickets, fetchSubscribedTickets, fetchStarredTickets } from '../../actions/ticket_actions'
-import { updateUser, getOneUser } from '../../actions/user_actions'
+import { fetchOwnerTickets, fetchCreatedTickets, getTickets, fetchSubscribedTickets, fetchStarredTickets } from '../../../actions/ticket_actions'
+import { updateUser, getOneUser } from '../../../actions/user_actions'
 
 
 const mstp = (state, ownProps) => ({

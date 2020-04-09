@@ -17,12 +17,12 @@ const TicketQuery = ({ history, location }) => {
     return(
         <div className="query-container">
             <div className="filters">
+                <StatusFilter params={params}/>
                 <PriorityFilter params={params} />
                 <OwnerFilter params={params} />
-                <StatusFilter params={params}/>
             </div>
             <button 
-                className="button1"
+                className="button1 search"
                 onClick={(e) => handleSubmit(e)}
             >Search</button>
         </div>

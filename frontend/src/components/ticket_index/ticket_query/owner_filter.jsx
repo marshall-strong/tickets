@@ -3,9 +3,11 @@ import React from 'react';
 class OwnerFilter extends React.Component {
     constructor(props) {
         super(props);
+        if (!this.props.params.get('ownerVerb')) this.props.params.set('ownerVerb', 'is');
         this.state = {
+            verb: this.props.params.get('ownerVerb'),
             input: '',
-            added: {}
+            added: {},
         };
         this.props.params.getAll('owner').forEach(val =>
             this.state.added[val] = val
@@ -16,10 +18,14 @@ class OwnerFilter extends React.Component {
         this.setState({ input: e.target.value });
     };
 
+    updateVerb(e) {
+        this.props.params.set('ownerVerb', e.target.value);
+        this.setState({ verb: e.target.value });
+    };
+
     add(e) {
         // eslint-disable-next-line
         this.state.added[this.state.input] = this.state.input;
-        this.props.params.delete('owner');
         this.updateParams();
         this.setState({ added: this.state.added, input: '' });
     };
@@ -51,7 +57,28 @@ class OwnerFilter extends React.Component {
         return(
             <div className="filter owner">
                 <div className="title">
-                    Owner is any of
+                    Owner
+                </div>
+                <div className="options">
+                    <select
+                        defaultValue={this.state.verb} 
+                        className="verb-select"
+                        onChange={(e) => this.updateVerb(e)}
+                    >
+                        <option 
+                            value="is"
+                        >
+                            is
+                        </option>
+                        <option 
+                            value="not"
+                        >
+                            not
+                        </option>
+                    </select>
+                </div>
+                <div className="title">
+                    in
                 </div>
                 <div className="added">
                     {this.renderAdded()}

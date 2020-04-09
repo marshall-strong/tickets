@@ -1,38 +1,50 @@
 .ticket-index-container {
     display: flex;
     flex-direction: column;
+    border: 1px solid black;
 }
 
 .query-container {
     display: flex;
+    align-items: center;
+    border-bottom: 1px solid grey;
+}
+
+.query-container .filters {
+    display: inline-block;
+    overflow: auto;
     border: 1px solid grey;
     border-radius: 3px;
     margin: 20px;
     padding: 10px;
     font-size: 12px;
+    height: 90%;
+    width: 87%;
 }
 
-.query-container .filters {
-    display: flex;
+.query-container button.search {
+    height: 40px;
 }
 
 .query-container .filter {
+    float: left;
     display: flex;
     background-color: lightblue;
-    align-items: flex-end;
+    align-items: center;
     padding: 5px;
-    margin-right: 5px;
+    margin: 5px;
     border-radius: 3px;
 }
 
 .filter .title {
     font-weight: 600;
     max-width: 50px;
+    padding: 10px;
 }
 
 .filter input {
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
     max-width: 100px;
 }
 
@@ -50,6 +62,7 @@
 .filter .checkbox {
     width: 10px;
     height: 10px;
+    margin: 3px;
 }
 
 .filter .added {

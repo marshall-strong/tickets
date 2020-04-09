@@ -5,6 +5,8 @@
 }
 
 .form-and-activity-container {
+    margin-top: 10px;
+    margin-bottom: 30px;
     width: 800px;
     background-color: rgb(241, 241, 241);
     display: flex;

@@ -59,7 +59,7 @@ class OwnerFilter extends React.Component {
                 <div className="title">
                     Owner
                 </div>
-                <div className="options">
+                <div className="option">
                     <select
                         defaultValue={this.state.verb} 
                         className="verb-select"

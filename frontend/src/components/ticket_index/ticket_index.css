@@ -43,8 +43,8 @@
 
 .filter .title {
     font-weight: 600;
-    max-width: 50px;
-    padding-right: 10px;
+    /* max-width: 50px; */
+    padding-right: 5px;
 }
 
 .filter input {
@@ -71,6 +71,7 @@
 
 .filter .added {
     display: flex;
+    margin-right: 5px;
 }
 
 .filter .added-item {
@@ -89,7 +90,7 @@
     cursor: pointer;
 }
 
-.query-container .owner .add {
+.query-container button.add {
     line-height: 1px;
     height: 20px;
     padding: 5px;

@@ -1,26 +1,26 @@
 import React from 'react';
 
-class OwnerFilter extends React.Component {
+class SubscribedFilter extends React.Component {
     constructor(props) {
         super(props);
-        if (!this.props.params.get('ownerInclusion')) {
-            this.props.params.set('ownerInclusion', 'is');
+        if (!this.props.params.get('subscribedInclusion')) {
+            this.props.params.set('subscribedInclusion', 'all');
         };
         this.state = {
-            inclusion: this.props.params.get('ownerInclusion'),
+            inclusion: this.props.params.get('subscribedInclusion'),
             input: '',
             added: {},
         };
-        this.props.params.getAll('owner').forEach(val =>
+        this.props.params.getAll('subscribed').forEach(val =>
             this.state.added[val] = val
         );
     };
 
     componentDidUpdate(prevProps) {
         debugger
-        if (!this.props.params.get('ownerInclusion')) {
-            this.props.params.set('ownerInclusion', 'is');
-            this.setState({ inclusion: 'is' });
+        if (!this.props.params.get('subscribedInclusion')) {
+            this.props.params.set('subscribedInclusion', 'all');
+            this.setState({ inclusion: 'all' });
         };
     };
 
@@ -29,7 +29,7 @@ class OwnerFilter extends React.Component {
     };
 
     updateInclusion(e) {
-        this.props.params.set('ownerInclusion', e.target.value);
+        this.props.params.set('subscribedInclusion', e.target.value);
         this.setState({ inclusion: e.target.value });
     };
 
@@ -48,58 +48,63 @@ class OwnerFilter extends React.Component {
     };
 
     updateParams() {
-        this.props.params.delete('owner');
+        this.props.params.delete('subscribed');
         Object.values(this.state.added).forEach(val =>
-            this.props.params.append('owner', val)
+            this.props.params.append('subscribed', val)
         );
     };
 
     renderAdded() {
         return Object.values(this.state.added).map(id =>
             <div className="added-item">
-                {id} 
-            <span className="remove" onClick={() => this.remove(id)}> x</span>
+                {id}
+                <span className="remove" onClick={() => this.remove(id)}> x</span>
             </div>
         );
     };
 
     render() {
-        return(
-            <div className="filter owner">
+        return (
+            <div className="filter subscribed">
                 <div className="title">
-                    Owner
+                    Subscribed has
                 </div>
                 <div className="option">
                     <select
-                        defaultValue={this.state.inclusion} 
+                        defaultValue={this.state.inclusion}
                         className="inclusion-select"
                         onChange={(e) => this.updateInclusion(e)}
                     >
-                        <option 
-                            value="is"
+                        <option
+                            value="all"
                         >
-                            is
+                            all
                         </option>
-                        <option 
-                            value="not"
+                        <option
+                            value="any"
                         >
-                            not
+                            any
+                        </option>
+                        <option
+                            value="none"
+                        >
+                            none
                         </option>
                     </select>
                 </div>
                 <div className="title">
-                    in
+                    of
                 </div>
                 <div className="added">
                     {this.renderAdded()}
                 </div>
-                <input 
-                    type="text" 
+                <input
+                    type="text"
                     placeholder="userId"
                     value={this.state.input}
                     onChange={(e) => this.updateInput(e)}
                 />
-                <button 
+                <button
                     className="button1 add"
                     onClick={(e) => this.add(e)}
                 >Add</button>
@@ -108,4 +113,4 @@ class OwnerFilter extends React.Component {
     };
 };
 
-export default OwnerFilter;
+export default SubscribedFilter;

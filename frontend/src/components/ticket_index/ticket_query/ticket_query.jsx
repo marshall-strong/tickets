@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import PriorityFilter from './priority_filter';
 import OwnerFilter from './owner_filter';
 import StatusFilter from './status_filter';
+import SubscribedFilter from './subscribed_filter';
 
 const TicketQuery = ({ history, location }) => {
 
@@ -20,6 +21,7 @@ const TicketQuery = ({ history, location }) => {
                 <StatusFilter params={params}/>
                 <PriorityFilter params={params} />
                 <OwnerFilter params={params} />
+                <SubscribedFilter params={params} />
             </div>
             <button 
                 className="button1 search"

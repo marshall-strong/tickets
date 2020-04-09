@@ -124,24 +124,24 @@ input:focus, textarea:focus {
     cursor: pointer;
 }
 
-select {
+.form select {
     background-color: lightgrey;
 }
 
 
 
-.selectors {
+.form .selectors {
     display: flex;
     justify-content: space-between;
     height: 40px;
     margin: 10px;
 }
 
-.owner {
+.form .owner {
     width: 150px;
 }
 
-.selectors label {
+.form .selectors label {
     font-size: 10px;
     font-weight: 600;
 }

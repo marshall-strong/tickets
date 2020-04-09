@@ -1,11 +1,12 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PriorityFilter from './priority_filter';
+import OwnerFilter from './owner_filter';
 
 const TicketQuery = ({ history, location }) => {
 
-    const params = new URLSearchParams(location.search);
-    
+    const params = new URLSearchParams(location.search.slice(1));
+
     const handleSubmit = e => {
         e.preventDefault();
         let queryString = params.toString();
@@ -15,10 +16,8 @@ const TicketQuery = ({ history, location }) => {
     return(
         <div className="query-container">
             <div className="filters">
-                <PriorityFilter 
-                    params={params}
-                    url={history.url}
-                />
+                <PriorityFilter params={params} />
+                <OwnerFilter params={params} />
             </div>
             <button 
                 className="button1"

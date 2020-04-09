@@ -12,20 +12,30 @@ class OwnerFilter extends React.Component {
         );
     };
 
-    update(e) {
+    updateInput(e) {
         this.setState({ input: e.target.value });
     };
 
     add(e) {
         // eslint-disable-next-line
         this.state.added[this.state.input] = this.state.input;
+        this.props.params.delete('owner');
+        this.updateParams();
         this.setState({ added: this.state.added, input: '' });
     };
 
     remove(id) {
         // eslint-disable-next-line
         delete this.state.added[id];
+        this.updateParams();
         this.setState({ added: this.state.added });
+    };
+
+    updateParams() {
+        this.props.params.delete('owner');
+        Object.values(this.state.added).forEach(val =>
+            this.props.params.append('owner', val)
+        );
     };
 
     renderAdded() {
@@ -50,7 +60,7 @@ class OwnerFilter extends React.Component {
                     type="text" 
                     placeholder="userId"
                     value={this.state.input}
-                    onChange={(e) => this.update(e)}
+                    onChange={(e) => this.updateInput(e)}
                 />
                 <button 
                     className="button1 add"

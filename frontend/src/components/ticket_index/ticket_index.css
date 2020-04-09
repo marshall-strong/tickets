@@ -21,7 +21,7 @@
     background-color: lightblue;
     align-items: flex-end;
     padding: 5px;
-    margin: 2px;
+    margin-right: 5px;
     border-radius: 3px;
 }
 
@@ -36,18 +36,18 @@
     max-width: 100px;
 }
 
-.query-container .options {
+.filter .options {
     display: flex;
 }
 
-.query-container .option {
+.filter .option {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-left: 5px;
 }
 
-.query-container .checkbox {
+.filter .checkbox {
     width: 10px;
     height: 10px;
 }
@@ -58,7 +58,7 @@
 
 .filter .added-item {
     background-color: white;
-    padding: 2px;
+    padding: 4px;
     margin: 2px;
     border-radius: 2px;
 }

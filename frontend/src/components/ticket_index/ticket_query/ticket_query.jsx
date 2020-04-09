@@ -5,6 +5,7 @@ import PriorityFilter from './priority_filter';
 const TicketQuery = ({ history, location }) => {
 
     const params = new URLSearchParams(location.search);
+    
     const handleSubmit = e => {
         e.preventDefault();
         let queryString = params.toString();

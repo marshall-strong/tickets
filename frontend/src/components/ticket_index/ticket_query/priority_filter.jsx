@@ -12,8 +12,10 @@ class PriorityFilter extends React.Component {
     update(e) {
         let value = e.target.value;
         if (this.state[value]) {
+            // eslint-disable-next-line
             delete this.state[value];
         } else {
+            // eslint-disable-next-line
             this.state[value] = value;
         };
         this.props.params.delete('priority');

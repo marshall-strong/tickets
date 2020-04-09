@@ -20,7 +20,7 @@ class UserSearch extends React.Component {
     handleSearch(e) {
         e.preventDefault();
         let userQueryString = this.state.userParams.toString()
-        this.props.history.push(`${this.props.currentUser.orgHandle}/users/?${userQueryString}`)
+        this.props.history.replace(`/users/search/?${userQueryString}`)
     }
 
     render() {
@@ -30,8 +30,8 @@ class UserSearch extends React.Component {
                 <input
                     type="text"
                     placeholder="Search for User"
-                    onChange={this.update('nameFragment')}
-                    value={userParams.get('nameFragment')}
+                    onChange={this.update('namefragment')}
+                    value={userParams.get('namefragment')}
                 />
                 <button
                     onClick={(e) => this.handleSearch(e)} 

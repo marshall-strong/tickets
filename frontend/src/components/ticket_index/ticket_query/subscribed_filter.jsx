@@ -16,14 +16,6 @@ class SubscribedFilter extends React.Component {
         );
     };
 
-    componentDidUpdate(prevProps) {
-        debugger
-        if (!this.props.params.get('subscribedInclusion')) {
-            this.props.params.set('subscribedInclusion', this.state.inclusion);
-            // this.setState({ inclusion: 'all' });
-        };
-    };
-
     updateInput(e) {
         this.setState({ input: e.target.value });
     };
@@ -56,7 +48,7 @@ class SubscribedFilter extends React.Component {
 
     renderAdded() {
         return Object.values(this.state.added).map(id =>
-            <div className="added-item">
+            <div key={id} className="added-item">
                 {id}
                 <span className="remove" onClick={() => this.remove(id)}> x</span>
             </div>

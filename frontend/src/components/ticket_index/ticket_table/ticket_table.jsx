@@ -36,14 +36,14 @@ class TicketTable extends React.Component {
         this.props.fetchOwnerTickets(this.props.match.params.userId)
         .then(action => this.receiveTickets(action))
         break;
-      case `/tickets/subscribed/${this.props.userId}`:
-        this.props.fetchSubscribedTickets(this.props.match.params.userId)
-        .then(action => this.receiveTickets(action))
-        break;
-      case `/tickets/creator/${this.props.userId}`:
-        this.props.fetchCreatedTickets(this.props.match.params.userId)
-        .then(action => this.receiveTickets(action))
-        break;
+      // case `/tickets/subscribed/${this.props.userId}`:
+      //   this.props.fetchSubscribedTickets(this.props.match.params.userId)
+      //   .then(action => this.receiveTickets(action))
+      //   break;
+      // case `/tickets/creator/${this.props.userId}`:
+      //   this.props.fetchCreatedTickets(this.props.match.params.userId)
+      //   .then(action => this.receiveTickets(action))
+      //   break;
       case `/tickets/starred/${this.props.userId}`: 
         this.props.fetchStarredTickets(this.props.currentUser)
         .then(action => this.receiveTickets(action))
@@ -61,14 +61,14 @@ class TicketTable extends React.Component {
           this.props.fetchOwnerTickets(this.props.match.params.userId)
           .then(action => this.receiveTickets(action))
           break;
-        case `/tickets/subscribed/${this.props.userId}`:
-          this.props.fetchSubscribedTickets(this.props.match.params.userId)
-          .then(action => this.receiveTickets(action))
-          break;
-        case `/tickets/creator/${this.props.userId}`:
-          this.props.fetchCreatedTickets(this.props.match.params.userId)
-          .then(action => this.receiveTickets(action))
-          break;
+        // case `/tickets/subscribed/${this.props.userId}`:
+        //   this.props.fetchSubscribedTickets(this.props.match.params.userId)
+        //   .then(action => this.receiveTickets(action))
+        //   break;
+        // case `/tickets/creator/${this.props.userId}`:
+        //   this.props.fetchCreatedTickets(this.props.match.params.userId)
+        //   .then(action => this.receiveTickets(action))
+        //   break;
         case `/tickets/starred/${this.props.userId}`:
           this.props.fetchStarredTickets(this.props.currentUser)
           .then(action => this.receiveTickets(action))

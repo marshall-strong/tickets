@@ -16,14 +16,6 @@ class TagsFilter extends React.Component {
         );
     };
 
-    componentDidUpdate(prevProps) {
-        debugger
-        if (!this.props.params.get('tagsInclusion')) {
-            this.props.params.set('tagsInclusion', this.state.inclusion);
-            // this.setState({ inclusion: 'all' });
-        };
-    };
-
     updateInput(e) {
         this.setState({ input: e.target.value });
     };

@@ -34,7 +34,7 @@ class StatusFilter extends React.Component {
                 <div className="options">
                     <div className="option">
                         <div className="label">
-                            No progress
+                            No Progress
                         </div>
                         <input
                             className="checkbox"

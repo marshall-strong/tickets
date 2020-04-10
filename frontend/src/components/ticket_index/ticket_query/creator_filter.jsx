@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class CreatorFilter extends React.Component {
     constructor(props) {
@@ -14,14 +15,6 @@ class CreatorFilter extends React.Component {
         this.props.params.getAll('creator').forEach(val =>
             this.state.added[val] = val
         );
-    };
-
-    componentDidUpdate(prevProps) {
-        debugger
-        if (!this.props.params.get('creatorInclusion')) {
-            this.props.params.set('creatorInclusion', this.state.inclusion);
-            // this.setState({ inclusion: 'is' });
-        };
     };
 
     updateInput(e) {
@@ -56,7 +49,7 @@ class CreatorFilter extends React.Component {
 
     renderAdded() {
         return Object.values(this.state.added).map(id =>
-            <div className="added-item">
+            <div key={id} className="added-item">
                 {id}
                 <span className="remove" onClick={() => this.remove(id)}> x</span>
             </div>
@@ -108,4 +101,4 @@ class CreatorFilter extends React.Component {
     };
 };
 
-export default CreatorFilter;
+export default withRouter(CreatorFilter);

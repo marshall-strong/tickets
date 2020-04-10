@@ -16,14 +16,6 @@ class OwnerFilter extends React.Component {
         );
     };
 
-    componentDidUpdate(prevProps) {
-        debugger
-        if (!this.props.params.get('ownerInclusion')) {
-            this.props.params.set('ownerInclusion', this.state.inclusion);
-            // this.setState({ inclusion: 'is' });
-        };
-    };
-
     updateInput(e) {
         this.setState({ input: e.target.value });
     };

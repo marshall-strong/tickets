@@ -139,6 +139,7 @@ class Ticket extends React.Component {
 
     updateFromSuggestion(field, value, e) {
         // eslint-disable-next-line
+        e.preventDefault();
         this.state.ticket[field] = value
         this.setState({ ticket: this.state.ticket });
         e.currentTarget.classList.add('edited');

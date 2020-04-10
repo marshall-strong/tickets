@@ -19,7 +19,7 @@ class TicketQuery extends React.Component {
     handleSubmit = e => {
         e.preventDefault();
         let queryString = this.state.params.toString();
-        this.props.history.push(`/tickets/?${queryString}`)
+        this.props.history.push(`/tickets/search/?${queryString}`)
     };
 
     componentDidUpdate(prevProps) {

@@ -2,6 +2,8 @@ import React from 'react';
 import Autosuggest from 'react-autosuggest';
 import { connect } from 'react-redux';
 import { getOrgUsers } from '../../../actions/user_actions';
+import './autosuggest.css'
+
 
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
 function escapeRegexCharacters(str) {

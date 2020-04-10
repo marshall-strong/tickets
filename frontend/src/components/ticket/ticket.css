@@ -104,11 +104,12 @@ input, textarea {
     padding-right: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
+    border-style: none;
+    outline: none;
 }
 
 input:focus, textarea:focus {
     border: 1px solid rgb(184, 183, 183);
-    /* background-color: white; */
 }
 
 .title-star {
@@ -130,8 +131,6 @@ input:focus, textarea:focus {
     background-color: lightgrey;
 }
 
-
-
 .form .selectors {
     display: flex;
     justify-content: space-between;
@@ -139,7 +138,7 @@ input:focus, textarea:focus {
     margin: 10px;
 }
 
-.form .owner {
+.form .react-autosuggest__input {
     width: 150px;
 }
 

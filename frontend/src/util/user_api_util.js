@@ -5,7 +5,7 @@ export const fetchOneUser = userId => (
 );
 
 export const fetchOrgUsers = orgHandle => (
-  axios.get(`/api/users/${orgHandle}`)
+  axios.get(`/api/users/orgHandle/${orgHandle}`)
 );
 
 export const updateUser = user => (

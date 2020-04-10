@@ -1,68 +1,10 @@
 import React from 'react';
 import { withRouter } from "react-router-dom"
 
-import '../app.css'
-import './ticket_form.css'
+import '../app.css';
+import './ticket_form.css';
 
-
-const languages = [
-  {
-    name: 'C',
-    year: 1972
-  },
-  {
-    name: 'C#',
-    year: 2000
-  },
-  {
-    name: 'C++',
-    year: 1983
-  },
-  {
-    name: 'Clojure',
-    year: 2007
-  },
-  {
-    name: 'Elm',
-    year: 2012
-  },
-  {
-    name: 'Go',
-    year: 2009
-  },
-  {
-    name: 'Haskell',
-    year: 1990
-  },
-  {
-    name: 'Java',
-    year: 1995
-  },
-  {
-    name: 'Javascript',
-    year: 1995
-  },
-  {
-    name: 'Perl',
-    year: 1987
-  },
-  {
-    name: 'PHP',
-    year: 1995
-  },
-  {
-    name: 'Python',
-    year: 1991
-  },
-  {
-    name: 'Ruby',
-    year: 1995
-  },
-  {
-    name: 'Scala',
-    year: 2003
-  }
-];
+const users = [ ];
 
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
 function escapeRegexCharacters(str) {
@@ -78,7 +20,7 @@ function getSuggestions(value) {
 
   const regex = new RegExp('^' + escapedValue, 'i');
 
-  return languages.filter(language => regex.test(language.name));
+  users.filter(user => regex.test(user.firstName) || regex.test(user.lastName));
 }
 
 function getSuggestionValue(suggestion) {

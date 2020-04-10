@@ -13,10 +13,14 @@ const receiveOneUser = user => ({
     payload: user.data
 });
 
-const receiveOrgUsers = users => ({
-    type: RECEIVE_ORG_USERS,
-    payload: users.data
-});
+const receiveOrgUsers = users => {
+    let payload = {};
+    users.data.forEach(user => payload[user._id] = user)
+    return ({
+        type: RECEIVE_ORG_USERS,
+        payload: payload
+    });
+};
 
 const receiveUserErrors = errors => ({
     type: RECEIVE_USER_ERRORS,

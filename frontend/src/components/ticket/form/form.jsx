@@ -4,8 +4,9 @@ import { FaCopy } from 'react-icons/fa';
 import PrioritySelect from './priority_select';
 import StatusSelect from './status_select';
 import Star from './star';
+import OwnerInput from './owner';
 
-const Form = ({ ticket, type, errors, currentUser, state, update, handleSubmit, updateUser, setState }) => {
+const Form = ({ ticket, type, errors, currentUser, state, update, updateFromSuggestion, handleSubmit, updateUser, setState }) => {
 return(
     <form className="form">
         {ticket ?
@@ -42,15 +43,11 @@ return(
                     update={update}
                 />
             </label>
-            <label>Owner
-                <input
-                    className={`${type} owner`}
-                    type="text"
-                    placeholder="owner"
-                    value={state.ticket.owner}
-                    onChange={update("owner")}
-                />
-            </label>
+            <OwnerInput
+                currentUser={currentUser} 
+                owner={state.ticket.owner}
+                updateFromSuggestion={updateFromSuggestion}
+            />
             <label>Priority
                 <PrioritySelect
                     type={type}

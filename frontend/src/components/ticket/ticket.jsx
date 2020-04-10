@@ -70,7 +70,7 @@ class Ticket extends React.Component {
                     updatedAt: [],
                     tags: [],
                     subscribed: [this.props.currentUser._id],
-                    owner: this.props.currentUser._id,
+                    owner: this.props.currentUser,
                     title: '',
                     body: '',
                     lastUpdateSeenBy: [],
@@ -137,6 +137,16 @@ class Ticket extends React.Component {
         };
     };
 
+    updateFromSuggestion(field, value, e) {
+        // eslint-disable-next-line
+        this.state.ticket[field] = value
+        this.setState({ ticket: this.state.ticket });
+        e.currentTarget.classList.add('edited');
+        let button = document.getElementById('ticket-submit-button');
+        button.classList.remove('not-edited')
+        button.classList.add('edited')
+    }
+
     render() {
         const type = this.props.ticketId === 'new' ? 'new' : 'show';
         if (type!== 'new') {
@@ -144,6 +154,7 @@ class Ticket extends React.Component {
         }
         const { currentUser, updateUser, ticket, errors } = this.props;
         this.update = this.update.bind(this);
+        this.updateFromSuggestion = this.updateFromSuggestion.bind(this);
         return (
             <div className="outer-container">
                 <div className="form-and-activity-container">
@@ -156,6 +167,7 @@ class Ticket extends React.Component {
                         state={this.state}
                         setState={this.setState.bind(this)}
                         update={this.update}
+                        updateFromSuggestion={this.updateFromSuggestion}
                         handleSubmit={this.handleSubmit}
                     />
                     <CommentsAndActivity 

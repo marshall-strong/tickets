@@ -118,18 +118,6 @@ router.patch('/:userId', (req, res) => {
       .catch(err => err.status(422).json(err));
 });
 
-// Get all users
-router.get('/', (req, res) => {
-  User.find()
-    .then(users => res.json(users))
-    .catch(err => {
-      res.status(500).json({
-        message:
-          err.message || "Some error occurred while retrieving users."
-      });
-    });
-});
-
 // Get all users with the specified orgHandle
 router.get('/orgHandle/:orgHandle', (req, res) => {
   const orgHandle = req.params.orgHandle;

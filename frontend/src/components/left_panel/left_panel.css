@@ -17,6 +17,10 @@
 
 }
 
+.left-panel-container .selected {
+    background-color: rgb(192, 204, 199);
+}
+
 .left-panel-container a:first-child {
     border-top: 1px solid grey;
 }

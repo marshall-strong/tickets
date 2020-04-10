@@ -4,6 +4,8 @@ import PriorityFilter from './priority_filter';
 import OwnerFilter from './owner_filter';
 import StatusFilter from './status_filter';
 import SubscribedFilter from './subscribed_filter';
+import CreatorFilter from './creator_filter';
+import TagsFilter from './tags_filter';
 
 const TicketQuery = ({ history, location }) => {
 
@@ -18,10 +20,12 @@ const TicketQuery = ({ history, location }) => {
     return(
         <div className="query-container">
             <div className="filters">
+                <OwnerFilter params={params} />
+                <CreatorFilter params={params} />
+                <SubscribedFilter params={params} />
+                <TagsFilter params={params} />
                 <StatusFilter params={params}/>
                 <PriorityFilter params={params} />
-                <OwnerFilter params={params} />
-                <SubscribedFilter params={params} />
             </div>
             <button 
                 className="button1 search"

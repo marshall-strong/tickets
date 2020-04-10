@@ -16,17 +16,17 @@
     background-color: white;
     border: 1px solid grey;
     border-radius: 5px;
-    margin: 20px;
+    margin: 10px;
     padding-top: 5px;
     padding-left: 5px;
     padding-right: 5px;
     font-size: 12px;
     height: 90%;
-    width: 87%;
+    width: 92%;
 }
 
 .query-container button.search {
-    height: 40px;
+    padding:5px;
 }
 
 .query-container .filter {
@@ -43,7 +43,6 @@
 
 .filter .title {
     font-weight: 600;
-    /* max-width: 50px; */
     padding-right: 5px;
 }
 

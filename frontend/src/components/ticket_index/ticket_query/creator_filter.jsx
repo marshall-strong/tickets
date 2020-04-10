@@ -1,26 +1,26 @@
 import React from 'react';
 
-class SubscribedFilter extends React.Component {
+class CreatorFilter extends React.Component {
     constructor(props) {
         super(props);
-        if (!this.props.params.get('subscribedInclusion')) {
-            this.props.params.set('subscribedInclusion', 'all');
+        if (!this.props.params.get('creatorInclusion')) {
+            this.props.params.set('creatorInclusion', 'is');
         };
         this.state = {
-            inclusion: this.props.params.get('subscribedInclusion'),
+            inclusion: this.props.params.get('creatorInclusion'),
             input: '',
             added: {},
         };
-        this.props.params.getAll('subscribed').forEach(val =>
+        this.props.params.getAll('creator').forEach(val =>
             this.state.added[val] = val
         );
     };
 
     componentDidUpdate(prevProps) {
         debugger
-        if (!this.props.params.get('subscribedInclusion')) {
-            this.props.params.set('subscribedInclusion', this.state.inclusion);
-            // this.setState({ inclusion: 'all' });
+        if (!this.props.params.get('creatorInclusion')) {
+            this.props.params.set('creatorInclusion', this.state.inclusion);
+            // this.setState({ inclusion: 'is' });
         };
     };
 
@@ -29,7 +29,7 @@ class SubscribedFilter extends React.Component {
     };
 
     updateInclusion(e) {
-        this.props.params.set('subscribedInclusion', e.target.value);
+        this.props.params.set('creatorInclusion', e.target.value);
         this.setState({ inclusion: e.target.value });
     };
 
@@ -48,9 +48,9 @@ class SubscribedFilter extends React.Component {
     };
 
     updateParams() {
-        this.props.params.delete('subscribed');
+        this.props.params.delete('creator');
         Object.values(this.state.added).forEach(val =>
-            this.props.params.append('subscribed', val)
+            this.props.params.append('creator', val)
         );
     };
 
@@ -65,9 +65,9 @@ class SubscribedFilter extends React.Component {
 
     render() {
         return (
-            <div className="filter subscribed">
+            <div className="filter creator">
                 <div className="title">
-                    Subscribed has
+                    Creator
                 </div>
                 <div className="option">
                     <select
@@ -76,24 +76,19 @@ class SubscribedFilter extends React.Component {
                         onChange={(e) => this.updateInclusion(e)}
                     >
                         <option
-                            value="all"
+                            value="is"
                         >
-                            all
+                            is
                         </option>
                         <option
-                            value="any"
+                            value="not"
                         >
-                            any
-                        </option>
-                        <option
-                            value="none"
-                        >
-                            none
+                            not
                         </option>
                     </select>
                 </div>
                 <div className="title">
-                    of
+                    in
                 </div>
                 <div className="added">
                     {this.renderAdded()}
@@ -113,4 +108,4 @@ class SubscribedFilter extends React.Component {
     };
 };
 
-export default SubscribedFilter;
+export default CreatorFilter;

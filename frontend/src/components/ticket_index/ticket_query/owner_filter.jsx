@@ -19,8 +19,8 @@ class OwnerFilter extends React.Component {
     componentDidUpdate(prevProps) {
         debugger
         if (!this.props.params.get('ownerInclusion')) {
-            this.props.params.set('ownerInclusion', 'is');
-            this.setState({ inclusion: 'is' });
+            this.props.params.set('ownerInclusion', this.state.inclusion);
+            // this.setState({ inclusion: 'is' });
         };
     };
 

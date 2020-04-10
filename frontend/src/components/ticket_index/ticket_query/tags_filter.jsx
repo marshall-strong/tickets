@@ -1,25 +1,25 @@
 import React from 'react';
 
-class SubscribedFilter extends React.Component {
+class TagsFilter extends React.Component {
     constructor(props) {
         super(props);
-        if (!this.props.params.get('subscribedInclusion')) {
-            this.props.params.set('subscribedInclusion', 'all');
+        if (!this.props.params.get('tagsInclusion')) {
+            this.props.params.set('tagsInclusion', 'all');
         };
         this.state = {
-            inclusion: this.props.params.get('subscribedInclusion'),
+            inclusion: this.props.params.get('tagsInclusion'),
             input: '',
             added: {},
         };
-        this.props.params.getAll('subscribed').forEach(val =>
+        this.props.params.getAll('tags').forEach(val =>
             this.state.added[val] = val
         );
     };
 
     componentDidUpdate(prevProps) {
         debugger
-        if (!this.props.params.get('subscribedInclusion')) {
-            this.props.params.set('subscribedInclusion', this.state.inclusion);
+        if (!this.props.params.get('tagsInclusion')) {
+            this.props.params.set('tagsInclusion', this.state.inclusion);
             // this.setState({ inclusion: 'all' });
         };
     };
@@ -29,7 +29,7 @@ class SubscribedFilter extends React.Component {
     };
 
     updateInclusion(e) {
-        this.props.params.set('subscribedInclusion', e.target.value);
+        this.props.params.set('tagsInclusion', e.target.value);
         this.setState({ inclusion: e.target.value });
     };
 
@@ -48,9 +48,9 @@ class SubscribedFilter extends React.Component {
     };
 
     updateParams() {
-        this.props.params.delete('subscribed');
+        this.props.params.delete('tags');
         Object.values(this.state.added).forEach(val =>
-            this.props.params.append('subscribed', val)
+            this.props.params.append('tags', val)
         );
     };
 
@@ -65,9 +65,9 @@ class SubscribedFilter extends React.Component {
 
     render() {
         return (
-            <div className="filter subscribed">
+            <div className="filter tags">
                 <div className="title">
-                    Subscribed has
+                    Tags has
                 </div>
                 <div className="option">
                     <select
@@ -100,7 +100,7 @@ class SubscribedFilter extends React.Component {
                 </div>
                 <input
                     type="text"
-                    placeholder="userId"
+                    placeholder="tag name"
                     value={this.state.input}
                     onChange={(e) => this.updateInput(e)}
                 />
@@ -113,4 +113,4 @@ class SubscribedFilter extends React.Component {
     };
 };
 
-export default SubscribedFilter;
+export default TagsFilter;

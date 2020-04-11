@@ -31,3 +31,7 @@ export const getSubscribedTickets = userId => (
 export const getStarredTickets = currentUser => (
   axios.get(`/api/tickets/starred/${currentUser._id}`)
 );
+
+export const getTicketsByQueryString = queryString => (
+  axios.get(`/api/tickets/search/?${queryString}`)
+);

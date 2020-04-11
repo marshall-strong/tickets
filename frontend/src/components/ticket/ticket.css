@@ -183,9 +183,10 @@ input:focus, textarea:focus {
 
 .subscribed-container {
     display: inline-block;
+    /* position: relative; */
     /* overflow: auto; */
     background-color: white;
-    border: 1px solid grey;
+    border: 1px solid transparent;
     border-radius: 5px;
     margin: 10px;
     padding-top: 5px;
@@ -198,14 +199,27 @@ input:focus, textarea:focus {
     text-align: center;
 }
 
+
 .subscribed-container .added-item {
     float: left;
+}
+
+.user-suggest-container {
+    position: relative;
+}
+
+.subscribed-container .react-autosuggest__container {
+  float: left;
 }
 
 .subscribed-container .react-autosuggest__input {
     float: left;
     margin: 0px;
     border: none;
+}
+
+.edited .react-autosuggest__input {
+    background-color: rgb(251, 251, 212);
 }
 
 .show{
@@ -218,9 +232,7 @@ input:focus, textarea:focus {
     border: 1px solid rgb(226, 225, 225);
 }
 
-
 .edited {
-    border: 1px solid yellow;
     background-color: rgb(248, 248, 218);
 }
 
@@ -230,10 +242,6 @@ input:focus, textarea:focus {
 
 button.button1.edited:hover {
     border: 1px solid black
-}
-
-input.edited:focus, textarea.edited:focus {
-    border: 1px solid rgb(251, 251, 212);
 }
 
 .ticket-errors {

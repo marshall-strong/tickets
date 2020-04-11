@@ -23,7 +23,11 @@ class Subscribed extends React.Component {
         // eslint-disable-next-line
         delete this.state.added[id];
         this.setState({ added: this.state.added });
-        
+        this.props.updateFromSuggestion(
+            'subscribed',
+            Object.values(this.state.added),
+            document.getElementById('subscribed-container'),
+        );
     };
 
     onSuggestionSelected = (e, { suggestion }) => {
@@ -31,6 +35,7 @@ class Subscribed extends React.Component {
         this.props.updateFromSuggestion(
             'subscribed', 
             Object.values(this.state.added),
+            document.getElementById('subscribed-container'),
             e,
         );
     };
@@ -46,11 +51,11 @@ class Subscribed extends React.Component {
 
     render() {
         return (
-            <div className="subscribed-container">
+            <div id="subscribed-container" className="subscribed-container">
                     <span className="added">
                         {this.renderAdded()}
                     </span>
-                    <span>
+                    <span className="user-suggest-container">
                         <UserSuggest 
                             onSuggestionSelected={this.onSuggestionSelected}
                         />

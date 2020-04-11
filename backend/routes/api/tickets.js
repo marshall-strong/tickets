@@ -4,6 +4,7 @@ const passport = require('passport');
 const validateTicketInput = require('../../validation/ticket')
 const Ticket = require('../../models/ticket')
 
+
 router.post("/",
     // passport.authenticate('jwt', { session: false }),
     (req, res) => {

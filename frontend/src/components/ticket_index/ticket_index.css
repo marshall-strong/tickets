@@ -73,8 +73,8 @@
     margin-right: 5px;
 }
 
-.filter .added-item {
-    background-color: white;
+.added .added-item {
+    background-color: lightgrey;
     padding: 4px;
     margin: 2px;
     border-radius: 2px;

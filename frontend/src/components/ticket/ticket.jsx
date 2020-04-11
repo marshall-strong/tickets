@@ -17,8 +17,8 @@ class Ticket extends React.Component {
             {
                 updatedAt: [],
                 tags: [],
-                subscribed: [this.props.currentUser._id],
-                owner: this.props.currentUser._id,
+                subscribed: [this.props.currentUser],
+                owner: this.props.currentUser,
                 title: '',
                 body: '',
                 lastUpdateSeenBy: [],
@@ -43,6 +43,8 @@ class Ticket extends React.Component {
         // in case of page refresh, fetch the current user to overwrite 
         // stale preloaded state from login and get updated starred list
         this.props.getOneUser(this.props.currentUser._id)
+        // pull users into state for autosuggest
+        this.props.getOrgUsers(this.props.currentUser.orgHandle)
         if (this.props.ticketId !== 'new') {
             this.props.getTicket(this.props.ticketId)
             .then(ticket => {
@@ -69,7 +71,7 @@ class Ticket extends React.Component {
                 ticket: {
                     updatedAt: [],
                     tags: [],
-                    subscribed: [this.props.currentUser._id],
+                    subscribed: [this.props.currentUser],
                     owner: this.props.currentUser,
                     title: '',
                     body: '',
@@ -137,9 +139,13 @@ class Ticket extends React.Component {
         };
     };
 
+    onSuggestionSelected = (e, { suggestion }) => {
+        this.updateFromSuggestion('owner', suggestion, e);
+    };
+
     updateFromSuggestion(field, value, e) {
-        // eslint-disable-next-line
         e.preventDefault();
+        // eslint-disable-next-line
         this.state.ticket[field] = value
         this.setState({ ticket: this.state.ticket });
         e.currentTarget.classList.add('edited');

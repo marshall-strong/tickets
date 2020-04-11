@@ -4,7 +4,8 @@ import { FaCopy } from 'react-icons/fa';
 import PrioritySelect from './priority_select';
 import StatusSelect from './status_select';
 import Star from './star';
-import OwnerInput from './owner';
+import Subscribed from './subscribed';
+import Owner from './owner';
 
 const Form = ({ ticket, type, errors, currentUser, state, update, updateFromSuggestion, handleSubmit, updateUser, setState }) => {
 return(
@@ -43,7 +44,7 @@ return(
                     update={update}
                 />
             </label>
-            <OwnerInput
+            <Owner
                 currentUser={currentUser} 
                 owner={state.ticket.owner}
                 updateFromSuggestion={updateFromSuggestion}
@@ -68,14 +69,14 @@ return(
         </div>
         <div className="schedule">
             Start<br />Date
-                            <input
+            <input
                 className={type}
                 type="date"
                 value={state.ticket.startDate}
                 onChange={update("startDate")}
             />
-                            End<br />Date
-                            <input
+            End<br />Date
+            <input
                 className={type}
                 type="date"
                 value={state.ticket.endDate}
@@ -93,12 +94,16 @@ return(
         <label className="subs-title">
             subscribed
         </label>
-        <textarea
+        <Subscribed
+            updateFromSuggestion={updateFromSuggestion}
+            subscribed={state.ticket.subscribed}
+        />
+        {/* <textarea
             className={`${type} subscribed margin`}
             value={state.ticket.subscribed}
             placeholder="subscribed"
             onChange={update("subscribed")}
-        ></textarea>
+        ></textarea> */}
         <input
             className={`${type} depends-on margin`}
             type="text"

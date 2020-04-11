@@ -19,7 +19,8 @@
     display: flex;
     flex-direction: column;
     align-items: baseline;
-    padding: 10px
+    padding: 14px;
+    border-bottom: 1px solid grey;
 }
 
 .ticket-number {
@@ -106,6 +107,7 @@ input, textarea {
     padding-bottom: 5px;
     border-style: none;
     outline: none;
+    border: 1px solid transparent;
 }
 
 input:focus, textarea:focus {
@@ -177,6 +179,33 @@ input:focus, textarea:focus {
 
 .subs-title {
     margin-left: 15px;
+}
+
+.subscribed-container {
+    display: inline-block;
+    /* overflow: auto; */
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin: 10px;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding: 10px;
+    font-size: 12px;
+    height: 90%;
+    width: 92%;
+    text-align: center;
+}
+
+.subscribed-container .added-item {
+    float: left;
+}
+
+.subscribed-container .react-autosuggest__input {
+    float: left;
+    margin: 0px;
+    border: none;
 }
 
 .show{
@@ -274,12 +303,15 @@ input.edited:focus, textarea.edited:focus {
     align-items: center;
     background-color: rgb(241, 241, 241);
     padding: 10px;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
 }
 
 .comment-form textarea {
     width: 600px;
     margin-right: 10px;
     max-height: 500px;
+    border: 1px solid lightgrey;
 }
 
 .activity-container {

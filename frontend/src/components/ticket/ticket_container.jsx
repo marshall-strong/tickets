@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Ticket from "./ticket";
 import {withRouter} from "react-router-dom";
 import {fetchTicketComments} from "../../actions/comment_actions"
-import { updateUser, getOneUser } from '../../actions/user_actions'
+import { updateUser, getOneUser, getOrgUsers } from '../../actions/user_actions'
 import { clearTicketErrors } from "../../actions/ticket_actions"
 
 const msp = (state, ownProps) => {
@@ -20,6 +20,7 @@ const msp = (state, ownProps) => {
 
 const mdp = dispatch => ({
     getOneUser: userId => dispatch(getOneUser(userId)),
+    getOrgUsers: orgHandle => dispatch(getOrgUsers(orgHandle)),
     createTicket: ticket => dispatch(createTicket(ticket)),
     getTicket: id => dispatch(getTicket(id)),
     updateTicket: ticket => dispatch(updateTicket(ticket)), 

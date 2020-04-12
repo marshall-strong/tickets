@@ -3,6 +3,28 @@ const router = express.Router();
 const passport = require('passport');
 const validateTicketInput = require('../../validation/ticket')
 const Ticket = require('../../models/ticket')
+const querymen = require('querymen')
+
+router.get('/?search',
+    //  query({
+    //     priority: {
+    //         type: String,
+    //         paths: [],
+    //         operator: $in
+    //     }
+    // }),
+    (req, res) => {
+        debugger
+        Ticket
+            .find(req.query)
+            .then(tickets => {
+                res.json(tickets)
+            })
+            .catch(err =>
+                res.status(404)
+                    .json({ noticketsfound: 'No tickets found for that query' })
+            )
+    }) 
 
 router.post("/",
     // passport.authenticate('jwt', { session: false }),
@@ -45,6 +67,7 @@ router.post("/",
 );
 
 router.get("/:ticketId", (req, res) => {
+    debugger
     Ticket
     .findById(req.params.ticketId)
     .populate('creator', ['firstName', 'lastName', '_id'])
@@ -83,6 +106,7 @@ router.patch("/:ticketId", (req, res) => {
 })
 
 router.get("/:folder/:userId", (req, res) => {
+    debugger
     if (req.params.folder === 'subscribed') {
         Ticket.find({ [req.params.folder]: { $in: [req.params.userId] } })
         .populate('creator', ['firstName', 'lastName', '_id'])
@@ -116,6 +140,7 @@ router.get("/:folder/:userId", (req, res) => {
             );
         })
     } else {
+        debugger
         Ticket.find({ [req.params.folder]: req.params.userId })
         .populate("creator", ["firstName", "lastName", "_id"])
         .populate("owner", ["firstName", "lastName", "_id"])
@@ -123,6 +148,7 @@ router.get("/:folder/:userId", (req, res) => {
         .populate("subscribed", ["firstName", "lastName", "_id"])
         .populate("updatedBy", ["firstName", "lastName", "_id"])
         .then(tickets => {
+            debugger
             res.json(tickets);
         })
         .catch(err =>

@@ -11,7 +11,8 @@ class TicketTable extends React.Component {
       sortedBy: {
         attr: 'endDate',
         ord: true
-      }
+      },
+      query: new URLSearchParams(this.props.location.search)
     };
   };
 
@@ -30,10 +31,20 @@ class TicketTable extends React.Component {
   componentDidMount() {
     // in case of page refresh, fetch the current user to overwrite 
     // stale preloaded state from login and get updated starred list
+    
+    // let queryString = this.state.params.toString()
     this.props.getOneUser(this.props.currentUser._id)
+    
+    debugger
     switch (this.props.location.pathname) {
       case `/tickets/owner/${this.props.userId}`:
+        debugger
         this.props.fetchOwnerTickets(this.props.match.params.userId)
+        .then(action => this.receiveTickets(action))
+        break;
+      case '/tickets/search':
+        debugger
+        this.props.fetchQueriedTickets(this.props.location.search.slice(1))
         .then(action => this.receiveTickets(action))
         break;
       // case `/tickets/subscribed/${this.props.userId}`:
@@ -55,10 +66,17 @@ class TicketTable extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    // let queryString = this.state.params.toString()
+
     if (this.props.location.pathname !== prevProps.location.pathname) {
       switch (this.props.location.pathname) {
         case `/tickets/owner/${this.props.userId}`:
           this.props.fetchOwnerTickets(this.props.match.params.userId)
+          .then(action => this.receiveTickets(action))
+          break;
+        case '/tickets/search':
+          debugger
+          this.props.fetchQueriedTickets(this.props.location.search.slice(1))
           .then(action => this.receiveTickets(action))
           break;
         // case `/tickets/subscribed/${this.props.userId}`:

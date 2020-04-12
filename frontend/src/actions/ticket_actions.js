@@ -58,11 +58,14 @@ export const updateTicket = ticket => dispatch => (
     .catch(errors => dispatch(receiveTicketErrors(errors)))
 );
 
-export const fetchOwnerTickets = userId => dispatch => (
-    TicketAPIUtil.fetchOwnerTickets(userId)
-    .then(tickets => dispatch(receiveTickets(tickets)))
-    .catch(errors => dispatch(receiveTicketErrors(errors)))
-);
+export const fetchOwnerTickets = userId => dispatch => {
+    debugger
+    return (
+        TicketAPIUtil.fetchOwnerTickets(userId)
+        .then(tickets => dispatch(receiveTickets(tickets)))
+        .catch(errors => dispatch(receiveTicketErrors(errors)))
+    )
+};
 
 export const fetchCreatedTickets = userId => dispatch => (
     TicketAPIUtil.getCreatedTickets(userId)
@@ -81,3 +84,12 @@ export const fetchStarredTickets = currentUser => dispatch => (
     .then(tickets => dispatch(receiveTickets(tickets)))
     .catch(errors => dispatch(receiveTicketErrors(errors)))
 );
+
+export const fetchQueriedTickets = queryString => dispatch => {
+    debugger
+    return (
+        TicketAPIUtil.getTicketsByQueryString(queryString)
+        .then(tickets => dispatch(receiveTickets(tickets)))
+        .catch(errors => dispatch(receiveTicketErrors(errors)))
+    )
+}

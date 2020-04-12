@@ -27,7 +27,6 @@ class Owner extends React.Component {
     };
 
     handleClick(e) {
-        debugger
         let edited = e.target.classList.contains('edited');
         this.setState(
             { clicked: !this.state.clicked }, 

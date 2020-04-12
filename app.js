@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 const path = require('path');
 
-const db = require('./config/keys').mongoURI;
+const KEYS = require('./config/keys');
 const organizations = require('./backend/routes/api/organizations');
 const users = require('./backend/routes/api/users');
 const tickets = require('./backend/routes/api/tickets');
@@ -34,12 +34,21 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.listen(port, () => 
-    console.log(`Entry file: Server is running. App is listening on port ${port}`)
+    console.log(`Server is running. App is listening on port ${port}...`)
     );
 
-mongoose
-    .connect(db, { useNewUrlParser: true })
-    .then(() => console.log("Entry file: Successfully connected to MongoDB"))
-    .catch(err => console.log(err));
 
-    
+const dbConnectionURI = KEYS.mongoURI;
+const dbConnectionOptions = {
+  'useNewUrlParser'   : true,
+  'useFindAndModify'  : false,
+  'useCreateIndex'    : true,
+  'useUnifiedTopology': true,
+};
+
+mongoose
+  .connect(dbConnectionURI, dbConnectionOptions)
+  .then(() => console.log('Connected to MongoDB...'))
+  .catch(err => {
+    console.log(`DB Connection Error: ${ err.message }`);
+  });

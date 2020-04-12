@@ -39,4 +39,4 @@ const mapStateToProps = state => ({
 
 export const PublicRoute = withRouter(connect(mapStateToProps)(Public));
 export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
-export const ProtectedRoute = withRouter(connect(mapStateToProps)(Protected));
+export const PrivateRoute = withRouter(connect(mapStateToProps)(Protected));

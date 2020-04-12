@@ -1,5 +1,5 @@
 import React from 'react';
-import { PublicRoute, AuthRoute, ProtectedRoute } from '../util/route_util';
+import { PublicRoute, AuthRoute, PrivateRoute } from '../util/route_util';
 import { Route, Switch } from 'react-router-dom';
 
 import NavBarContainer from './navbar/navbar_container';
@@ -19,16 +19,16 @@ const App = () => (
   <div>
     <NavBarContainer />
     <div className="app-container">
-      <ProtectedRoute path="/tickets" component={LeftPanelContainer} />
+      <PrivateRoute path="/tickets" component={LeftPanelContainer} />
       <div className="page-container">
         <Switch>
           <AuthRoute exact path="/" component={MainPage} />
           <PublicRoute exact path="/login" component={LoginFormContainer} />
           <PublicRoute exact path="/signup" component={SignupFormContainer} />
-          <ProtectedRoute exact path="/users/:userId" component={ProfileContainer} />
-          <ProtectedRoute exact path="/tickets/search/" component={TicketIndex} />
-          <ProtectedRoute exact path="/tickets/:ticketId" component={TicketContainer} />
-          <ProtectedRoute exact path="/tickets/:folder/:userId" component={TicketIndex} />
+          <PrivateRoute exact path="/users/:userId" component={ProfileContainer} />
+          <PrivateRoute exact path="/tickets/search/" component={TicketIndex} />
+          <PrivateRoute exact path="/tickets/:ticketId" component={TicketContainer} />
+          <PrivateRoute exact path="/tickets/:folder/:userId" component={TicketIndex} />
           <Route component={NotFound} />
         </Switch>
       </div>

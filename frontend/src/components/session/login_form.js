@@ -7,8 +7,6 @@ class LoginForm extends React.Component {
   constructor(props) {
     super(props);
 
-    // if (this.props.session._id) { this.routeToOwnerPage(); }
-
     this.state = {
       email: '',
       password: '',
@@ -44,7 +42,7 @@ class LoginForm extends React.Component {
   }
 
 
-  routeToOwnerPage = () => {
+  redirectToOwnerPage = () => {
     const path = `/tickets/owner/${this.props.session._id}`;
     this.props.history.push(path);
   }
@@ -52,7 +50,7 @@ class LoginForm extends React.Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.props.session._id !== prevProps.session._id) {
-      this.routeToOwnerPage();
+      this.redirectToOwnerPage();
     }
   }
 
@@ -60,6 +58,7 @@ class LoginForm extends React.Component {
   componentWillUnmount() {
     this.props.clearErrors();
   }
+
 
   render() {
     if (this.state.redirect){
@@ -73,8 +72,7 @@ class LoginForm extends React.Component {
             className="cat-hat" 
             alt="cat" 
             src="https://i.pinimg.com/originals/cd/db/80/cddb8020bf0d4605c1e11fc6d97eaace.png"
-          >
-          </img>
+          ></img>
 
           <input 
             className="form-box-login" 
@@ -92,12 +90,7 @@ class LoginForm extends React.Component {
             placeholder={this.props.errors.password ? this.props.errors.password : "Password"}
           />
 
-          <button 
-            className="button1" 
-            onClick={this.handleSubmit}
-          >
-            Log In
-          </button>
+          <button className="button1" onClick={this.handleSubmit}>Log In</button>
 
         </form>
       </div>

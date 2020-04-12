@@ -16,26 +16,24 @@ import './reset.css';
 import './app.css';
 
 const App = () => (
-    <div>
-        <NavBarContainer />
-        
-        <div className="app-container">
-            <ProtectedRoute path="/tickets" component={LeftPanelContainer} />
-            <div className="page-container">
-            <Switch>
-                <AuthRoute exact path="/" component={MainPage} />
-                <PublicRoute exact path="/login" component={LoginFormContainer} />
-                <AuthRoute exact path="/signup" component={SignupFormContainer} />
-                <ProtectedRoute exact path="/users/:userId" component={ProfileContainer} />
-                <ProtectedRoute exact path="/tickets/search/" component={TicketIndex} />
-                <ProtectedRoute exact path="/tickets/:ticketId" component={TicketContainer} />
-                <ProtectedRoute exact path="/tickets/:folder/:userId" component={TicketIndex} />
-                <Route component={NotFound} />
-            </Switch>
-            </div>
-        </div>
-
+  <div>
+    <NavBarContainer />
+    <div className="app-container">
+      <ProtectedRoute path="/tickets" component={LeftPanelContainer} />
+      <div className="page-container">
+        <Switch>
+          <AuthRoute exact path="/" component={MainPage} />
+          <PublicRoute exact path="/login" component={LoginFormContainer} />
+          <PublicRoute exact path="/signup" component={SignupFormContainer} />
+          <ProtectedRoute exact path="/users/:userId" component={ProfileContainer} />
+          <ProtectedRoute exact path="/tickets/search/" component={TicketIndex} />
+          <ProtectedRoute exact path="/tickets/:ticketId" component={TicketContainer} />
+          <ProtectedRoute exact path="/tickets/:folder/:userId" component={TicketIndex} />
+          <Route component={NotFound} />
+        </Switch>
+      </div>
     </div>
+  </div>
 );
 
 export default App;

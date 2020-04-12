@@ -139,16 +139,12 @@ class Ticket extends React.Component {
         };
     };
 
-    onSuggestionSelected = (e, { suggestion }) => {
-        this.updateFromSuggestion('owner', suggestion, e);
-    };
-
-    updateFromSuggestion(field, value, e) {
-        e.preventDefault();
+    updateFromSuggestion(field, value, target, e = null) {
+        if (e) e.preventDefault();
         // eslint-disable-next-line
         this.state.ticket[field] = value
         this.setState({ ticket: this.state.ticket });
-        e.currentTarget.classList.add('edited');
+        target.classList.add('edited');
         let button = document.getElementById('ticket-submit-button');
         button.classList.remove('not-edited')
         button.classList.add('edited')

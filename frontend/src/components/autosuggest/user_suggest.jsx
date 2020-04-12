@@ -60,7 +60,7 @@ class UserSuggest extends React.Component {
     };
 
     onSuggestionsClearRequested = () => {
-        this.setState({ suggestions: [] });
+        this.setState({ suggestions: [], value: '' });
     };
 
     render() {

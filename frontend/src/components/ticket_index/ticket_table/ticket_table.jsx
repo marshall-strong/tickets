@@ -1,5 +1,6 @@
 import React from 'react';
 import TicketTableRow from './ticket_table_row';
+import { getTicketsByQueryString } from '../../../util/ticket_api_util';
 
 class TicketTable extends React.Component {
   constructor(props) {

@@ -4,7 +4,7 @@ import UserSuggest from '../../autosuggest/user_suggest';
 const Owner = ({ owner, currentUser, updateFromSuggestion }) => {
 
     const onSuggestionSelected = (e, { suggestion }) => {
-        updateFromSuggestion('owner', suggestion, e);
+        updateFromSuggestion('owner', suggestion, e.target, e);
     };
 
     return(

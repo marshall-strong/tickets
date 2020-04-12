@@ -68,6 +68,7 @@ router.post("/register", (req, res) => {
 
 });
 
+
 router.post("/login", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
   if (!isValid) {
@@ -110,46 +111,51 @@ router.post("/login", (req, res) => {
     });
 
   });
-  
+
 });
+
 
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
-res.json({
-_id: req.user._id,
-email: req.user.email
+  res.json({
+    _id: req.user._id,
+    email: req.user.email
+  });
 });
-});
+
 
 router.get('/:userId', (req, res) => {
-User.findById(req.params.userId)
-.then(user => res.json({
-firstName: user.firstName,
-lastName: user.lastName,
-email: user.email,
-orgHandle: user.orgHandle,
-starred: user.starred, 
-}))
-.catch(err => err.status(404).json(err));
+  User.findById(req.params.userId)
+  .then(user => res.json({
+    firstName: user.firstName,
+    lastName: user.lastName,
+    email: user.email,
+    orgHandle: user.orgHandle,
+    starred: user.starred
+  }))
+  .catch(err => err.status(404).json(err));
 });
 
+
 router.patch('/:userId', (req, res) => {
-User.findByIdAndUpdate(req.params.userId, req.body, { new: true })
-.then(user => res.json(user))
-.catch(err => err.status(422).json(err));
+  User.findByIdAndUpdate(req.params.userId, req.body, { new: true })
+  .then(user => res.json(user))
+  .catch(err => err.status(422).json(err));
 });
+
 
 // Get all users with the specified orgHandle
 router.get('/orgHandle/:orgHandle', (req, res) => {
-const orgHandle = req.params.orgHandle;
+  const orgHandle = req.params.orgHandle;
 
-User.find({ orgHandle: orgHandle })
-.then(users => res.json(users))
-.catch(err => {
-res.status(400).json({
-message:
-err.message || `No users found with orgHandle=${orgHandle}`
-});
-});
+  User.find({ orgHandle: orgHandle })
+  .then(users => res.json(users))
+  .catch(err => {
+    res.status(400).json({
+      message:
+      err.message || `No users found with orgHandle=${orgHandle}`
+    });
+  });
+  
 });
 
 

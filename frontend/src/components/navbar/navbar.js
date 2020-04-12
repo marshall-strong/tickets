@@ -8,13 +8,13 @@ class NavBar extends React.Component {
     super(props);
    
     this.writeTicket = this.writeTicket.bind(this)
-    this.logoutUser = this.logoutUser.bind(this);
+    this.receiveUserLogout = this.receiveUserLogout.bind(this);
     this.getLinks = this.getLinks.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
 
-  logoutUser(e) {
+  receiveUserLogout(e) {
     e.preventDefault();
     this.props.logout();
     this.props.history.push("/")
@@ -58,7 +58,7 @@ class NavBar extends React.Component {
               </Link>
                 {currentUser.orgHandle}
       
-              <button className="btn1 logout" onClick={this.logoutUser}>
+              <button className="btn1 logout" onClick={this.receiveUserLogout}>
                 Logout
               </button>
               

@@ -16,8 +16,7 @@ export const receiveCurrentUser = payload => ({
     payload: payload
 });
 
-// should be `receiveUserLogout`
-export const logoutUser = () => ({
+export const receiveUserLogout = () => ({
     type: RECEIVE_USER_LOGOUT
 });
 
@@ -25,8 +24,7 @@ export const receiveUserSignIn = () => ({
     type: RECEIVE_USER_SIGN_IN
 });
 
-// should be `receiveSessionErrors`
-export const receiveErrors = errors => ({
+export const receiveSessionErrors = errors => ({
     type: RECEIVE_SESSION_ERRORS,
     errors: errors
 });
@@ -47,7 +45,7 @@ export const signup = user => dispatch => (
         dispatch(receiveCurrentUser(decoded))
     })
     .catch(err => {
-        dispatch(receiveErrors(err.response.data));
+        dispatch(receiveSessionErrors(err.response.data));
     })
 ); 
 
@@ -61,7 +59,7 @@ export const login = user => dispatch => (
         dispatch(receiveCurrentUser(decoded))
     })
     .catch(err => {
-        dispatch(receiveErrors(err.response.data));
+        dispatch(receiveSessionErrors(err.response.data));
     })
 );
 
@@ -77,5 +75,5 @@ export const loginDemoUser = () => dispatch => {
 export const logout = () => dispatch => {
     localStorage.removeItem('jwtToken');
     SessionAPIUtil.setAuthToken(false);
-    dispatch(logoutUser());
+    dispatch(receiveUserLogout());
 };

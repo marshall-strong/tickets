@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom'
 import '../app.css'
 import './navbar.css'
-import UserSearchContainer from '../ticket_index/user_search_container' 
+import UserSearchContainer from './user_search_container' 
 
 class NavBar extends React.Component {
   constructor(props) {

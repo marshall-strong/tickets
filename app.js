@@ -34,8 +34,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.listen(port, () => 
-  console.log(`Server is running. App is listening on port ${port}...`);
-)
+  console.log(`Server is running. App is listening on port ${port}... `)
+);
 
 
 const dbConnectionURI = KEYS.mongoURI;

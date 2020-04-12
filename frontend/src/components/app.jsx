@@ -24,7 +24,7 @@ const App = () => (
             <div className="page-container">
             <Switch>
                 <AuthRoute exact path="/" component={MainPage} />
-                <AuthRoute exact path="/login" component={LoginFormContainer} />
+                <PublicRoute exact path="/login" component={LoginFormContainer} />
                 <AuthRoute exact path="/signup" component={SignupFormContainer} />
                 <ProtectedRoute exact path="/users/:userId" component={ProfileContainer} />
                 <ProtectedRoute exact path="/tickets/search/" component={TicketIndex} />

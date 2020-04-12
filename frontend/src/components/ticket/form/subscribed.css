@@ -4,8 +4,6 @@
 
 .subscribed-container {
     display: inline-block;
-    /* position: relative; */
-    /* overflow: auto; */
     background-color: white;
     border: 1px solid transparent;
     border-radius: 5px;
@@ -33,4 +31,9 @@
 
 .edited .react-autosuggest__input {
     background-color: rgb(251, 251, 212);
+}
+
+.subscribed-container .react-autosuggest__suggestions-container {
+    font-size: 12px;
+    text-align: left;
 }

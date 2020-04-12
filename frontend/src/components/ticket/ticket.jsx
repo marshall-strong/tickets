@@ -144,6 +144,7 @@ class Ticket extends React.Component {
         this.state.ticket[field] = value
         this.setState({ ticket: this.state.ticket });
         target.classList.add('edited');
+        debugger
         let button = document.getElementById('ticket-submit-button');
         button.classList.remove('not-edited')
         button.classList.add('edited')

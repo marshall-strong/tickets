@@ -1,0 +1,45 @@
+.form .owner {
+    position: relative;
+    width: 150px;
+    /* padding: 10px; */
+    border-radius: 2px;
+    display: flex;
+}
+
+.form .owner:hover{
+    background-color: rgb(233, 233, 233);
+    cursor: pointer;
+}
+
+.form .owner.true {
+    background-color: lightgrey;
+}
+
+.owner-name {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.owner .arrow {
+    margin-left: 20px;
+}
+
+.true.arrow {
+    transform: rotate(180deg)
+}
+
+.form .owner .react-autosuggest__container {
+    position: absolute;
+    left: 0px;
+    top: 45px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px 1px black;
+}
+
+.form .owner .react-autosuggest__suggestions-list {
+    box-shadow: 1px 1px 5px 1px black;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}

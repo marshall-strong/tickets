@@ -32,9 +32,9 @@ class TagsFilter extends React.Component {
         this.setState({ added: this.state.added, input: '' });
     };
 
-    remove(id) {
+    remove(tag) {
         // eslint-disable-next-line
-        delete this.state.added[id];
+        delete this.state.added[tag];
         this.updateParams();
         this.setState({ added: this.state.added });
     };
@@ -47,10 +47,10 @@ class TagsFilter extends React.Component {
     };
 
     renderAdded() {
-        return Object.values(this.state.added).map(id =>
-            <div className="added-item">
-                {id}
-                <span className="remove" onClick={() => this.remove(id)}> x</span>
+        return Object.values(this.state.added).map(tag =>
+            <div key={tag} className="added-item">
+                {tag}
+                <span className="remove" onClick={() => this.remove(tag)}> x</span>
             </div>
         );
     };

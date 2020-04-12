@@ -9,7 +9,6 @@ class Ticket extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            copied: false,
             loading: this.props.ticketId === 'new' ? false : true,
             ticket: this.props.ticket ?
                 this.props.ticket 

@@ -8,8 +8,6 @@ const keys = require('../../../config/keys');
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 const User = require('../../models/user');
-// const deepPopulate = require('mongoose-deep-populate')
-// User.plugin(deepPopulate)
 
 
 router.post("/register", (req, res) => {
@@ -155,7 +153,7 @@ router.get('/orgHandle/:orgHandle', (req, res) => {
       err.message || `No users found with orgHandle=${orgHandle}`
     });
   });
-  
+
 });
 
 

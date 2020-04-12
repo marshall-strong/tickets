@@ -90,7 +90,7 @@ class LoginForm extends React.Component {
             placeholder={this.props.errors.password ? this.props.errors.password : "Password"}
           />
 
-          <button className="button1" onClick={this.handleSubmit}>Log In</button>
+          <button className="btn1" onClick={this.handleSubmit}>Log In</button>
 
         </form>
       </div>

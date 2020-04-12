@@ -122,8 +122,8 @@ class SignupForm extends React.Component {
             placeholder={this.props.errors.password2 ? this.props.errors.password2 : "Confirm Password"}
           />
           
-          <button className="button1" onClick={this.handleSubmit}>Submit</button>
-          
+          <button className="btn1" onClick={this.handleSubmit}>Submit</button>
+
         </form>
       </div>
     );

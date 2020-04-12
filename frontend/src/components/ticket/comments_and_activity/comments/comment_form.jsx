@@ -44,7 +44,7 @@ class CommentForm extends React.Component {
               value={this.state.body}
               onChange={this.update("body")}
             ></textarea>
-            <button className="button1">Create Comment</button>
+            <button className="btn1">Create Comment</button>
           </form>
         );
     }

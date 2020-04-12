@@ -13,7 +13,7 @@ class TicketTable extends React.Component {
         attr: 'endDate',
         ord: true
       },
-      query: new URLSearchParams(this.props.location.search)
+      params: new URLSearchParams(this.props.location.search)
     };
   };
 

@@ -5,25 +5,125 @@ const validateTicketInput = require('../../validation/ticket')
 const Ticket = require('../../models/ticket')
 const querymen = require('querymen')
 
-router.get('/?search',
-    //  query({
-    //     priority: {
-    //         type: String,
-    //         paths: [],
-    //         operator: $in
-    //     }
-    // }),
-    (req, res) => {
+router.get('/?search', (req, res) => {
         debugger
-        Ticket
-            .find(req.query)
-            .then(tickets => {
-                res.json(tickets)
-            })
-            .catch(err =>
-                res.status(404)
-                    .json({ noticketsfound: 'No tickets found for that query' })
-            )
+        if (req.query.ownerInclusion === "is") {
+            Ticket.find({owner: req.query.owner})
+              .populate("creator", ["starred", "firstName", "lastName", "_id"])
+              .populate("owner", ["starred", "firstName", "lastName", "_id"])
+              .populate("updatedBy", ["firstName", "lastName", "_id"])
+              .populate("lastUpdateSeenBy", ["firstName", "lastName", "_id"])
+              .populate("subscribed", ["firstName", "lastName", "_id"])
+              .populate("updatedBy", ["firstName", "lastName", "_id"])
+              .then(tickets => {
+                res.json(tickets);
+              })
+              .catch(err =>
+                res
+                  .status(404)
+                  .json({ noticketsfound: "No tickets found for that search" })
+              );
+        } else {
+            Ticket.find({owner: { $nin: req.query.owner } })
+              .populate("creator", ["starred", "firstName", "lastName", "_id"])
+              .populate("owner", ["starred", "firstName", "lastName", "_id"])
+              .populate("updatedBy", ["firstName", "lastName", "_id"])
+              .populate("lastUpdateSeenBy", ["firstName", "lastName", "_id"])
+              .populate("subscribed", ["firstName", "lastName", "_id"])
+              .populate("updatedBy", ["firstName", "lastName", "_id"])
+              .then(tickets => {
+                res.json(tickets);
+              })
+              .catch(err =>
+                res
+                  .status(404)
+                  .json({ noticketsfound: "No tickets found for that search" })
+              );
+        }
+
+        if (req.query.creatorInclusion === "is") {
+            Ticket.find({creator: req.query.creator})
+              .populate("creator", ["starred", "firstName", "lastName", "_id"])
+              .populate("owner", ["starred", "firstName", "lastName", "_id"])
+              .populate("updatedBy", ["firstName", "lastName", "_id"])
+              .populate("lastUpdateSeenBy", ["firstName", "lastName", "_id"])
+              .populate("subscribed", ["firstName", "lastName", "_id"])
+              .populate("updatedBy", ["firstName", "lastName", "_id"])
+              .then(tickets => {
+                res.json(tickets);
+              })
+              .catch(err =>
+                res
+                  .status(404)
+                  .json({ noticketsfound: "No tickets found for that search" })
+              );
+        } else {
+            Ticket.find({creator: { $nin: req.query.creator } })
+              .populate("creator", ["starred", "firstName", "lastName", "_id"])
+              .populate("owner", ["starred", "firstName", "lastName", "_id"])
+              .populate("updatedBy", ["firstName", "lastName", "_id"])
+              .populate("lastUpdateSeenBy", ["firstName", "lastName", "_id"])
+              .populate("subscribed", ["firstName", "lastName", "_id"])
+              .populate("updatedBy", ["firstName", "lastName", "_id"])
+              .then(tickets => {
+                res.json(tickets);
+              })
+              .catch(err =>
+                res
+                  .status(404)
+                  .json({ noticketsfound: "No tickets found for that search" })
+              );
+        }
+
+        if (req.query.subscribedInclusion === "all") {
+            Ticket.find({subscribed: { $all: req.query.subscribed } })
+              .populate("creator", ["starred", "firstName", "lastName", "_id"])
+              .populate("owner", ["starred", "firstName", "lastName", "_id"])
+              .populate("updatedBy", ["firstName", "lastName", "_id"])
+              .populate("lastUpdateSeenBy", ["firstName", "lastName", "_id"])
+              .populate("subscribed", ["firstName", "lastName", "_id"])
+              .populate("updatedBy", ["firstName", "lastName", "_id"])
+              .then(tickets => {
+                res.json(tickets);
+              })
+              .catch(err =>
+                res
+                  .status(404)
+                  .json({ noticketsfound: "No tickets found for that search" })
+              );
+        } else if (req.query.subscribedInclusion === "any") {
+            Ticket.find({subscribed: { $elemMatch: req.query.subscribed } })
+              .populate("creator", ["starred", "firstName", "lastName", "_id"])
+              .populate("owner", ["starred", "firstName", "lastName", "_id"])
+              .populate("updatedBy", ["firstName", "lastName", "_id"])
+              .populate("lastUpdateSeenBy", ["firstName", "lastName", "_id"])
+              .populate("subscribed", ["firstName", "lastName", "_id"])
+              .populate("updatedBy", ["firstName", "lastName", "_id"])
+              .then(tickets => {
+                res.json(tickets);
+              })
+              .catch(err =>
+                res
+                  .status(404)
+                  .json({ noticketsfound: "No tickets found for that search" })
+              );
+        } else {
+            Ticket.find({subscribed: { $nin: req.query.subscribed } })
+              .populate("creator", ["starred", "firstName", "lastName", "_id"])
+              .populate("owner", ["starred", "firstName", "lastName", "_id"])
+              .populate("updatedBy", ["firstName", "lastName", "_id"])
+              .populate("lastUpdateSeenBy", ["firstName", "lastName", "_id"])
+              .populate("subscribed", ["firstName", "lastName", "_id"])
+              .populate("updatedBy", ["firstName", "lastName", "_id"])
+              .then(tickets => {
+                res.json(tickets);
+              })
+              .catch(err =>
+                res
+                  .status(404)
+                  .json({ noticketsfound: "No tickets found for that search" })
+              );
+        }
     }) 
 
 
@@ -109,21 +209,27 @@ router.patch("/:ticketId", (req, res) => {
 router.get("/:folder/:userId", (req, res) => {
     debugger
     if (req.params.folder === 'subscribed') {
+        debugger
         Ticket.find({ [req.params.folder]: { $in: [req.params.userId] } })
         .populate('creator', ['firstName', 'lastName', '_id'])
         .populate('owner', ['firstName', 'lastName', '_id'])
         .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
         .populate('subscribed', ['firstName', 'lastName', '_id'])
         .populate('updatedBy', ['firstName', 'lastName', '_id'])
-        .then(tickets => res.json(tickets))
+        .then(tickets => {
+            debugger
+            res.json(tickets)
+        })
         .catch(err => res
             .status(404)
             .json({ noticketsfound: "No tickets found from that user" })
         );
     } else if (req.params.folder === "starred") {
+        debugger
         let starredIds 
         User.findById(req.params.userId)
         .exec((err, user) => {
+            debugger
             starredIds = Array.from(user.starred)
             Ticket.find({ _id: { $in: starredIds } })
             .populate("creator", ["firstName", "lastName", "_id"])
@@ -132,6 +238,7 @@ router.get("/:folder/:userId", (req, res) => {
             .populate("subscribed", ["firstName", "lastName", "_id"])
             .populate("updatedBy", ["firstName", "lastName", "_id"])
             .then(tickets => {
+                debugger
                 res.json(tickets)
             })
             .catch(err =>

@@ -1,0 +1,39 @@
+.subs-title {
+    margin-left: 15px;
+}
+
+.subscribed-container {
+    display: inline-block;
+    background-color: white;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 12px;
+    height: 90%;
+    width: 750px;
+    text-align: center;
+}
+
+.subscribed-container .added-item {
+    float: left;
+}
+
+.subscribed-container .react-autosuggest__container {
+  float: left;
+}
+
+.subscribed-container .react-autosuggest__input {
+    float: left;
+    margin: 0px;
+    border: none;
+}
+
+.edited .react-autosuggest__input {
+    background-color: rgb(251, 251, 212);
+}
+
+.subscribed-container .react-autosuggest__suggestions-container {
+    font-size: 12px;
+    text-align: left;
+}

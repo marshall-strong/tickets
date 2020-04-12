@@ -1,0 +1,136 @@
+.activity-container {
+    width: 798px;
+    background-color: lightgrey;
+}
+
+.activity-header{
+    display: flex;
+    align-items: baseline;
+}
+
+.lusb-container {
+    font-size: 13px;
+}
+
+.lusb-container a {
+    text-decoration: none;
+    color: black;
+}
+
+.lusb-container a:hover {
+    text-decoration: underline;
+}
+
+.activity-container a {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+
+.activity-container a:hover {
+    text-decoration: underline;
+}
+
+.toggle-expand {
+    color: blue;
+}
+
+.toggle-expand:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.avitar {
+    border: 2px solid black;
+    border-radius: 30px;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    line-height: 25px;
+    margin-right: 5px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(241, 241, 241);
+    padding: 10px;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+}
+
+.comment-form textarea {
+    width: 600px;
+    margin-right: 10px;
+    max-height: 500px;
+    border: 1px solid lightgrey;
+}
+
+.activity-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.activity-container .title {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    margin: 10px;
+    color: grey
+}
+
+
+.comment-container {
+    display: flex;
+    align-items: baseline;
+    padding: 10px;
+    background-color: rgb(241, 241, 241);
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+}
+
+
+.comment-container .top {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.comment-container .bottom {
+    display: flex;
+    align-items: flex-end;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+    min-width: fit-content;
+}
+
+.comment-container .body {
+    margin-right: 5px;
+    overflow-wrap: anywhere;
+    padding-bottom: 5px;
+}
+
+.activity-item {
+    margin-left: 40px;
+    font-size: 12px;
+    padding: 5px;
+}
+
+.time {
+    font-size: 11px;
+    margin-right: 5px;
+}
+
+.buttons .button1 {
+    font-size: 11px;
+    padding: 3px;
+    margin-right: 5px;
+}

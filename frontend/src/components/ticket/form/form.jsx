@@ -1,24 +1,15 @@
 import React from 'react';
-import { CopyToClipboard } from "react-copy-to-clipboard";
-import { FaCopy } from 'react-icons/fa';
 import PrioritySelect from './priority_select';
 import StatusSelect from './status_select';
 import Star from './star';
 import Subscribed from './subscribed';
 import Owner from './owner';
+import Number from './number';
 
 const Form = ({ ticket, type, errors, currentUser, state, update, updateFromSuggestion, handleSubmit, updateUser, setState }) => {
 return(
     <form className="form">
-        {ticket ?
-            <div className="form-header">
-                <span className="ticket-number">T{ticket._id} - </span>
-                <CopyToClipboard text={window.location.href} onCopy={() => setState({ copied: true })}>
-                    <span className="copy">Copy Link <FaCopy /></span>
-                </CopyToClipboard>
-                {state.copied ? <span className="copied fade-out"> Copied to Clipboard!</span> : null}
-            </div> : null
-        }
+        <Number ticket={ticket} />
         <div className="ticket-errors">
             <p>{errors.title}</p>
         </div>
@@ -98,12 +89,6 @@ return(
             updateFromSuggestion={updateFromSuggestion}
             subscribed={state.ticket.subscribed}
         />
-        {/* <textarea
-            className={`${type} subscribed margin`}
-            value={state.ticket.subscribed}
-            placeholder="subscribed"
-            onChange={update("subscribed")}
-        ></textarea> */}
         <input
             className={`${type} depends-on margin`}
             type="text"

@@ -1,5 +1,6 @@
 import React from 'react';
 import UserSuggest from '../../autosuggest/user_suggest';
+import './subscribed.css';
 
 class Subscribed extends React.Component {
     constructor(props) {
@@ -42,7 +43,7 @@ class Subscribed extends React.Component {
 
     renderAdded() {
         return Object.values(this.state.added).map(user =>
-            <div className="added-item">
+            <div key={user._id} className="added-item">
                 {user.firstName} {user.lastName}
                 <span className="remove" onClick={() => this.remove(user._id)}> x</span>
             </div>
@@ -55,11 +56,9 @@ class Subscribed extends React.Component {
                     <span className="added">
                         {this.renderAdded()}
                     </span>
-                    <span className="user-suggest-container">
-                        <UserSuggest 
-                            onSuggestionSelected={this.onSuggestionSelected}
-                        />
-                    </span>
+                    <UserSuggest 
+                        onSuggestionSelected={this.onSuggestionSelected}
+                    />
             </div>
         );
     };

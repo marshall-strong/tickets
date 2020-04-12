@@ -48,7 +48,7 @@ class OwnerFilter extends React.Component {
 
     renderAdded() {
         return Object.values(this.state.added).map(id =>
-            <div className="added-item">
+            <div key={id} className="added-item">
                 {id} 
             <span className="remove" onClick={() => this.remove(id)}> x</span>
             </div>

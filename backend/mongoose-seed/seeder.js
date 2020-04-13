@@ -32,6 +32,11 @@ const run = () => {
     './backend/models/ticket.js',
     './backend/models/comment.js',
     './backend/models/tag.js'
+    // './backend/models/organization.js',
+    // './backend/models/user.js',
+    // './backend/models/ticket.js',
+    // './backend/models/comment.js',
+    // './backend/models/tag.js'
   ]);
 
   // Clear specified collections

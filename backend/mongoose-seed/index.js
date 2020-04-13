@@ -1,4 +1,5 @@
 // Models
+const models = require('../models/index');
 
 'use strict';
 
@@ -74,7 +75,7 @@ Seeder.prototype.connect = function(...params) {
             };
         }
 
-        mongoose.connect(db, opts, function (err) {
+      mongoose.connect(db, dbConnectionOptions, function (err) {
             afterConnect(_this, err, cb);
         });
     }

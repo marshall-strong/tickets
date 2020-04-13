@@ -67,14 +67,14 @@ const userSeeds = {
       orgHandle: "acme.boom",
       password: genPasswordDigest("password")
     },
-    {
-      _id: "ccccccccccccccccccccccc1",
-      firstName: "Gmail",
-      lastName: "User",
-      email: "user@gmail.com",
-      orgHandle: "gmail.com",
-      password: genPasswordDigest("password")
-    },
+    // {
+    //   _id: "ccccccccccccccccccccccc1",
+    //   firstName: "Gmail",
+    //   lastName: "User",
+    //   email: "user@gmail.com",
+    //   orgHandle: "gmail.com",
+    //   password: genPasswordDigest("password")
+    // },
     {
       _id: "ccccccccccccccccccccccc2",
       firstName: "Baby",

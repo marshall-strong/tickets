@@ -1,6 +1,8 @@
+// Models
+
+
 const mongoDbUri = require('../../config/keys').mongoURI;
-const seeder = require('./index');
-// const seeder = require('mongoose-seed');
+const seeder = require('mongoose-seed');
 
 const organizationSeeds = require('./organizations');
 const userSeeds = require('./users');
@@ -10,21 +12,16 @@ const tagSeeds = require('./tags');
 
 // Data array containing seed data - documents organized by Model
 const data = [
-    organizationSeeds,
-    userSeeds,
-    ticketSeeds,
-    commentSeeds,
-    tagSeeds
+  organizationSeeds,
+  userSeeds,
+  ticketSeeds,
+  commentSeeds,
+  tagSeeds
 ];
 
-const dbConnectionOptions = {
-  'useNewUrlParser': true,
-  'useFindAndModify': false,
-  'useCreateIndex': true,
-  'useUnifiedTopology': true,
-};
+// Connect to MogoDB via Mongoose
+seeder.connect(mongoDbUri, function () {
 
-const run = () => {
   // Load Mongoose models
   seeder.loadModels([
     './backend/models/organization.js',
@@ -50,7 +47,5 @@ const run = () => {
     });
 
   });
-};
 
-// Connect to MogoDB via Mongoose
-seeder.connect( mongoDbUri, run);
+});

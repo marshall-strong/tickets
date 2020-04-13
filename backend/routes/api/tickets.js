@@ -67,35 +67,46 @@ router.get('/?search', (req, res) => {
 
               const priorityQuery = () => {
 
-                switch (req.query.ownerInclusion) {
-                    case 'is':
-                        return { owner: req.query.owner }
-                    case 'not':
-                        return { owner: { $nin: req.query.owner } }
+                switch (req.query.priority) {
+                    case 'low':
+                        return { priority: 'Low' }
+                    case 'medium':
+                        return { priority: 'Medium' }
+                    case 'high':
+                        return { priority: 'High' }
+                    case 'catastrophic':
+                        return { priority: 'CATastrophic' }
                     default:
                         return {};
                 }
               }
 
               const statusQuery = () => {
-
-                switch (req.query.creatorInclusion) {
-                    case 'is':
-                        return { creator: req.query.creator }
-                    case 'not':
-                        return { creator: { $nin: req.query.creator } }               
+                debugger
+                switch (req.query.status) {
+                    case 'no progress':
+                        debugger
+                        return { status: 'No Progress' }
+                    case 'planned':
+                        return { status: 'Planned' }               
+                    case 'in progress':
+                        return { status: 'In Progress' }               
+                    case 'blocked':
+                        return { status: 'Blocked' }               
+                    case 'closed':
+                        return { status: 'Closed' }               
                     default:
                         return {};
                 }
               }
 
-            //   const ownerQuery = req.query.owner ? {owner: req.query.owner} : {}
-            //   const creatorQuery = req.query.creator ? {creator: req.query.creator} : {}
+              const ownerQuery = req.query.owner ? {owner: req.query.owner} : {}
+              const creatorQuery = req.query.creator ? {creator: req.query.creator} : {}
               const subscribedQuery = req.query.subscribed ? {subscribed: req.query.subscribed} : {}
             //   const priorityQuery = req.query.priority ? {priority: 'Low'} : {}
               const filteredQuery = Object.assign({}, { ...ownerQuery, ...creatorQuery, ...subscribedQuery })
 
-              Ticket.find(filteredQuery)
+              Ticket.find({$and: [filteredQuery, statusQuery]})
                 .populate("creator", ["starred", "firstName", "lastName", "_id"])
                 .populate("owner", ["starred", "firstName", "lastName", "_id"])
                 .populate("updatedBy", ["firstName", "lastName", "_id"])

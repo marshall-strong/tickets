@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom'
 import '../app.css'
 import './navbar.css'
+import UserSearchContainer from './user_search_container' 
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -42,10 +43,10 @@ class NavBar extends React.Component {
         <div className="header">
           <div className="nav">
             <Link className="link-style-header" to={`/tickets/owner/${currentUser._id}`}> Tickets</Link>
-  
-            <div className="right-nav">
-              
 
+            <UserSearchContainer />
+
+            <div className="right-nav">
               
               <button className="button1 new-ticket" onClick={this.writeTicket}> 
                 + New Ticket

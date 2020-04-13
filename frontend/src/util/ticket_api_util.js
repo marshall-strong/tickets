@@ -17,7 +17,6 @@ export const updateTicket = ticket => (
 );
 
 export const fetchOwnerTickets = userId =>{
-  debugger
   return (
    axios.get(`/api/tickets/owner/${userId}`)
  )
@@ -36,7 +35,6 @@ export const getStarredTickets = currentUser => (
 );
 
 export const getTicketsByQueryString = queryString => {
-  debugger
   return (
     axios.get(`/api/tickets/search?${queryString}`)
   )

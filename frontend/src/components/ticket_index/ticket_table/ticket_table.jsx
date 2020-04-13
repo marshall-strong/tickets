@@ -35,15 +35,12 @@ class TicketTable extends React.Component {
     // let queryString = this.state.params.toString()
     this.props.getOneUser(this.props.currentUser._id)
     
-    debugger
     switch (this.props.location.pathname) {
       case `/tickets/owner/${this.props.userId}`:
-        debugger
         this.props.fetchOwnerTickets(this.props.match.params.userId)
         .then(action => this.receiveTickets(action))
         break;
       case '/tickets/search':
-        debugger
         this.props.fetchQueriedTickets(this.props.location.search.slice(1))
         .then(action => this.receiveTickets(action))
         break;
@@ -75,7 +72,6 @@ class TicketTable extends React.Component {
           .then(action => this.receiveTickets(action))
           break;
         case '/tickets/search':
-          debugger
           this.props.fetchQueriedTickets(this.props.location.search.slice(1))
           .then(action => this.receiveTickets(action))
           break;

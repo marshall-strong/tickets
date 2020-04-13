@@ -36,8 +36,8 @@ const LeftPanel = ({ userId }) => {
         <div className="left-panel-container">
             <h1 className="folders">Folders</h1>
             <Link className="unselected" onClick={(e) => handleClick(e)} to={`/tickets/owner/${userId}`}>Owner</Link>
-            <Link className="unselected" onClick={(e) => handleClick(e)} to={`/tickets/search/?${getQueryString('subscribed')}`}>Subscribed</Link>
-            <Link className="unselected" onClick={(e) => handleClick(e)} to={`/tickets/search/?${getQueryString('creator')}`}>Creator</Link>
+            <Link className="unselected" onClick={(e) => handleClick(e)} to={`/tickets/search?${getQueryString('subscribed')}`}>Subscribed</Link>
+            <Link className="unselected" onClick={(e) => handleClick(e)} to={`/tickets/search?${getQueryString('creator')}`}>Creator</Link>
             <Link className="unselected" onClick={(e) => handleClick(e)} to={`/tickets/starred/${userId}`}>Starred</Link>
         </div>
     );

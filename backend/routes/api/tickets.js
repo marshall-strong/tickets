@@ -5,7 +5,6 @@ const validateTicketInput = require('../../validation/ticket')
 const Ticket = require('../../models/ticket')
 
 router.get('/?search', (req, res) => {
-        debugger
         if (req.query.ownerInclusion === "is") {
             Ticket.find({owner: req.query.owner})
               .populate("creator", ["starred", "firstName", "lastName", "_id"])
@@ -167,7 +166,6 @@ router.post("/",
 );
 
 router.get("/:ticketId", (req, res) => {
-    debugger
     Ticket
     .findById(req.params.ticketId)
     .populate('creator', ['firstName', 'lastName', '_id'])
@@ -206,9 +204,7 @@ router.patch("/:ticketId", (req, res) => {
 })
 
 router.get("/:folder/:userId", (req, res) => {
-    debugger
     if (req.params.folder === 'subscribed') {
-        debugger
         Ticket.find({ [req.params.folder]: { $in: [req.params.userId] } })
         .populate('creator', ['firstName', 'lastName', '_id'])
         .populate('owner', ['firstName', 'lastName', '_id'])
@@ -216,7 +212,6 @@ router.get("/:folder/:userId", (req, res) => {
         .populate('subscribed', ['firstName', 'lastName', '_id'])
         .populate('updatedBy', ['firstName', 'lastName', '_id'])
         .then(tickets => {
-            debugger
             res.json(tickets)
         })
         .catch(err => res
@@ -224,11 +219,9 @@ router.get("/:folder/:userId", (req, res) => {
             .json({ noticketsfound: "No tickets found from that user" })
         );
     } else if (req.params.folder === "starred") {
-        debugger
         let starredIds 
         User.findById(req.params.userId)
         .exec((err, user) => {
-            debugger
             starredIds = Array.from(user.starred)
             Ticket.find({ _id: { $in: starredIds } })
             .populate("creator", ["firstName", "lastName", "_id"])
@@ -237,7 +230,6 @@ router.get("/:folder/:userId", (req, res) => {
             .populate("subscribed", ["firstName", "lastName", "_id"])
             .populate("updatedBy", ["firstName", "lastName", "_id"])
             .then(tickets => {
-                debugger
                 res.json(tickets)
             })
             .catch(err =>
@@ -247,7 +239,6 @@ router.get("/:folder/:userId", (req, res) => {
             );
         })
     } else {
-        debugger
         Ticket.find({ [req.params.folder]: req.params.userId })
         .populate("creator", ["firstName", "lastName", "_id"])
         .populate("owner", ["firstName", "lastName", "_id"])
@@ -255,7 +246,6 @@ router.get("/:folder/:userId", (req, res) => {
         .populate("subscribed", ["firstName", "lastName", "_id"])
         .populate("updatedBy", ["firstName", "lastName", "_id"])
         .then(tickets => {
-            debugger
             res.json(tickets);
         })
         .catch(err =>

@@ -59,7 +59,6 @@ export const updateTicket = ticket => dispatch => (
 );
 
 export const fetchOwnerTickets = userId => dispatch => {
-    debugger
     return (
         TicketAPIUtil.fetchOwnerTickets(userId)
         .then(tickets => dispatch(receiveTickets(tickets)))
@@ -86,7 +85,6 @@ export const fetchStarredTickets = currentUser => dispatch => (
 );
 
 export const fetchQueriedTickets = queryString => dispatch => {
-    debugger
     return (
         TicketAPIUtil.getTicketsByQueryString(queryString)
         .then(tickets => dispatch(receiveTickets(tickets)))

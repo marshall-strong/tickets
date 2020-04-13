@@ -59,6 +59,12 @@ class UserSuggest extends React.Component {
         });
     };
 
+    componentDidUpdate(prevProps) {
+        if (prevProps !== this.props) {
+            this.setState({ people: this.props.users })
+        }
+    }
+
     onSuggestionsClearRequested = () => {
         this.setState({ suggestions: [], value: '' });
     };

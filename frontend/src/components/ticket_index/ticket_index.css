@@ -3,6 +3,7 @@
     flex-direction: column;
 }
 
+
 .query-container {
     display: flex;
     align-items: center;
@@ -12,7 +13,7 @@
 
 .query-container .filters {
     display: inline-block;
-    overflow: auto;
+    overflow-y: visible;
     background-color: white;
     border: 1px solid grey;
     border-radius: 5px;
@@ -23,6 +24,11 @@
     font-size: 12px;
     height: 90%;
     width: 92%;
+}
+
+.filter .added {
+    max-width: 580px;
+    overflow: auto;
 }
 
 .query-container button.search {

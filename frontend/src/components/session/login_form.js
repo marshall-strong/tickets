@@ -10,7 +10,7 @@ class LoginForm extends React.Component {
     this.state = {
       email: '',
       password: '',
-      redirect: this.props.session._id
+      redirect: this.props.session.isAuthenticated
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);

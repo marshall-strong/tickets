@@ -27,10 +27,11 @@ class Owner extends React.Component {
     };
 
     handleClick(e) {
-        let edited = e.target.classList.contains('edited');
+        let target = e.currentTarget
+        let edited = target.classList.contains('edited');
         this.setState(
             { clicked: !this.state.clicked }, 
-            // (e) => edited ? e.target.classList.add('edited') : null
+            () => setTimeout(() => edited ? target.classList.add('edited') : null, 100)
         );
     }
 
@@ -41,7 +42,11 @@ class Owner extends React.Component {
             <div 
                 className={`owner ${this.state.clicked}`} 
             >
-                <div id="owner-div" className="owner-name" onClick={(e) => this.handleClick(e)}>
+                <div 
+                    id="owner-div" 
+                    className={`owner-name ${this.state.clicked}`} 
+                    onClick={(e) => this.handleClick(e)}
+                >
                     {owner.firstName} {owner.lastName} 
                     <div className={`${clicked} arrow`}>{'▴'}</div>
                 </div>

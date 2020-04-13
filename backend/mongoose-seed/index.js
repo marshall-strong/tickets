@@ -1,18 +1,182 @@
-// Models
-const models = require('../models/index');
-
 'use strict';
+
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const organizationSchema = new Schema({
+  handle: {
+    type: String,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  motto: {
+    type: String,
+    required: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+const Organization = mongoose.model('Organization', organizationSchema);
+
+const userSchema = new Schema({
+  firstName: {
+    type: String,
+    required: true,
+    // index: true
+  },
+  lastName: {
+    type: String,
+    required: true,
+    // index: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  orgHandle: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  starred: [{
+    type: String
+  }]
+});
+userSchema.index({ firstName: "text", lastName: "text" })
+const User = mongoose.model('User', userSchema);
+
+const ticketSchema = new Schema({
+  creator: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now()
+  },
+  updatedAt: [{
+    type: Date
+  }],
+  tags: {
+    type: Array,
+    default: []
+  },
+  subscribed: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }],
+  comments: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Comment'
+  }],
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  title: {
+    type: String,
+    required: true
+  },
+  body: {
+    type: String,
+    required: false
+  },
+  lastUpdateSeenBy: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }],
+  updatedBy: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }],
+  status: {
+    type: String,
+    default: "No Progress"
+  },
+  priority: {
+    type: String,
+    default: "Low"
+  },
+  dependsOn: {
+    type: Array,
+    default: []
+  },
+  blocks: {
+    type: Array,
+    default: []
+  },
+  startDate: {
+    type: Date,
+    default: undefined
+  },
+  endDate: {
+    type: Date,
+    default: undefined
+  },
+});
+const Ticket = mongoose.model('Ticket', ticketSchema);
+
+const tagSchema = new Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+const Tag = mongoose.model('Tag', tagSchema);
+
+const commentSchema = new Schema({
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  ticket: {
+    type: Schema.Types.ObjectId,
+    ref: 'Ticket'
+  },
+  body: {
+    type: String,
+    required: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+const Comment = mongoose.model('Comment', commentSchema);
+
+
 
 /**
  * Module dependencies.
  **/
 var _ = require('lodash'),
     async = require('async'),
-    mongoose = require('mongoose'),
+    // mongoose = require('mongoose'),
     chalk = require('chalk'),
     path = require('path');
 
 function Seeder() {
+  console.log("function Seeder()");
     this.connected = false;
     this.consoleLogEnabled = true;
 }
@@ -28,6 +192,7 @@ Seeder.prototype.setLogOutput = function (logOutput) {
 };
 
 Seeder.prototype.connect = function(...params) {
+  console.log("Seeder.prototype.connect = function(...params)");
     var _this = this;
     /*
 		switch (mongoose.connection.readyState) {
@@ -93,14 +258,35 @@ function afterConnect(_this, err, cb) {
     }
 }
 
-Seeder.prototype.loadModels = function(modelPaths) {
-    consoleLog(this, modelPaths);
-    modelPaths.forEach(function(modelPath) {
-        var model = require(path.resolve(modelPath));
-        if (model instanceof Function) {
-            model();
-        }
-    });
+
+
+Seeder.prototype.loadModels = function(models) {
+  // console.log("Seeder.prototype.loadModels = function(models) ");
+  // // console.log(`models: ${models}`);
+
+  // Object.keys(models).forEach(function(key) {
+  //   const model = models[key];
+  //   if (model instanceof Function) {
+  //     console.log(`model is a function, and will be instantiated`);
+  //     model();
+  //   }
+  // });
+
+
+    // modelPaths.forEach(function(modelPath) {
+    //     const model = require(path.resolve(modelPath));
+    //   // console.log("var model = require(path.resolve(modelPath))");
+    //   console.log(`const model = ${(path.resolve(modelPath))}`);
+    //   console.log(" ")
+
+
+    //     if (model instanceof Function) {
+    //         console.log("model IS instanceof Function");
+    //         model();
+    //         console.log("model function instantiated");
+    //         console.log(" ")
+    //     }
+    // });
 };
 
 Seeder.prototype.invalidModelCheck = function(models, cb) {

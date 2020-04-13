@@ -2,6 +2,8 @@ const mongoDbUri = require('../../config/keys').mongoURI;
 const seeder = require('./index');
 // const seeder = require('mongoose-seed');
 
+const models = require('../models/index');
+
 const organizationSeeds = require('./organizations');
 const userSeeds = require('./users');
 const ticketSeeds = require('./tickets');
@@ -26,18 +28,16 @@ const dbConnectionOptions = {
 
 const run = () => {
   // Load Mongoose models
-  seeder.loadModels([
-    './backend/models/organization.js',
-    './backend/models/user.js',
-    './backend/models/ticket.js',
-    './backend/models/comment.js',
-    './backend/models/tag.js'
-    // './backend/models/organization.js',
-    // './backend/models/user.js',
-    // './backend/models/ticket.js',
-    // './backend/models/comment.js',
-    // './backend/models/tag.js'
-  ]);
+  seeder.loadModels(
+    models
+    // [
+    //   './backend/models/organization.js',
+    //   './backend/models/user.js',
+    //   './backend/models/ticket.js',
+    //   './backend/models/comment.js',
+    //   './backend/models/tag.js'
+    // ]
+  );
 
   // Clear specified collections
   seeder.clearModels([

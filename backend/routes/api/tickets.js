@@ -176,7 +176,7 @@ router.get("/:ticketId", (req, res) => {
     .then(ticket => {
         return res.json(ticket)
     })
-    .catch(err => err.status(400).json(err))
+    .catch(err => res.status(400).json(err))
 })
 
 router.patch("/:ticketId", (req, res) => {

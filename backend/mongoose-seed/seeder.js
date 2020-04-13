@@ -1,8 +1,13 @@
 const mongoDbUri = require('../../config/keys').mongoURI;
+const mongoose = require('mongoose');
 const seeder = require('./index');
 // const seeder = require('mongoose-seed');
 
-const models = require('../models/index');
+const organizationSchema = require('../schemas/organization');
+const userSchema = require('../schemas/user');
+const ticketSchema = require('../schemas/ticket');
+const commentSchema = require('../schemas/comment');
+const tagSchema = require('../schemas/tag');
 
 const organizationSeeds = require('./organizations');
 const userSeeds = require('./users');
@@ -26,10 +31,17 @@ const dbConnectionOptions = {
   'useUnifiedTopology': true,
 };
 
+const Organization = mongoose.model('Organization', organizationSchema);
+const User = mongoose.model('User', userSchema);
+const Ticket = mongoose.model('Ticket', ticketSchema);
+const Comment = mongoose.model('Comment', commentSchema);
+const Tag = mongoose.model('Tag', tagSchema);
+
 const run = () => {
   // Load Mongoose models
-  seeder.loadModels(
-    models
+
+
+  seeder.loadModels([]
     // [
     //   './backend/models/organization.js',
     //   './backend/models/user.js',

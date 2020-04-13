@@ -97,6 +97,7 @@ return(
             updateFromSuggestion={updateFromSuggestion}
             tags={state.ticket.tags}
             createTag={createTag}
+            currentUser={currentUser}
         />
         <input
             className={`${type} depends-on margin`}

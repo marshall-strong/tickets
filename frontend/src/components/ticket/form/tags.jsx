@@ -8,6 +8,7 @@ class Tags extends React.Component {
         this.state = {
             added: {},
             newTag: '',
+            errors: '',
             clicked: false,
         };
         this.props.tags.forEach(tag =>
@@ -33,7 +34,7 @@ class Tags extends React.Component {
         );
     };
 
-    onSuggestionSelected = (e, { suggestion }) => {
+    onSuggestionSelected = (e = null, { suggestion }) => {
         this.add(suggestion)
         this.props.updateFromSuggestion(
             'tags',
@@ -58,7 +59,22 @@ class Tags extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
-        this.setState({ clicked: !this.state.clicked });
+        const { newTag, clicked } = this.state;
+        const { currentUser, createTag } = this.props;
+        if (clicked) {
+            createTag({ name: newTag, orgHandle: currentUser.orgHandle })
+            .then(action => { 
+                if (action.tag){
+                    this.onSuggestionSelected(null, { suggestion: action.tag });
+                    this.setState({ clicked: !clicked, newTag: '', errors: '' });
+                } else {
+                    this.setState({ errors: Object.values(action.errors), newTag: '' });
+                    return null;
+                }
+            })
+        } else {
+            this.setState({ clicked: !clicked });
+        }
     };
 
     render() {
@@ -74,7 +90,7 @@ class Tags extends React.Component {
                 <input 
                     type="text"
                     className="input"
-                    placeholder="New tag name"
+                    placeholder={ this.state.errors ? this.state.errors : "New tag name" }
                     value={this.state.newTag}
                     onChange={(e) => this.handleChange(e)}    
                 /> : null}

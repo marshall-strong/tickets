@@ -5,8 +5,7 @@ import {withRouter} from "react-router-dom";
 import {fetchTicketComments} from "../../actions/comment_actions"
 import { updateUser, getOneUser, getOrgUsers } from '../../actions/user_actions'
 import { clearTicketErrors } from "../../actions/ticket_actions"
-import { createTag } from "../../util/tag_api_util";
-import { getOrgTags } from "../../actions/tag_actions";
+import { getOrgTags, createTag } from "../../actions/tag_actions";
 
 const msp = (state, ownProps) => {
 

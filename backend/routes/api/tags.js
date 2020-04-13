@@ -13,7 +13,7 @@ router.post('/',
 
     if (!isValid) return res.status(400).json(errors);
 
-    Tag.findOne({ name: req.body.name })
+    Tag.findOne({ name: req.body.name, orgHandle: req.body.orgHandle })
     .then( tag => {
         if (tag) {
             errors.name = 'Tag already exists';

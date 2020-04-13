@@ -10,7 +10,7 @@ export const RECEIVE_TAG_ERRORS = 'RECEIVE_TAG_ERRORS';
 // action creators
 const receiveTag = tag => ({
   type: RECEIVE_TAG,
-  tag: tag
+  tag: tag.data
 });
 
 const receiveTags = tags => {
@@ -24,7 +24,7 @@ const receiveTags = tags => {
 
 const receiveTagErrors = errors => ({
   type: RECEIVE_TAG_ERRORS,
-  errors: errors
+  errors: errors.response.data
 });
 
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const getOrgTags = (orgHandle) => (
-  axios.get(`/api/${orgHandle}/tags`)
+  axios.get(`/api/tags/${orgHandle}`)
 );
 
 export const getTag = name => (

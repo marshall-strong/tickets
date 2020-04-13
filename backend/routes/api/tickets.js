@@ -10,28 +10,92 @@ router.get('/?search', (req, res) => {
         // if (req.query.owner) {
           if (req.query.ownerInclusion === "is") {
             debugger
-              // Ticket.find({owner: req.query.owner})
-              //   .populate("creator", ["starred", "firstName", "lastName", "_id"])
-              //   .populate("owner", ["starred", "firstName", "lastName", "_id"])
-              //   .populate("updatedBy", ["firstName", "lastName", "_id"])
-              //   .populate("lastUpdateSeenBy", ["firstName", "lastName", "_id"])
-              //   .populate("subscribed", ["firstName", "lastName", "_id"])
-              //   .populate("updatedBy", ["firstName", "lastName", "_id"])
-              //   .then(tickets => {
-              //     debugger
-              //     res.json(tickets);
-              //   })
-              //   .catch(err =>
-              //     res
-              //       .status(404)
-              //       .json({ noticketsfound: "No tickets found for that search" })
-              //   );
+            //   Ticket.find({owner: req.query.owner})
+            //     .populate("creator", ["starred", "firstName", "lastName", "_id"])
+            //     .populate("owner", ["starred", "firstName", "lastName", "_id"])
+            //     .populate("updatedBy", ["firstName", "lastName", "_id"])
+            //     .populate("lastUpdateSeenBy", ["firstName", "lastName", "_id"])
+            //     .populate("subscribed", ["firstName", "lastName", "_id"])
+            //     .populate("updatedBy", ["firstName", "lastName", "_id"])
+            //     .then(tickets => {
+            //       debugger
+            //       res.json(tickets);
+            //     })
+            //     .catch(err =>
+            //       res
+            //         .status(404)
+            //         .json({ noticketsfound: "No tickets found for that search" })
+            //     );
 
-              const ownerArray = req.query.owner ? {owner: req.query.owner} : {}
-              const creatorArray = req.query.creator ? {creator: req.query.creator} : {}
-              const subscribedArray = req.query.subscribed ? {subscribed: req.query.subscribed} : {}
+            // attempt 3:
 
-              const all = await Ticket.find({...ownerArray, ...creatorArray, ...subscribedArray}).exec()
+            // const query = {}
+
+            // for (let key in req.query) {
+            //     query[key] = new RegExp('^' + req.query[key] + '$', 'i')
+            // }
+
+            // debugger
+            //   Ticket.find(query)
+            //       .populate("creator", ["starred", "firstName", "lastName", "_id"])
+            //       .populate("owner", ["starred", "firstName", "lastName", "_id"])
+            //       .populate("updatedBy", ["firstName", "lastName", "_id"])
+            //       .populate("lastUpdateSeenBy", ["firstName", "lastName", "_id"])
+            //       .populate("subscribed", ["firstName", "lastName", "_id"])
+            //       .populate("updatedBy", ["firstName", "lastName", "_id"])
+            //       .then(tickets => {
+            //           debugger
+            //           res.json(tickets);
+            //       })
+            //       .catch(err =>
+            //           res
+            //               .status(404)
+            //               .json({ noticketsfound: "No tickets found for that search" })
+            //       );
+
+            // attempt 2:
+
+            // const filteredQuery = {}
+            // acceptableFields = ['owner', 'creator', 'subscribed']
+
+            // acceptableFields.forEach( field => {
+            //     req.query[field] + filteredQuery[field] = req.query[field];
+            // });
+
+            // attempt 1:
+            // use Object.assign to create filtered query object after destructuring each specific query object and iterating through them
+
+              const priorityQuery = () => {
+
+                switch (req.query.ownerInclusion) {
+                    case 'is':
+                        return { owner: req.query.owner }
+                    case 'not':
+                        return { owner: { $nin: req.query.owner } }
+                    default:
+                        return {};
+                }
+              }
+
+              const statusQuery = () => {
+
+                switch (req.query.creatorInclusion) {
+                    case 'is':
+                        return { creator: req.query.creator }
+                    case 'not':
+                        return { creator: { $nin: req.query.creator } }               
+                    default:
+                        return {};
+                }
+              }
+
+            //   const ownerQuery = req.query.owner ? {owner: req.query.owner} : {}
+            //   const creatorQuery = req.query.creator ? {creator: req.query.creator} : {}
+              const subscribedQuery = req.query.subscribed ? {subscribed: req.query.subscribed} : {}
+            //   const priorityQuery = req.query.priority ? {priority: 'Low'} : {}
+              const filteredQuery = Object.assign({}, { ...ownerQuery, ...creatorQuery, ...subscribedQuery })
+
+              Ticket.find(filteredQuery)
                 .populate("creator", ["starred", "firstName", "lastName", "_id"])
                 .populate("owner", ["starred", "firstName", "lastName", "_id"])
                 .populate("updatedBy", ["firstName", "lastName", "_id"])
@@ -48,8 +112,14 @@ router.get('/?search', (req, res) => {
                     .json({ noticketsfound: "No tickets found for that search" })
                 );
           } else {
+
+              const ownerQuery = req.query.owner ? { owner: { $nin: req.query.owner } } : {}
+              const creatorQuery = req.query.creator ? { creator: { $nin: req.query.creator } } : {}
+              const subscribedQuery = req.query.subscribed ? { subscribed: req.query.subscribed } : {}
+              const filteredQuery = Object.assign({}, { ...ownerQuery, ...creatorQuery, ...subscribedQuery })
+
             debugger
-              Ticket.find({owner: { $nin: req.query.owner } })
+              Ticket.find(filteredQuery)
                 .populate("creator", ["starred", "firstName", "lastName", "_id"])
                 .populate("owner", ["starred", "firstName", "lastName", "_id"])
                 .populate("updatedBy", ["firstName", "lastName", "_id"])

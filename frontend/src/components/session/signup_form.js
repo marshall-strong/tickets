@@ -12,7 +12,7 @@ class SignupForm extends React.Component {
       email: '',
       password: '',
       password2: '',
-      redirect: this.props.session._id
+      redirect: this.props.session.isAuthenticated
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);

@@ -3,7 +3,6 @@ const router = express.Router();
 const passport = require('passport');
 const validateTicketInput = require('../../validation/ticket')
 const Ticket = require('../../models/ticket')
-const querymen = require('querymen')
 
 router.get('/?search', (req, res) => {
         debugger

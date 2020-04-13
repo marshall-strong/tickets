@@ -1,9 +1,4 @@
-.subscribed-container button {
-    float: left;
-}
-
 .subscribed-container .input {
-    float: left;
     max-width: 150px;
     max-height: 25px;
     border: none;
@@ -12,4 +7,9 @@
 .subscribed-container .input:active {
     border: none;
     outline: none;
+}
+
+.subscribed-container .newTag {
+    float: left;
+    display: flex;
 }

@@ -86,18 +86,20 @@ class Tags extends React.Component {
                 <TagSuggest
                     onSuggestionSelected={this.onSuggestionSelected}
                 />
-                {this.state.clicked ?
-                <input 
-                    type="text"
-                    className="input"
-                    placeholder={ this.state.errors ? this.state.errors : "New tag name" }
-                    value={this.state.newTag}
-                    onChange={(e) => this.handleChange(e)}    
-                /> : null}
-                <button 
-                    className="btn1 add"
-                    onClick={(e) => this.handleClick(e)}
-                >{this.state.clicked ? 'Create' : 'New Tag'}</button>
+                <div className="newTag">
+                    {this.state.clicked ?
+                    <input 
+                        type="text"
+                        className="input"
+                        placeholder={ this.state.errors ? this.state.errors : "New tag name" }
+                        value={this.state.newTag}
+                        onChange={(e) => this.handleChange(e)}    
+                    /> : null}
+                    <button 
+                        className="btn1 add"
+                        onClick={(e) => this.handleClick(e)}
+                    >{this.state.clicked ? 'Create' : 'New Tag'}</button>
+                </div>
             </div>
         );
     };

@@ -16,9 +16,12 @@ export const updateTicket = ticket => (
   axios.patch(`/api/tickets/${ticket._id}`, ticket)
 );
 
-export const fetchOwnerTickets = userId => (
-  axios.get(`/api/tickets/owner/${userId}`)
-);
+export const fetchOwnerTickets = userId =>{
+  debugger
+  return (
+   axios.get(`/api/tickets/owner/${userId}`)
+ )
+}
 
 export const getCreatedTickets = userId => (
   axios.get(`/api/tickets/creator/${userId}`)
@@ -32,6 +35,11 @@ export const getStarredTickets = currentUser => (
   axios.get(`/api/tickets/starred/${currentUser._id}`)
 );
 
-export const getTicketsByQueryString = queryString => (
-  axios.get(`/api/tickets/search/?${queryString}`)
-);
+export const getTicketsByQueryString = queryString => {
+  debugger
+  return (
+    axios.get(`/api/tickets/search?${queryString}`)
+  )
+  
+}
+    

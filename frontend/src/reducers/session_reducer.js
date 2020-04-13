@@ -15,6 +15,7 @@ const sessionReducer = (state = initialState, action) => {
     case RECEIVE_CURRENT_USER:
       nextState.isAuthenticated = !!action.payload;
       nextState._id = action.payload._id;
+      nextState.orgHandle = action.payload.orgHandle;
       return nextState;
     case RECEIVE_USER_LOGOUT:
       return {

@@ -9,13 +9,13 @@ class NavBar extends React.Component {
     super(props);
    
     this.writeTicket = this.writeTicket.bind(this)
-    this.logoutUser = this.logoutUser.bind(this);
+    this.receiveUserLogout = this.receiveUserLogout.bind(this);
     this.getLinks = this.getLinks.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
 
-  logoutUser(e) {
+  receiveUserLogout(e) {
     e.preventDefault();
     this.props.logout();
     this.props.history.push("/")
@@ -48,7 +48,7 @@ class NavBar extends React.Component {
 
             <div className="right-nav">
               
-              <button className="button1 new-ticket" onClick={this.writeTicket}> 
+              <button className="btn1 new-ticket" onClick={this.writeTicket}> 
                 + New Ticket
               </button>
               <Link className="link-style"to={`/users/${currentUser._id}`}>
@@ -59,7 +59,7 @@ class NavBar extends React.Component {
               </Link>
                 {currentUser.orgHandle}
       
-              <button className="button1 logout" onClick={this.logoutUser}>
+              <button className="btn1 logout" onClick={this.receiveUserLogout}>
                 Logout
               </button>
               
@@ -76,7 +76,7 @@ class NavBar extends React.Component {
             <div className="right-nav">
               {this.props.path === "/signup" ? <Link className="link-style" to={"/login"}>Login</Link> : <Link className="link-style" to={"/signup"}>Signup</Link> }
               {this.props.path === "/" ? <Link className="link-style" to={"/login"}>Login</Link> : null}
-              <button className="button1 demo" onClick={this.handleClick}>
+              <button className="btn1 demo" onClick={this.handleClick}>
                 login as a demo user
               </button>
             </div>

@@ -65,11 +65,11 @@
     background-color: black;
 }
 
-.button1:hover {
+.btn1:hover {
     border: 1px solid white;
 }
 
-.button1.demo {
+.btn1.demo {
     background-color: black;
 }
 

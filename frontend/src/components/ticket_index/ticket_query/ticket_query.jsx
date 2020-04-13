@@ -46,7 +46,7 @@ class TicketQuery extends React.Component {
                     <PriorityFilter params={this.state.params} />
                 </div>
                 <button 
-                    className="button1 search"
+                    className="btn1 search"
                     onClick={(e) => this.handleSubmit(e)}
                 >Search</button>
             </div>

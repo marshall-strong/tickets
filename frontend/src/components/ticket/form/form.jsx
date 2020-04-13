@@ -7,7 +7,7 @@ import Owner from './owner';
 import Number from './number';
 import Tags from './tags';
 
-const Form = ({ ticket, type, errors, currentUser, state, update, updateFromSuggestion, handleSubmit, updateUser, setState }) => {
+const Form = ({ ticket, type, errors, currentUser, state, update, updateFromSuggestion, handleSubmit, updateUser, createTag }) => {
 return(
     <form className="form">
         <Number ticket={ticket} />
@@ -95,7 +95,8 @@ return(
         </label>
         <Tags 
             updateFromSuggestion={updateFromSuggestion}
-            subscribed={state.ticket.subscribed}
+            tags={state.ticket.tags}
+            createTag={createTag}
         />
         <input
             className={`${type} depends-on margin`}

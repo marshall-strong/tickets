@@ -89,7 +89,7 @@
     cursor: pointer;
 }
 
-.query-container button.add {
+button.add {
     line-height: 1px;
     height: 20px;
     padding: 5px;

@@ -1,22 +1,24 @@
 import React from 'react';
-import UserSuggest from '../../autosuggest/user_suggest';
-import './subscribed.css';
+import TagSuggest from '../../autosuggest/tag_suggest';
+import './tags.css';
 
 class Tags extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            added: {}
+            added: {},
+            newTag: '',
+            clicked: false,
         };
-        this.props.subscribed.forEach(subscriber =>
+        this.props.tags.forEach(tag =>
             // eslint-disable-next-line
-            this.state.added[subscriber._id] = subscriber
+            this.state.added[tag._id] = tag
         );
     };
 
-    add(user) {
+    add(tag) {
         // eslint-disable-next-line
-        this.state.added[user._id] = user;
+        this.state.added[tag._id] = tag;
         this.setState({ added: this.state.added });
     };
 
@@ -25,40 +27,61 @@ class Tags extends React.Component {
         delete this.state.added[id];
         this.setState({ added: this.state.added });
         this.props.updateFromSuggestion(
-            'subscribed',
+            'tags',
             Object.values(this.state.added),
-            document.getElementById('subscribed-container'),
+            document.getElementById('tags-container'),
         );
     };
 
     onSuggestionSelected = (e, { suggestion }) => {
         this.add(suggestion)
         this.props.updateFromSuggestion(
-            'subscribed',
+            'tags',
             Object.values(this.state.added),
-            document.getElementById('subscribed-container'),
+            document.getElementById('tags-container'),
             e,
         );
     };
 
     renderAdded() {
-        return Object.values(this.state.added).map(user =>
-            <div key={user._id} className="added-item">
-                {user.firstName} {user.lastName}
-                <span className="remove" onClick={() => this.remove(user._id)}> x</span>
+        return Object.values(this.state.added).map(tag =>
+            <div key={tag._id} className="added-item">
+                {tag.name}
+                <span className="remove" onClick={() => this.remove(tag._id)}> x</span>
             </div>
         );
     };
 
+    handleChange(e) {
+        this.setState({ newTag: e.target.value });
+    };
+
+    handleClick(e) {
+        e.preventDefault();
+        this.setState({ clicked: !this.state.clicked });
+    };
+
     render() {
         return (
-            <div id="subscribed-container" className="subscribed-container">
+            <div id="tags-container" className="subscribed-container">
                 <span className="added">
                     {this.renderAdded()}
                 </span>
-                <UserSuggest
+                <TagSuggest
                     onSuggestionSelected={this.onSuggestionSelected}
                 />
+                {this.state.clicked ?
+                <input 
+                    type="text"
+                    className="input"
+                    placeholder="New tag name"
+                    value={this.state.newTag}
+                    onChange={(e) => this.handleChange(e)}    
+                /> : null}
+                <button 
+                    className="btn1 add"
+                    onClick={(e) => this.handleClick(e)}
+                >{this.state.clicked ? 'Create' : 'New Tag'}</button>
             </div>
         );
     };

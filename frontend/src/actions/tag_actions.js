@@ -13,10 +13,14 @@ const receiveTag = tag => ({
   tag: tag
 });
 
-const receiveTags = tags => ({
-  type: RECEIVE_TAGS,
-  tags: tags
-});
+const receiveTags = tags => {
+  const payload = {};
+  tags.data.forEach(tag => payload[tag._id] = tag);
+  return({
+    type: RECEIVE_TAGS,
+    payload: payload
+  })
+};
 
 const receiveTagErrors = errors => ({
   type: RECEIVE_TAG_ERRORS,
@@ -31,8 +35,8 @@ export const createTag = tag => dispatch => (
   .catch(errors => dispatch(receiveTagErrors(errors))) 
 );
 
-export const getTags = () => dispatch => (
-  TagAPIUtil.getTags()
+export const getOrgTags = (orgHandle) => dispatch => (
+  TagAPIUtil.getOrgTags(orgHandle)
   .then(tags => dispatch(receiveTags(tags)))
 );
 

@@ -9,6 +9,9 @@ const tagSchema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now
+    },
+    orgHandle: {
+        type: String,
     }
 });
 

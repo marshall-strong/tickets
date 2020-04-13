@@ -145,7 +145,6 @@ class TicketTable extends React.Component {
   };
 
   sortTicketsBy(attr) {
-    debugger
     let tickets = Object.values(this.state.tickets);
     let sortedTickets;
     

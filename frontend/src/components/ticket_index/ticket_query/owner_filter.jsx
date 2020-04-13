@@ -92,7 +92,7 @@ class OwnerFilter extends React.Component {
                     onChange={(e) => this.updateInput(e)}
                 />
                 <button 
-                    className="button1 add"
+                    className="btn1 add"
                     onClick={(e) => this.add(e)}
                 >Add</button>
             </div>

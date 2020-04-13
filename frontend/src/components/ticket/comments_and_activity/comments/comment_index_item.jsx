@@ -46,7 +46,7 @@ class CommentIndexItem extends React.Component {
                 value={this.state.body}
                 onChange={this.handleUpdate("body")}
               />
-              <button className="button1" type="submit">
+              <button className="btn1" type="submit">
                 Save
               </button>
             </form>
@@ -76,14 +76,14 @@ class CommentIndexItem extends React.Component {
             </div>
             <div className="buttons">
               {this.props.currentUserId === this.props.comment.userId ? (
-                <button className="button1" onClick={this.handleDelete}>
+                <button className="btn1" onClick={this.handleDelete}>
                   Delete
                 </button>
               ) : null}
 
               {this.props.currentUserId === this.props.comment.userId ? (
                 <button
-                  className="button1"
+                  className="btn1"
                   onClick={() => 
                     this.setState({ edit: true })
                   }

@@ -49,7 +49,7 @@ return(
             </label>
             <button
                 onClick={handleSubmit}
-                className="button1 not-edited"
+                className="btn1 not-edited"
                 id="ticket-submit-button"
             >
                 {type === "new" ? "Create" : "Save"}

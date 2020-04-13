@@ -17,7 +17,7 @@
     background-color: rgb(227, 241, 235);
 }
 
-.button1 {
+.btn1 {
     padding: 10px;
     background-color: rgb(8, 92, 148);
     border-radius: 3px;
@@ -30,13 +30,13 @@
     width: fit-content;
 }
 
-.button1:hover {
+.btn1:hover {
     cursor: pointer;
     border: 2px solid;
     box-sizing: border-box;
 }
 
-.button1.not-edited {
+.btn1.not-edited {
     background-color: rgb(114, 144, 163);
 }
 

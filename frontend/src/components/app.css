@@ -43,3 +43,10 @@
 .comment-errors{
     color: red;
 }
+
+
+.react-autosuggest__suggestions-list {
+    box-shadow: 1px 1px 5px 1px black;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}

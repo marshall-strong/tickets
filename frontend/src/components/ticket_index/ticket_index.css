@@ -31,6 +31,16 @@
     overflow: auto;
 }
 
+.filter .react-autosuggest__suggestions-container {
+    font-size: 12px;
+    width: 100px;
+    top: 27px;
+}
+
+.filter .react-autosuggest__suggestion {
+    padding: 5px;
+}
+
 #unread div {
     font-weight: 900;
 }

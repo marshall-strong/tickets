@@ -53,7 +53,7 @@ class StatusFilter extends React.Component {
                             type="checkbox"
                             onChange={(e) => this.update(e)}
                             value="Planned"
-                            checked={this.state.Planned ? true : false}
+                            checked={this.state['Planned'] ? true : false}
                         />
                     </div>
                     <div className="option">
@@ -77,7 +77,7 @@ class StatusFilter extends React.Component {
                             type="checkbox"
                             onChange={(e) => this.update(e)}
                             value="Blocked"
-                            checked={this.state.Blocked ? true : false}
+                            checked={this.state['Blocked'] ? true : false}
                         />
                     </div>
                     <div className="option">
@@ -89,7 +89,7 @@ class StatusFilter extends React.Component {
                             type="checkbox"
                             onChange={(e) => this.update(e)}
                             value="Closed"
-                            checked={this.state.Closed ? true : false}
+                            checked={this.state['Closed'] ? true : false}
                         />
                     </div>
                 </div>

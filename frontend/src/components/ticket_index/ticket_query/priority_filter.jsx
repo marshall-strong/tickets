@@ -41,7 +41,7 @@ class PriorityFilter extends React.Component {
                             type="checkbox"
                             onChange={(e) => this.update(e)}
                             value="Low"
-                            checked={this.state.Low ? true : false}
+                            checked={this.state['Low'] ? true : false}
                         />
                     </div>
                     <div className="option">
@@ -53,7 +53,7 @@ class PriorityFilter extends React.Component {
                             type="checkbox"
                             onChange={(e) => this.update(e)}
                             value="Medium"
-                            checked={this.state.Medium ? true : false}
+                            checked={this.state['Medium'] ? true : false}
                         />
                     </div>
                     <div className="option">
@@ -65,7 +65,7 @@ class PriorityFilter extends React.Component {
                             type="checkbox"
                             onChange={(e) => this.update(e)}
                             value="High"
-                            checked={this.state.High ? true : false}
+                            checked={this.state['High'] ? true : false}
                         />
                     </div>
                     <div className="option">
@@ -77,7 +77,7 @@ class PriorityFilter extends React.Component {
                             type="checkbox"
                             onChange={(e) => this.update(e)}
                             value="CATastrophic"
-                            checked={this.state.CATastrophic ? true : false}
+                            checked={this.state['CATastrophic'] ? true : false}
                         />
                     </div>
                 </div>

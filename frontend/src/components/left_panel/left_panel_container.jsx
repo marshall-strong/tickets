@@ -8,8 +8,8 @@ const LeftPanel = ({ userId }) => {
 
     const getQueryString = type => {
         let params = new URLSearchParams();
-        let priorities = ['low', 'medium', 'high', 'catastrophic'];
-        let statuses = ['no progress', 'planned', 'in progress', 'blocked'];
+        let priorities = ['Low', 'Medium', 'High', 'CATastrophic'];
+        let statuses = ['No Progress', 'Planned', 'In Progress', 'Blocked'];
         priorities.forEach(pri => params.append('priority', pri));
         statuses.forEach(status => params.append('status', status));
         params.set(type, userId);

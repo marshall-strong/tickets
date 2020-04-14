@@ -31,9 +31,16 @@
     overflow: auto;
 }
 
-.unread div {
+#unread div {
     font-weight: 900;
+}
+
+#unread {
     background-color: rgb(209, 248, 225);
+}
+
+#unread:hover {
+    background-color: rgb(173, 246, 204);
 }
 
 .query-container button.search {

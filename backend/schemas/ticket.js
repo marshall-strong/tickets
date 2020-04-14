@@ -13,10 +13,10 @@ const ticketSchema = new Schema({
     updatedAt: [{
         type: Date
     }],
-    tags: {
-        type: Array,
-        default: []
-    },
+    tags: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Tag'
+    }],
     subscribed: [{
         type: Schema.Types.ObjectId,
         ref: 'User'

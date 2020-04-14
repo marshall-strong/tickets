@@ -31,9 +31,13 @@ const receiveUserErrors = errors => ({
 // dispatch asynchronous thunk actions
 export const getOneUser = userId => dispatch => (
   UserAPIUtil.fetchOneUser(userId)
-  .then(user => dispatch(receiveOneUser(user)))
+  .then(user => {
+    const { createdAt } = user.data
+    localStorage.setItem('createdAt', createdAt)
+    dispatch(receiveOneUser(user))
+  })
   .catch(errors => dispatch(receiveUserErrors(errors)))
-);
+  );
 
 export const getOrgUsers = orgHandle => dispatch => (
   UserAPIUtil.fetchOrgUsers(orgHandle)

@@ -7,7 +7,6 @@ const User = require('../../models/user');
 
 router.get('/?search', (req, res) => {
 
-  debugger
         const ownerQuery = (req.query.ownerInclusion === "is") 
         ? (req.query.owner ? {owner: req.query.owner} : {}) 
         : (req.query.owner ? { owner: { $nin: req.query.owner } } : {})
@@ -43,7 +42,6 @@ router.get('/?search', (req, res) => {
         .populate("updatedBy", ["firstName", "lastName", "_id"])
         .populate("tags", ["name", "_id"])
         .then(tickets => {
-          debugger
             res.json(tickets);
         })
         .catch(err =>

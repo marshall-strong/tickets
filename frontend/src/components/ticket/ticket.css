@@ -67,7 +67,7 @@ input:focus, textarea:focus {
     margin: 10px;
 }
 
-.form .react-autosuggest__input {
+.form {
     width: 150px;
 }
 

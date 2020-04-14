@@ -199,6 +199,10 @@ button.add {
     border-top: 1px solid black;
 }
 
+.closed {
+    text-decoration: line-through;
+}
+
 .table-row:hover {
     background-color: rgb(238, 238, 238);
     cursor: pointer;

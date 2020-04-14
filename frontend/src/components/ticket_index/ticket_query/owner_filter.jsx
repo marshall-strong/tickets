@@ -1,4 +1,5 @@
 import React from 'react';
+import UserSuggest from '../../autosuggest/user_suggest';
 
 class OwnerFilter extends React.Component {
     constructor(props) {
@@ -8,16 +9,12 @@ class OwnerFilter extends React.Component {
         };
         this.state = {
             inclusion: this.props.params.get('ownerInclusion'),
-            input: '',
             added: {},
         };
-        this.props.params.getAll('owner').forEach(val =>
-            this.state.added[val] = val
+        this.props.params.getAll('owner').forEach(id =>
+            this.state.added[id] = this.props.users[id]
         );
-    };
-
-    updateInput(e) {
-        this.setState({ input: e.target.value });
+        this.onSuggestionSelected = this.onSuggestionSelected.bind(this)
     };
 
     updateInclusion(e) {
@@ -25,11 +22,11 @@ class OwnerFilter extends React.Component {
         this.setState({ inclusion: e.target.value });
     };
 
-    add(e) {
+    add(suggestion) {
         // eslint-disable-next-line
-        this.state.added[this.state.input] = this.state.input;
+        this.state.added[suggestion._id] = suggestion;
         this.updateParams();
-        this.setState({ added: this.state.added, input: '' });
+        this.setState({ added: this.state.added });
     };
 
     remove(id) {
@@ -41,16 +38,20 @@ class OwnerFilter extends React.Component {
 
     updateParams() {
         this.props.params.delete('owner');
-        Object.values(this.state.added).forEach(val =>
-            this.props.params.append('owner', val)
+        Object.keys(this.state.added).forEach(id =>
+            this.props.params.append('owner', id)
         );
     };
 
+    onSuggestionSelected(e, { suggestion }) {
+        this.add(suggestion);
+    }
+
     renderAdded() {
-        return Object.values(this.state.added).map(id =>
-            <div key={id} className="added-item">
-                {id} 
-            <span className="remove" onClick={() => this.remove(id)}> x</span>
+        return Object.values(this.state.added).map(user =>
+            <div key={user._id} className="added-item">
+                {user.firstName} {user.lastName} 
+            <span className="remove" onClick={() => this.remove(user._id)}> x</span>
             </div>
         );
     };
@@ -85,16 +86,9 @@ class OwnerFilter extends React.Component {
                 <div className="added">
                     {this.renderAdded()}
                 </div>
-                <input 
-                    type="text" 
-                    placeholder="userId"
-                    value={this.state.input}
-                    onChange={(e) => this.updateInput(e)}
+                <UserSuggest 
+                    onSuggestionSelected={this.onSuggestionSelected}
                 />
-                <button 
-                    className="btn1 add"
-                    onClick={(e) => this.add(e)}
-                >Add</button>
             </div>
         );
     };

@@ -2,7 +2,7 @@ const passport = require("passport")
 const express = require("express")
 const router = express.Router()
 const validateCommentInput = require("../../validation/comment")
-const Comment = require("../../models/Comment")
+const Comment = require("../../models/comment")
 
 
 router.post("/",  

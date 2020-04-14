@@ -5,8 +5,9 @@ import Star from './star';
 import Subscribed from './subscribed';
 import Owner from './owner';
 import Number from './number';
+import Tags from './tags';
 
-const Form = ({ ticket, type, errors, currentUser, state, update, updateFromSuggestion, handleSubmit, updateUser, setState }) => {
+const Form = ({ ticket, type, errors, currentUser, state, update, updateFromSuggestion, handleSubmit, updateUser, createTag }) => {
 return(
     <form className="form">
         <Number ticket={ticket} />
@@ -83,11 +84,20 @@ return(
             onChange={update("body")}
         ></textarea>
         <label className="subs-title">
-            subscribed
+            Subscribed
         </label>
         <Subscribed
             updateFromSuggestion={updateFromSuggestion}
             subscribed={state.ticket.subscribed}
+        />
+        <label className="subs-title">
+            Tags
+        </label>
+        <Tags 
+            updateFromSuggestion={updateFromSuggestion}
+            tags={state.ticket.tags}
+            createTag={createTag}
+            currentUser={currentUser}
         />
         <input
             className={`${type} depends-on margin`}

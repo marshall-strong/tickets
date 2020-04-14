@@ -9,7 +9,7 @@ function escapeRegexCharacters(str) {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-function getSuggestions(value, people) {
+function getSuggestions(value, tags) {
     const escapedValue = escapeRegexCharacters(value.trim());
 
     if (escapedValue === '') {
@@ -18,15 +18,15 @@ function getSuggestions(value, people) {
 
     const regex = new RegExp('\\b' + escapedValue, 'i');
 
-    return people.filter(person => regex.test(getSuggestionValue(person)));
+    return tags.filter(tag => regex.test(getSuggestionValue(tag)));
 }
 
 function getSuggestionValue(suggestion) {
-    return `${suggestion.firstName} ${suggestion.lastName}`;
+    return `${suggestion.name}`;
 }
 
 function renderSuggestion(suggestion, { query }) {
-    const suggestionText = `${suggestion.firstName} ${suggestion.lastName}`;
+    const suggestionText = `${suggestion.name}`;
     return (
         <span className={suggestion._id}>
             <span className="name">
@@ -36,14 +36,14 @@ function renderSuggestion(suggestion, { query }) {
     );
 };
 
-class UserSuggest extends React.Component {
+class TagSuggest extends React.Component {
     constructor(props) {
         super(props);
         const { value } = this.props;
         this.state = {
-            value: value ? value.firstName + ' ' + value.lastName : '',
+            value: value ? value.name : '',
             suggestions: [],
-            people: this.props.users
+            tags: this.props.tags
         };
     };
 
@@ -55,15 +55,9 @@ class UserSuggest extends React.Component {
 
     onSuggestionsFetchRequested = ({ value }) => {
         this.setState({
-            suggestions: getSuggestions(value, this.state.people)
+            suggestions: getSuggestions(value, this.state.tags)
         });
     };
-
-    componentDidUpdate(prevProps) {
-        if (prevProps !== this.props) {
-            this.setState({ people: this.props.users })
-        }
-    }
 
     onSuggestionsClearRequested = () => {
         this.setState({ suggestions: [], value: '' });
@@ -72,7 +66,7 @@ class UserSuggest extends React.Component {
     render() {
         const { value, suggestions } = this.state;
         const inputProps = {
-            placeholder: "Type a name",
+            placeholder: "Type a tag name",
             value,
             onChange: this.onChange
         };
@@ -85,14 +79,14 @@ class UserSuggest extends React.Component {
                 onSuggestionsClearRequested={this.onSuggestionsClearRequested}
                 getSuggestionValue={getSuggestionValue}
                 renderSuggestion={renderSuggestion}
-                inputProps={inputProps} 
+                inputProps={inputProps}
             />
         );
     };
 };
 
 const msp = state => ({
-    users: Object.values(state.entities.users)
+    tags: Object.values(state.entities.tags)
 });
 
-export default connect(msp, null)(UserSuggest);
+export default connect(msp, null)(TagSuggest);

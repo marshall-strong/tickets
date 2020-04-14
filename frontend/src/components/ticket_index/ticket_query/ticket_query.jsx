@@ -6,13 +6,17 @@ import StatusFilter from './status_filter';
 import SubscribedFilter from './subscribed_filter';
 import CreatorFilter from './creator_filter';
 import TagsFilter from './tags_filter';
+import { getOrgUsers } from '../../../actions/user_actions';
+import { connect } from 'react-redux';
+import { getOrgTags } from '../../../actions/tag_actions'
 
-// const TicketQuery = ({ history, location }) => {
 class TicketQuery extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            params: new URLSearchParams(this.props.location.search.slice(1))
+            params: new URLSearchParams(this.props.location.search.slice(1)),
+            users: '',
+            tags: '',
         }
     };
 
@@ -33,25 +37,48 @@ class TicketQuery extends React.Component {
         };
     };
 
+    componentDidMount() {
+        const { currentUser, getOrgUsers, getOrgTags } = this.props;
+        getOrgTags(currentUser.orgHandle).then(action => {
+            this.setState({ tags: action.payload })
+        });
+        getOrgUsers(currentUser.orgHandle).then(action => {
+            this.setState({ users: action.payload })
+        });
+    };
+
     render() {
-        if (this.loading) return null;
+        const { users, tags, params } = this.state;
+        if (this.loading || !tags || !users) return null;
         return(
             <div className="query-container">
                 <div className="filters">
-                    <OwnerFilter params={this.state.params} />
-                    <CreatorFilter params={this.state.params} />
-                    <SubscribedFilter params={this.state.params} />
-                    <TagsFilter params={this.state.params} />
-                    <StatusFilter params={this.state.params}/>
-                    <PriorityFilter params={this.state.params} />
+                    <OwnerFilter users={users} params={params} />
+                    <CreatorFilter users={users} params={params} />
+                    <SubscribedFilter users={users} params={params} />
+                    <TagsFilter tags={tags} params={params} />
+                    <StatusFilter params={params}/>
+                    <PriorityFilter params={params} />
                 </div>
                 <button 
                     className="btn1 search"
                     onClick={(e) => this.handleSubmit(e)}
                 >Search</button>
             </div>
+
         );
     };
 };
 
-export default withRouter(TicketQuery);
+const msp = state => ({
+    currentUser: state.entities.users[state.session._id],
+    users: state.entities.users,
+    tags: state.entities.tags,
+})
+
+const mdp = dispatch => ({
+    getOrgUsers: orgHandle => dispatch(getOrgUsers(orgHandle)),
+    getOrgTags: orgHandle => dispatch(getOrgTags(orgHandle)),
+})
+
+export default withRouter(connect(msp, mdp)(TicketQuery));

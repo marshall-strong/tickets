@@ -11,11 +11,11 @@ const organizationSeeds = {
             name: "ACME",
             motto: "next time..."
         },
-        {
-            handle: "gmail.com",
-            name: "Google",
-            motto: "if you have a gmail account, you work at Google!"
-        },
+        // {
+        //     handle: "gmail.com",
+        //     name: "Google",
+        //     motto: "if you have a gmail account, you work at Google!"
+        // },
         {
             handle: "appacademy.io",
             name: "appAcademy",

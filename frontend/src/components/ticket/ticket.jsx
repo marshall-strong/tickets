@@ -14,21 +14,21 @@ class Ticket extends React.Component {
                 this.props.ticket 
             :
             {
-                updatedAt: [],
-                tags: [],
-                subscribed: [this.props.currentUser],
-                owner: this.props.currentUser,
+                creator: this.props.currentUser._id,
                 title: '',
-                body: '',
-                lastUpdateSeenBy: [],
-                updatedBy: [],
+                owner: this.props.currentUser,
                 status: 'No Progress',
                 priority: 'Low', 
+                endDate: '',
+                startDate: '',
+                body: '',
+                updatedAt: [],
+                subscribed: [this.props.currentUser],
+                tags: [],
                 dependsOn: [],
                 blocks: [],
-                startDate: '',
-                endDate: '',
-                creator: this.props.currentUser._id,
+                lastUpdateSeenBy: [],
+                updatedBy: [],
             }
         };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,9 +41,10 @@ class Ticket extends React.Component {
     componentDidMount() {
         // in case of page refresh, fetch the current user to overwrite 
         // stale preloaded state from login and get updated starred list
-        this.props.getOneUser(this.props.currentUser._id)
-        // pull users into state for autosuggest
-        this.props.getOrgUsers(this.props.currentUser.orgHandle)
+        this.props.getOneUser(this.props.currentUser._id);
+        // pull users and tags into state for autosuggest
+        this.props.getOrgUsers(this.props.currentUser.orgHandle);
+        this.props.getOrgTags(this.props.currentUser.orgHandle);
         if (this.props.ticketId !== 'new') {
             this.props.getTicket(this.props.ticketId)
             .then(ticket => {
@@ -68,21 +69,21 @@ class Ticket extends React.Component {
             && this.props.ticketId === 'new') {
             this.setState({
                 ticket: {
-                    updatedAt: [],
-                    tags: [],
-                    subscribed: [this.props.currentUser],
-                    owner: this.props.currentUser,
+                    creator: this.props.currentUser._id,
                     title: '',
-                    body: '',
-                    lastUpdateSeenBy: [],
-                    updatedBy: [],
+                    owner: this.props.currentUser,
                     status: 'No Progress',
                     priority: 'Low',
-                    dependsOn: [],
-                    blocks: [],
                     startDate: '',
                     endDate: '',
-                    creator: this.props.currentUser._id
+                    body: '',
+                    subscribed: [this.props.currentUser],
+                    tags: [],
+                    dependsOn: [],
+                    blocks: [],
+                    updatedAt: [],
+                    lastUpdateSeenBy: [],
+                    updatedBy: [],
                 }
             });
         };
@@ -154,7 +155,7 @@ class Ticket extends React.Component {
         if (type!== 'new') {
             if (!this.props.ticket || this.state.loading) return null;
         }
-        const { currentUser, updateUser, ticket, errors } = this.props;
+        const { currentUser, updateUser, createTag, ticket, errors } = this.props;
         this.update = this.update.bind(this);
         this.updateFromSuggestion = this.updateFromSuggestion.bind(this);
         return (
@@ -166,6 +167,7 @@ class Ticket extends React.Component {
                         errors={errors}
                         currentUser={currentUser}
                         updateUser={updateUser}
+                        createTag={createTag}
                         state={this.state}
                         setState={this.setState.bind(this)}
                         update={this.update}

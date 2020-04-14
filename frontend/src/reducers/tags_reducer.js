@@ -7,10 +7,7 @@ const tagsReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_TAGS:
-      for (let i = 0; i < action.tags.length; i++) {
-        nextState[action.tags[i].name] = action.tags[i];
-      }
-      return nextState; 
+      return action.payload;
     case RECEIVE_TAG:
       nextState[action.tag.name] = action.tag;
       return nextState;      

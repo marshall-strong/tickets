@@ -130,14 +130,14 @@ router.get('/:userId', (req, res) => {
     orgHandle: user.orgHandle,
     starred: user.starred
   }))
-  .catch(err => err.status(404).json(err));
+  .catch(err => res.status(404).json(err));
 });
 
 
 router.patch('/:userId', (req, res) => {
   User.findByIdAndUpdate(req.params.userId, req.body, { new: true })
   .then(user => res.json(user))
-  .catch(err => err.status(422).json(err));
+  .catch(err => res.status(422).json(err));
 });
 
 

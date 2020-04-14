@@ -15,7 +15,7 @@ const receiveOneUser = user => ({
 
 const receiveOrgUsers = users => {
   let payload = {};
-  users.data.forEach(user => payload[user._id] = user)
+  users.data.forEach(user => payload[user._id] = user);
   return ({
     type: RECEIVE_ORG_USERS,
     payload: payload

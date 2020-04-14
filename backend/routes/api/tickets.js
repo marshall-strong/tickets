@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const passport = require('passport');
-const validateTicketInput = require('../../validation/ticket')
-const Ticket = require('../../models/ticket')
+const validateTicketInput = require('../../validation/ticket');
+const Ticket = require('../../models/ticket');
+const User = require('../../models/user');
 
 router.get('/?search', (req, res) => {
 
@@ -106,7 +107,7 @@ router.get("/:ticketId", (req, res) => {
     .then(ticket => {
         return res.json(ticket)
     })
-    .catch(err => err.status(400).json(err))
+    .catch(err => res.status(400).json(err))
 })
 
 router.patch("/:ticketId", (req, res) => {
@@ -152,7 +153,7 @@ router.get("/:folder/:userId", (req, res) => {
         let starredIds 
         User.findById(req.params.userId)
         .exec((err, user) => {
-            starredIds = Array.from(user.starred)
+          starredIds = Array.from(user.starred)
             Ticket.find({ _id: { $in: starredIds } })
             .populate("creator", ["firstName", "lastName", "_id"])
             .populate("owner", ["firstName", "lastName", "_id"])
@@ -162,10 +163,11 @@ router.get("/:folder/:userId", (req, res) => {
             .then(tickets => {
                 res.json(tickets)
             })
-            .catch(err =>
-                res
-                .status(404)
-                .json({ noticketsfound: "No tickets found from that user" })
+            .catch(err => {
+              res
+              .status(404)
+              .json({ noticketsfound: "No tickets found from that user" })
+            }
             );
         })
     } else {

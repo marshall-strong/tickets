@@ -7,8 +7,6 @@ const User = require('../../models/user');
 
 router.get('/?search', (req, res) => {
 
-        debugger
-         
         const ownerQuery = (req.query.ownerInclusion === "is") 
         ? (req.query.owner ? {owner: req.query.owner} : {}) 
         : (req.query.owner ? { owner: { $nin: req.query.owner } } : {})
@@ -35,7 +33,6 @@ router.get('/?search', (req, res) => {
 
         const filteredQuery = Object.assign({}, { ...ownerQuery, ...creatorQuery, ...subscribedQuery, ...tagsQuery, ...priorityQuery, ...statusQuery })
 
-        console.log(filteredQuery)
         Ticket.find(filteredQuery)
         .populate("creator", ["starred", "firstName", "lastName", "_id"])
         .populate("owner", ["starred", "firstName", "lastName", "_id"])
@@ -44,7 +41,6 @@ router.get('/?search', (req, res) => {
         .populate("subscribed", ["firstName", "lastName", "_id"])
         .populate("updatedBy", ["firstName", "lastName", "_id"])
         .then(tickets => {
-            debugger
             res.json(tickets);
         })
         .catch(err =>

@@ -31,6 +31,11 @@
     overflow: auto;
 }
 
+.unread div {
+    font-weight: 900;
+    background-color: rgb(209, 248, 225);
+}
+
 .query-container button.search {
     padding:5px;
 }

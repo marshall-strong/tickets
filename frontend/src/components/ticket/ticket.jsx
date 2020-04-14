@@ -67,6 +67,7 @@ class Ticket extends React.Component {
         // clear fields when switching to new ticket
         if (this.props.ticketId !== prevProps.ticketId
             && this.props.ticketId === 'new') {
+            this.setState({ loading: true })
             this.setState({
                 ticket: {
                     creator: this.props.currentUser._id,
@@ -85,7 +86,7 @@ class Ticket extends React.Component {
                     lastUpdateSeenBy: [],
                     updatedBy: [],
                 }
-            });
+            }, () => this.setState({ loading: false}));
         };
     };
 
@@ -153,8 +154,9 @@ class Ticket extends React.Component {
     render() {
         const type = this.props.ticketId === 'new' ? 'new' : 'show';
         if (type!== 'new') {
-            if (!this.props.ticket || this.state.loading) return null;
+            if (!this.props.ticket) return null;
         }
+        if (this.state.loading || this.loading) return null;
         const { currentUser, updateUser, createTag, ticket, errors } = this.props;
         this.update = this.update.bind(this);
         this.updateFromSuggestion = this.updateFromSuggestion.bind(this);

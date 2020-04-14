@@ -22,7 +22,7 @@ router.get('/?search', (req, res) => {
         
         const tagsQuery = (req.query.tagsInclusion === "all") 
         ? (req.query.tags ? { tags: { $all: req.query.tags } } : {})
-        : (req.query.tagsInclusion === 'any') ? (req.query.tags ? { tags: { $in: req.query.tags } } : {})
+        : (req.query.tagsInclusion === 'any') ? (req.query.tags ? { tags: { $in: req.query.tags } }  : {})
         : (req.query.tags ? { tags: { $nin: req.query.tags } } : {})
 
         const priorityQuery = req.query.priority ? { priority: req.query.priority } : {}
@@ -40,13 +40,14 @@ router.get('/?search', (req, res) => {
         .populate("lastUpdateSeenBy", ["firstName", "lastName", "_id"])
         .populate("subscribed", ["firstName", "lastName", "_id"])
         .populate("updatedBy", ["firstName", "lastName", "_id"])
+        .populate("tags", ["name", "_id"])
         .then(tickets => {
             res.json(tickets);
         })
         .catch(err =>
             res
             .status(404)
-            .json({ noticketsfound: "No tickets found for that search" })
+            .json({ noticketsfound: "Sorry, no tickets match your search. Please try again." })
         );
 
     }) 
@@ -84,7 +85,8 @@ router.post("/",
             .populate('updatedBy', ['firstName', 'lastName', '_id'])
             .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
             .populate('subscribed', ['firstName', 'lastName', '_id'])  
-            .populate('updatedBy', ['firstName', 'lastName', '_id'])          
+            .populate('updatedBy', ['firstName', 'lastName', '_id'])
+            .populate("tags", ["name", "_id"])          
             .then(
                 populated => res.json(populated)
             )
@@ -100,6 +102,7 @@ router.get("/:ticketId", (req, res) => {
     .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
     .populate('subscribed', ['firstName', 'lastName', '_id'])
     .populate('updatedBy', ['firstName', 'lastName', '_id'])
+    .populate("tags", ["name", "_id"])
     .then(ticket => {
         return res.json(ticket)
     })
@@ -124,6 +127,7 @@ router.patch("/:ticketId", (req, res) => {
     .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
     .populate('subscribed', ['firstName', 'lastName', '_id'])
     .populate('updatedBy', ['firstName', 'lastName', '_id'])
+    .populate("tags", ["name", "_id"])
     .then(ticket => res.json(ticket))
     .catch(err => {
         return res.status(422).json({ badrequest: err })
@@ -138,6 +142,7 @@ router.get("/:folder/:userId", (req, res) => {
         .populate('lastUpdateSeenBy', ['firstName', 'lastName', '_id'])
         .populate('subscribed', ['firstName', 'lastName', '_id'])
         .populate('updatedBy', ['firstName', 'lastName', '_id'])
+        .populate("tags", ["name", "_id"])
         .then(tickets => {
             res.json(tickets)
         })
@@ -156,6 +161,7 @@ router.get("/:folder/:userId", (req, res) => {
             .populate("lastUpdateSeenBy", ["firstName", "lastName", "_id"])
             .populate("subscribed", ["firstName", "lastName", "_id"])
             .populate("updatedBy", ["firstName", "lastName", "_id"])
+            .populate("tags", ["name", "_id"])
             .then(tickets => {
                 res.json(tickets)
             })
@@ -173,6 +179,7 @@ router.get("/:folder/:userId", (req, res) => {
         .populate("lastUpdateSeenBy", ["firstName", "lastName", "_id"])
         .populate("subscribed", ["firstName", "lastName", "_id"])
         .populate("updatedBy", ["firstName", "lastName", "_id"])
+        .populate("tags", ["name", "_id"])
         .then(tickets => {
             res.json(tickets);
         })

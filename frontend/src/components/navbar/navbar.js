@@ -4,6 +4,21 @@ import '../app.css'
 import './navbar.css'
 import UserSearchContainer from './user_search_container' 
 
+const getQueryString = (type, userId) => {
+  let params = new URLSearchParams();
+  let priorities = ['Low', 'Medium', 'High', 'CATastrophic'];
+  let statuses = ['No Progress', 'Planned', 'In Progress', 'Blocked'];
+  priorities.forEach(pri => params.append('priority', pri));
+  statuses.forEach(status => params.append('status', status));
+  params.set(type, userId);
+  if (type === 'subscribed') {
+    params.set(`${type}Inclusion`, 'all');
+  } else {
+    params.set(`${type}Inclusion`, 'is');
+  };
+  return params.toString();
+};
+
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
@@ -28,12 +43,16 @@ class NavBar extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    this.props.clearErrors()
-    this.props.loginDemoUser()
+
+    const { currentUser, loginDemoUser, clearErrors } = this.props;
+    clearErrors();
+    loginDemoUser()
     .then(() => 
-      this.props.history.push(`/tickets/owner/${this.props.currentUser._id}`)
-    )
-  }
+      this.props.history.push(
+        `/tickets/search?${getQueryString('owner', currentUser._id)}`
+      )
+    );
+  };
 
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
@@ -42,7 +61,7 @@ class NavBar extends React.Component {
       return (
         <div className="header">
           <div className="nav">
-            <Link className="link-style-header" to={`/tickets/owner/${currentUser._id}`}> Tickets</Link>
+            <Link className="link-style-header" to={`/tickets/search?${getQueryString('owner', currentUser._id)}`}> Tickets</Link>
 
             <UserSearchContainer />
 

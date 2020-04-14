@@ -19,7 +19,7 @@ const App = () => (
   <div>
     <NavBarContainer />
     <div className="app-container">
-      <PrivateRoute path="/tickets" component={LeftPanelContainer} />
+      <PrivateRoute path="/" component={LeftPanelContainer} />
       <div className="page-container">
         <Switch>
           <AuthRoute exact path="/" component={MainPage} />

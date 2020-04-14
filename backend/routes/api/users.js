@@ -31,7 +31,8 @@ router.post("/register", (req, res) => {
       lastName: req.body.lastName,
       email: req.body.email,
       orgHandle: orgHandle,
-      password: req.body.password
+      password: req.body.password,
+      createdAt: req.body.createdAt
     });
 
     bcrypt.genSalt(10, (err, salt) => {
@@ -47,7 +48,8 @@ router.post("/register", (req, res) => {
             lastName: user.lastName,
             email: user.email,
             orgHandle: user.orgHandle,
-            starred: user.starred
+            starred: user.starred,
+            createdAt: user.createdAt
           };
           jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, 
             (err, token) => {
@@ -95,6 +97,7 @@ router.post("/login", (req, res) => {
           email: user.email,
           orgHandle: user.orgHandle,
           starred: user.starred, 
+          createdAt: user.createdAt
         };
 
         jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
@@ -128,7 +131,8 @@ router.get('/:userId', (req, res) => {
     lastName: user.lastName,
     email: user.email,
     orgHandle: user.orgHandle,
-    starred: user.starred
+    starred: user.starred,
+    createdAt: user.createdAt
   }))
   .catch(err => res.status(404).json(err));
 });

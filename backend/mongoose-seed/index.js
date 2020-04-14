@@ -1,13 +1,11 @@
 'use strict';
 
-/**
- * Module dependencies.
- **/
-var _ = require('lodash'),
-  async = require('async'),
-  mongoose = require('mongoose'),
-  chalk = require('chalk'),
-  path = require('path');
+// Module dependencies.
+const _ = require('lodash');
+const async = require('async');
+const mongoose = require('mongoose');
+const chalk = require('chalk');
+const path = require('path');
 
 function Seeder() {
   this.connected = false;

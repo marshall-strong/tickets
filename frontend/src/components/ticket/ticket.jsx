@@ -65,27 +65,44 @@ class Ticket extends React.Component {
 
     componentDidUpdate(prevProps) {
         // clear fields when switching to new ticket
-        if (this.props.ticketId !== prevProps.ticketId
-            && this.props.ticketId === 'new') {
-            this.setState({
-                ticket: {
-                    creator: this.props.currentUser._id,
-                    title: '',
-                    owner: this.props.currentUser,
-                    status: 'No Progress',
-                    priority: 'Low',
-                    startDate: '',
-                    endDate: '',
-                    body: '',
-                    subscribed: [this.props.currentUser],
-                    tags: [],
-                    dependsOn: [],
-                    blocks: [],
-                    updatedAt: [],
-                    lastUpdateSeenBy: [],
-                    updatedBy: [],
-                }
-            });
+        if (this.props.ticketId !== prevProps.ticketId) {
+            this.setState({ loading: true })
+            if (this.props.ticketId === 'new') {
+                this.setState({
+                    ticket: {
+                        creator: this.props.currentUser._id,
+                        title: '',
+                        owner: this.props.currentUser,
+                        status: 'No Progress',
+                        priority: 'Low',
+                        startDate: '',
+                        endDate: '',
+                        body: '',
+                        subscribed: [this.props.currentUser],
+                        tags: [],
+                        dependsOn: [],
+                        blocks: [],
+                        updatedAt: [],
+                        lastUpdateSeenBy: [],
+                        updatedBy: [],
+                    }
+                }, () => this.setState({ loading: false}));
+            } else {
+                this.props.getTicket(this.props.ticketId)
+                .then(action => {
+                    // format date to play nice with input type="date"
+                    action.ticket.startDate = (
+                        action.ticket.startDate ?
+                        action.ticket.startDate.slice(0, 10) : ''
+                    );
+                    action.ticket.endDate = (
+                        action.ticket.endDate ?
+                        action.ticket.endDate.slice(0, 10) : ''
+                    );
+                    this.setState({ ticket: action.ticket, loading: false });
+                })
+                .then(() => this.view());
+            }
         };
     };
 
@@ -153,8 +170,9 @@ class Ticket extends React.Component {
     render() {
         const type = this.props.ticketId === 'new' ? 'new' : 'show';
         if (type!== 'new') {
-            if (!this.props.ticket || this.state.loading) return null;
+            if (!this.props.ticket) return null;
         }
+        if (this.state.loading || this.loading) return null;
         const { currentUser, updateUser, createTag, ticket, errors } = this.props;
         this.update = this.update.bind(this);
         this.updateFromSuggestion = this.updateFromSuggestion.bind(this);

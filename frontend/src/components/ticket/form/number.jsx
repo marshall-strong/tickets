@@ -22,9 +22,9 @@ class Number extends React.Component {
             <div>
             {ticket ?
                 <div className="form-header">
-                    <span className="ticket-number">T{ticket._id} - </span>
+                    <span className={`ticket-number ${ticket.status === 'Closed' ? 'closed' : null}`}>T{ticket._id}</span>
                     <CopyToClipboard text={window.location.href} onCopy={() => this.handleCopy()}>
-                        <span className="copy">Copy Link <FaCopy /></span>
+                        <span className="copy"> - Copy Link <FaCopy /></span>
                     </CopyToClipboard>
                     {this.state.copied ? <span className="copied fade-out"> Copied to Clipboard!</span> : null}
                 </div> : null

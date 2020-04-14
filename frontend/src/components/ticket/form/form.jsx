@@ -16,7 +16,7 @@ return(
         </div>
         <div className="title-star">
             <input
-                className={`${type} title`}
+                className={`${type} title ${state.ticket.status === 'Closed' ? 'closed' : null}`}
                 type="text"
                 placeholder="title"
                 value={state.ticket.title}

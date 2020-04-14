@@ -27,6 +27,7 @@
     float: left;
     margin: 0px;
     border: none;
+    width: 110px;
 }
 
 .edited .react-autosuggest__input {

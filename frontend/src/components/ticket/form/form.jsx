@@ -10,11 +10,15 @@ import Tags from './tags';
 const Form = ({ ticket, type, errors, currentUser, state, update, updateFromSuggestion, handleSubmit, updateUser, createTag }) => {
 return(
     <form className="form">
-        <Number ticket={ticket} />
-        <div className="ticket-errors">
-            <p>{errors.title}</p>
+        <div className="form-row">
+            <Number ticket={ticket} />
         </div>
-        <div className="title-star">
+        <div className="form-row">
+            <div className="ticket-errors">
+                <p>{errors.title}</p>
+            </div>
+        </div>
+        <div className="form-row">
             <input
                 className={`${type} title ${state.ticket.status === 'Closed' ? 'closed' : null}`}
                 type="text"
@@ -29,25 +33,23 @@ return(
             />
         </div>
         <div className="selectors">
-            <label>Status
+            <div className="label">Status</div>
                 <StatusSelect
                     type={type}
                     status={state.ticket.status}
                     update={update}
                 />
-            </label>
             <Owner
                 currentUser={currentUser} 
                 owner={state.ticket.owner}
                 updateFromSuggestion={updateFromSuggestion}
             />
-            <label>Priority
-                <PrioritySelect
-                    type={type}
-                    priority={state.ticket.priority}
-                    update={update}
-                />
-            </label>
+            <div className="label">Priority</div>
+            <PrioritySelect
+                type={type}
+                priority={state.ticket.priority}
+                update={update}
+            />
             <button
                 onClick={handleSubmit}
                 className="btn1 not-edited"
@@ -83,16 +85,16 @@ return(
             placeholder="body"
             onChange={update("body")}
         ></textarea>
-        <label className="subs-title">
+        <div className="label">
             Subscribed
-        </label>
+        </div>
         <Subscribed
             updateFromSuggestion={updateFromSuggestion}
             subscribed={state.ticket.subscribed}
         />
-        <label className="subs-title">
+        <div className="label">
             Tags
-        </label>
+        </div>
         <Tags 
             updateFromSuggestion={updateFromSuggestion}
             tags={state.ticket.tags}

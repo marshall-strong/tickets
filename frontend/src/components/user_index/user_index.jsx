@@ -20,7 +20,9 @@ class UserIndex extends React.Component {
     let nameFragment = params.get('nameFragment');
     this.props.getUsersByOrgHandleAndNameFragment(orgHandle, nameFragment)
     .then((action => {
-      this.setState({ users: Object.values(action.payload) })
+      if (action.payload) {
+        this.setState({ users: Object.values(action.payload) })
+      }
     }))
   };
 

@@ -10,6 +10,7 @@ import ProfileContainer from './profile/profile_container';
 import TicketContainer from './ticket/ticket_container';
 import TicketIndex from './ticket_index/ticket_index';
 import LeftPanelContainer from './left_panel/left_panel_container';
+import UserIndexContainer from "./user_index/user_index_container"
 import NotFound from './errors/not_found';
 
 import './reset.css';
@@ -26,6 +27,7 @@ const App = () => (
           <PublicRoute exact path="/login" component={LoginFormContainer} />
           <PublicRoute exact path="/signup" component={SignupFormContainer} />
           <PrivateRoute exact path="/users/:userId" component={ProfileContainer} />
+          <PrivateRoute exact path="/users/search/:searchParams" component={UserIndexContainer} />
           <PrivateRoute exact path="/tickets/search/" component={TicketIndex} />
           <PrivateRoute exact path="/tickets/:ticketId" component={TicketContainer} />
           <PrivateRoute exact path="/tickets/:folder/:userId" component={TicketIndex} />
@@ -37,3 +39,4 @@ const App = () => (
 );
 
 export default App;
+

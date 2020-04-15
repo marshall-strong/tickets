@@ -27,12 +27,10 @@ const receiveUserErrors = errors => ({
   errors: errors.response.data
 });
 
-
 // dispatch asynchronous thunk actions
 export const getOneUser = userId => dispatch => (
   UserAPIUtil.fetchOneUser(userId)
   .then(user => {
-    debugger
     const { createdAt } = user.data
     localStorage.setItem('createdAt', createdAt)
     dispatch(receiveOneUser(user))

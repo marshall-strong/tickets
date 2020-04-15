@@ -6,7 +6,6 @@ import { connect } from "react-redux"
 import Profile from "./profile"
 
 const mSTP = (state, ownProps) => {
-    debugger
     return {
         user: state.entities.users[ownProps.match.params.userId],
         comments: Object.values(state.entities.comments),
@@ -17,12 +16,10 @@ const mSTP = (state, ownProps) => {
 }
 
 const mDTP = (dispatch) => {
-    debugger
     return {
         getOneUser: userId => dispatch(getOneUser(userId)),
         fetchCreatedTickets: (userId) => dispatch(fetchCreatedTickets(userId)),
-        fetchUserComments: (userId) => dispatch(fetchUserComments(userId)),
-        getOrgUsers: orgHandle => dispatch(getOrgUsers(orgHandle))
+        fetchUserComments: (userId) => dispatch(fetchUserComments(userId))
     }
 }
 

@@ -27,7 +27,6 @@ router.post("/register", (req, res) => {
   .then( () => {
     const orgHandle = req.body.email.slice(req.body.email.search("@"));
     const newUser = new User({
-      _id: req.body._id,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
@@ -128,7 +127,7 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
 router.get('/:userId', (req, res) => {
   User.findById(req.params.userId)
   .then(user => res.json({
-    id: _user.id,
+    _id: user._id,
     firstName: user.firstName,
     lastName: user.lastName,
     email: user.email,

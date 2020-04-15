@@ -1,12 +1,15 @@
 import React from "react";
 import { IoMdSearch } from 'react-icons/io'
 import UserSuggest from "../autosuggest/user_suggest";
+import { withRouter } from "react-router-dom";
 
 class UserSearch extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            userParams: new URLSearchParams()
+            userParams: new URLSearchParams(),
+            searchParams: new URLSearchParams(this.props.location.search),
+            loading: false
         };
         this.onSuggestionSelected = this.onSuggestionSelected.bind(this);
         this.addUpdateListener();
@@ -30,7 +33,6 @@ class UserSearch extends React.Component {
         )
     }
 
-
     handleSearch(e) {
         e.preventDefault();
         e.stopPropagation();
@@ -39,7 +41,7 @@ class UserSearch extends React.Component {
             return null
         };
         let userQueryString = this.state.userParams.toString();
-        this.props.history.replace(`/users/search/?${userQueryString}`);
+        this.props.history.push(`/users/search/?${userQueryString}`);
     };
 
     onSuggestionSelected(e, { suggestion }) {
@@ -48,11 +50,20 @@ class UserSearch extends React.Component {
         this.selected = true;
     };
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.location.search !== this.props.location.search) {
+            this.setState(
+                { searchParams: new URLSearchParams(this.props.location.search)}            
+            )
+        }
+    }
+
     render() {
         return (
             <form id="user-search" className="user-search-container">
                 <UserSuggest 
                     onSuggestionSelected={this.onSuggestionSelected}
+                    value={this.state.searchParams.get('nameFragment')}
                 />
                 <button
                     onClick={(e) => this.handleSearch(e)}
@@ -65,4 +76,4 @@ class UserSearch extends React.Component {
 
 };
 
-export default UserSearch
+export default withRouter(UserSearch);

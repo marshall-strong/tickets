@@ -124,23 +124,34 @@ class Ticket extends React.Component {
         this.props.clearTicketErrors();
         
         if (this.props.ticketId !== "new") {
-            this.props.updateTicket(this.state.ticket);
+            this.props.updateTicket(this.state.ticket)
+            .then((res) => {
+                if (res.errors) return null;
+                this.reset();
+                // this.setState();
+            })
+            .catch(() => {return null});
         } else {
             this.props.createTicket(this.state.ticket)
             .then(res => {
                 if (res.errors) return null;
                 this.setState({ ticket: res.ticket });
                 this.props.history.push(`${res.ticket._id}`);
+                this.reset();
             })
             .catch(err => console.log(err));
         };
+
+    };
+
+    reset() {
         let edits = document.getElementsByClassName('edited');
-        
         for (let i = 0; i < edits.length; i++) {
-            edits[i].classList.add('not-edited')
+            edits[i].classList.add('not-edited');
         };
-        for (let i = 0; i <= edits.length; i++) {
-            edits[0].classList.remove('edited')
+        let n = edits.length*1
+        for (let i = 0; i <= n; i++) {
+            edits[0].classList.remove('edited');
         };
     };
 

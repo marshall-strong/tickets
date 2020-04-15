@@ -41,7 +41,7 @@ class UserSuggest extends React.Component {
         super(props);
         const { value } = this.props;
         this.state = {
-            value: value ? value.firstName + ' ' + value.lastName : '',
+            value: value ? value : '',
             suggestions: [],
             people: this.props.users
         };

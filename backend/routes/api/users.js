@@ -9,6 +9,22 @@ const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 const User = require('../../models/user');
 
+router.get('/?search', (req, res) => {
+  const nameFragment = req.query.nameFragment;
+  User.find({ 
+    orgHandle: req.query.orgHandle,
+    $or: [
+      { firstName: { $regex: nameFragment, $options: "i" } } ,
+      { lastName:  { $regex: nameFragment, $options: "i" } },
+    ]
+  })
+  .then(users => {
+    res.json(users);
+  })
+  .catch(err => {
+    res.status(404).json({ nousersfound: "Sorry, no users match your search." })
+  });
+})
 
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
@@ -68,7 +84,6 @@ router.post("/register", (req, res) => {
 
 });
 
-
 router.post("/login", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
   if (!isValid) {
@@ -115,7 +130,6 @@ router.post("/login", (req, res) => {
 
 });
 
-
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
   res.json({
     _id: req.user._id,
@@ -123,10 +137,10 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
   });
 });
 
-
 router.get('/:userId', (req, res) => {
   User.findById(req.params.userId)
   .then(user => res.json({
+    _id: user._id,
     firstName: user.firstName,
     lastName: user.lastName,
     email: user.email,
@@ -137,13 +151,11 @@ router.get('/:userId', (req, res) => {
   .catch(err => res.status(404).json(err));
 });
 
-
 router.patch('/:userId', (req, res) => {
   User.findByIdAndUpdate(req.params.userId, req.body, { new: true })
   .then(user => res.json(user))
   .catch(err => res.status(422).json(err));
 });
-
 
 // Get all users with the specified orgHandle
 router.get('/orgHandle/:orgHandle', (req, res) => {
@@ -157,8 +169,9 @@ router.get('/orgHandle/:orgHandle', (req, res) => {
       err.message || `No users found with orgHandle=${orgHandle}`
     });
   });
-
 });
+
+
 
 
 module.exports = router;

@@ -65,7 +65,7 @@ export const login = user => dispatch => (
 
 export const loginDemoUser = () => dispatch => {
   const demoUser = {
-    email: "user@cats4humanity.org",
+    email: "michael@acme.org",
     password: "password"
   };
   

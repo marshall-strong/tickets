@@ -1,61 +1,59 @@
 const genPasswordDigest = require('../utilities/bcrypt_utils');
-// Bugs Bunny
-// Daffy Duck
-// Porky Pig
-// Speedy Gonzales
-// Yosemite Sam
-// Lola Bunny
-// Tasmanian Devil
-// Marvin the Martian
-// Sylvester the Cat
-// Tweety Bird
-// Foghorn Leghorn
-// Pepé Le Pew
-// Granny Webster
-// Elmer Fudd
-// Wile E.Coyote
-// Road Runner
+
+const organizationSeeds = {
+  model: 'Organization',
+  documents: [
+    {
+      handle: "acme.org",
+      name: "ACME",
+      motto: "That's all folks!"
+    }
+  ]
+};
+
+
+
 const userSeeds = {
   model: 'User',
   documents: [
     {
       _id: "000000000000000000000000",
-      firstName: "Demo",
-      lastName: "User",
-      email: "user@cats4humanity.org",
-      orgHandle: "cats4humanity.org",
+      firstName: "Michael",
+      lastName: "Jordan",
+      email: "michael@acme.org",
+      orgHandle: "acme.org",
       password: genPasswordDigest("password")
-    },
+    },d
     {
       _id: "111111111111111111111111",
       firstName: "Hayden",
       lastName: "Linder",
-      email: "hayden@cats4humanity.org",
-      orgHandle: "cats4humanity.org",
+      email: "hayden@acme.org",
+      orgHandle: "acme.org",
       password: genPasswordDigest("password")
     },
     {
       _id: "222222222222222222222222",
       firstName: "Brad",
       lastName: "Nelson",
-      email: "brad@cats4humanity.org",
-      orgHandle: "cats4humanity.org",
+      email: "brad@acme.org",
+      orgHandle: "acme.org",
       password: genPasswordDigest("password")
     },
     {
       _id: "333333333333333333333333",
       firstName: "Joe",
       lastName: "Johnston",
-      email: "joe@cats4humanity.org",
-      orgHandle: "cats4humanity.org",
+      email: "joe@acme.org",
+      orgHandle: "acme.org",
       password: genPasswordDigest("password")
     },
     {
       _id: "444444444444444444444444",
       firstName: "Marshall",
       lastName: "Strong",
-      email: "marshall@cats4humanity.org",
-      orgHandle: "cats4humanity.org",
+      email: "marshall@acme.org",
+      orgHandle: "acme.org",
       password: genPasswordDigest("password")
     },
 
@@ -186,105 +184,153 @@ const userSeeds = {
       email: "rr@acme.org",
       orgHandle: "acme.org",
       password: genPasswordDigest("password")
-    },
-   
-    // {
-    //   _id: "aaaaaaaaaaaaaaaaaaaaaaaa",
-    //   firstName: "Wiley",
-    //   lastName: "Coyote",
-    //   email: "wc@acme.boom",
-    //   orgHandle: "acme.boom",
-    //   password: genPasswordDigest("password")
-    // },
-    // {
-    //   _id: "bbbbbbbbbbbbbbbbbbbbbbbb",
-    //   firstName: "Road",
-    //   lastName: "Runner",
-    //   email: "rr@acme.boom",
-    //   orgHandle: "acme.boom",
-    //   password: genPasswordDigest("password")
-    // },
-    // {
-    //   _id: "cccccccccccccccccccccccc",
-    //   firstName: "Marvin",
-    //   lastName: "The Martian",
-    //   email: "mtm@acme.boom",
-    //   orgHandle: "acme.boom",
-    //   password: genPasswordDigest("password")
-    // },
-    // // {
-    // //   _id: "ccccccccccccccccccccccc1",
-    // //   firstName: "Gmail",
-    // //   lastName: "User",
-    // //   email: "user@gmail.com",
-    // //   orgHandle: "gmail.com",
-    // //   password: genPasswordDigest("password")
-    // // },
-    // {
-    //   _id: "ccccccccccccccccccccccc2",
-    //   firstName: "Baby",
-    //   lastName: "Shark",
-    //   email: "babyshark@appacademy.io",
-    //   orgHandle: "appacademy.io",
-    //   password: genPasswordDigest("password")
-    // },
-    // {
-    //   _id: "ccccccccccccccccccccccc3",
-    //   firstName: "Mommy",
-    //   lastName: "Shark",
-    //   email: "mommyshark@appacademy.io",
-    //   orgHandle: "appacademy.io",
-    //   password: genPasswordDigest("password")
-    // },
-    // {
-    //   _id: "ccccccccccccccccccccccc4",
-    //   firstName: "Daddy",
-    //   lastName: "Shark",
-    //   email: "daddyshark@appacademy.io",
-    //   orgHandle: "appacademy.io",
-    //   password: genPasswordDigest("password")
-    // },
-    // {
-    //   _id: "ccccccccccccccccccccccc5",
-    //   firstName: "Baby",
-    //   lastName: "Squid",
-    //   email: "babysquid@appacademy.io",
-    //   orgHandle: "appacademy.io",
-    //   password: genPasswordDigest("password")
-    // },
-    // {
-    //   _id: "ccccccccccccccccccccccc6",
-    //   firstName: "Mommy",
-    //   lastName: "Squid",
-    //   email: "mommysquid@appacademy.io",
-    //   orgHandle: "appacademy.io",
-    //   password: genPasswordDigest("password")
-    // },
-    // {
-    //   _id: "ccccccccccccccccccccccc7",
-    //   firstName: "Daddy",
-    //   lastName: "Squid",
-    //   email: "daddysquid@appacademy.io",
-    //   orgHandle: "appacademy.io",
-    //   password: genPasswordDigest("password")
-    // },
-    // {
-    //   _id: "ccccccccccccccccccccccc8",
-    //   firstName: "Foo",
-    //   lastName: "Bar",
-    //   email: "foobar@appacademy.io",
-    //   orgHandle: "appacademy.io",
-    //   password: genPasswordDigest("password")
-    // },
-    // {
-    //   _id: "999999999999999999999999",
-    //   firstName: "Carlos",
-    //   lastName: "Garcia",
-    //   email: "carlos@appacademy.io",
-    //   orgHandle: "appacademy.io",
-    //   password: genPasswordDigest("password")
-    // }
+    }
   ]
 };
 
-module.exports = userSeeds;
+
+
+const ticketSeeds = {
+  model: 'Ticket',
+  documents: [
+    {
+      _id: "5e88f42a3064bd3629c353ff",
+      title: "Place a cat in every household",
+      body: "Cats will make life better for all of humanity",
+      status: "Planned",
+      priority: "CATastrophic",
+      creator: "000000000000000000000000",
+      owner: "000000000000000000000000",
+      subscribed: [
+        "111111111111111111111111",
+        "222222222222222222222222",
+        "333333333333333333333333",
+        "444444444444444444444444",
+      ],
+      lastUpdateSeenBy: [
+        "000000000000000000000000"
+      ],
+    },
+    {
+      _id: "5e88f42a3064bd3629c35400",
+      title: "Finish MERN project",
+      body: "We need to finish this app so that we can move on",
+      status: "Planned",
+      priority: "CATastrophic",
+      creator: "111111111111111111111111",
+      owner: "111111111111111111111111",
+      subscribed: [
+        "000000000000000000000000",
+        "111111111111111111111111",
+        "222222222222222222222222",
+        "333333333333333333333333",
+        "444444444444444444444444",
+      ],
+      lastUpdateSeenBy: [
+        "111111111111111111111111"
+      ],
+    },
+  ]
+};
+
+
+
+const commentSeeds = {
+  model: 'Comment',
+  documents: [
+    {
+      body: "I think I'm actually more of a dog person...",
+      author: "444444444444444444444444",
+      ticket: "5e88f42a3064bd3629c353ff"
+    },
+    {
+      body: "FIONA 4 EVER!!!",
+      author: "333333333333333333333333",
+      ticket: "5e88f42a3064bd3629c353ff"
+    },
+    {
+      body: "I'll get to work right meow",
+      author: "222222222222222222222222",
+      ticket: "5e88f42a3064bd3629c353ff"
+    },
+    {
+      body: "cats are purrrrrfect companions",
+      author: "000000000000000000000000",
+      ticket: "5e88f42a3064bd3629c353ff"
+    },
+
+    {
+      body: "Does this mean I can't play video games today?",
+      author: "333333333333333333333333",
+      ticket: "5e88f42a3064bd3629c35400"
+    },
+    {
+      body: "ugh, fine. I GUESS I'll get out of bed...",
+      author: "222222222222222222222222",
+      ticket: "5e88f42a3064bd3629c35400"
+    },
+    {
+      body: "Marshall, I need 100% of your attention on this",
+      author: "111111111111111111111111",
+      ticket: "5e88f42a3064bd3629c35400"
+    },
+    {
+      body: "meow",
+      author: "444444444444444444444444",
+      ticket: "5e88f42a3064bd3629c35400"
+    },
+    {
+      body: "guys, FOCUS, please",
+      author: "111111111111111111111111",
+      ticket: "5e88f42a3064bd3629c35400"
+    },
+  ]
+};
+
+
+const tagSeeds = {
+  model: 'Tag',
+  documents: [
+    {
+      name: "CRITICAL",
+      orgHandle: "acme.org"
+    },
+    {
+      name: "FEATURE_REQUEST",
+      orgHandle: "acme.org"
+    },
+    {
+      name: "BUG",
+      orgHandle: "acme.org"
+    },
+    {
+      name: "BACKLOG",
+      orgHandle: "acme.org"
+    },
+    {
+      name: "SPARKLY",
+      orgHandle: "acme.org"
+    },
+    {
+      name: "ILLEAGAL",
+      orgHandle: "acme.org"
+    },
+    {
+      name: "DON'T_TELL_MY_MOM",
+      orgHandle: "acme.org"
+    },
+  ]
+};
+
+
+// Data array containing seed data - documents organized by Model
+const dbSeedData = [
+  organizationSeeds,
+  userSeeds,
+  ticketSeeds,
+  commentSeeds,
+  tagSeeds
+];
+
+
+module.exports = dbSeedData;

@@ -60,7 +60,7 @@ return(
         <div className="ticket-errors">
             <p>{errors.date}</p>
         </div>
-        <div className="form-row col">
+        <div className="form-row sched">
             <div className="label">
                 Schedule
             </div>

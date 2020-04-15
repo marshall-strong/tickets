@@ -3,7 +3,6 @@
     flex-direction: column;
 }
 
-
 .query-container {
     display: flex;
     align-items: center;
@@ -157,6 +156,10 @@ button.add {
 
 .table-header-group .title {
     font-weight: 800;
+}
+
+.table-header-group .table-cell:hover {
+    background-color: rgb(192, 192, 192);
 }
 
 .triangle {

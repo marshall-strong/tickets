@@ -1,6 +1,8 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
+import './user_index.css'
+
 const formatDate = (time) => {
   let date = new Date(time);
   let dateString = date.toDateString();
@@ -29,12 +31,12 @@ const formatDate = (time) => {
 const UserIndexItem = ({ users }) => {
 
   const userInfo = users.map((user) => (
-    <div>
+    <div className="user-index-item">
       <Link to={`/users/${user._id}`}>
-        {user.firstName}
-        {user.lastName}
-      </Link>
-      {formatDate(user.createdAt)}
+        {user.firstName} {user.lastName} 
+      </Link> <span>
+        Started on {formatDate(user.createdAt)}
+      </span>
     </div>
   ));
 

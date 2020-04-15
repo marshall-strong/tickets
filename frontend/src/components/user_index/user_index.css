@@ -1,0 +1,11 @@
+.user-index-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.user-index-item{
+    padding: 10px;
+    margin: 5px;
+    box-shadow: 1px 1px 5px 1px black;
+}

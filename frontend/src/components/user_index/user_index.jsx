@@ -7,7 +7,8 @@ class UserIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: ''
+      users: '',
+      search: ''
     };
   };
 
@@ -21,7 +22,7 @@ class UserIndex extends React.Component {
     this.props.getUsersByOrgHandleAndNameFragment(orgHandle, nameFragment)
     .then((action => {
       if (action.payload) {
-        this.setState({ users: Object.values(action.payload) })
+        this.setState({ users: Object.values(action.payload), search: params.get('nameFragment') })
       }
     }))
   };
@@ -37,19 +38,19 @@ class UserIndex extends React.Component {
       this.props.getUsersByOrgHandleAndNameFragment(orgHandle, nameFragment)
       .then((action => {
         if (action.payload) {
-          this.setState({ users: Object.values(action.payload) })
+          this.setState({ users: Object.values(action.payload), search: params.get('nameFragment') })
         }
       }))
     }
   }
 
   render() {
-    const { users } = this.state;
+    const { users, search } = this.state;
     if (!users) return null;
 
     return (
-      <div>
-        <p>User Index</p>
+      <div className="user-index-container">
+        <div className="user-index-title">Showing results for '{search}'</div>
         <UserIndexItem
           users={users}
         />

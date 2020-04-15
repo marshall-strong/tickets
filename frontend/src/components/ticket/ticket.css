@@ -40,6 +40,10 @@
     align-items: baseline;
 }
 
+.form-row.sched .label {
+    margin-right: 18px;
+}
+
 input, textarea {
     border-radius: 5px;
     resize: none;
@@ -66,7 +70,7 @@ input:focus, textarea:focus {
 }
 
 .form .title {
-    font-size: 24px;
+    font-size: 20px;
     width: 720px;
     margin-right: 10px;
 }
@@ -100,23 +104,33 @@ input:focus, textarea:focus {
 }
 
 .form button.save {
-    margin-left: 379px;
+    margin-left: 376px;
+}
+
+.form button.save.not-edited:hover {
+    border-color: black;
+    cursor: unset;
+}
+
+.form button.save.edited:hover {
+    border-color: white;
 }
 
 .schedule {
     font-size: 10px;
     font-weight: 600;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
-    color: grey
+    color: grey;
+    width: 500px;
 }
 
 .schedule input {
     font-size: 13px;
     margin-left: 5px;
     width: 170px;
-    margin-right: 10px;
+    margin-right: 34px;
 }
 
 .show{

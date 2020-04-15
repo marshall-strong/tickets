@@ -1,3 +1,7 @@
+.form-header {
+  position: relative;
+}
+
 .ticket-number {
     font-weight: 600;
 }
@@ -17,6 +21,10 @@
     color: red;
     font-size: 14px;
     opacity: 0;
+    position: absolute;
+    left: 325px;
+    top: -10px;
+    text-align: center;
 }
 
 .fade-out {

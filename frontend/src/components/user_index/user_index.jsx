@@ -19,12 +19,12 @@ class UserIndex extends React.Component {
 
 
   render() {
-    if (!this.props.users) return null
-    if (!this.props.location.search) return null
+    // if (!this.props.users) return null
+    // if (!this.props.location.search) return null
 
     return (
       <div>
-        <p></p>
+        <p>User Index</p>
         <UserIndexItem
           users={this.props.users}
         />

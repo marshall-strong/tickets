@@ -17,6 +17,14 @@ class Profile extends React.Component {
     this.props.fetchUserComments(this.props.match.params.userId);
   } 
 
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.userId !== prevProps.match.params.userId) {
+      this.props.getOneUser(this.props.match.params.userId)
+      this.props.fetchCreatedTickets(this.props.match.params.userId);
+      this.props.fetchUserComments(this.props.match.params.userId);
+    }
+  }
+
   convertTime(time) {
     let date = new Date(time);
     let hours = date.getHours();

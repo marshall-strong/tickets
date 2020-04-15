@@ -1,47 +1,68 @@
 import React from "react";
 import { IoMdSearch } from 'react-icons/io'
+import UserSuggest from "../autosuggest/user_suggest";
 
 class UserSearch extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             userParams: new URLSearchParams()
         };
+        this.onSuggestionSelected = this.onSuggestionSelected.bind(this);
+        this.addUpdateListener();
 
     };
 
-    update(field) {
-        return e => {
-            this.state.userParams.set(field, e.target.value);
-            this.setState({ userParams: this.state.userParams })
-        };
+    update(field, value) {
+        this.state.userParams.set(field, value);
+        this.setState({ userParams: this.state.userParams })
     };
 
-    handleSearch(e) {
-        e.preventDefault();
-        let userQueryString = this.state.userParams.toString()
-        this.props.history.replace(`/users/search/?${userQueryString}`)
-    }
-
-    render() {
-        const { userParams } = this.state
-        return (
-            <div className="user-search-container">
-                <input
-                    type="text"
-                    placeholder="Search for User"
-                    onChange={this.update('namefragment')}
-                    value={userParams.get('namefragment')}
-                />
-                <button
-                    onClick={(e) => this.handleSearch(e)} 
-                    className="button1">
-                    <IoMdSearch />
-                </button>
-            </div>
+    addUpdateListener() {
+        setTimeout(
+            () => {
+                let search = document.getElementById('user-search')
+                const input = search.firstElementChild.firstElementChild;
+                input.addEventListener('change', () => {
+                    this.update('nameFragment', input.value)
+                })
+            }, 100
         )
     }
 
-}
+
+    handleSearch(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (this.selected) {
+            this.selected = false;
+            return null
+        };
+        let userQueryString = this.state.userParams.toString();
+        this.props.history.replace(`/users/search/?${userQueryString}`);
+    };
+
+    onSuggestionSelected(e, { suggestion }) {
+        this.props.history.push(`/users/${suggestion._id}`)
+        e.stopPropagation();
+        this.selected = true;
+    };
+
+    render() {
+        return (
+            <form id="user-search" className="user-search-container">
+                <UserSuggest 
+                    onSuggestionSelected={this.onSuggestionSelected}
+                />
+                <button
+                    onClick={(e) => this.handleSearch(e)}
+                    className="btn1">
+                    <IoMdSearch />
+                </button>
+            </form>
+        );
+    };
+
+};
 
 export default UserSearch

@@ -6,7 +6,7 @@ import './ticket_index.css';
 const TicketIndex = () => {
   return (
     <div className="ticket-index-container">
-      <TicketQuery />
+      <TicketQuery/>
       <TicketTableContainer />
     </div>
   );

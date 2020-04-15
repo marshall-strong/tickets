@@ -47,6 +47,9 @@ class Owner extends React.Component {
                     className={`owner-name ${this.state.clicked}`} 
                     onClick={(e) => this.handleClick(e)}
                 >
+                    <div className="avitar">
+                        {owner.firstName.slice(0, 1)}{owner.lastName.slice(0, 1)}
+                    </div> 
                     {owner.firstName} {owner.lastName} 
                     <div className={`${clicked} arrow`}>{'▴'}</div>
                 </div>
@@ -54,7 +57,6 @@ class Owner extends React.Component {
                 {this.state.clicked ?
                     <UserSuggest 
                         onSuggestionSelected={this.onSuggestionSelected.bind(this)}
-                        value={owner || currentUser}
                     /> : null
                 }
             </div>

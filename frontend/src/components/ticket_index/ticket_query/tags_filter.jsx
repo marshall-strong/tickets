@@ -1,4 +1,5 @@
 import React from 'react';
+import TagSuggest from '../../autosuggest/tag_suggest'
 
 class TagsFilter extends React.Component {
     constructor(props) {
@@ -8,16 +9,12 @@ class TagsFilter extends React.Component {
         };
         this.state = {
             inclusion: this.props.params.get('tagsInclusion'),
-            input: '',
             added: {},
         };
-        this.props.params.getAll('tags').forEach(val =>
-            this.state.added[val] = val
+        this.props.params.getAll('tags').forEach(id =>
+            this.state.added[id] = this.props.tags[id]
         );
-    };
-
-    updateInput(e) {
-        this.setState({ input: e.target.value });
+        this.onSuggestionSelected = this.onSuggestionSelected.bind(this);
     };
 
     updateInclusion(e) {
@@ -25,35 +22,39 @@ class TagsFilter extends React.Component {
         this.setState({ inclusion: e.target.value });
     };
 
-    add(e) {
+    add(suggestion) {
         // eslint-disable-next-line
-        this.state.added[this.state.input] = this.state.input;
+        this.state.added[suggestion._id] = suggestion;
         this.updateParams();
-        this.setState({ added: this.state.added, input: '' });
+        this.setState({ added: this.state.added });
     };
 
-    remove(tag) {
+    remove(id) {
         // eslint-disable-next-line
-        delete this.state.added[tag];
+        delete this.state.added[id];
         this.updateParams();
         this.setState({ added: this.state.added });
     };
 
     updateParams() {
         this.props.params.delete('tags');
-        Object.values(this.state.added).forEach(val =>
-            this.props.params.append('tags', val)
+        Object.keys(this.state.added).forEach(id =>
+            this.props.params.append('tags', id)
         );
     };
 
     renderAdded() {
         return Object.values(this.state.added).map(tag =>
-            <div key={tag} className="added-item">
-                {tag}
-                <span className="remove" onClick={() => this.remove(tag)}> x</span>
+            <div key={tag._id} className="added-item">
+                {tag.name}
+                <span className="remove" onClick={() => this.remove(tag._id)}> x</span>
             </div>
         );
     };
+
+    onSuggestionSelected(e, { suggestion }) {
+        this.add(suggestion);
+    }
 
     render() {
         return (
@@ -90,16 +91,9 @@ class TagsFilter extends React.Component {
                 <div className="added">
                     {this.renderAdded()}
                 </div>
-                <input
-                    type="text"
-                    placeholder="tag name"
-                    value={this.state.input}
-                    onChange={(e) => this.updateInput(e)}
+                <TagSuggest 
+                    onSuggestionSelected={this.onSuggestionSelected}
                 />
-                <button
-                    className="btn1 add"
-                    onClick={(e) => this.add(e)}
-                >Add</button>
             </div>
         );
     };

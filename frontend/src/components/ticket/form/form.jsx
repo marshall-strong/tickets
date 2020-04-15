@@ -10,13 +10,22 @@ import Tags from './tags';
 const Form = ({ ticket, type, errors, currentUser, state, update, updateFromSuggestion, handleSubmit, updateUser, createTag }) => {
 return(
     <form className="form">
-        <Number ticket={ticket} />
+        <div className="form-row">
+            <Number ticket={ticket} />
+            <button
+                onClick={handleSubmit}
+                className="btn1 save not-edited"
+                id="ticket-submit-button"
+            >
+                {type === "new" ? "Create" : "Save"}
+            </button>
+        </div>
         <div className="ticket-errors">
             <p>{errors.title}</p>
         </div>
-        <div className="title-star">
+        <div className="form-row">
             <input
-                className={`${type} title`}
+                className={`${type} title ${state.ticket.status === 'Closed' ? 'closed' : null}`}
                 type="text"
                 placeholder="title"
                 value={state.ticket.title}
@@ -28,78 +37,82 @@ return(
                 ticket={ticket}
             />
         </div>
-        <div className="selectors">
-            <label>Status
-                <StatusSelect
-                    type={type}
-                    status={state.ticket.status}
-                    update={update}
-                />
-            </label>
+        <div className="selectors form-row">
+            <div className="label">Status</div>
+            <StatusSelect
+                type={type}
+                status={state.ticket.status}
+                update={update}
+            />
+            <div className="label">Owner</div>
             <Owner
                 currentUser={currentUser} 
                 owner={state.ticket.owner}
                 updateFromSuggestion={updateFromSuggestion}
             />
-            <label>Priority
-                <PrioritySelect
-                    type={type}
-                    priority={state.ticket.priority}
-                    update={update}
-                />
-            </label>
-            <button
-                onClick={handleSubmit}
-                className="btn1 not-edited"
-                id="ticket-submit-button"
-            >
-                {type === "new" ? "Create" : "Save"}
-            </button>
+            <div className="label">Priority</div>
+            <PrioritySelect
+                type={type}
+                priority={state.ticket.priority}
+                update={update}
+            />
         </div>
         <div className="ticket-errors">
             <p>{errors.date}</p>
         </div>
-        <div className="schedule">
-            Start<br />Date
-            <input
-                className={type}
-                type="date"
-                value={state.ticket.startDate}
-                onChange={update("startDate")}
-            />
-            End<br />Date
-            <input
-                className={type}
-                type="date"
-                value={state.ticket.endDate}
-                onChange={update("endDate")}
+        <div className="form-row col">
+            <div className="label">
+                Schedule
+            </div>
+            <div className="schedule">
+                Start<br />Date
+                <input
+                    className={type}
+                    type="date"
+                    value={state.ticket.startDate}
+                    onChange={update("startDate")}
+                />
+                End<br />Date
+                <input
+                    className={type}
+                    type="date"
+                    value={state.ticket.endDate}
+                    onChange={update("endDate")}
+                />
+            </div>
+        </div>
+        <div className="form-row col">
+            <div className="label">Body</div>
+            <textarea
+                className={`${type} body margin`}
+                cols="30"
+                rows="10"
+                value={state.ticket.body}
+                placeholder="body"
+                onChange={update("body")}
+            ></textarea>
+        </div>
+        <div className="form-row col">
+            <div className="label">
+                Subscribed
+            </div>
+            <Subscribed
+                updateFromSuggestion={updateFromSuggestion}
+                subscribed={state.ticket.subscribed}
             />
         </div>
-        <textarea
-            className={`${type} body margin`}
-            cols="30"
-            rows="10"
-            value={state.ticket.body}
-            placeholder="body"
-            onChange={update("body")}
-        ></textarea>
-        <label className="subs-title">
-            Subscribed
-        </label>
-        <Subscribed
-            updateFromSuggestion={updateFromSuggestion}
-            subscribed={state.ticket.subscribed}
-        />
-        <label className="subs-title">
-            Tags
-        </label>
-        <Tags 
-            updateFromSuggestion={updateFromSuggestion}
-            tags={state.ticket.tags}
-            createTag={createTag}
-            currentUser={currentUser}
-        />
-        <input
+        <div className="form-row col">
+            <div className="label">
+                Tags
+            </div>
+            <Tags 
+                updateFromSuggestion={updateFromSuggestion}
+                tags={state.ticket.tags}
+                createTag={createTag}
+                currentUser={currentUser}
+            />
+        </div>
+        {/* <input
             className={`${type} depends-on margin`}
             type="text"
             placeholder="depends on"
@@ -111,7 +124,7 @@ return(
             value={state.ticket.blocks}
             placeholder="blocks"
             onChange={update("blocks")}
-        />
+        /> */}
     </form>
 )};
 

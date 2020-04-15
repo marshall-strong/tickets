@@ -3,6 +3,7 @@
     flex-direction: column;
 }
 
+
 .query-container {
     display: flex;
     align-items: center;
@@ -12,7 +13,7 @@
 
 .query-container .filters {
     display: inline-block;
-    overflow: auto;
+    overflow-y: visible;
     background-color: white;
     border: 1px solid grey;
     border-radius: 5px;
@@ -23,6 +24,33 @@
     font-size: 12px;
     height: 90%;
     width: 92%;
+}
+
+.filter .added {
+    max-width: 580px;
+    overflow: auto;
+}
+
+.filter .react-autosuggest__suggestions-container {
+    font-size: 12px;
+    width: 100px;
+    top: 27px;
+}
+
+.filter .react-autosuggest__suggestion {
+    padding: 5px;
+}
+
+#unread div {
+    font-weight: 900;
+}
+
+#unread {
+    background-color: rgb(209, 248, 225);
+}
+
+#unread:hover {
+    background-color: rgb(173, 246, 204);
 }
 
 .query-container button.search {
@@ -169,6 +197,10 @@ button.add {
 .table-row {
     display: flex;
     border-top: 1px solid black;
+}
+
+.closed {
+    text-decoration: line-through;
 }
 
 .table-row:hover {

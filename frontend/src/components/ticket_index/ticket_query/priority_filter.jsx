@@ -40,8 +40,8 @@ class PriorityFilter extends React.Component {
                             className="checkbox"
                             type="checkbox"
                             onChange={(e) => this.update(e)}
-                            value="low"
-                            checked={this.state.low ? true : false}
+                            value="Low"
+                            checked={this.state['Low'] ? true : false}
                         />
                     </div>
                     <div className="option">
@@ -52,8 +52,8 @@ class PriorityFilter extends React.Component {
                             className="checkbox"
                             type="checkbox"
                             onChange={(e) => this.update(e)}
-                            value="medium"
-                            checked={this.state.medium ? true : false}
+                            value="Medium"
+                            checked={this.state['Medium'] ? true : false}
                         />
                     </div>
                     <div className="option">
@@ -64,8 +64,8 @@ class PriorityFilter extends React.Component {
                             className="checkbox"
                             type="checkbox"
                             onChange={(e) => this.update(e)}
-                            value="high"
-                            checked={this.state.high ? true : false}
+                            value="High"
+                            checked={this.state['High'] ? true : false}
                         />
                     </div>
                     <div className="option">
@@ -76,8 +76,8 @@ class PriorityFilter extends React.Component {
                             className="checkbox"
                             type="checkbox"
                             onChange={(e) => this.update(e)}
-                            value="catastrophic"
-                            checked={this.state.catastrophic ? true : false}
+                            value="CATastrophic"
+                            checked={this.state['CATastrophic'] ? true : false}
                         />
                     </div>
                 </div>

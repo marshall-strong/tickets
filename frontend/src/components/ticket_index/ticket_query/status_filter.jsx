@@ -40,8 +40,8 @@ class StatusFilter extends React.Component {
                             className="checkbox"
                             type="checkbox"
                             onChange={(e) => this.update(e)}
-                            value="no progress"
-                            checked={this.state['no progress'] ? true : false}
+                            value="No Progress"
+                            checked={this.state['No Progress'] ? true : false}
                         />
                     </div>
                     <div className="option">
@@ -52,8 +52,8 @@ class StatusFilter extends React.Component {
                             className="checkbox"
                             type="checkbox"
                             onChange={(e) => this.update(e)}
-                            value="planned"
-                            checked={this.state.planned ? true : false}
+                            value="Planned"
+                            checked={this.state['Planned'] ? true : false}
                         />
                     </div>
                     <div className="option">
@@ -64,8 +64,8 @@ class StatusFilter extends React.Component {
                             className="checkbox"
                             type="checkbox"
                             onChange={(e) => this.update(e)}
-                            value="in progress"
-                            checked={this.state['in progress'] ? true : false}
+                            value="In Progress"
+                            checked={this.state['In Progress'] ? true : false}
                         />
                     </div>
                     <div className="option">
@@ -76,8 +76,8 @@ class StatusFilter extends React.Component {
                             className="checkbox"
                             type="checkbox"
                             onChange={(e) => this.update(e)}
-                            value="blocked"
-                            checked={this.state.blocked ? true : false}
+                            value="Blocked"
+                            checked={this.state['Blocked'] ? true : false}
                         />
                     </div>
                     <div className="option">
@@ -88,8 +88,8 @@ class StatusFilter extends React.Component {
                             className="checkbox"
                             type="checkbox"
                             onChange={(e) => this.update(e)}
-                            value="closed"
-                            checked={this.state.closed ? true : false}
+                            value="Closed"
+                            checked={this.state['Closed'] ? true : false}
                         />
                     </div>
                 </div>

@@ -14,6 +14,7 @@ const usersReducer = (state = {}, action) => {
     case RECEIVE_USER_LOGOUT:
       return {};
     case RECEIVE_ONE_USER:
+      debugger
       nextState[action.payload._id] = action.payload;
       return nextState;
     default:

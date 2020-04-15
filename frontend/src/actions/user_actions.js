@@ -32,6 +32,7 @@ const receiveUserErrors = errors => ({
 export const getOneUser = userId => dispatch => (
   UserAPIUtil.fetchOneUser(userId)
   .then(user => {
+    debugger
     const { createdAt } = user.data
     localStorage.setItem('createdAt', createdAt)
     dispatch(receiveOneUser(user))

@@ -36,7 +36,7 @@ class lastUpdateSeenBy extends React.Component {
                 :
                     <span>
                         {ticket.lastUpdateSeenBy.map((user, i) => 
-                            <span><Link to={`/users/${user._id}`}>{user.firstName} {user.lastName}</Link>{i === numViewers - 1 ? null : ','} </span>
+                            <span key={user._id}><Link to={`/users/${user._id}`}>{user.firstName} {user.lastName}</Link>{i === numViewers - 1 ? null : ','} </span>
                         )}
                         <span className='toggle-expand' onClick={() => this.handleClick()}>
                             Show less

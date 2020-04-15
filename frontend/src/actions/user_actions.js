@@ -37,7 +37,7 @@ export const getOneUser = userId => dispatch => (
     dispatch(receiveOneUser(user))
   })
   .catch(errors => dispatch(receiveUserErrors(errors)))
-  );
+);
 
 export const getOrgUsers = orgHandle => dispatch => (
   UserAPIUtil.fetchOrgUsers(orgHandle)
@@ -48,5 +48,11 @@ export const getOrgUsers = orgHandle => dispatch => (
 export const updateUser = user => dispatch => (
   UserAPIUtil.updateUser(user)
   .then(user => dispatch(receiveOneUser(user)))
+  .catch(errors => dispatch(receiveUserErrors(errors)))
+);
+
+export const getUsersByOrgHandleAndNameFragment = (orgHandle, nameFragment) => dispatch => (
+  UserAPIUtil.getUsersByOrgHandleAndNameFragment(orgHandle, nameFragment)
+  .then(users => dispatch(receiveOrgUsers(users)))
   .catch(errors => dispatch(receiveUserErrors(errors)))
 );

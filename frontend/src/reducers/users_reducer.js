@@ -7,7 +7,7 @@ const usersReducer = (state = {}, action) => {
   let nextState = Object.assign({}, state);
   switch (action.type) {
     case RECEIVE_ORG_USERS:
-      return action.payload
+      return {...nextState, ...action.payload}
     case RECEIVE_CURRENT_USER:
       nextState[action.payload._id] = action.payload;
       return nextState;

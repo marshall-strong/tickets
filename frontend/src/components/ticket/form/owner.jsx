@@ -36,7 +36,6 @@ class Owner extends React.Component {
     }
 
     render() {
-        const { currentUser } = this.props;
         const { owner, clicked } = this.state;
         return(
             <div 

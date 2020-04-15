@@ -5,17 +5,21 @@ import { getOneUser } from "../../actions/user_actions"
 import { connect } from "react-redux"
 import Profile from "./profile"
 
-const mSTP = (state, ownProps) => ({
-    user: state.entities.users[ownProps.match.params.userId],
-    comments: Object.values(state.entities.comments),
-    tickets: Object.values(state.entities.tickets),
-    loggedIn: state.session.isAuthenticated
-})
+const mSTP = (state, ownProps) => {
+    return {
+        user: state.entities.users[ownProps.match.params.userId],
+        comments: Object.values(state.entities.comments),
+        tickets: Object.values(state.entities.tickets),
+        loggedIn: state.session.isAuthenticated
+    }
+}
 
-const mDTP = (dispatch) => ({
-    getOneUser: userId => dispatch(getOneUser(userId)),
-    fetchCreatedTickets: (userId) => dispatch(fetchCreatedTickets(userId)),
-    fetchUserComments: (userId) => dispatch(fetchUserComments(userId))
-})
+const mDTP = (dispatch) => {
+    return {
+        getOneUser: userId => dispatch(getOneUser(userId)),
+        fetchCreatedTickets: (userId) => dispatch(fetchCreatedTickets(userId)),
+        fetchUserComments: (userId) => dispatch(fetchUserComments(userId))
+    }
+}
 
 export default withRouter(connect(mSTP, mDTP)(Profile))

@@ -140,6 +140,7 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
 router.get('/:userId', (req, res) => {
   User.findById(req.params.userId)
   .then(user => res.json({
+    _id: user._id,
     firstName: user.firstName,
     lastName: user.lastName,
     email: user.email,

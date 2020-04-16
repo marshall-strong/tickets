@@ -79,9 +79,9 @@ class SignupForm extends React.Component {
           <img
             className="cat-hat"
             alt="cat"
-            src="https://i.pinimg.com/originals/cd/db/80/cddb8020bf0d4605c1e11fc6d97eaace.png"
+            src="ticket.png"
           ></img>
-
+          <div className="img-message">Icon made from <a href="http://www.onlinewebfonts.com/icon">Icon Fonts</a> is licensed by CC BY 3.0</div>
           <input 
             className="form-box-signup" 
             type="text"

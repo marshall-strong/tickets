@@ -9,6 +9,7 @@
     align-items: center;
 }
 
+
 .form-box-signup{
     border-radius: 5px;
     margin-top: 5px; 
@@ -25,6 +26,10 @@
     padding-left: 10px;
     padding-right: 10px;
     width: 275px;
+}
+
+.img-message {
+    font-size: 5px;
 }
 
 .cat-hat{

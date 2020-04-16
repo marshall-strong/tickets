@@ -40,7 +40,7 @@
     text-decoration: underline;
 }
 
-.avitar {
+ .avitar {
     border: 2px solid black;
     border-radius: 30px;
     height: 25px;
@@ -52,15 +52,25 @@
     font-weight: 600;
 }
 
+.comment-form-container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(241, 241, 241);
+    padding: 10px;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+
+}
+
+.bold {
+    font-weight: 600;
+}
+
 .comment-form {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(241, 241, 241);
-    padding: 10px;
-    border-top: 1px solid grey;
-    border-bottom: 1px solid grey;
 }
 
 .comment-form textarea {

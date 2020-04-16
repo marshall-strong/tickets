@@ -1,11 +1,42 @@
 .user-index-container {
     display: flex;
     flex-direction: column;
-    margin: 10px;
+    margin-right: 200px;
+    margin-left: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.user-index-title {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+
 }
 
 .user-index-item{
     padding: 10px;
     margin: 5px;
-    box-shadow: 1px 1px 5px 1px black;
+    background-color: white;
+    box-shadow: 1px 1px 2px 1px black;
+}
+
+#index-avitar {
+    color: blue;
+    border-color: blue;
+    padding: 5px;
+}
+
+.user-index-item a {
+    color: blue;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.user-index-item a:hover {
+    text-decoration: underline;
+}
+
+.started-on {
+    font-size: 12px;
 }

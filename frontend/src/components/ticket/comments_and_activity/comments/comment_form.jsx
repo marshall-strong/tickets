@@ -18,7 +18,8 @@ class CommentForm extends React.Component {
     // this.props.ticket.lasyUpdateSeenBy = [];
     // this.props.updateTicket(this.props.ticket);
     this.props.action(this.state)
-    .then(() => {
+    .then((action) => {
+      if (action.errors) return null;
       this.props.ticket.lastUpdateSeenBy = [];
       this.props.updateTicket(this.props.ticket);
     })
@@ -37,20 +38,22 @@ class CommentForm extends React.Component {
 
   render() {
     return (
-      <form className="comment-form" onSubmit={this.handleSubmit}>
+      <div className="comment-form-container">
         <div>
           <span className="comment-errors">{this.props.errors.body}</span>
         </div>
-        <div className="avitar">
-          {this.props.currentUser.firstName.slice(0, 1)}
-          {this.props.currentUser.lastName.slice(0, 1)}
-        </div>
-        <textarea
-          value={this.state.body}
-          onChange={this.update("body")}
-        ></textarea>
-        <button className="btn1">Create Comment</button>
-      </form>
+        <form className="comment-form" onSubmit={this.handleSubmit}>
+          <div className="avitar">
+            {this.props.currentUser.firstName.slice(0, 1)}
+            {this.props.currentUser.lastName.slice(0, 1)}
+          </div>
+          <textarea
+            value={this.state.body}
+            onChange={this.update("body")}
+            ></textarea>
+          <button className="btn1">Create Comment</button>
+        </form>
+      </div>
     );
   }; 
 };

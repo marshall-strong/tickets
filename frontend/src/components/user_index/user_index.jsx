@@ -50,7 +50,7 @@ class UserIndex extends React.Component {
 
     return (
       <div className="user-index-container">
-        <div className="user-index-title">Showing results for '{search}'</div>
+        <div className="user-index-title">Showing results for <b className="bold">'{search}'</b></div>
         <UserIndexItem
           users={users}
         />

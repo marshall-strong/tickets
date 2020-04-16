@@ -32,9 +32,12 @@ const UserIndexItem = ({ users }) => {
 
   const userInfo = users.map((user) => (
     <div className="user-index-item">
+        <span id="index-avitar" className="avitar">
+          {user.firstName.slice(0, 1)}{user.lastName.slice(0, 1)}
+        </span> 
       <Link to={`/users/${user._id}`}>
         {user.firstName} {user.lastName} 
-      </Link> <span>
+      </Link> <span className="started-on">
         Started on {formatDate(user.createdAt)}
       </span>
     </div>

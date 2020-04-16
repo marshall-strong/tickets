@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const seeder = require('./index');
-// const seeder = require('mongoose-seed');
+const dbSeedData = require('./seed_data');
 
 const KEYS = require('../../config/keys');
 
@@ -11,11 +11,6 @@ const ticketSchema = require('../schemas/ticket');
 const commentSchema = require('../schemas/comment');
 const tagSchema = require('../schemas/tag');
 
-const organizationSeeds = require('./organizations');
-const userSeeds = require('./users');
-const ticketSeeds = require('./tickets');
-const commentSeeds = require('./comments');
-const tagSeeds = require('./tags');
 
 const Organization = mongoose.model('Organization', organizationSchema);
 const User = mongoose.model('User', userSchema);
@@ -33,14 +28,6 @@ const dbCollections = [
   'Tag',
 ];
 
-// Data array containing seed data - documents organized by Model
-const dbSeedData = [
-  organizationSeeds,
-  userSeeds,
-  ticketSeeds,
-  commentSeeds,
-  tagSeeds
-];
 
 
 // Callback function to populate DB once collections have been cleared

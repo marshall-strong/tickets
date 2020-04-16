@@ -44,9 +44,9 @@ class NavBar extends React.Component {
   handleClick(e) {
     e.preventDefault();
 
-    const { loginDemoUser, clearErrors } = this.props;
+    const { loginRandomUser, clearErrors } = this.props;
     clearErrors();
-    loginDemoUser()
+    loginRandomUser()
     .then(() => {
       this.props.history.push(
         `/tickets/search?${getQueryString('owner', this.props.currentUser._id)}`
@@ -95,8 +95,8 @@ class NavBar extends React.Component {
             <div className="right-nav">
               {this.props.path === "/signup" ? <Link className="link-style" to={"/login"}>Login</Link> : <Link className="link-style" to={"/signup"}>Signup</Link> }
               {this.props.path === "/" ? <Link className="link-style" to={"/login"}>Login</Link> : null}
-              <button className="btn1 demo" onClick={this.handleClick}>
-                login as a demo user
+              <button className="btn1 random" onClick={this.handleClick}>
+                login as a random user
               </button>
             </div>
           </div>

@@ -695,194 +695,6 @@ const tagSeeds = {
   ]
 };
 
-
-
-const organizationSeedsCATS = {
-  model: 'Organization',
-  documents: [
-    {
-      handle: "cats4humanity.org",
-      name: "Cats For Humanity",
-      motto: "That's all folks!"
-    }
-  ]
-};
-
-const userSeedsCATS = {
-  model: 'User',
-  documents: [
-    {
-      _id: "000000000000000000000000",
-      firstName: "Demo",
-      lastName: "User",
-      email: "user@cats4humanity.org",
-      orgHandle: "cats4humanity.org",
-      password: genPasswordDigest("password")
-    },
-    {
-      _id: "111111111111111111111111",
-      firstName: "Hayden",
-      lastName: "Linder",
-      email: "hayden@cats4humanity.org",
-      orgHandle: "cats4humanity.org",
-      password: genPasswordDigest("password")
-    },
-    {
-      _id: "222222222222222222222222",
-      firstName: "Brad",
-      lastName: "Nelson",
-      email: "brad@cats4humanity.org",
-      orgHandle: "cats4humanity.org",
-      password: genPasswordDigest("password")
-    },
-    {
-      _id: "333333333333333333333333",
-      firstName: "Joe",
-      lastName: "Johnston",
-      email: "joe@cats4humanity.org",
-      orgHandle: "cats4humanity.org",
-      password: genPasswordDigest("password")
-    },
-    {
-      _id: "444444444444444444444444",
-      firstName: "Marshall",
-      lastName: "Strong",
-      email: "marshall@cats4humanity.org",
-      orgHandle: "cats4humanity.org",
-      password: genPasswordDigest("password")
-    },
-  ]
-};
-
-const ticketSeedsCATS = {
-  model: 'Ticket',
-  documents: [
-    {
-      _id: "5e88f42a3064bd3629c353ff",
-      title: "Place a cat in every household",
-      body: "Cats will make life better for all of humanity",
-      status: "Planned",
-      priority: "CATastrophic",
-      creator: "000000000000000000000000",
-      owner: "000000000000000000000000",
-      subscribed: [
-        "111111111111111111111111",
-        "222222222222222222222222",
-        "333333333333333333333333",
-        "444444444444444444444444",
-      ],
-      lastUpdateSeenBy: [
-        "000000000000000000000000"
-      ],
-    },
-    {
-      _id: "5e88f42a3064bd3629c35400",
-      title: "Finish MERN project",
-      body: "We need to finish this app so that we can move on",
-      status: "Planned",
-      priority: "CATastrophic",
-      creator: "111111111111111111111111",
-      owner: "111111111111111111111111",
-      subscribed: [
-        "000000000000000000000000",
-        "111111111111111111111111",
-        "222222222222222222222222",
-        "333333333333333333333333",
-        "444444444444444444444444",
-      ],
-      lastUpdateSeenBy: [
-        "111111111111111111111111"
-      ],
-    },
-  ]
-};
-
-const commentSeedsCATS = {
-  model: 'Comment',
-  documents: [
-    {
-      body: "I think I'm actually more of a dog person...",
-      author: "444444444444444444444444",
-      ticket: "5e88f42a3064bd3629c353ff"
-    },
-    {
-      body: "FIONA 4 EVER!!!",
-      author: "333333333333333333333333",
-      ticket: "5e88f42a3064bd3629c353ff"
-    },
-    {
-      body: "I'll get to work right meow",
-      author: "222222222222222222222222",
-      ticket: "5e88f42a3064bd3629c353ff"
-    },
-    {
-      body: "cats are purrrrrfect companions",
-      author: "000000000000000000000000",
-      ticket: "5e88f42a3064bd3629c353ff"
-    },
-
-    {
-      body: "Does this mean I can't play video games today?",
-      author: "333333333333333333333333",
-      ticket: "5e88f42a3064bd3629c35400"
-    },
-    {
-      body: "ugh, fine. I GUESS I'll get out of bed...",
-      author: "222222222222222222222222",
-      ticket: "5e88f42a3064bd3629c35400"
-    },
-    {
-      body: "Marshall, I need 100% of your attention on this",
-      author: "111111111111111111111111",
-      ticket: "5e88f42a3064bd3629c35400"
-    },
-    {
-      body: "meow",
-      author: "444444444444444444444444",
-      ticket: "5e88f42a3064bd3629c35400"
-    },
-    {
-      body: "guys, FOCUS, please",
-      author: "111111111111111111111111",
-      ticket: "5e88f42a3064bd3629c35400"
-    },
-  ]
-};
-
-const tagSeedsCATS = {
-  model: 'Tag',
-  documents: [
-    {
-      name: "CRITICAL",
-      orgHandle: "cats4humanity.org"
-    },
-    {
-      name: "FEATURE_REQUEST",
-      orgHandle: "cats4humanity.org"
-    },
-    {
-      name: "BUG",
-      orgHandle: "cats4humanity.org"
-    },
-    {
-      name: "BACKLOG",
-      orgHandle: "cats4humanity.org"
-    },
-    {
-      name: "SPARKLY",
-      orgHandle: "cats4humanity.org"
-    },
-    {
-      name: "ILLEAGAL",
-      orgHandle: "cats4humanity.org"
-    },
-    {
-      name: "DON'T_TELL_MY_MOM",
-      orgHandle: "cats4humanity.org"
-    },
-  ]
-};
-
 // Data array containing seed data - documents organized by Model
 const dbSeedData = [
   organizationSeeds,
@@ -890,12 +702,208 @@ const dbSeedData = [
   ticketSeeds,
   commentSeeds,
   tagSeeds,
-  organizationSeedsCATS,
-  userSeedsCATS,
-  ticketSeedsCATS,
-  commentSeedsCATS,
-  tagSeedsCATS
 ];
+
+
+// const organizationSeedsCATS = {
+//   model: 'Organization',
+//   documents: [
+//     {
+//       handle: "cats4humanity.org",
+//       name: "Cats For Humanity",
+//       motto: "That's all folks!"
+//     }
+//   ]
+// };
+
+// const userSeedsCATS = {
+//   model: 'User',
+//   documents: [
+//     {
+//       _id: "000000000000000000000000",
+//       firstName: "Demo",
+//       lastName: "User",
+//       email: "user@cats4humanity.org",
+//       orgHandle: "cats4humanity.org",
+//       password: genPasswordDigest("password")
+//     },
+//     {
+//       _id: "111111111111111111111111",
+//       firstName: "Hayden",
+//       lastName: "Linder",
+//       email: "hayden@cats4humanity.org",
+//       orgHandle: "cats4humanity.org",
+//       password: genPasswordDigest("password")
+//     },
+//     {
+//       _id: "222222222222222222222222",
+//       firstName: "Brad",
+//       lastName: "Nelson",
+//       email: "brad@cats4humanity.org",
+//       orgHandle: "cats4humanity.org",
+//       password: genPasswordDigest("password")
+//     },
+//     {
+//       _id: "333333333333333333333333",
+//       firstName: "Joe",
+//       lastName: "Johnston",
+//       email: "joe@cats4humanity.org",
+//       orgHandle: "cats4humanity.org",
+//       password: genPasswordDigest("password")
+//     },
+//     {
+//       _id: "444444444444444444444444",
+//       firstName: "Marshall",
+//       lastName: "Strong",
+//       email: "marshall@cats4humanity.org",
+//       orgHandle: "cats4humanity.org",
+//       password: genPasswordDigest("password")
+//     },
+//   ]
+// };
+
+// const ticketSeedsCATS = {
+//   model: 'Ticket',
+//   documents: [
+//     {
+//       _id: "5e88f42a3064bd3629c353ff",
+//       title: "Place a cat in every household",
+//       body: "Cats will make life better for all of humanity",
+//       status: "Planned",
+//       priority: "CATastrophic",
+//       creator: "000000000000000000000000",
+//       owner: "000000000000000000000000",
+//       subscribed: [
+//         "111111111111111111111111",
+//         "222222222222222222222222",
+//         "333333333333333333333333",
+//         "444444444444444444444444",
+//       ],
+//       lastUpdateSeenBy: [
+//         "000000000000000000000000"
+//       ],
+//     },
+//     {
+//       _id: "5e88f42a3064bd3629c35400",
+//       title: "Finish MERN project",
+//       body: "We need to finish this app so that we can move on",
+//       status: "Planned",
+//       priority: "CATastrophic",
+//       creator: "111111111111111111111111",
+//       owner: "111111111111111111111111",
+//       subscribed: [
+//         "000000000000000000000000",
+//         "111111111111111111111111",
+//         "222222222222222222222222",
+//         "333333333333333333333333",
+//         "444444444444444444444444",
+//       ],
+//       lastUpdateSeenBy: [
+//         "111111111111111111111111"
+//       ],
+//     },
+//   ]
+// };
+
+// const commentSeedsCATS = {
+//   model: 'Comment',
+//   documents: [
+//     {
+//       body: "I think I'm actually more of a dog person...",
+//       author: "444444444444444444444444",
+//       ticket: "5e88f42a3064bd3629c353ff"
+//     },
+//     {
+//       body: "FIONA 4 EVER!!!",
+//       author: "333333333333333333333333",
+//       ticket: "5e88f42a3064bd3629c353ff"
+//     },
+//     {
+//       body: "I'll get to work right meow",
+//       author: "222222222222222222222222",
+//       ticket: "5e88f42a3064bd3629c353ff"
+//     },
+//     {
+//       body: "cats are purrrrrfect companions",
+//       author: "000000000000000000000000",
+//       ticket: "5e88f42a3064bd3629c353ff"
+//     },
+
+//     {
+//       body: "Does this mean I can't play video games today?",
+//       author: "333333333333333333333333",
+//       ticket: "5e88f42a3064bd3629c35400"
+//     },
+//     {
+//       body: "ugh, fine. I GUESS I'll get out of bed...",
+//       author: "222222222222222222222222",
+//       ticket: "5e88f42a3064bd3629c35400"
+//     },
+//     {
+//       body: "Marshall, I need 100% of your attention on this",
+//       author: "111111111111111111111111",
+//       ticket: "5e88f42a3064bd3629c35400"
+//     },
+//     {
+//       body: "meow",
+//       author: "444444444444444444444444",
+//       ticket: "5e88f42a3064bd3629c35400"
+//     },
+//     {
+//       body: "guys, FOCUS, please",
+//       author: "111111111111111111111111",
+//       ticket: "5e88f42a3064bd3629c35400"
+//     },
+//   ]
+// };
+
+// const tagSeedsCATS = {
+//   model: 'Tag',
+//   documents: [
+//     {
+//       name: "CRITICAL",
+//       orgHandle: "cats4humanity.org"
+//     },
+//     {
+//       name: "FEATURE_REQUEST",
+//       orgHandle: "cats4humanity.org"
+//     },
+//     {
+//       name: "BUG",
+//       orgHandle: "cats4humanity.org"
+//     },
+//     {
+//       name: "BACKLOG",
+//       orgHandle: "cats4humanity.org"
+//     },
+//     {
+//       name: "SPARKLY",
+//       orgHandle: "cats4humanity.org"
+//     },
+//     {
+//       name: "ILLEAGAL",
+//       orgHandle: "cats4humanity.org"
+//     },
+//     {
+//       name: "DON'T_TELL_MY_MOM",
+//       orgHandle: "cats4humanity.org"
+//     },
+//   ]
+// };
+
+// // Data array containing seed data - documents organized by Model
+// const dbSeedData = [
+//   organizationSeeds,
+//   userSeeds,
+//   ticketSeeds,
+//   commentSeeds,
+//   tagSeeds,
+//   organizationSeedsCATS,
+//   userSeedsCATS,
+//   ticketSeedsCATS,
+//   commentSeedsCATS,
+//   tagSeedsCATS
+// ];
 
 
 module.exports = dbSeedData;

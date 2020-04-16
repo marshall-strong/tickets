@@ -63,13 +63,33 @@ export const login = user => dispatch => (
   })
 );
 
-export const loginDemoUser = () => dispatch => {
-  const demoUser = {
-    email: "michael@acme.org",
+export const loginRandomUser = () => dispatch => {
+  const emails = [
+    "michael@acme.org",
+    "bugs@acme.org",
+    "daffy@acme.org",
+    "porky@acme.org",
+    "speedy@acme.org",
+    "sam@acme.org",
+    "lola@acme.org",
+    "taz@acme.org",
+    "marvin@acme.org",
+    "sylvester@acme.org",
+    "tweety@acme.org",
+    "foghorn@acme.org",
+    "pepe@acme.org",
+    "granny@acme.org",
+    "elmer@acme.org",
+    "wilee@acme.org",
+    "rr@acme.org",
+  ]
+
+  const randomUser = {
+    email: emails[(Math.floor(Math.random() * emails.length))],
     password: "password"
   };
   
-  return dispatch(login(demoUser));
+  return dispatch(login(randomUser));
 };
 
 export const logout = () => dispatch => {

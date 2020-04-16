@@ -166,7 +166,7 @@ const ticketSeeds = {
     {
       _id: "5e97898fd6de452b68c745a1",
       title: "Challenge Aliens to a Competition",
-      body: "lorem ipsum",
+      body: "These alien pipsqueeks want to take us to their theme park in outer space and make us slaves! Luckily, the rules give us a chance to defend ourselves...",
       status: "In Progress",
       priority: "High",
       creator: "5e9781e148949b1f6d884ab1",
@@ -176,9 +176,18 @@ const ticketSeeds = {
       ],
       subscribed: [
         "5e9781e148949b1f6d884ab1",
+        "5e9781e148949b1f6d884ab2",
+        "5e9781e148949b1f6d884ab3",
+        "5e9781e148949b1f6d884ab9",
+        "5e9781e148949b1f6d884abe",
+
       ],
       lastUpdateSeenBy: [
-        
+        "5e9781e148949b1f6d884ab1",
+        "5e9781e148949b1f6d884ab2",
+        "5e9781e148949b1f6d884ab3",
+        "5e9781e148949b1f6d884ab9",
+        "5e9781e148949b1f6d884abe",
       ],
     },
     {
@@ -449,46 +458,193 @@ const ticketSeeds = {
 const commentSeeds = {
   model: 'Comment',
   documents: [
+
+    {
+      body: "All right troops. It is for us to choose a battlefield that affords us.",
+      author: "5e9781e148949b1f6d884ab1",
+      ticket: "5e97898fd6de452b68c745a1",
+      createdAt: (Date.now() - 190000000),
+      updatedAt: (Date.now() - 190000000)
+    },
+    {
+      body: "Oh, I-I g-got it.",
+      author: "5e9781e148949b1f6d884ab3",
+      ticket: "5e97898fd6de452b68c745a1",
+      createdAt: (Date.now() - 189000000),
+      updatedAt: (Date.now() - 189000000)
+    },
+    {
+      body: "Yes, Private Porkster?",
+      author: "5e9781e148949b1f6d884ab1",
+      ticket: "5e97898fd6de452b68c745a1",
+      createdAt: (Date.now() - 188000000),
+      updatedAt: (Date.now() - 188000000)
+    },
+    {
+      body: "How about we challenge them to a spelling bee?",
+      author: "5e9781e148949b1f6d884ab3",
+      ticket: "5e97898fd6de452b68c745a1",
+      createdAt: (Date.now() - 187000000),
+      updatedAt: (Date.now() - 187000000)
+    },
+    {
+      body: "Say, we could have a bowling tournament...",
+      author: "5e9781e148949b1f6d884abe",
+      ticket: "5e97898fd6de452b68c745a1",
+      createdAt: (Date.now() - 186000000),
+      updatedAt: (Date.now() - 186000000)
+    },
+    {
+      body: "Suffering succotash! What's wrong with all of ya? I say we get a ladder, wait til the old lady's out of the room, then grab the little bird.",
+      author: "5e9781e148949b1f6d884ab9",
+      ticket: "5e97898fd6de452b68c745a1",
+      createdAt: (Date.now() - 185000000),
+      updatedAt: (Date.now() - 185000000)
+    },
+    {
+      body: "Whoa, whoa. Take a deep breath Sly.",
+      author: "5e9781e148949b1f6d884ab1",
+      ticket: "5e97898fd6de452b68c745a1",
+      createdAt: (Date.now() - 184000000),
+      updatedAt: (Date.now() - 184000000)
+    },
+    {
+      body: "Okay, Let's anaylze the competition here. Now, what are looking at here? We got a small race of invading aliens.",
+      author: "5e9781e148949b1f6d884ab1",
+      ticket: "5e97898fd6de452b68c745a1",
+      createdAt: (Date.now() - 183000000),
+      updatedAt: (Date.now() - 183000000)
+    },
+    {
+      body: "Small arms, short legs.",
+      author: "5e9781e148949b1f6d884ab2",
+      ticket: "5e97898fd6de452b68c745a1",
+      createdAt: (Date.now() - 182000000),
+      updatedAt: (Date.now() - 182000000)
+    },
+    {
+      body: "Not vewy fast...",
+      author: "5e9781e148949b1f6d884abe",
+      ticket: "5e97898fd6de452b68c745a1",
+      createdAt: (Date.now() - 181000000),
+      updatedAt: (Date.now() - 181000000)
+    },
+    {
+      body: "Tiny little guys.",
+      author: "5e9781e148949b1f6d884ab9",
+      ticket: "5e97898fd6de452b68c745a1",
+      createdAt: (Date.now() - 180000000),
+      updatedAt: (Date.now() - 180000000)
+    },
+    {
+      body: "Can't jump high.",
+      author: "5e9781e148949b1f6d884ab3",
+      ticket: "5e97898fd6de452b68c745a1",
+      createdAt: (Date.now() - 179000000),
+      updatedAt: (Date.now() - 179000000)
+    },
+    {
+      body: "Ohhhhhhh!!!!",
+      author: "5e9781e148949b1f6d884ab2",
+      ticket: "5e97898fd6de452b68c745a1",
+      createdAt: (Date.now() - 178900000),
+      updatedAt: (Date.now() - 178900000)
+    },
+    {
+      body: "Ohhhhhhh!!!!",
+            author: "5e9781e148949b1f6d884abe",
+      ticket: "5e97898fd6de452b68c745a1",
+      createdAt: (Date.now() - 178800000),
+      updatedAt: (Date.now() - 178800000)
+    },
+    {
+      body: "Ohhhhhhh!!!!",
+      author: "5e9781e148949b1f6d884ab9",
+      ticket: "5e97898fd6de452b68c745a1",
+      createdAt: (Date.now() - 178700000),
+      updatedAt: (Date.now() - 178700000)
+    },
+    {
+      body: "Ohhhhhhh!!!!",
+      author: "5e9781e148949b1f6d884ab3",
+      ticket: "5e97898fd6de452b68c745a1",
+      createdAt: (Date.now() - 178600000),
+      updatedAt: (Date.now() - 178600000)
+    },
+    {
+      body: "Basketball it is then!!",
+      author: "5e9781e148949b1f6d884ab1",
+      ticket: "5e97898fd6de452b68c745a1",
+      createdAt: (Date.now() - 177000000),
+      updatedAt: (Date.now() - 177000000)
+    },
+
+
+
+
+
     {
       body: "Oh, drat these computers. They're so naughty and complex, I could pinch them.",
       author: "5e9781e148949b1f6d884ab8",
-      ticket: "5e978ad78679802d755572ef"
+      ticket: "5e978ad78679802d755572ef",
+      createdAt: (Date.now() - 90000000),
+      updatedAt: (Date.now() - 90000000)
     },
     {
       body: "Hey, nice lookin' toy you got there kiddo. What else did your daddy get you for Christmas?",
       author: "5e9781e148949b1f6d884ab2",
-      ticket: "5e978ad78679802d755572ef"
+      ticket: "5e978ad78679802d755572ef",
+      createdAt: (Date.now() - 89000000),
+      updatedAt: (Date.now() - 89000000)
     },
     {
       body: "Please sir, do not interrupt my chain of thought. I'm a busy Martian.",
       author: "5e9781e148949b1f6d884ab8",
-      ticket: "5e978ad78679802d755572ef"
+      ticket: "5e978ad78679802d755572ef",
+      createdAt: (Date.now() - 88000000),
+      updatedAt: (Date.now() - 88000000)
     },
     {
       body: "Ehhhh pardon me Doc, but could you rent me a U-Drive flying saucer? I've gotta get back to the Earth.",
       author: "5e9781e148949b1f6d884ab1",
-      ticket: "5e978ad78679802d755572ef"
+      ticket: "5e978ad78679802d755572ef",
+      createdAt: (Date.now() - 87000000),
+      updatedAt: (Date.now() - 87000000)
     },
     {
       body: "The Earth? Oh, the Earth will be destroyed in just a few moments.",
       author: "5e9781e148949b1f6d884ab8",
-      ticket: "5e978ad78679802d755572ef"
+      ticket: "5e978ad78679802d755572ef",
+      createdAt: (Date.now() - 86000000),
+      updatedAt: (Date.now() - 86000000)
     },
     {
       body: "Ehhhh pardon me again Doc, but just what did you mean by that crack about the Earth being gone?",
       author: "5e9781e148949b1f6d884ab1",
-      ticket: "5e978ad78679802d755572ef"
+      ticket: "5e978ad78679802d755572ef",
+      createdAt: (Date.now() - 85000000),
+      updatedAt: (Date.now() - 85000000)
     },
     {
       body: "Oh, I'm going to blow it up. It obstructs my view of Venus.",
       author: "5e9781e148949b1f6d884ab8",
-      ticket: "5e978ad78679802d755572ef"
+      ticket: "5e978ad78679802d755572ef",
+      createdAt: (Date.now() - 84000000),
+      updatedAt: (Date.now() - 84000000)
+    },
+    {
+      body: "What?!?",
+      author: "5e9781e148949b1f6d884ab2",
+      ticket: "5e978ad78679802d755572ef",
+      createdAt: (Date.now() - 83000000),
+      updatedAt: (Date.now() - 83000000)
     },
 
     {
       body: "Beep beep!",
       author: "5e9781e148949b1f6d884ac0",
-      ticket: "5e978ad78679802d755572f0"
+      ticket: "5e978ad78679802d755572f0",
+
     },
 
     {

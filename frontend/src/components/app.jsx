@@ -16,8 +16,18 @@ import NotFound from './errors/not_found';
 import './reset.css';
 import './app.css';
 
+const toggleOffOwnerDiv = () => {
+  const clickedItems = document.getElementsByClassName('true');
+  if (clickedItems) {
+    while (clickedItems.length) {
+      clickedItems[0].classList.add('false');
+      clickedItems[0].classList.remove('true');
+    }
+  }
+}
+
 const App = () => (
-  <div className="screen-container">
+  <div className="screen-container" onClick={() => toggleOffOwnerDiv()}>
     <NavBarContainer />
     <div className="app-container">
       <PrivateRoute path="/" component={LeftPanelContainer} />

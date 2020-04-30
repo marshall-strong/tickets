@@ -2,6 +2,7 @@
     display: flex;
     height: 100%;
     width: 100%;
+    /* min-width: fit-content; */
     flex-direction: column;
     overflow-x: scroll;
     position: relative;
@@ -14,8 +15,9 @@
     background-color: lightgrey;
     border-bottom: 1px solid grey;
     width: 100%;
+    /* min-width: fit-content; */
     padding: 10px;
-    /* overflow-x: scroll; */
+    overflow-x: scroll;
     min-height: fit-content;
 }
 
@@ -143,6 +145,7 @@ button.add {
     border: 1px solid black;
     border-top: none;
     width: 100%;
+    /* min-width: fit-content; */
 
 }
 

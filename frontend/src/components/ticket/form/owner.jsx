@@ -24,40 +24,63 @@ class Owner extends React.Component {
             target,
             e
         );
+        const clickedItems = document.getElementsByClassName('true');
+        if (clickedItems) {
+            while (clickedItems.length) {
+                clickedItems[0].classList.add('false');
+                clickedItems[0].classList.remove('true');
+            }
+        }
     };
 
     handleClick(e) {
+        e.stopPropagation();
         let target = e.currentTarget
         let edited = target.classList.contains('edited');
+        if (target.classList.contains('false')) {
+            const clickedItems = document.getElementsByClassName('false');
+            while (clickedItems.length) {
+                clickedItems[0].classList.add('true');
+                clickedItems[0].classList.remove('false');
+            }
+        } else {
+            const clickedItems = document.getElementsByClassName('true');
+            while (clickedItems.length) {
+                clickedItems[0].classList.add('false');
+                clickedItems[0].classList.remove('true');
+            }
+        }
         this.setState(
             { clicked: !this.state.clicked }, 
             () => setTimeout(() => edited ? target.classList.add('edited') : null, 100)
         );
+
     }
 
     render() {
         const { owner, clicked } = this.state;
         return(
             <div 
-                className={`owner ${this.state.clicked}`} 
+                className={`owner false`} 
+                onClick={e => this.handleClick(e)}
             >
                 <div 
                     id="owner-div" 
-                    className={`owner-name ${this.state.clicked}`} 
-                    onClick={(e) => this.handleClick(e)}
+                    className={`owner-name false`} 
+                    // onClick={(e) => this.handleClick(e)}
                 >
                     <div className="avitar">
                         {owner.firstName.slice(0, 1)}{owner.lastName.slice(0, 1)}
                     </div> 
                     {owner.firstName} {owner.lastName} 
-                    <div className={`${clicked} arrow`}>{'▴'}</div>
+                    <div className="false arrow">{'▴'}</div>
                 </div>
 
-                {this.state.clicked ?
+                <div className="input false" onClick={e => e.stopPropagation()}>
                     <UserSuggest 
                         onSuggestionSelected={this.onSuggestionSelected.bind(this)}
-                    /> : null
-                }
+                    />
+                </div>
             </div>
         );
     };

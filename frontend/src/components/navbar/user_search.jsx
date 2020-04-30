@@ -26,9 +26,11 @@ class UserSearch extends React.Component {
             () => {
                 let search = document.getElementById('user-search')
                 const input = search.firstElementChild.firstElementChild;
-                input.addEventListener('change', () => {
-                    this.update('nameFragment', input.value)
-                })
+                if (input) {
+                    input.addEventListener('change', () => {
+                        this.update('nameFragment', input.value)
+                    })
+                }
             }, 100
         )
     }

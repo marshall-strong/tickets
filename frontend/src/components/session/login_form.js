@@ -1,8 +1,8 @@
 import React from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
+import { Redirect, withRouter, Link } from 'react-router-dom';
+import { getQueryString } from '../../util/params_util';
 import '../app.css';
 import './session.css';
-
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
@@ -41,6 +41,19 @@ class LoginForm extends React.Component {
     this.props.clearErrors();
   }
 
+  handleDemo(e) {
+    e.preventDefault();
+
+    const { loginRandomUser, clearErrors } = this.props;
+    clearErrors();
+    loginRandomUser()
+      .then(() => {
+        this.props.history.push(
+          `/tickets/search?${getQueryString('owner', this.props.currentUser._id)}`
+        )
+      });
+  };
+
 
   redirectToOwnerPage = () => {
     const path = `/tickets/owner/${this.props.session._id}`;
@@ -67,17 +80,15 @@ class LoginForm extends React.Component {
     }
     return (
       <div className="form-container">
+        <div className="form-background"> 
+        <div className="greeting-message">Get more done, together.</div>
         <form className="form" >
-          <img 
-            className="cat-hat" 
-            alt="cat" 
-            src="ticket.png"
-          >
-          </img>
-          <div className="img-message">Icon made from <a href="http://www.onlinewebfonts.com/icon">Icon Fonts</a> is licensed by CC BY 3.0</div>
+          <div className="opaque-session-form-background"></div>
+          <div className="session-form-fields">
 
+          <div className="session-form-instructions">Log In</div>
           <input 
-            className="form-box-login" 
+            className="form-box" 
             type="text"
             value={this.state.email}
             onChange={this.update('email')}
@@ -85,16 +96,23 @@ class LoginForm extends React.Component {
           />
 
           <input 
-            className="form-box-login" 
+            className="form-box" 
             type="password"
             value={this.state.password}
             onChange={this.update('password')}
             placeholder={this.props.errors.password ? this.props.errors.password : "Password"}
           />
-
-          <button className="btn1" onClick={this.handleSubmit}>Log In</button>
-
+          <div className="session-buttons-container">
+            <button className="btn1 session-button" onClick={this.handleSubmit}>Log In</button>
+            <button className="btn1 random session-button" onClick={e => this.handleDemo(e)}>
+              Demo
+            </button>
+          </div>
+          <div className="session-form-instructions">or</div>
+          <Link to="/signup" className="switch-session-form-link session-form-instructions">Sign Up</Link>
+          </div>
         </form>
+        </div>
       </div>
     );
   }

@@ -1,28 +1,38 @@
 .ticket-index-container {
     display: flex;
+    height: 100%;
+    width: 100%;
     flex-direction: column;
+    overflow-x: scroll;
+    position: relative;
 }
 
 .query-container {
+    position: absolute;
     display: flex;
     align-items: center;
     background-color: lightgrey;
     border-bottom: 1px solid grey;
+    width: 100%;
+    padding: 10px;
+    /* overflow-x: scroll; */
+    min-height: fit-content;
 }
 
 .query-container .filters {
     display: inline-block;
-    overflow-y: visible;
+    /* overflow-y: visible; */
     background-color: white;
     border: 1px solid grey;
     border-radius: 5px;
-    margin: 10px;
-    padding-top: 5px;
-    padding-left: 5px;
     padding-right: 5px;
+    padding-left: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-right: 10px;
     font-size: 12px;
-    height: 90%;
-    width: 92%;
+    /* width: 92%; */
+
 }
 
 .filter .added {
@@ -59,13 +69,15 @@
 .query-container .filter {
     float: left;
     display: flex;
-    background-color: lightblue;
+    background-color: rgb(173, 236, 200);
     align-items: center;
     padding: 10px;
     margin-right: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
+    margin-top: 2px;
     border-radius: 3px;
     height: 40px;
+    /* overflow: scroll; */
 }
 
 .filter .title {
@@ -75,7 +87,7 @@
 
 .filter input {
     margin-right: 10px;
-    max-width: 100px;
+    max-width: 110px;
 }
 
 .filter .options {
@@ -101,11 +113,12 @@
 }
 
 .added .added-item {
-    background-color: lightgrey;
+    background-color: rgb(218, 218, 218);
     padding: 4px;
     margin: 2px;
-    border-radius: 2px;
+    border-radius: 3px;
     white-space: nowrap;
+    border: 1px solid rgb(197, 197, 197);
 }
 
 .added-item .remove {
@@ -125,10 +138,12 @@ button.add {
 .table {
     display: flex;
     flex-direction: column;
-    margin: 20px;
+    /* margin: 20px; */
     background-color: white;
     border: 1px solid black;
     border-top: none;
+    width: 100%;
+
 }
 
 .table a {
@@ -142,12 +157,14 @@ button.add {
 
 .table-header-group {
     display: flex;
+    /* justify-content: flex-end; */
     background-color: lightgrey;
     font-weight: 800;
     font-size: 12px;
     line-height: 15px;
     text-align: center;
     border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 .table-header-group:hover {
@@ -162,6 +179,11 @@ button.add {
     background-color: rgb(192, 192, 192);
 }
 
+.table-header-group .table-cell {
+    display: flex;
+    justify-content: center;
+}
+
 .triangle {
     width: 15px;
     text-align: center;
@@ -169,23 +191,23 @@ button.add {
 }
 
 .table-cell.ticket-title {
-    width: 150px;
+    /* width: 150px; */
 }
 
 .table-cell {
     padding: 5px;
     overflow: hidden;
     height: 25px;
-    width: 100px;
+    width: 10%;
+    width: 200px;
     white-space: nowrap;
     display: flex;
-    justify-content: space-between;
     font-size: 12px;
 }
 
 .table-row-group {
-    display: flex;
-    flex-direction: column;
+    overflow-y: scroll;
+    height: 99%;
 }
 
 .handle{
@@ -199,6 +221,8 @@ button.add {
 
 .table-row {
     display: flex;
+    /* justify-content: right; */
+    max-width: 100%;
     border-top: 1px solid black;
 }
 
@@ -214,7 +238,7 @@ button.add {
 .starred {
     display: flex;
     justify-content: center;
-    width: 50px;
+    width: 70px;
 }
 
 div.star {

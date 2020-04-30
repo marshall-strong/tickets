@@ -51,7 +51,7 @@ class SubscribedFilter extends React.Component {
         return Object.values(this.state.added).map(user =>
             <div key={user._id} className="added-item">
                 {user.firstName} {user.lastName}
-                <span className="remove" onClick={() => this.remove(user._id)}> x</span>
+                <span className="remove" onClick={() => this.remove(user._id)}> X</span>
             </div>
         );
     };

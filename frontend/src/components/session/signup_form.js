@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
+import { Redirect, withRouter, Link } from 'react-router-dom';
 import '../app.css'
 
 class SignupForm extends React.Component {
@@ -75,39 +75,38 @@ class SignupForm extends React.Component {
     }
     return (
       <div className="form-container">
+        <div className="greeting-message">Get more done, together.</div>
+
         <form className="form">
-          <img
-            className="cat-hat"
-            alt="cat"
-            src="ticket.png"
-          ></img>
-          <div className="img-message">Icon made from <a href="http://www.onlinewebfonts.com/icon">Icon Fonts</a> is licensed by CC BY 3.0</div>
+          <div className="opaque-session-form-background"></div>
+          <div className="session-form-fields">
+            <div className="session-form-instructions"> Sign Up </div>
           <input 
-            className="form-box-signup" 
+            className="form-box" 
             type="text"
             value={this.state.firstName}
             onChange={this.update('firstName')}
-            placeholder={ this.props.errors.firstName ? this.props.errors.firstName : "firstName"}
+            placeholder={ this.props.errors.firstName ? this.props.errors.firstName : "First Name"}
           />
 
           <input 
-            className="form-box-signup" 
+            className="form-box" 
             type="text"
             value={this.state.lastName}
             onChange={this.update('lastName')}
-            placeholder={this.props.errors.lastName ? this.props.errors.lastName : "lastName"}
+            placeholder={this.props.errors.lastName ? this.props.errors.lastName : "Last Name"}
           />
 
           <input 
-            className="form-box-signup" 
+            className="form-box" 
             type="text"
             value={this.state.email}
             onChange={this.update('email')}
-            placeholder={this.props.errors.email ? this.props.errors.email : "email"}
+            placeholder={this.props.errors.email ? this.props.errors.email : "Email"}
           />
 
           <input 
-            className="form-box-signup" 
+            className="form-box" 
             type="password"
             value={this.state.password}
             onChange={this.update('password')}
@@ -115,15 +114,17 @@ class SignupForm extends React.Component {
           />
 
           <input 
-            className="form-box-signup" 
+            className="form-box" 
               type="password"
             value={this.state.password2}
             onChange={this.update('password2')}
             placeholder={this.props.errors.password2 ? this.props.errors.password2 : "Confirm Password"}
           />
           
-          <button className="btn1" onClick={this.handleSubmit}>Submit</button>
-
+          <button className="btn1 session-button session-buttons-container" onClick={this.handleSubmit}>Submit</button>
+            <div className="session-form-instructions">or</div>
+            <Link to="/login" className="switch-session-form-link session-form-instructions">Log In</Link>
+          </div>
         </form>
       </div>
     );

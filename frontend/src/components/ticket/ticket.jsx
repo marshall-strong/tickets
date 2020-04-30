@@ -46,6 +46,7 @@ class Ticket extends React.Component {
         this.props.getOrgUsers(this.props.currentUser.orgHandle);
         this.props.getOrgTags(this.props.currentUser.orgHandle);
         if (this.props.ticketId !== 'new') {
+            if (!this.props.ticketId) return null
             this.props.getTicket(this.props.ticketId)
             .then(ticket => {
                 // format date to play nice with input type="date"
@@ -65,6 +66,7 @@ class Ticket extends React.Component {
 
     componentDidUpdate(prevProps) {
         // clear fields when switching to new ticket
+        if (!this.props.ticketId) return null
         if (this.props.ticketId !== prevProps.ticketId) {
             this.setState({ loading: true })
             if (this.props.ticketId === 'new') {
@@ -179,6 +181,7 @@ class Ticket extends React.Component {
     }
 
     render() {
+        if (!this.props.ticketId) return null
         const type = this.props.ticketId === 'new' ? 'new' : 'show';
         if (type!== 'new') {
             if (!this.props.ticket) return null;

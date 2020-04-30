@@ -47,7 +47,7 @@ class TagsFilter extends React.Component {
         return Object.values(this.state.added).map(tag =>
             <div key={tag._id} className="added-item">
                 {tag.name}
-                <span className="remove" onClick={() => this.remove(tag._id)}> x</span>
+                <span className="remove" onClick={() => this.remove(tag._id)}> X</span>
             </div>
         );
     };

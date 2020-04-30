@@ -1,19 +1,28 @@
+.header-container{
+    width: 100%;
+    /* overflow-x: scroll; */
+    /* display: flex; */
+}
+
 .header {
     display: flex;
     justify-content: center;
     background-color: rgb(61, 204, 123);
     color: white;
-    min-width: 1200px;
+    width: 100%;
+    /* max-width: 100vw; */
+    /* min-width: fit-content; */
+    /* overflow-x: scroll; */
 }
 
 .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-width: 1100px;
-    max-width: 1100px;
     padding-top: 10px;
     padding-bottom: 10px;
+    width: 90%;
+    /* min-width: fit-content; */
 }
 
 .nav .left-nav {
@@ -24,11 +33,6 @@
 .nav .right-nav {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-}
-
-.right-nav {
-    justify-content: space-around;
 }
 
 .user-search-container {
@@ -70,30 +74,18 @@
     width: 250px;
 }
 
-.nav .right-nav a {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    color: white;
-    text-decoration: none;
-    font-family: sans-serif;
-    background: black;
-    border-radius: 3px;
-    border: 1px solid black;
-    height: 37px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
 .nav .avitar {
     border: 1px solid white;
     border-radius: 30px;
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
+    font-size: 10px;
     text-align: center;
-    line-height: 25px;
+    line-height: 19px;
     margin-right: 5px;
 }
+
+
 
 .nav .right-nav a:hover {
     border: 1px solid white;
@@ -109,23 +101,11 @@
     border: 1px solid white;
 }
 
-.btn1.random {
-    background-color: black;
-}
-
 .link-style-header{
     font-size: 30px;
     color: white;
     text-decoration: none;
     font-family: sans-serif;
-}
-
-.link-style{
-    color: white;
-    text-decoration: none;
-    font-family: sans-serif;
-    margin-left: 15px;
-    margin-right: 15px;
 }
 
 .right-nav button{
@@ -137,3 +117,10 @@
     justify-content: space-between;
     width: 150px;
 }
+
+
+.own-profile-button {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background-color: black;
+}  

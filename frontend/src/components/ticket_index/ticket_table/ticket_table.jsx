@@ -71,6 +71,18 @@ class TicketTable extends React.Component {
   };
 
   formatTable() {
+    let table = document.getElementById('table');
+    let tableIndex = table.parentElement;
+    
+    setInterval(() => {
+      let tableContent = table.firstElementChild.nextElementSibling;
+      let queryContainer = table.previousElementSibling;
+      let margin = queryContainer.offsetHeight;
+      table.style['margin-top'] = margin + 'px';
+      table.style['max-height'] = tableIndex.offsetHeight - margin - 0.59 + 'px'
+
+    },200)
+
     let handles = document.getElementsByClassName('handle');
     let clickPos, colNum, leftWidth, rightWidth;
 
@@ -98,7 +110,8 @@ class TicketTable extends React.Component {
       window.addEventListener('mousemove', (e) => {
         if (!clickPos) return 0;
         let dx = e.pageX - clickPos;
-        
+        let root = document.getElementById('root')
+        if (e.pageX >= root.offsetWidth) return 0;
         let colHandles = document.getElementsByClassName(colNum);
 
         for (let j = 0; j < colHandles.length; j++) {
@@ -170,7 +183,7 @@ class TicketTable extends React.Component {
     const { currentUser, updateUser, history } = this.props;
     const { sortedBy } = this.state;
     return (
-      <div className="table">
+      <div id="table" className="table">
         <div className="table-header-group">
           <div 
             className="table-cell creator" 

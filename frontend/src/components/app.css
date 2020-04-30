@@ -1,25 +1,45 @@
+body {
+    /* display: flex; */
+    height: 100vh;
+    width: 100vw;
+    overflow: scroll;
+}
+
+#root {
+    /* display: flex; */
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+}
+
+.screen-container {
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+}
+
 .app-container {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     background-color: rgb(245, 243, 241);
-    min-height: 575px;
+    height: 100%;
+    width: 100vw;
+    overflow: scroll;
 }
 
 .page-container {
     display: flex;
     flex-direction: column;
-    border-right: 1px solid grey;
-    border-bottom: 1px solid grey;
-
-    /* max-width: 1200px; */
-    width: 1000px;
     overflow: scroll;
     background-color: rgb(227, 241, 235);
 }
 
 .btn1 {
-    padding: 10px;
-    background-color: rgb(8, 92, 148);
+    padding: 5px;
+    /* background-color: rgb(8, 92, 148); */
+    background-color: darkgreen;
     border-radius: 3px;
     border: 1px solid black;
     color: white;
@@ -28,6 +48,8 @@
     box-sizing: border-box;
     text-align: center;
     width: fit-content;
+    display: flex;
+    align-items: center;
 }
 
 .btn1:hover {

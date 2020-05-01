@@ -2,7 +2,7 @@
     display: flex;
     width: 100%;
     flex-direction: column;
-    background-color: lightgrey;
+    background-color: rgb(227, 241, 235);
     overflow-y: scroll;
 }
 
@@ -10,8 +10,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(209, 241, 222);
-    padding: 10px;
+    background-color: rgb(173, 236, 200);
+    padding: 7px;
+    border-bottom: 1px solid grey;
 }
 
 .profile-header-container .avitar {
@@ -36,6 +37,7 @@
     padding: 10px;
     background-color: white;
     margin: 10px;
+    border: 1px solid lightgrey
 }
 
 /* .ticket {

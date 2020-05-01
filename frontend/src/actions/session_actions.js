@@ -65,23 +65,10 @@ export const login = user => dispatch => (
 
 export const loginRandomUser = () => dispatch => {
   const emails = [
-    "michael@acme.org",
-    "bugs@acme.org",
-    "daffy@acme.org",
-    "porky@acme.org",
-    "speedy@acme.org",
-    "sam@acme.org",
-    "lola@acme.org",
-    "taz@acme.org",
-    "marvin@acme.org",
-    "sylvester@acme.org",
-    "tweety@acme.org",
-    "foghorn@acme.org",
-    "pepe@acme.org",
-    "granny@acme.org",
-    "elmer@acme.org",
-    "wilee@acme.org",
-    "rr@acme.org",
+    "hayden@acme.org",
+    "brad@acme.org",
+    "marshall@acme.org",
+    "joe@acme.org"
   ]
 
   const randomUser = {

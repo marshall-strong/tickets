@@ -108,6 +108,11 @@
     display: flex;
     flex-direction: column;
     align-items: baseline;
+    padding: 5px;
+    border-radius: 3px;
+    width: 100%;
+    border: 1px solid lightgrey;
+    background-color: rgb(191, 240, 212);
 }
 
 .comment-container .bottom {
@@ -139,8 +144,17 @@
     margin-right: 5px;
 }
 
-.buttons .btn1 {
+.comment-item-button-group {
+    display: flex;
+}
+
+.comment-item-button{
     font-size: 11px;
-    padding: 3px;
+    color: blue;
     margin-right: 5px;
+}
+
+.comment-item-button:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }

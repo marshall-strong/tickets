@@ -56,7 +56,7 @@ class TagSuggest extends React.Component {
 
     onSuggestionsFetchRequested = ({ value }) => {
         this.setState({
-            suggestions: this.props.getSuggestions(value, this.state.tags)
+            suggestions: this.props.getSuggestions ? this.props.getSuggestions(value, this.state.tags) : getSuggestions(value, this.state.tags)
         });
     };
 

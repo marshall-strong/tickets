@@ -23,7 +23,7 @@ body {
 .app-container {
     display: flex;
     /* justify-content: center; */
-    background-color: rgb(245, 243, 241);
+    background-color: rgb(227, 241, 235);
     height: 100%;
     width: 100vw;
     overflow: scroll;

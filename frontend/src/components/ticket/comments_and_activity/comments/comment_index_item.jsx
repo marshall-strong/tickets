@@ -63,35 +63,32 @@ class CommentIndexItem extends React.Component {
             {this.props.comment.firstName.slice(0, 1)}
             {this.props.comment.lastName.slice(0, 1)}
           </div>
+        </div>
+        <div className="top">
           <Link to={`/users/${this.props.comment.userId}`}>
             {this.props.comment.firstName} {this.props.comment.lastName}
           </Link>
-        </div>
-        <div className="top">
           <div className="body">{this.props.comment.body}</div>
           <div className="bottom">
             <div className="time">
               {this.convertDate(this.props.comment.time)} at
               {this.convertTime(this.props.comment.time)}
             </div>
-            <div className="buttons">
               {this.props.currentUserId === this.props.comment.userId ? (
-                <button className="btn1" onClick={this.handleDelete}>
-                  Delete
-                </button>
-              ) : null}
-
-              {this.props.currentUserId === this.props.comment.userId ? (
-                <button
-                  className="btn1"
-                  onClick={() => 
+              <div className="comment-item-button-group">
+                <div
+                  className="comment-item-button"
+                  onClick={() =>
                     this.setState({ edit: true })
                   }
                 >
                   Edit Comment
-                </button>
-              ) : null}
+                </div>
+                <div className="comment-item-button" onClick={this.handleDelete}>
+                  Delete
+                </div>
             </div>
+              ) : null}
           </div>
         </div>
       </div>

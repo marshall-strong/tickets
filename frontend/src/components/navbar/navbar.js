@@ -4,6 +4,8 @@ import '../app.css'
 import './navbar.css'
 import UserSearchContainer from './user_search_container' 
 import { getQueryString } from '../../util/params_util';
+import { getOrgTags } from '../../actions/tag_actions';
+import { connect } from 'react-redux';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -15,8 +17,10 @@ class NavBar extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.currentUser)
-    this.props.getOrgUsers(this.props.currentUser.orgHandle);
+    if (this.props.currentUser) {
+      this.props.getOrgUsers(this.props.currentUser.orgHandle);
+      this.props.getOrgTags(this.props.currentUser.orgHandle);
+    }
   }
 
   receiveUserLogout(e) {
@@ -73,4 +77,8 @@ class NavBar extends React.Component {
 }
 
 
-export default withRouter(NavBar)
+const mdp = dispatch => ({
+  getOrgTags: orgHandle => dispatch(getOrgTags(orgHandle))
+})
+
+export default withRouter(connect(null, mdp)(NavBar))

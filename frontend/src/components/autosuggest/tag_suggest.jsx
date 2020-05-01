@@ -2,6 +2,7 @@ import React from 'react';
 import Autosuggest from 'react-autosuggest';
 import { connect } from 'react-redux';
 import './autosuggest.css'
+import { getOrgTags } from '../../util/tag_api_util';
 
 
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
@@ -55,7 +56,7 @@ class TagSuggest extends React.Component {
 
     onSuggestionsFetchRequested = ({ value }) => {
         this.setState({
-            suggestions: getSuggestions(value, this.state.tags)
+            suggestions: this.props.getSuggestions(value, this.state.tags)
         });
     };
 
@@ -66,7 +67,7 @@ class TagSuggest extends React.Component {
     render() {
         const { value, suggestions } = this.state;
         const inputProps = {
-            placeholder: "Type a tag name",
+            placeholder: this.props.placeholder,
             value,
             onChange: this.onChange
         };
@@ -88,5 +89,7 @@ class TagSuggest extends React.Component {
 const msp = state => ({
     tags: Object.values(state.entities.tags)
 });
+
+
 
 export default connect(msp, null)(TagSuggest);

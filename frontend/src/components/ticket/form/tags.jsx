@@ -2,6 +2,14 @@ import React from 'react';
 import TagSuggest from '../../autosuggest/tag_suggest';
 import './tags.css';
 
+const escapeRegexCharacters = (str) => {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function getSuggestionValue(suggestion) {
+    return `${suggestion.name}`;
+}
+
 class Tags extends React.Component {
     constructor(props) {
         super(props);
@@ -34,6 +42,24 @@ class Tags extends React.Component {
         );
     };
 
+    getSuggestions(value, tags) {
+        const escapedValue = escapeRegexCharacters(value.trim());
+
+        if (escapedValue === '') {
+            return [];
+        }
+
+        const regex = new RegExp('\\b' + escapedValue, 'i');
+        const result = tags.filter(tag => regex.test(getSuggestionValue(tag)));
+
+        if (!result.length) {
+            this.setState({ clicked: true, newTag: value });
+        } else {
+            this.setState({clicked: false, newTag: '', errors: ''})
+        }
+        return result
+    }
+
     onSuggestionSelected = (e = null, { suggestion }) => {
         this.add(suggestion)
         this.props.updateFromSuggestion(
@@ -42,6 +68,11 @@ class Tags extends React.Component {
             document.getElementById('tags-container'),
             e,
         );
+        this.setState({
+            newTag: '',
+            errors: '',
+            clicked: false,
+        })
     };
 
     renderAdded() {
@@ -78,6 +109,7 @@ class Tags extends React.Component {
     };
 
     render() {
+        const placeholder = this.state.errors || "Type a tag name"
         return (
             <div id="tags-container" className="subscribed-container">
                 <span className="added">
@@ -85,20 +117,15 @@ class Tags extends React.Component {
                 </span>
                 <TagSuggest
                     onSuggestionSelected={this.onSuggestionSelected}
+                    getSuggestions={this.getSuggestions.bind(this)}
+                    placeholder={placeholder}
                 />
                 <div className="newTag">
-                    {this.state.clicked ?
-                    <input 
-                        type="text"
-                        className="input"
-                        placeholder={ this.state.errors ? this.state.errors : "New tag name" }
-                        value={this.state.newTag}
-                        onChange={(e) => this.handleChange(e)}    
-                    /> : null}
+                    {this.state.clicked ? 
                     <button 
                         className="btn1 add"
                         onClick={(e) => this.handleClick(e)}
-                    >{this.state.clicked ? 'Create' : 'New Tag'}</button>
+                    >Create</button> : null}
                 </div>
             </div>
         );

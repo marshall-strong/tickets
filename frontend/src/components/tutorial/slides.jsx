@@ -39,7 +39,6 @@ class Slides extends React.Component {
             { slideCount: slideCount + int }, 
             () => {
                 this.state.slideCount >= slides.length ? localStorage.tutorial = false : localStorage.tutorial = true
-                console.log(this.state.slideCount);
             }
         );
     }

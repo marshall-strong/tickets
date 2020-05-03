@@ -1,4 +1,4 @@
 # tickets
 
-Tickets is a productiviry app that helps teams keep track of tasks. 
+Tickets is a productivity app that helps teams keep track of tasks. 
 

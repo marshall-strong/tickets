@@ -160,12 +160,11 @@ button.add {
 
 .table-header-group {
     display: flex;
-    /* justify-content: flex-end; */
     background-color: lightgrey;
     font-weight: 800;
     font-size: 12px;
     line-height: 15px;
-    text-align: center;
+    /* text-align: center; */
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
@@ -184,7 +183,7 @@ button.add {
 
 .table-header-group .table-cell {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .triangle {

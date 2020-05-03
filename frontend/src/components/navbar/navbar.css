@@ -92,6 +92,7 @@
 }
 .new-ticket {
     background-color: green;
+    /* z-index: 2; */
 }
 .nav .logout {
     background-color: black;
@@ -124,3 +125,4 @@
     padding-bottom: 3px;
     background-color: black;
 }  
+

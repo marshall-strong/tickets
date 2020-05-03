@@ -7,6 +7,7 @@ import { getQueryString } from '../../util/params_util';
 import { getOrgTags } from '../../actions/tag_actions';
 import { connect } from 'react-redux';
 
+
 class NavBar extends React.Component {
   constructor(props) {
     super(props);

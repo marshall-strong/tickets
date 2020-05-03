@@ -77,9 +77,11 @@ class TicketTable extends React.Component {
     setInterval(() => {
       let tableContent = table.firstElementChild.nextElementSibling;
       let queryContainer = table.previousElementSibling;
-      let margin = queryContainer.offsetHeight;
-      table.style['margin-top'] = margin + 'px';
-      table.style['max-height'] = tableIndex.offsetHeight - margin - 0.59 + 'px'
+      if (queryContainer) {
+        let margin = queryContainer.offsetHeight;
+        table.style['margin-top'] = margin + 'px';
+        table.style['max-height'] = tableIndex.offsetHeight - margin - 0.59 + 'px'
+      }
 
     },200)
 

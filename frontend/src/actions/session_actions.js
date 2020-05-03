@@ -49,10 +49,13 @@ export const signup = user => dispatch => (
   })
 ); 
 
-export const login = user => dispatch => (
+export const login = user => dispatch => {
+  localStorage.tutorial = true;
+  return(
   SessionAPIUtil.login(user)
   .then(res => {
     const { token } = res.data;
+    localStorage.tutorial = true;
     localStorage.setItem('jwtToken', token);
     SessionAPIUtil.setAuthToken(token);
     const decoded = jwt_decode(token);
@@ -61,14 +64,25 @@ export const login = user => dispatch => (
   .catch(err => {
     dispatch(receiveSessionErrors(err.response.data));
   })
-);
+  )
+};
 
 export const loginRandomUser = () => dispatch => {
   const emails = [
     "hayden@acme.org",
     "brad@acme.org",
     "marshall@acme.org",
-    "joe@acme.org"
+    "joe@acme.org",
+    "abbigale@acme.org",
+    "bobby@acme.org",
+    "carol@acme.org",
+    "diane@acme.org",
+    "evan@acme.org",
+    "george@acme.org",
+    "isaac@acme.org",
+    "kyle@acme.org",
+    "fred@acme.org",
+    "olivia@acme.org"
   ]
 
   const randomUser = {

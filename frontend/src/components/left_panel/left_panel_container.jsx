@@ -30,10 +30,10 @@ const LeftPanel = ({ userId, location }) => {
     return (
         <div className="left-panel-container">
             <h1 className="folders">Folders</h1>
-            <Link className={`${currentString === ownerString ? 'selected' : 'unselected'}`} to={`/tickets/search?${ownerString}`}>Owner</Link>
-            <Link className={`${currentString === subscribedString ? 'selected' : 'unselected'}`} to={`/tickets/search?${subscribedString}`}>Subscribed</Link>
+            <Link className={`owner-folder ${currentString === ownerString ? 'selected' : 'unselected'}`} to={`/tickets/search?${ownerString}`}>Owner</Link>
+            <Link className={`subscribed-folder ${currentString === subscribedString ? 'selected' : 'unselected'}`} to={`/tickets/search?${subscribedString}`}>Subscribed</Link>
             <Link className={`${currentString === creatorString ? 'selected' : 'unselected'}`} to={`/tickets/search?${creatorString}`}>Creator</Link>
-            <Link className={`${currentString === starredPath ? 'selected' : 'unselected'}`} to={`${starredPath}`}>Starred</Link>
+            <Link className={`starred-folder ${currentString === starredPath ? 'selected' : 'unselected'}`} to={`${starredPath}`}>Starred</Link>
         </div>
     );
 };

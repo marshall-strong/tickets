@@ -24,6 +24,8 @@ return(
             <p>{errors.title}</p>
         </div>
         <div className="form-row">
+            <div className="label">Title</div>
+
             <input
                 className={`${type} title ${state.ticket.status === 'Closed' ? 'closed' : null}`}
                 type="text"
@@ -92,7 +94,7 @@ return(
                 onChange={update("body")}
             ></textarea>
         </div>
-        <div className="form-row col">
+        <div className="form-row col subscribed-folder">
             <div className="label">
                 Subscribed
             </div>

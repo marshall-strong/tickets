@@ -99,7 +99,6 @@
     align-items: baseline;
     padding: 10px;
     background-color: rgb(241, 241, 241);
-    border-top: 1px solid grey;
     border-bottom: 1px solid grey;
 }
 
@@ -134,9 +133,10 @@
 }
 
 .activity-item {
-    margin-left: 40px;
     font-size: 12px;
     padding: 5px;
+    padding-left: 45px;
+    border-bottom: 1px solid grey;
 }
 
 .time {

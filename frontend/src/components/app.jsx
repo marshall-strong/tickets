@@ -15,6 +15,8 @@ import NotFound from './errors/not_found';
 
 import './reset.css';
 import './app.css';
+import Slides from './tutorial/slides';
+import { connect } from 'react-redux';
 
 const toggleOffOwnerDiv = () => {
   const clickedItems = document.getElementsByClassName('true');
@@ -26,8 +28,12 @@ const toggleOffOwnerDiv = () => {
   }
 }
 
-const App = () => (
+const App = ({ loggedIn }) => (
   <div className="screen-container" onClick={() => toggleOffOwnerDiv()}>
+    {loggedIn?
+    <Slides/>
+    :
+    null}
     <NavBarContainer />
     <div className="app-container">
       <PrivateRoute path="/" component={LeftPanelContainer} />
@@ -48,5 +54,9 @@ const App = () => (
   </div>
 );
 
-export default App;
+const msp = state => ({
+  loggedIn: state.session.isAuthenticated
+})
+
+export default connect(msp, null)(App);
 

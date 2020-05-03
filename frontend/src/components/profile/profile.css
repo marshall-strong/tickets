@@ -3,7 +3,7 @@
     width: 100%;
     flex-direction: column;
     background-color: rgb(227, 241, 235);
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
 }
 
 .profile-header-container {
@@ -21,6 +21,10 @@
     height: 64px;
     width: 64px;
     border-radius: 32px;
+}
+
+.profile-container .activity-index {
+    overflow-y: scroll;
 }
 
 .profile-container a {

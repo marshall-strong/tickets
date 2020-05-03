@@ -1,6 +1,7 @@
 import React from 'react';
 import UserSuggest from '../../autosuggest/user_suggest';
 import './subscribed.css';
+import { Link } from 'react-router-dom';
 
 class Subscribed extends React.Component {
     constructor(props) {
@@ -44,7 +45,7 @@ class Subscribed extends React.Component {
     renderAdded() {
         return Object.values(this.state.added).map(user =>
             <div key={user._id} className="added-item">
-                {user.firstName} {user.lastName}
+                <Link className="subscribed-link" to={`/users/${user._id}`}>{user.firstName} {user.lastName}</Link>
                 <span className="remove" onClick={() => this.remove(user._id)}> x</span>
             </div>
         );

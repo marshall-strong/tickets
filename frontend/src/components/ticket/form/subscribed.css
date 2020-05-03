@@ -40,3 +40,13 @@
     font-size: 12px;
     text-align: left;
 }
+
+.subscribed-link{
+    text-decoration: none;
+    color: black;
+}
+
+.subscribed-link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}   

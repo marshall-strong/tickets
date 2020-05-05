@@ -72,7 +72,7 @@ class Owner extends React.Component {
                     <div className="avitar">
                         {owner.firstName.slice(0, 1)}{owner.lastName.slice(0, 1)}
                     </div> 
-                    {owner.firstName} {owner.lastName} 
+                        {`${owner.firstName} ${owner.lastName}`} 
                     <div className="false arrow">{'▴'}</div>
                 </div>
 

@@ -22,7 +22,7 @@ Tickets is a productivity app that helps teams keep track of tasks.
 ![Subscribed](readme_subscribed.gif)
 
 
-## Build Complex Queries.
+### Build Complex Queries.
 
 - Easily find exactly the category of tickets you're looking for using a powerful but elegant interface.
 

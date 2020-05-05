@@ -152,7 +152,7 @@ class Ticket extends React.Component {
             edits[i].classList.add('not-edited');
         };
         let n = edits.length*1
-        for (let i = 0; i <= n; i++) {
+        while (edits.length) {
             edits[0].classList.remove('edited');
         };
     };

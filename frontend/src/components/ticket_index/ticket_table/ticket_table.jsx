@@ -141,8 +141,9 @@ class TicketTable extends React.Component {
     let sortedTickets;
     
     sortedTickets = tickets.sort((t1, t2) => {
-      let attr1 = t1[attr];
-      let attr2 = t2[attr];
+      let attr1 = t1[attr] ? t1[attr] : '';
+      let attr2 = t2[attr] ? t2[attr] : '';
+  
       switch (attr) {
         case 'owner':
           attr1 = (attr1.firstName + ' ' + attr1.lastName).toLowerCase();

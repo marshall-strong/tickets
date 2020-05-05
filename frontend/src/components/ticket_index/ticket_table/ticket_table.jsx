@@ -73,7 +73,6 @@ class TicketTable extends React.Component {
   formatTable() {
     let table = document.getElementById('table');
     let tableIndex = table.parentElement;
-    // debugger
     
     setInterval(() => {
       let tableContent = table.firstElementChild.nextElementSibling;

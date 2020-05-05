@@ -4,6 +4,8 @@
 
 Tickets is a productivity app that helps teams keep track of tasks. 
 
+The app is built using a MongoDB / Express / React / Node stack.
+
 ### Assign Status, Owner, Priority, and Schedule.
 
 - Let everyone know at a glance the ticket progress, who is responsible, and how urgent it is. 

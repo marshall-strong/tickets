@@ -286,7 +286,7 @@ class TicketTable extends React.Component {
         <div className="table-row-group">
           {tickets.map(ticket => {
             return (
-              // <div key={ticket._id} onClick={() => this.state.resizing ? null : history.push(`/tickets/${ticket._id}`)}>
+              <div key={ticket._id} onClick={() => this.state.resizing ? null : history.push(`/tickets/${ticket._id}`)}>
                 <TicketTableRow 
                   key={ticket._id} 
                   ticket={ticket} 
@@ -295,7 +295,7 @@ class TicketTable extends React.Component {
                   updateUser={updateUser}
                   resizing={this.state.resizing}
                 />
-              // </div>
+              </div>
             )
           })}
         </div>

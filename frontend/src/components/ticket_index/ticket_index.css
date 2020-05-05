@@ -23,7 +23,6 @@
 
 .query-container .filters {
     display: inline-block;
-    /* overflow-y: visible; */
     background-color: white;
     border: 1px solid grey;
     border-radius: 5px;

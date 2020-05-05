@@ -2,14 +2,12 @@ body {
     /* display: flex; */
     height: 100vh;
     width: 100vw;
-    overflow: scroll;
 }
 
 #root {
     /* display: flex; */
     height: 100%;
     width: 100%;
-    overflow: scroll;
 }
 
 .screen-container {
@@ -17,7 +15,6 @@ body {
     width: 100vw;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
     position: relative;
 }
 
@@ -27,14 +24,7 @@ body {
     background-color: rgb(227, 241, 235);
     height: 100%;
     width: 100vw;
-    overflow: scroll;
-}
-
-.page-container {
-    display: flex;
-    flex-direction: column;
-    overflow: scroll;
-    background-color: rgb(227, 241, 235);
+    /* overflow: scroll; */
 }
 
 .btn1 {

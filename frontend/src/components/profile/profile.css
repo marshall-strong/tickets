@@ -3,7 +3,6 @@
     width: 100%;
     flex-direction: column;
     background-color: rgb(227, 241, 235);
-    /* overflow-y: scroll; */
 }
 
 .profile-header-container {

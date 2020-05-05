@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-const TicketTableRow = ({ ticket, currentUser, starredIds, updateUser }) => {
+const TicketTableRow = ({ ticket, currentUser, starredIds, updateUser, history, resizing }) => {
     
     const formatDate = timestamp => {
         let date = new Date(timestamp);
@@ -27,7 +27,11 @@ const TicketTableRow = ({ ticket, currentUser, starredIds, updateUser }) => {
     ticket.owner = ticket.owner ? ticket.owner : "";
     let lastUpdateSeenBy = ticket.lastUpdateSeenBy.map(user => user._id)
     return (
-        <div id={`${lastUpdateSeenBy.includes(currentUser._id) ? 'read' : 'unread'}`} className={`table-row ticket-index-item ${ticket.status === 'Closed' ? 'closed' : null}`} >
+        <div 
+            className={`table-row ticket-index-item ${ticket.status === 'Closed' ? 'closed' : null}`} 
+            id={`${lastUpdateSeenBy.includes(currentUser._id) ? 'read' : 'unread'}`} 
+            onClick={() => resizing ? null : history.push(`/tickets/${ticket._id}`)}
+        >
             <div className='table-cell creator'> <Link onClick={e => e.stopPropagation()} to={`/users/${ticket.creator._id}`}>{ticket.creator.firstName} {ticket.creator.lastName}</Link> </div><div className="handle 1" onClick={e => e.stopPropagation()}></div>
             <div className='table-cell owner'>{ticket.owner ? <Link onClick={e => e.stopPropagation()} to={`/users/${ticket.owner._id}`}>{ticket.owner.firstName + ' ' + ticket.owner.lastName}</Link> : '--'}</div><div className="handle 2" onClick={e => e.stopPropagation()}></div>
             <div className="table-cell title">{ticket.title}</div><div className="handle 3" onClick={e => e.stopPropagation()}></div>

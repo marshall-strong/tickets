@@ -73,6 +73,7 @@ class TicketTable extends React.Component {
   formatTable() {
     let table = document.getElementById('table');
     let tableIndex = table.parentElement;
+    // debugger
     
     setInterval(() => {
       let tableContent = table.firstElementChild.nextElementSibling;
@@ -286,14 +287,16 @@ class TicketTable extends React.Component {
         <div className="table-row-group">
           {tickets.map(ticket => {
             return (
-              <div key={ticket._id} onClick={() => this.state.resizing ? null : history.push(`/tickets/${ticket._id}`)}>
+              // <div key={ticket._id} onClick={() => this.state.resizing ? null : history.push(`/tickets/${ticket._id}`)}>
                 <TicketTableRow 
+                  key={ticket._id} 
                   ticket={ticket} 
                   currentUser={currentUser}
                   starredIds={currentUser.starred}
                   updateUser={updateUser}
+                  resizing={this.state.resizing}
                 />
-              </div>
+              // </div>
             )
           })}
         </div>

@@ -37,7 +37,6 @@ const App = ({ loggedIn }) => (
     <NavBarContainer />
     <div className="app-container">
       <PrivateRoute path="/" component={LeftPanelContainer} />
-      {/* <div className="page-container"> */}
         <Switch>
           <AuthRoute exact path="/" component={MainPage} />
           <PublicRoute exact path="/login" component={LoginFormContainer} />
@@ -49,7 +48,6 @@ const App = ({ loggedIn }) => (
           <PrivateRoute exact path="/tickets/:folder/:userId" component={TicketIndex} />
           <Route component={NotFound} />
         </Switch>
-      {/* </div> */}
     </div>
   </div>
 );

@@ -26,6 +26,10 @@
     overflow-y: scroll;
 }
 
+.profile-container .activity-index::-webkit-scrollbar {
+    display: none;
+}
+
 .profile-container a {
     text-decoration: none;
     font-weight: 600;

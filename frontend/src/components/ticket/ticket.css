@@ -10,6 +10,10 @@
     overflow-y: scroll;
 }
 
+.outer-container::-webkit-scrollbar{
+    display: none;
+}
+
 .form-and-activity-container {
     margin-top: 10px;
     margin-bottom: 100px;

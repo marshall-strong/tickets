@@ -9,6 +9,10 @@
     background-color: rgb(227, 241, 235);
 }
 
+.ticket-index-container::-webkit-scrollbar{
+    display: none;
+}
+
 .query-container {
     position: absolute;
     display: flex;
@@ -209,6 +213,10 @@ button.add {
 .table-row-group {
     overflow-y: scroll;
     height: 99%;
+}
+
+.table-row-group::-webkit-scrollbar{
+    display: none;
 }
 
 .handle{

@@ -1,6 +1,6 @@
 # Tickets
 
-[Live Site](ticats.herokuapp.com)
+[Live Site](https://ticats.herokuapp.com/#/login)
 
 Tickets is a productivity app that helps teams keep track of tasks. 
 

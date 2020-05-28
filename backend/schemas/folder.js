@@ -18,6 +18,9 @@ const folderSchema = new Schema({
         type: Date,
         default: Date.now()
     }],
+    queryString: {
+        type: String
+    },
     postition: [{
         type: Number
     }]

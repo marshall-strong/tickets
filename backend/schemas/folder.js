@@ -14,16 +14,16 @@ const folderSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     }],
-    createdAt: [{
+    createdAt: {
         type: Date,
         default: Date.now()
-    }],
+    },
     queryString: {
         type: String
     },
-    postition: [{
+    postition: {
         type: Number
-    }]
+    }
 });
 
 module.exports = folderSchema;

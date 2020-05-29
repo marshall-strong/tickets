@@ -8,7 +8,8 @@ import CreatorFilter from './creator_filter';
 import TagsFilter from './tags_filter';
 import { getOrgUsers } from '../../../actions/user_actions';
 import { connect } from 'react-redux';
-import { getOrgTags } from '../../../actions/tag_actions'
+import { getOrgTags } from '../../../actions/tag_actions';
+import { createFolder } from '../../../actions/folder_actions';
 
 class TicketQuery extends React.Component {
     constructor(props) {
@@ -17,6 +18,8 @@ class TicketQuery extends React.Component {
             params: new URLSearchParams(this.props.location.search.slice(1)),
             users: '',
             tags: '',
+            saveFolder: false,
+            folderName: ''
         }
     };
 
@@ -25,6 +28,15 @@ class TicketQuery extends React.Component {
         let queryString = this.state.params.toString();
         this.props.history.push(`/tickets/search?${queryString}`)
     };
+
+    handleSave(e) {
+        e.preventDefault();
+        const { currentUser, createFolder } = this.props;
+        const queryString = this.state.params.toString();
+        const folder = { creator: currentUser._id, queryString: queryString, name: this.state.folderName }
+        this.props.createFolder(folder)
+        .then(() => this.setState({ saveFolder: false, folderName: '' }))
+    }
 
     componentDidUpdate(prevProps) {
         if (prevProps.location.search !== this.props.location.search) {
@@ -48,10 +60,26 @@ class TicketQuery extends React.Component {
     };
 
     render() {
-        const { users, tags, params } = this.state;
+        const { users, tags, params, saveFolder } = this.state;
         if (this.loading || !tags || !users) return null;
         return(
             <div className="query-container">
+                {saveFolder ? 
+                <div className="save-folder">
+                    <div className="save-folder-background-modal" onClick={e => this.setState({ saveFolder: false }) }>c</div>
+                    <div className="save-folder-form-container">
+                        <div className="folder-name-label">Folder Name</div>
+                        <input 
+                            type="text" 
+                            value={this.state.folderName} 
+                            onChange={e => this.setState({folderName: e.currentTarget.value})}
+                        />
+                        <button
+                            className="btn1 search"
+                            onClick={e => this.handleSave(e)}
+                        >Save</button>
+                    </div>
+                </div> : null}
                 <div className="filters">
                     <OwnerFilter users={users} params={params} />
                     <CreatorFilter users={users} params={params} />
@@ -60,10 +88,16 @@ class TicketQuery extends React.Component {
                     <StatusFilter params={params}/>
                     <PriorityFilter params={params} />
                 </div>
-                <button 
-                    className="btn1 search"
-                    onClick={(e) => this.handleSubmit(e)}
-                >Search</button>
+                <div className="query-buttons">
+                    <button 
+                        className="btn1 search"
+                        onClick={(e) => this.handleSubmit(e)}
+                    >Search</button>
+                    <button 
+                        className="btn1 search"
+                        onClick={(e) => this.setState({ saveFolder: true })}
+                    >Save Search</button>
+                </div>
             </div>
 
         );
@@ -79,6 +113,7 @@ const msp = state => ({
 const mdp = dispatch => ({
     getOrgUsers: orgHandle => dispatch(getOrgUsers(orgHandle)),
     getOrgTags: orgHandle => dispatch(getOrgTags(orgHandle)),
+    createFolder: folder => dispatch(createFolder(folder))
 })
 
 export default withRouter(connect(msp, mdp)(TicketQuery));

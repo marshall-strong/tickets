@@ -10,6 +10,7 @@ const users = require('./backend/routes/api/users');
 const tickets = require('./backend/routes/api/tickets');
 const tags = require('./backend/routes/api/tags');
 const comments = require('./backend/routes/api/comments');
+const folders = require('./backend/routes/api/folders');
 
 
 const app = express();
@@ -25,6 +26,7 @@ app.use('/api/users', users);
 app.use('/api/tickets', tickets);
 app.use('/api/tags', tags);
 app.use('/api/comments', comments);
+app.use('/api/folders', folders);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));

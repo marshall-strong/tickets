@@ -4,7 +4,6 @@ const router = express.Router()
 const validateCommentInput = require("../../validation/comment")
 const Comment = require("../../models/comment")
 
-
 router.post("/",  
     // passport.authenticate("jwt", {session: false})
     (req, res) => {

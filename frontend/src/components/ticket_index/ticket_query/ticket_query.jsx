@@ -10,6 +10,7 @@ import { getOrgUsers } from '../../../actions/user_actions';
 import { connect } from 'react-redux';
 import { getOrgTags } from '../../../actions/tag_actions';
 import { createFolder } from '../../../actions/folder_actions';
+import left_panel_container from '../../left_panel/left_panel_container';
 
 class TicketQuery extends React.Component {
     constructor(props) {
@@ -66,11 +67,12 @@ class TicketQuery extends React.Component {
             <div className="query-container">
                 {saveFolder ? 
                 <div className="save-folder">
-                    <div className="save-folder-background-modal" onClick={e => this.setState({ saveFolder: false }) }>c</div>
+                    <div className="save-folder-background-modal" onClick={e => this.setState({ saveFolder: false, folderName: '' }) }>X</div>
                     <div className="save-folder-form-container">
                         <div className="folder-name-label">Folder Name</div>
                         <input 
                             type="text" 
+                            className="save-folder-input"
                             value={this.state.folderName} 
                             onChange={e => this.setState({folderName: e.currentTarget.value})}
                         />

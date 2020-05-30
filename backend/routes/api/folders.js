@@ -29,7 +29,7 @@ router.get('/:userId', (req, res) => {
 });
 
 router.delete('/folders/:folderId', (req, res) => {
-    Folder.findById(req.params.id)
+    Folder.findById(req.params.folderId)
     .then(folder => {
         folder.remove()
         return res.json('success')

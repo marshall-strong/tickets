@@ -67,6 +67,12 @@
     background-color: rgb(173, 246, 204);
 }
 
+.query-buttons {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .query-container button.search {
     padding:5px;
     margin-bottom: 5px;
@@ -138,6 +144,35 @@ button.add {
     line-height: 1px;
     height: 20px;
     padding: 5px;
+}
+
+.save-folder {
+    position: absolute;
+    z-index: 2;
+}
+
+.save-folder-background-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.5;
+}
+
+.save-folder-form-container{
+    position: absolute;
+    left: 20vw;
+    z-index: 5;
+    background-color: lightgrey;
+    padding: 10px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 10px 0px black;
+}
+
+.save-folder-input {
+    width: 30vw;
 }
 
 .table {

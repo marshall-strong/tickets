@@ -2,11 +2,17 @@
     display: flex;
     flex-direction: column;
     color: black;
+    height: 92vh;
+    overflow-y: scroll;
     /* background-color: rgb(61, 204, 123); */
     background-color: rgb(173, 236, 200);
     border-right: 1px solid grey;
     border-left: 1px solid grey;
     border-bottom: 1px solid grey;
+}
+
+.left-panel-container::-webkit-scrollbar{
+    display: none;
 }
 
 .left-panel-container h1 {
@@ -15,10 +21,11 @@
     font-weight: 600;
     font-size: 15px;
     padding:10px;
+    border-bottom: 1px solid grey;
 }
 
 .left-panel-container .selected {
-    background-color: rgb(192, 204, 199);
+    background-color: rgb(208, 219, 215);
 }
 
 .left-panel-container a:first-child {
@@ -37,6 +44,27 @@
 }
 
 .left-panel-container a:hover {
+    cursor: default;
+    background-color: rgb(211, 226, 220);
+}
+
+a.custom-folder {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10px;
+}
+
+.folder-name {
+    font-weight: 600;
+}
+
+.wastebasket {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.wastebasket:hover {
+    opacity: 1;
     cursor: pointer;
-    background-color: rgb(192, 204, 199);
 }

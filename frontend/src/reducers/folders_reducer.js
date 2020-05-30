@@ -4,10 +4,10 @@ from '../actions/folder_actions'
 const foldersReducer = (state = {}, action) => {
     Object.freeze(state);
     let nextState = Object.assign({}, state);
-
     switch(action.type){
         case(RECEIVE_FOLDER):
-            return action.folder;
+            nextState[action.folder._id] = action.folder;
+            return nextState;
         case(RECEIVE_FOLDERS):
             return action.payload;
         case(REMOVE_FOLDER):

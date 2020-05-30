@@ -2,7 +2,6 @@
     display: flex;
     height: 100%;
     width: 100%;
-    /* min-width: fit-content; */
     flex-direction: column;
     overflow-x: scroll;
     position: relative;
@@ -20,7 +19,6 @@
     background-color: lightgrey;
     border-bottom: 1px solid grey;
     width: 100%;
-    /* min-width: fit-content; */
     padding: 10px;
     min-height: fit-content;
 }
@@ -178,13 +176,10 @@ button.add {
 .table {
     display: flex;
     flex-direction: column;
-    /* margin: 20px; */
     background-color: white;
     border: 1px solid black;
     border-top: none;
     width: 100%;
-    /* min-width: fit-content; */
-
 }
 
 .table a {
@@ -202,7 +197,6 @@ button.add {
     font-weight: 800;
     font-size: 12px;
     line-height: 15px;
-    /* text-align: center; */
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
@@ -228,10 +222,6 @@ button.add {
     width: 15px;
     text-align: center;
     margin-left: 5px;
-}
-
-.table-cell.ticket-title {
-    /* width: 150px; */
 }
 
 .table-cell {
@@ -265,7 +255,6 @@ button.add {
 
 .table-row {
     display: flex;
-    /* justify-content: right; */
     max-width: 100%;
     border-top: 1px solid black;
 }

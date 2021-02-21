@@ -69,21 +69,24 @@ export const login = user => dispatch => {
 
 export const loginRandomUser = () => dispatch => {
   const emails = [
-    "hayden@acme.org",
-    "brad@acme.org",
-    "marshall@acme.org",
-    "joe@acme.org",
-    "abbigale@acme.org",
-    "bobby@acme.org",
-    "carol@acme.org",
-    "diane@acme.org",
-    "evan@acme.org",
-    "george@acme.org",
-    "isaac@acme.org",
-    "kyle@acme.org",
-    "fred@acme.org",
-    "olivia@acme.org"
-  ]
+    "michael@acme.org",
+    "bugs@acme.org",
+    "daffy@acme.org",
+    "porky@acme.org",
+    "speedy@acme.org",
+    "sam@acme.org",
+    "lola@acme.org",
+    "taz@acme.org",
+    "marvin@acme.org",
+    "sylvester@acme.org",
+    "tweety@acme.org",
+    "foghorn@acme.org",
+    "pepe@acme.org",
+    "granny@acme.org",
+    "elmer@acme.org",
+    "wilee@acme.org",
+    "rr@acme.org",
+  ];
 
   const randomUser = {
     email: emails[(Math.floor(Math.random() * emails.length))],

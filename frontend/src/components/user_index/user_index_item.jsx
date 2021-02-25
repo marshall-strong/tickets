@@ -1,7 +1,7 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React from "react";
+import { Link } from "react-router-dom";
 
-import './user_index.css'
+import "./user_index.css";
 
 const formatDate = (time) => {
   let date = new Date(time);
@@ -11,7 +11,7 @@ const formatDate = (time) => {
   let minutes = date.getMinutes();
   minutes = minutes < 10 ? `0${minutes}` : minutes;
 
-  let timeString
+  let timeString;
 
   if (hours === 0) {
     timeString = ` 1:${minutes}am`;
@@ -24,28 +24,26 @@ const formatDate = (time) => {
     timeString = `${hours}:${minutes}am`;
   }
 
-  return `${dateString} ${timeString}`
+  return `${dateString} ${timeString}`;
 };
 
-
 const UserIndexItem = ({ users }) => {
-
   const userInfo = users.map((user) => (
     <div className="user-index-item">
-        <span id="index-avitar" className="avitar">
-          {user.firstName.slice(0, 1)}{user.lastName.slice(0, 1)}
-        </span> 
+      <span id="index-avitar" className="avitar">
+        {user.firstName.slice(0, 1)}
+        {user.lastName.slice(0, 1)}
+      </span>
       <Link to={`/users/${user._id}`}>
-        {user.firstName} {user.lastName} 
-      </Link> <span className="started-on">
+        {user.firstName} {user.lastName}
+      </Link>{" "}
+      <span className="started-on">
         Started on {formatDate(user.createdAt)}
       </span>
     </div>
   ));
 
-  return (
-    <div>{userInfo}</div>
-  )
-}
+  return <div>{userInfo}</div>;
+};
 
-export default UserIndexItem 
+export default UserIndexItem;

@@ -1,24 +1,24 @@
 .subs-title {
-    /* margin-left: 15px; */
+  /* margin-left: 15px; */
 }
 
 .subscribed-container {
-    display: inline-block;
-    background-color: white;
-    border: 1px solid transparent;
-    border-radius: 3px;
-    padding-right: 10px;
-    padding-left: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    font-size: 12px;
-    height: 90%;
-    width: 750px;
-    text-align: center;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 12px;
+  height: 90%;
+  width: 750px;
+  text-align: center;
 }
 
 .subscribed-container .added-item {
-    float: left;
+  float: left;
 }
 
 .subscribed-container .react-autosuggest__container {
@@ -26,27 +26,27 @@
 }
 
 .subscribed-container .react-autosuggest__input {
-    float: left;
-    margin: 0px;
-    border: none;
-    width: 110px;
+  float: left;
+  margin: 0px;
+  border: none;
+  width: 110px;
 }
 
 .edited .react-autosuggest__input {
-    background-color: rgb(251, 251, 212);
+  background-color: rgb(251, 251, 212);
 }
 
 .subscribed-container .react-autosuggest__suggestions-container {
-    font-size: 12px;
-    text-align: left;
+  font-size: 12px;
+  text-align: left;
 }
 
-.subscribed-link{
-    text-decoration: none;
-    color: black;
+.subscribed-link {
+  text-decoration: none;
+  color: black;
 }
 
 .subscribed-link:hover {
-    cursor: pointer;
-    text-decoration: underline;
-}   
+  cursor: pointer;
+  text-decoration: underline;
+}

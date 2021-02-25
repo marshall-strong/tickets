@@ -1,288 +1,287 @@
 .ticket-index-container {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    flex-direction: column;
-    overflow-x: scroll;
-    position: relative;
-    background-color: rgb(227, 241, 235);
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  overflow-x: scroll;
+  position: relative;
+  background-color: rgb(227, 241, 235);
 }
 
-.ticket-index-container::-webkit-scrollbar{
-    display: none;
+.ticket-index-container::-webkit-scrollbar {
+  display: none;
 }
 
 .query-container {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    background-color: lightgrey;
-    border-bottom: 1px solid grey;
-    width: 100%;
-    padding: 10px;
-    min-height: fit-content;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  background-color: lightgrey;
+  border-bottom: 1px solid grey;
+  width: 100%;
+  padding: 10px;
+  min-height: fit-content;
 }
 
 .query-container .filters {
-    display: inline-block;
-    background-color: white;
-    border: 1px solid grey;
-    border-radius: 5px;
-    padding-right: 5px;
-    padding-left: 5px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    margin-right: 10px;
-    font-size: 12px;
-    /* width: 92%; */
-
+  display: inline-block;
+  background-color: white;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-right: 10px;
+  font-size: 12px;
+  /* width: 92%; */
 }
 
 .filter .added {
-    max-width: 580px;
-    overflow: auto;
+  max-width: 580px;
+  overflow: auto;
 }
 
 .filter .react-autosuggest__suggestions-container {
-    font-size: 12px;
-    width: 100px;
-    top: 27px;
+  font-size: 12px;
+  width: 100px;
+  top: 27px;
 }
 
 .filter .react-autosuggest__suggestion {
-    padding: 5px;
+  padding: 5px;
 }
 
 #unread div {
-    font-weight: 900;
+  font-weight: 900;
 }
 
 #unread {
-    background-color: rgb(209, 248, 225);
+  background-color: rgb(209, 248, 225);
 }
 
 #unread:hover {
-    background-color: rgb(173, 246, 204);
+  background-color: rgb(173, 246, 204);
 }
 
 .query-buttons {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .query-container button.search {
-    padding:5px;
-    margin-bottom: 5px;
+  padding: 5px;
+  margin-bottom: 5px;
 }
 
 .query-container .filter {
-    float: left;
-    display: flex;
-    background-color: rgb(173, 236, 200);
-    align-items: center;
-    padding: 10px;
-    margin-right: 5px;
-    margin-bottom: 2px;
-    margin-top: 2px;
-    border-radius: 3px;
-    height: 40px;
+  float: left;
+  display: flex;
+  background-color: rgb(173, 236, 200);
+  align-items: center;
+  padding: 10px;
+  margin-right: 5px;
+  margin-bottom: 2px;
+  margin-top: 2px;
+  border-radius: 3px;
+  height: 40px;
 }
 
 .filter .title {
-    font-weight: 600;
-    padding-right: 5px;
+  font-weight: 600;
+  padding-right: 5px;
 }
 
 .filter input {
-    margin-right: 10px;
-    max-width: 110px;
+  margin-right: 10px;
+  max-width: 110px;
 }
 
 .filter .options {
-    display: flex;
+  display: flex;
 }
 
 .filter .option {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-right: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 5px;
 }
 
 .filter .checkbox {
-    width: 10px;
-    height: 10px;
-    margin: 3px;
+  width: 10px;
+  height: 10px;
+  margin: 3px;
 }
 
 .filter .added {
-    display: flex;
-    margin-right: 5px;
+  display: flex;
+  margin-right: 5px;
 }
 
 .added .added-item {
-    background-color: rgb(218, 218, 218);
-    padding: 4px;
-    margin: 2px;
-    border-radius: 3px;
-    white-space: nowrap;
-    border: 1px solid rgb(197, 197, 197);
+  background-color: rgb(218, 218, 218);
+  padding: 4px;
+  margin: 2px;
+  border-radius: 3px;
+  white-space: nowrap;
+  border: 1px solid rgb(197, 197, 197);
 }
 
 .added-item .remove {
-    color: grey;
+  color: grey;
 }
 
 .added-item .remove:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 button.add {
-    line-height: 1px;
-    height: 20px;
-    padding: 5px;
+  line-height: 1px;
+  height: 20px;
+  padding: 5px;
 }
 
 .save-folder {
-    position: absolute;
-    z-index: 2;
+  position: absolute;
+  z-index: 2;
 }
 
 .save-folder-background-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: black;
-    opacity: 0.5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.5;
 }
 
-.save-folder-form-container{
-    position: absolute;
-    left: 20vw;
-    z-index: 5;
-    background-color: lightgrey;
-    padding: 10px;
-    border-radius: 3px;
-    box-shadow: 0px 0px 10px 0px black;
+.save-folder-form-container {
+  position: absolute;
+  left: 20vw;
+  z-index: 5;
+  background-color: lightgrey;
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 0px 0px 10px 0px black;
 }
 
 .save-folder-input {
-    width: 30vw;
+  width: 30vw;
 }
 
 .table {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    border: 1px solid black;
-    border-top: none;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid black;
+  border-top: none;
+  width: 100%;
 }
 
 .table a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 .table a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .table-header-group {
-    display: flex;
-    background-color: lightgrey;
-    font-weight: 800;
-    font-size: 12px;
-    line-height: 15px;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+  display: flex;
+  background-color: lightgrey;
+  font-weight: 800;
+  font-size: 12px;
+  line-height: 15px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .table-header-group:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .table-header-group .title {
-    font-weight: 800;
+  font-weight: 800;
 }
 
 .table-header-group .table-cell:hover {
-    background-color: rgb(192, 192, 192);
+  background-color: rgb(192, 192, 192);
 }
 
 .table-header-group .table-cell {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .triangle {
-    width: 15px;
-    text-align: center;
-    margin-left: 5px;
+  width: 15px;
+  text-align: center;
+  margin-left: 5px;
 }
 
 .table-cell {
-    padding: 5px;
-    overflow: hidden;
-    height: 25px;
-    width: 10%;
-    width: 200px;
-    white-space: nowrap;
-    display: flex;
-    font-size: 12px;
+  padding: 5px;
+  overflow: hidden;
+  height: 25px;
+  width: 10%;
+  width: 200px;
+  white-space: nowrap;
+  display: flex;
+  font-size: 12px;
 }
 
 .table-row-group {
-    overflow-y: scroll;
-    height: 99%;
+  overflow-y: scroll;
+  height: 99%;
 }
 
-.table-row-group::-webkit-scrollbar{
-    display: none;
+.table-row-group::-webkit-scrollbar {
+  display: none;
 }
 
-.handle{
-    border: 2px solid black;
-    background-color: black;
+.handle {
+  border: 2px solid black;
+  background-color: black;
 }
 
 .handle:hover {
-    cursor: col-resize;
+  cursor: col-resize;
 }
 
 .table-row {
-    display: flex;
-    max-width: 100%;
-    border-top: 1px solid black;
+  display: flex;
+  max-width: 100%;
+  border-top: 1px solid black;
 }
 
 .closed {
-    text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 .table-row:hover {
-    background-color: rgb(238, 238, 238);
-    cursor: pointer;
+  background-color: rgb(238, 238, 238);
+  cursor: pointer;
 }
 
 .starred {
-    display: flex;
-    justify-content: center;
-    width: 70px;
+  display: flex;
+  justify-content: center;
+  width: 70px;
 }
 
 div.star {
-    z-index: 1;
-    font-size: 20px;
+  z-index: 1;
+  font-size: 20px;
 }
 
 .starred div.star {
-    line-height: 15px;
+  line-height: 15px;
 }
 
 div.star:hover {
-    color: red;
+  color: red;
 }

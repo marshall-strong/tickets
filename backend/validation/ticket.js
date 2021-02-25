@@ -1,22 +1,22 @@
-const Validator = require('validator');
-const validText = require('./valid_text');
+const Validator = require("validator");
+const validText = require("./valid_text");
 
 module.exports = function validateTicketInput(ticket) {
-    let errors = {};
+  let errors = {};
 
-    ticket.title = validText(ticket.title) ? ticket.title : ''
-    ticket.body = validText(ticket.body) ? ticket.body : ''
+  ticket.title = validText(ticket.title) ? ticket.title : "";
+  ticket.body = validText(ticket.body) ? ticket.body : "";
 
-    if (Validator.isEmpty(ticket.title)) {
-        errors.title = "A Ticket must have a title."
-    }
+  if (Validator.isEmpty(ticket.title)) {
+    errors.title = "A Ticket must have a title.";
+  }
 
-    if (ticket.startDate > ticket.endDate && !Validator.isEmpty(ticket.endDate)) {
-        errors.date = "End date must be after start date."
-    }
+  if (ticket.startDate > ticket.endDate && !Validator.isEmpty(ticket.endDate)) {
+    errors.date = "End date must be after start date.";
+  }
 
-    return {
-        errors,
-        isValid: Object.keys(errors).length === 0
-    };
-}
+  return {
+    errors,
+    isValid: Object.keys(errors).length === 0,
+  };
+};

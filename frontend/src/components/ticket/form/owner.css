@@ -1,76 +1,76 @@
 .form .owner {
-    position: relative;
-    border-radius: 3px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    margin-right: 5px;
-    background-color: rgb(224, 224, 224);
+  position: relative;
+  border-radius: 3px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  margin-right: 5px;
+  background-color: rgb(224, 224, 224);
 }
 
-.form .owner:hover{
-    background-color: rgb(214, 214, 214);
-    cursor: pointer;
+.form .owner:hover {
+  background-color: rgb(214, 214, 214);
+  cursor: pointer;
 }
 
 .owner-name {
-    padding: 5px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 200px;
-    border-radius: 3px;
-    font-weight: 600;
+  padding: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 200px;
+  border-radius: 3px;
+  font-weight: 600;
 }
 
 .owner .react-autosuggest__input {
-    width: 200px;
+  width: 200px;
 }
 
 .owner .react-autosuggest__suggestions-container {
-    width: 200px;
+  width: 200px;
 }
 
 .owner-name .avitar {
-    font-size: 12px;
-    width: 25px;
-    height: 25px;
+  font-size: 12px;
+  width: 25px;
+  height: 25px;
 }
 
 .form .owner-name.true {
-    background-color: lightgrey;
+  background-color: lightgrey;
 }
 
 .form .owner-name.edited {
-    background-color: rgb(248, 248, 218);
+  background-color: rgb(248, 248, 218);
 }
 
 .owner .arrow {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .true.arrow {
-    transform: rotate(180deg)
+  transform: rotate(180deg);
 }
 
 .form .owner .react-autosuggest__container {
-    position: absolute;
-    left: 0px;
-    top: 45px;
-    border-radius: 5px;
-    box-shadow: 1px 1px 5px 1px black;
+  position: absolute;
+  left: 0px;
+  top: 45px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px black;
 }
 
 .form .owner .react-autosuggest__suggestions-list {
-    box-shadow: 1px 1px 5px 1px black;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
+  box-shadow: 1px 1px 5px 1px black;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 
 .input.false {
-    display: none;
+  display: none;
 }
 
 .input.true {
-    display: block;
+  display: block;
 }

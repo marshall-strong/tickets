@@ -1,98 +1,99 @@
-import React from 'react';
-import Autosuggest from 'react-autosuggest';
-import { connect } from 'react-redux';
-import './autosuggest.css'
-
+import React from "react";
+import Autosuggest from "react-autosuggest";
+import { connect } from "react-redux";
+import "./autosuggest.css";
 
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
 function escapeRegexCharacters(str) {
-    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function getSuggestions(value, people) {
-    const escapedValue = escapeRegexCharacters(value.trim());
+  const escapedValue = escapeRegexCharacters(value.trim());
 
-    if (escapedValue === '') {
-        return [];
-    }
+  if (escapedValue === "") {
+    return [];
+  }
 
-    const regex = new RegExp('\\b' + escapedValue, 'i');
+  const regex = new RegExp("\\b" + escapedValue, "i");
 
-    return people.filter(person => regex.test(getSuggestionValue(person)));
+  return people.filter((person) => regex.test(getSuggestionValue(person)));
 }
 
 function getSuggestionValue(suggestion) {
-    return `${suggestion.firstName} ${suggestion.lastName}`;
+  return `${suggestion.firstName} ${suggestion.lastName}`;
 }
 
 function renderSuggestion(suggestion, { query }) {
-    const suggestionText = `${suggestion.firstName} ${suggestion.lastName}`;
-    return (
-        <span className={suggestion._id}>
-            <span className="name">
-                <span className={'suggestion-text'} key={suggestionText}>{suggestionText}</span>
-            </span>
+  const suggestionText = `${suggestion.firstName} ${suggestion.lastName}`;
+  return (
+    <span className={suggestion._id}>
+      <span className="name">
+        <span className={"suggestion-text"} key={suggestionText}>
+          {suggestionText}
         </span>
-    );
-};
+      </span>
+    </span>
+  );
+}
 
 class UserSuggest extends React.Component {
-    constructor(props) {
-        super(props);
-        const { value } = this.props;
-        this.state = {
-            value: value ? value : '',
-            suggestions: [],
-            people: this.props.users
-        };
+  constructor(props) {
+    super(props);
+    const { value } = this.props;
+    this.state = {
+      value: value ? value : "",
+      suggestions: [],
+      people: this.props.users,
     };
+  }
 
-    onChange = (event, { newValue, method }) => {
-        this.setState({
-            value: newValue
-        });
-    };
+  onChange = (event, { newValue, method }) => {
+    this.setState({
+      value: newValue,
+    });
+  };
 
-    onSuggestionsFetchRequested = ({ value }) => {
-        this.setState({
-            suggestions: getSuggestions(value, this.state.people)
-        });
-    };
+  onSuggestionsFetchRequested = ({ value }) => {
+    this.setState({
+      suggestions: getSuggestions(value, this.state.people),
+    });
+  };
 
-    componentDidUpdate(prevProps) {
-        if (prevProps !== this.props) {
-            this.setState({ people: this.props.users })
-        }
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      this.setState({ people: this.props.users });
     }
+  }
 
-    onSuggestionsClearRequested = () => {
-        this.setState({ suggestions: [], value: '' });
+  onSuggestionsClearRequested = () => {
+    this.setState({ suggestions: [], value: "" });
+  };
+
+  render() {
+    const { value, suggestions } = this.state;
+    const inputProps = {
+      placeholder: "Type a name",
+      value,
+      onChange: this.onChange,
     };
 
-    render() {
-        const { value, suggestions } = this.state;
-        const inputProps = {
-            placeholder: "Type a name",
-            value,
-            onChange: this.onChange
-        };
+    return (
+      <Autosuggest
+        suggestions={suggestions}
+        onSuggestionSelected={this.props.onSuggestionSelected}
+        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+        getSuggestionValue={getSuggestionValue}
+        renderSuggestion={renderSuggestion}
+        inputProps={inputProps}
+      />
+    );
+  }
+}
 
-        return (
-            <Autosuggest
-                suggestions={suggestions}
-                onSuggestionSelected={this.props.onSuggestionSelected}
-                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-                getSuggestionValue={getSuggestionValue}
-                renderSuggestion={renderSuggestion}
-                inputProps={inputProps} 
-            />
-        );
-    };
-};
-
-const msp = state => ({
-    users: Object.values(state.entities.users)
+const msp = (state) => ({
+  users: Object.values(state.entities.users),
 });
 
 export default connect(msp, null)(UserSuggest);

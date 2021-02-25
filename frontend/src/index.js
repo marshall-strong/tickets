@@ -1,42 +1,41 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import Root from './components/root';
+import Root from "./components/root";
 
-import configureStore from './store/store';
-import jwt_decode from 'jwt-decode';
-import { setAuthToken } from './util/session_api_util';
-import { logout } from './actions/session_actions';
+import configureStore from "./store/store";
+import jwt_decode from "jwt-decode";
+import { setAuthToken } from "./util/session_api_util";
+import { logout } from "./actions/session_actions";
 
-document.addEventListener('DOMContentLoaded', () => {
-    let store;
-    if (localStorage.jwtToken) {
+document.addEventListener("DOMContentLoaded", () => {
+  let store;
+  if (localStorage.jwtToken) {
+    setAuthToken(localStorage.jwtToken);
 
-        setAuthToken(localStorage.jwtToken);
+    const decodedUser = jwt_decode(localStorage.jwtToken);
+    const preloadedState = {
+      entities: {
+        users: {
+          [decodedUser._id]: decodedUser,
+        },
+      },
+      session: { isAuthenticated: true, _id: decodedUser._id },
+    };
 
-        const decodedUser = jwt_decode(localStorage.jwtToken);
-        const preloadedState = {  
-            entities: {
-                users: { 
-                    [decodedUser._id]: decodedUser
-                }
-            },
-            session: { isAuthenticated: true, _id: decodedUser._id } 
-        };
+    store = configureStore(preloadedState);
 
-        store = configureStore(preloadedState);
+    const currentTime = Date.now() / 1000;
 
-        const currentTime = Date.now() / 1000;
-
-        if (decodedUser.exp < currentTime) {
-            store.dispatch(logout());
-            window.location.href = '/';
-        }
-    } else {
-        store = configureStore({});
+    if (decodedUser.exp < currentTime) {
+      store.dispatch(logout());
+      window.location.href = "/";
     }
-    window.state = store.getState
-    const root = document.getElementById('root');
-    
-    ReactDOM.render(<Root store={store} />, root);
+  } else {
+    store = configureStore({});
+  }
+  window.state = store.getState;
+  const root = document.getElementById("root");
+
+  ReactDOM.render(<Root store={store} />, root);
 });

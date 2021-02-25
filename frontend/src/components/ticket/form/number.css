@@ -3,28 +3,28 @@
 }
 
 .ticket-number {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .copy {
-    font-size: 14px;
-    font-weight: 600;
-    color: blue;
+  font-size: 14px;
+  font-weight: 600;
+  color: blue;
 }
 
 .copy:hover {
-    cursor: pointer;
-    text-decoration: underline;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .copied {
-    color: red;
-    font-size: 14px;
-    opacity: 0;
-    position: absolute;
-    left: 325px;
-    top: -10px;
-    text-align: center;
+  color: red;
+  font-size: 14px;
+  opacity: 0;
+  position: absolute;
+  left: 325px;
+  top: -10px;
+  text-align: center;
 }
 
 .fade-out {
@@ -37,45 +37,45 @@
 
 @keyframes fadeOut {
   0% {
-    opacity:1;
+    opacity: 1;
   }
   100% {
-    opacity:0;
+    opacity: 0;
   }
 }
 
 @-moz-keyframes fadeOut {
   0% {
-    opacity:1;
+    opacity: 1;
   }
   100% {
-    opacity:0;
+    opacity: 0;
   }
 }
 
 @-webkit-keyframes fadeOut {
   0% {
-    opacity:1;
+    opacity: 1;
   }
   100% {
-    opacity:0;
+    opacity: 0;
   }
 }
 
 @-o-keyframes fadeOut {
   0% {
-    opacity:1;
+    opacity: 1;
   }
   100% {
-    opacity:0;
+    opacity: 0;
   }
 }
 
 @-ms-keyframes fadeOut {
   0% {
-    opacity:1;
+    opacity: 1;
   }
   100% {
-    opacity:0;
+    opacity: 0;
   }
 }

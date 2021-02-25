@@ -48,6 +48,10 @@
     "validator": "^12.2.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-react": "^7.22.0",
+    "nodemon": "^2.0.2",
+    "prettier": "2.2.1"
   }
 }

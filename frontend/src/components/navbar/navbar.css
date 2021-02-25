@@ -1,127 +1,122 @@
-.header-container{
-    width: 100%;
-    /* display: flex; */
+.header-container {
+  width: 100%;
+  /* display: flex; */
 }
 
 .header {
-    display: flex;
-    justify-content: center;
-    background-color: rgb(61, 204, 123);
-    color: white;
-    width: 100%;
-    height: 8vh;
-    /* max-width: 100vw; */
-    /* min-width: fit-content; */
+  display: flex;
+  justify-content: center;
+  background-color: rgb(61, 204, 123);
+  color: white;
+  width: 100%;
+  height: 8vh;
+  /* max-width: 100vw; */
+  /* min-width: fit-content; */
 }
 
 .nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    width: 90%;
-    /* min-width: fit-content; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 90%;
+  /* min-width: fit-content; */
 }
 
 .nav .left-nav {
-    font-size: 30px;
-    margin-left: 30px;
+  font-size: 30px;
+  margin-left: 30px;
 }
 
 .nav .right-nav {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .user-search-container {
-    color: black;
-    display: flex;
+  color: black;
+  display: flex;
 }
 
 .nav input {
-    width: 250px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
+  width: 250px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 
 .nav input:active {
-    outline: none;
+  outline: none;
 }
 
 .user-search-container .btn1 {
-    border-bottom-right-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 0px;
-    border-top-left-radius: 0px;
-    height: 30px;
-    /* background-color: rgb(0, 168, 90); */
-    background-color: grey;
-    border-color: darkgrey;
-    opacity: 0.92;
-    font-size: 20px;
-    padding: 5px
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  height: 30px;
+  /* background-color: rgb(0, 168, 90); */
+  background-color: grey;
+  border-color: darkgrey;
+  opacity: 0.92;
+  font-size: 20px;
+  padding: 5px;
 }
 
 .user-search-container .btn1:hover {
-    opacity: 1;
-    border-color: darkgrey;
-
+  opacity: 1;
+  border-color: darkgrey;
 }
 
 .nav .react-autosuggest__suggestions-container {
-    width: 250px;
+  width: 250px;
 }
 
 .nav .avitar {
-    border: 1px solid white;
-    border-radius: 30px;
-    height: 20px;
-    width: 20px;
-    font-size: 10px;
-    text-align: center;
-    line-height: 19px;
-    margin-right: 5px;
+  border: 1px solid white;
+  border-radius: 30px;
+  height: 20px;
+  width: 20px;
+  font-size: 10px;
+  text-align: center;
+  line-height: 19px;
+  margin-right: 5px;
 }
-
-
 
 .nav .right-nav a:hover {
-    border: 1px solid white;
+  border: 1px solid white;
 }
 .new-ticket {
-    background-color: green;
-    /* z-index: 2; */
+  background-color: green;
+  /* z-index: 2; */
 }
 .nav .logout {
-    background-color: black;
+  background-color: black;
 }
 
 .btn1:hover {
-    border: 1px solid white;
+  border: 1px solid white;
 }
 
-.link-style-header{
-    font-size: 30px;
-    color: white;
-    text-decoration: none;
-    font-family: sans-serif;
+.link-style-header {
+  font-size: 30px;
+  color: white;
+  text-decoration: none;
+  font-family: sans-serif;
 }
 
-.right-nav button{
-    margin-left: 10px;
+.right-nav button {
+  margin-left: 10px;
 }
 
-.link-container{
-    display: flex;
-    justify-content: space-between;
-    width: 150px;
+.link-container {
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
 }
-
 
 .own-profile-button {
-    padding-top: 3px;
-    padding-bottom: 3px;
-    background-color: black;
-}  
-
+  padding-top: 3px;
+  padding-bottom: 3px;
+  background-color: black;
+}

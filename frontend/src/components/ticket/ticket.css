@@ -1,176 +1,178 @@
 .outer-container {
-    background-color: rgb(227, 241, 235);
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    min-width: fit-content;
-    /* height: fit-content; */
-    height: 100%;
-    /* max-height: 100%; */
-    overflow-y: scroll;
+  background-color: rgb(227, 241, 235);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-width: fit-content;
+  /* height: fit-content; */
+  height: 100%;
+  /* max-height: 100%; */
+  overflow-y: scroll;
 }
 
-.outer-container::-webkit-scrollbar{
-    display: none;
+.outer-container::-webkit-scrollbar {
+  display: none;
 }
 
 .form-and-activity-container {
-    margin-top: 10px;
-    margin-bottom: 100px;
-    height: fit-content;
-    width: 800px;
-    background-color: rgb(241, 241, 241);
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    border-right: 1px solid grey;
-    border-left: 1px solid grey;
-    border-top: 1px solid grey;
+  margin-top: 10px;
+  margin-bottom: 100px;
+  height: fit-content;
+  width: 800px;
+  background-color: rgb(241, 241, 241);
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  border-right: 1px solid grey;
+  border-left: 1px solid grey;
+  border-top: 1px solid grey;
 }
 
 .form-and-activity-container .form {
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    padding: 14px;
-    border-bottom: 1px solid grey;
-    width: 798px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  padding: 14px;
+  border-bottom: 1px solid grey;
+  width: 798px;
 }
 
 .form-row {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    padding-bottom: 5px;
-    margin-bottom: 5px;
-    margin-left: 10px;
-    border-bottom: 1px solid lightgrey;
-    width: 750px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  border-bottom: 1px solid lightgrey;
+  width: 750px;
 }
 
 .form-row.col {
-    flex-direction: column;
-    align-items: baseline;
+  flex-direction: column;
+  align-items: baseline;
 }
 
 .form-row.sched .label {
-    margin-right: 18px;
+  margin-right: 18px;
 }
 
-input, textarea {
-    border-radius: 5px;
-    resize: none;
-    width: 750px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-style: none;
-    outline: none;
-    border: 1px solid transparent;
+input,
+textarea {
+  border-radius: 5px;
+  resize: none;
+  width: 750px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-style: none;
+  outline: none;
+  border: 1px solid transparent;
 }
 
-input:focus, textarea:focus {
-    border: 1px solid rgb(184, 183, 183);
+input:focus,
+textarea:focus {
+  border: 1px solid rgb(184, 183, 183);
 }
 
 .form .label {
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 2px;
-    margin-right: 5px;
-    color: grey;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 2px;
+  margin-right: 5px;
+  color: grey;
 }
 
 .form .title {
-    font-size: 20px;
-    width: 720px;
-    margin-right: 10px;
+  font-size: 20px;
+  width: 720px;
+  margin-right: 10px;
 }
 
 .star:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .form select {
-    background-color: rgb(224, 224, 224);
-    height: 40px;
-    margin-right: 5px;
+  background-color: rgb(224, 224, 224);
+  height: 40px;
+  margin-right: 5px;
 }
 
 .form select.edited {
-    background-color: rgb(248, 248, 218);
+  background-color: rgb(248, 248, 218);
 }
 
-
 .form select:hover {
-    background-color: rgb(214, 214, 214);
-    cursor: pointer;
+  background-color: rgb(214, 214, 214);
+  cursor: pointer;
 }
 
 .form .selectors {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 40px;
-    text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  text-align: center;
 }
 
-.selectors select, .selectors input {
-    font-size: 18px;
+.selectors select,
+.selectors input {
+  font-size: 18px;
 }
 
 .form button.save {
-    margin-left: 376px;
+  margin-left: 376px;
 }
 
 .form button.save.not-edited:hover {
-    border-color: black;
-    cursor: unset;
+  border-color: black;
+  cursor: unset;
 }
 
 .form button.save.edited:hover {
-    border-color: white;
+  border-color: white;
 }
 
 .schedule {
-    font-size: 10px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    color: grey;
-    width: 500px;
+  font-size: 10px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  color: grey;
+  width: 500px;
 }
 
 .schedule input {
-    font-size: 13px;
-    margin-left: 5px;
-    width: 170px;
-    margin-right: 34px;
+  font-size: 13px;
+  margin-left: 5px;
+  width: 170px;
+  margin-right: 34px;
 }
 
-.show{
-    outline: none;
-    border: 1px solid rgb(240, 240, 240);
+.show {
+  outline: none;
+  border: 1px solid rgb(240, 240, 240);
 }
 
-.new{
-    outline: none;
-    border: 1px solid rgb(226, 225, 225);
+.new {
+  outline: none;
+  border: 1px solid rgb(226, 225, 225);
 }
 
 .edited {
-    background-color: rgb(248, 248, 218);
+  background-color: rgb(248, 248, 218);
 }
 
 .btn1.edited {
-    background-color: rgb(8, 92, 148);
+  background-color: rgb(8, 92, 148);
 }
 
 button.btn1.edited:hover {
-    border: 1px solid black
+  border: 1px solid black;
 }
 
 .ticket-errors {
-    color: red;
+  color: red;
 }

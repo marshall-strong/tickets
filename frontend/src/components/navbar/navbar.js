@@ -6,6 +6,9 @@ import UserSearchContainer from "./user_search_container";
 import { getQueryString } from "../../util/params_util";
 import { getOrgTags } from "../../actions/tag_actions";
 import { connect } from "react-redux";
+import headshotIcon from "../../assets/headshot-512.png";
+import githubIcon from "../../assets/github-512.png";
+import linkedinIcon from "../../assets/linkedin-512.png";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -36,11 +39,56 @@ class NavBar extends React.Component {
 
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
+    const marshall = (
+      <div className="marshall">
+        <div className="marshall_icon_container">
+          <a
+            href="http://www.marshallstrong.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={headshotIcon}
+              className="marshall_icon"
+              alt="marshallstrong.com"
+            />
+          </a>
+        </div>
+        <div className="marshall_icon_container">
+          <a
+            href="https://github.com/marshall-strong/tickets"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={githubIcon}
+              className="marshall_icon"
+              alt="GitHub repository"
+            />
+          </a>
+        </div>
+        <div className="marshall_icon_container">
+          <a
+            href="https://www.linkedin.com/in/marshall-strong/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={linkedinIcon}
+              className="marshall_icon"
+              alt="LinkedIn profile"
+            />
+          </a>
+        </div>
+      </div>
+    );
+
     let { currentUser } = this.props;
     if (currentUser) {
       return (
         <div className="header">
           <div className="nav">
+            <div className="left-nav">{marshall}</div>
             <Link
               className="link-style-header"
               to={`/tickets/search?${getQueryString("owner", currentUser._id)}`}

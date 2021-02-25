@@ -1,50 +1,51 @@
 .profile-container {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    background-color: rgb(227, 241, 235);
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  background-color: rgb(227, 241, 235);
 }
 
 .profile-header-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgb(173, 236, 200);
-    padding: 7px;
-    border-bottom: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(173, 236, 200);
+  padding: 7px;
+  border-bottom: 1px solid grey;
 }
 
 .profile-header-container .avitar {
-    font-size: 30px;
-    line-height: 62px;
-    height: 64px;
-    width: 64px;
-    border-radius: 32px;
+  font-size: 30px;
+  line-height: 62px;
+  height: 64px;
+  width: 64px;
+  border-radius: 32px;
 }
 
 .profile-container .activity-index {
-    overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 .profile-container .activity-index::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .profile-container a {
-    text-decoration: none;
-    font-weight: 600;
-    color: black
+  text-decoration: none;
+  font-weight: 600;
+  color: black;
 }
 
-.profile-container a:hover{
-    text-decoration: underline;
+.profile-container a:hover {
+  text-decoration: underline;
 }
 
-.profile-container .ticket, .profile-container .comment {
-    padding: 10px;
-    background-color: white;
-    margin: 10px;
-    border: 1px solid lightgrey
+.profile-container .ticket,
+.profile-container .comment {
+  padding: 10px;
+  background-color: white;
+  margin: 10px;
+  border: 1px solid lightgrey;
 }
 
 /* .ticket {
@@ -57,18 +58,15 @@
     border: 1px solid rgb(171, 171, 248)
 } */
 
-.green{
-    color: green;
-    font-weight: 600;
-    margin-right: 10px;
-    font-size: 24px;
+.green {
+  color: green;
+  font-weight: 600;
+  margin-right: 10px;
+  font-size: 24px;
 }
 
 .blue {
-    color: blue;
-    margin-right: 10px;
-    font-size: 20px;
+  color: blue;
+  margin-right: 10px;
+  font-size: 20px;
 }
-
-
-

@@ -1,5 +1,4 @@
-import { RECEIVE_TICKETS, RECEIVE_TICKET } from '../actions/ticket_actions';
-
+import { RECEIVE_TICKETS, RECEIVE_TICKET } from "../actions/ticket_actions";
 
 const ticketsReducer = (defaultState = {}, action) => {
   Object.freeze(defaultState);
@@ -15,6 +14,5 @@ const ticketsReducer = (defaultState = {}, action) => {
       return nextState;
   }
 };
-
 
 export default ticketsReducer;

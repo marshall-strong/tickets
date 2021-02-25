@@ -1,53 +1,54 @@
-import React from 'react';
-import TicketTableRow from './ticket_table_row';
+import React from "react";
+import TicketTableRow from "./ticket_table_row";
 
 class TicketTable extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       tickets: undefined,
       resizing: false,
       sortedBy: {
-        attr: 'endDate',
-        ord: true
+        attr: "endDate",
+        ord: true,
       },
-      params: new URLSearchParams(this.props.location.search)
+      params: new URLSearchParams(this.props.location.search),
     };
-  };
+  }
 
   receiveTickets(action) {
-    this.setState({ 
-      tickets: action.tickets, 
+    this.setState({
+      tickets: action.tickets,
       sortedBy: {
         attr: this.state.sortedBy.attr,
-        ord: !this.state.sortedBy.ord
-      } 
+        ord: !this.state.sortedBy.ord,
+      },
     });
     this.formatTable();
     this.sortTicketsBy(this.state.sortedBy.attr);
   }
 
   componentDidMount() {
-    // in case of page refresh, fetch the current user to overwrite 
+    // in case of page refresh, fetch the current user to overwrite
     // stale preloaded state from login and get updated starred list
-    
+
     // let queryString = this.state.params.toString()
-    this.props.getOneUser(this.props.currentUser._id)
-    
+    this.props.getOneUser(this.props.currentUser._id);
+
     switch (this.props.location.pathname) {
-      case '/tickets/search':
-        this.props.fetchQueriedTickets(this.props.location.search.slice(1))
-        .then(action => this.receiveTickets(action))
+      case "/tickets/search":
+        this.props
+          .fetchQueriedTickets(this.props.location.search.slice(1))
+          .then((action) => this.receiveTickets(action));
         break;
-      case `/tickets/starred/${this.props.userId}`: 
-        this.props.fetchStarredTickets(this.props.currentUser)
-        .then(action => this.receiveTickets(action))
+      case `/tickets/starred/${this.props.userId}`:
+        this.props
+          .fetchStarredTickets(this.props.currentUser)
+          .then((action) => this.receiveTickets(action));
         break;
       default:
         break;
     }
-      
   }
 
   componentDidUpdate(prevProps) {
@@ -56,36 +57,38 @@ class TicketTable extends React.Component {
     // if (this.props.location.pathname !== prevProps.location.pathname) {
     if (prevProps !== this.props) {
       switch (this.props.location.pathname) {
-        case '/tickets/search':
-          this.props.fetchQueriedTickets(this.props.location.search.slice(1))
-          .then(action => this.receiveTickets(action))
+        case "/tickets/search":
+          this.props
+            .fetchQueriedTickets(this.props.location.search.slice(1))
+            .then((action) => this.receiveTickets(action));
           break;
         case `/tickets/starred/${this.props.userId}`:
-          this.props.fetchStarredTickets(this.props.currentUser)
-          .then(action => this.receiveTickets(action))
+          this.props
+            .fetchStarredTickets(this.props.currentUser)
+            .then((action) => this.receiveTickets(action));
           break;
         default:
           break;
-      };
-    };
-  };
+      }
+    }
+  }
 
   formatTable() {
-    let table = document.getElementById('table');
+    let table = document.getElementById("table");
     let tableIndex = table.parentElement;
-    
+
     setInterval(() => {
       let tableContent = table.firstElementChild.nextElementSibling;
       let queryContainer = table.previousElementSibling;
       if (queryContainer) {
         let margin = queryContainer.offsetHeight;
-        table.style['margin-top'] = margin + 'px';
-        table.style['max-height'] = tableIndex.offsetHeight - margin - 0.59 + 'px'
+        table.style["margin-top"] = margin + "px";
+        table.style["max-height"] =
+          tableIndex.offsetHeight - margin - 0.59 + "px";
       }
+    }, 200);
 
-    },200)
-
-    let handles = document.getElementsByClassName('handle');
+    let handles = document.getElementsByClassName("handle");
     let clickPos, colNum, leftWidth, rightWidth;
 
     for (let i = 0; i < handles.length; i++) {
@@ -96,79 +99,83 @@ class TicketTable extends React.Component {
         let rwidth = handles[8].nextElementSibling.offsetWidth;
         let toBeResized = document.getElementsByClassName(`${i + 1}`);
         for (let j = 0; j < toBeResized.length; j++) {
-          toBeResized[j].previousElementSibling.style.width = width + 'px';
-          if (i === 8) toBeResized[j].nextElementSibling.style.width = rwidth + 'px';
-        };
-      };
+          toBeResized[j].previousElementSibling.style.width = width + "px";
+          if (i === 8)
+            toBeResized[j].nextElementSibling.style.width = rwidth + "px";
+        }
+      }
       // eslint-disable-next-line
-      handles[i].addEventListener('mousedown', (e) => {
-        this.setState({ resizing: true });
-        clickPos = e.pageX;
-        colNum = e.target.classList[1];
-        leftWidth = e.target.previousElementSibling.offsetWidth;
-        rightWidth = e.target.nextElementSibling.offsetWidth;
-      }, false);
+      handles[i].addEventListener(
+        "mousedown",
+        (e) => {
+          this.setState({ resizing: true });
+          clickPos = e.pageX;
+          colNum = e.target.classList[1];
+          leftWidth = e.target.previousElementSibling.offsetWidth;
+          rightWidth = e.target.nextElementSibling.offsetWidth;
+        },
+        false
+      );
       // eslint-disable-next-line
-      window.addEventListener('mousemove', (e) => {
+      window.addEventListener("mousemove", (e) => {
         if (!clickPos) return 0;
         let dx = e.pageX - clickPos;
-        let root = document.getElementById('root')
+        let root = document.getElementById("root");
         if (e.pageX >= root.offsetWidth) return 0;
         let colHandles = document.getElementsByClassName(colNum);
 
         for (let j = 0; j < colHandles.length; j++) {
           let leftSib = colHandles[j].previousElementSibling;
           let rightSib = colHandles[j].nextElementSibling;
-  
-          leftSib.style.width = leftWidth + dx + 'px';
-          rightSib.style.width = rightWidth - dx + 'px';
-        };
+
+          leftSib.style.width = leftWidth + dx + "px";
+          rightSib.style.width = rightWidth - dx + "px";
+        }
       });
       // eslint-disable-next-line
-      window.addEventListener('mouseup', (e) => {
+      window.addEventListener("mouseup", (e) => {
         if (!clickPos) return 0;
         clickPos = undefined;
         setTimeout(() => {
           this.setState({ resizing: false });
         }, 300);
       });
-    };
-
-  };
+    }
+  }
 
   sortTicketsBy(attr) {
     let tickets = Object.values(this.state.tickets);
     let sortedTickets;
-    
+
     sortedTickets = tickets.sort((t1, t2) => {
-      let attr1 = t1[attr] ? t1[attr] : '';
-      let attr2 = t2[attr] ? t2[attr] : '';
-  
+      let attr1 = t1[attr] ? t1[attr] : "";
+      let attr2 = t2[attr] ? t2[attr] : "";
+
       switch (attr) {
-        case 'owner':
-          attr1 = (attr1.firstName + ' ' + attr1.lastName).toLowerCase();
-          attr2 = (attr2.firstName + ' ' + attr2.lastName).toLowerCase();
+        case "owner":
+          attr1 = (attr1.firstName + " " + attr1.lastName).toLowerCase();
+          attr2 = (attr2.firstName + " " + attr2.lastName).toLowerCase();
           break;
-        case 'creator':
-          attr1 = (attr1.firstName + ' ' + attr1.lastName).toLowerCase();
-          attr2 = (attr2.firstName + ' ' + attr2.lastName).toLowerCase();
+        case "creator":
+          attr1 = (attr1.firstName + " " + attr1.lastName).toLowerCase();
+          attr2 = (attr2.firstName + " " + attr2.lastName).toLowerCase();
           break;
-        case 'title':
+        case "title":
           attr1 = attr1.toLowerCase();
           attr2 = attr2.toLowerCase();
           break;
-        case 'updatedAt':
+        case "updatedAt":
           attr1 = attr1[0];
           attr2 = attr2[0];
           break;
         default:
           break;
-      };
+      }
       if (this.state.sortedBy.ord) {
         return attr1 < attr2 ? 1 : attr1 > attr2 ? -1 : 0;
       } else {
-        return  attr1 > attr2 ? 1 : attr1 < attr2 ? -1 : 0;
-      };
+        return attr1 > attr2 ? 1 : attr1 < attr2 ? -1 : 0;
+      }
     });
 
     this.setState({
@@ -176,9 +183,9 @@ class TicketTable extends React.Component {
       sortedBy: {
         attr: attr,
         ord: !this.state.sortedBy.ord,
-      }
+      },
     });
-  };
+  }
 
   render() {
     if (!this.state.tickets) return null;
@@ -188,121 +195,126 @@ class TicketTable extends React.Component {
     return (
       <div id="table" className="table">
         <div className="table-header-group">
-          <div 
-            className="table-cell creator" 
-            onClick={() => this.sortTicketsBy('creator')}
+          <div
+            className="table-cell creator"
+            onClick={() => this.sortTicketsBy("creator")}
           >
             <div className="title">Creator</div>
             <div className="triangle">
-              {sortedBy.attr !== 'creator' ? null : sortedBy.ord ? '▴' : '▾' }
+              {sortedBy.attr !== "creator" ? null : sortedBy.ord ? "▴" : "▾"}
             </div>
-            </div><div className="handle 1">
           </div>
-          <div 
-            className="table-cell owner" 
-            onClick={() => this.sortTicketsBy('owner')}
+          <div className="handle 1"></div>
+          <div
+            className="table-cell owner"
+            onClick={() => this.sortTicketsBy("owner")}
           >
             <div className="title">Owner</div>
             <div className="triangle">
-              {sortedBy.attr !== 'owner' ? null : sortedBy.ord ? '▴' : '▾'}
+              {sortedBy.attr !== "owner" ? null : sortedBy.ord ? "▴" : "▾"}
             </div>
-            </div><div className="handle 2">
           </div>
-          <div 
-            className="table-cell ticket-title" 
-            onClick={() => this.sortTicketsBy('title')}
+          <div className="handle 2"></div>
+          <div
+            className="table-cell ticket-title"
+            onClick={() => this.sortTicketsBy("title")}
           >
             <div className="title">Title</div>
             <div className="triangle">
-              {sortedBy.attr !== 'title' ? null : sortedBy.ord ? '▴' : '▾'}
+              {sortedBy.attr !== "title" ? null : sortedBy.ord ? "▴" : "▾"}
             </div>
-            </div><div className="handle 3">
           </div>
-          <div 
-            className="table-cell created-at" 
-            onClick={() => this.sortTicketsBy('createdAt')}
+          <div className="handle 3"></div>
+          <div
+            className="table-cell created-at"
+            onClick={() => this.sortTicketsBy("createdAt")}
           >
             <div className="title">Created At</div>
             <div className="triangle">
-              {sortedBy.attr !== 'createdAt' ? null : sortedBy.ord ? '▴' : '▾'}
+              {sortedBy.attr !== "createdAt" ? null : sortedBy.ord ? "▴" : "▾"}
             </div>
-            </div><div className="handle 4">
           </div>
-          <div 
-            className="table-cell updated-at" 
-            onClick={() => this.sortTicketsBy('updatedAt')}
+          <div className="handle 4"></div>
+          <div
+            className="table-cell updated-at"
+            onClick={() => this.sortTicketsBy("updatedAt")}
           >
             <div className="title">Updated At</div>
             <div className="triangle">
-              {sortedBy.attr !== 'updatedAt' ? null : sortedBy.ord ? '▴' : '▾'}
+              {sortedBy.attr !== "updatedAt" ? null : sortedBy.ord ? "▴" : "▾"}
             </div>
-            </div><div className="handle 5">
           </div>
-          <div 
-            className="table-cell status" 
-            onClick={() => this.sortTicketsBy('status')}
+          <div className="handle 5"></div>
+          <div
+            className="table-cell status"
+            onClick={() => this.sortTicketsBy("status")}
           >
             <div className="title">Status</div>
             <div className="triangle">
-              {sortedBy.attr !== 'status' ? null : sortedBy.ord ? '▴' : '▾'}
+              {sortedBy.attr !== "status" ? null : sortedBy.ord ? "▴" : "▾"}
             </div>
-            </div><div className="handle 6">
           </div>
-          <div 
-            className="table-cell priority" 
-            onClick={() => this.sortTicketsBy('priority')}
+          <div className="handle 6"></div>
+          <div
+            className="table-cell priority"
+            onClick={() => this.sortTicketsBy("priority")}
           >
             <div className="title">Priority</div>
             <div className="triangle">
-              {sortedBy.attr !== 'priority' ? null : sortedBy.ord ? '▴' : '▾'}
+              {sortedBy.attr !== "priority" ? null : sortedBy.ord ? "▴" : "▾"}
             </div>
-            </div><div className="handle 7">
           </div>
-          <div 
-            className="table-cell start-date" 
-            onClick={() => this.sortTicketsBy('startDate')}
+          <div className="handle 7"></div>
+          <div
+            className="table-cell start-date"
+            onClick={() => this.sortTicketsBy("startDate")}
           >
             <div className="title">Start Date</div>
             <div className="triangle">
-              {sortedBy.attr !== 'startDate' ? null : sortedBy.ord ? '▴' : '▾'}
+              {sortedBy.attr !== "startDate" ? null : sortedBy.ord ? "▴" : "▾"}
             </div>
-            </div><div className="handle 8">
           </div>
-          <div 
-            className="table-cell end-date" 
-            onClick={() => this.sortTicketsBy('endDate')}
+          <div className="handle 8"></div>
+          <div
+            className="table-cell end-date"
+            onClick={() => this.sortTicketsBy("endDate")}
           >
             <div className="title">End Date</div>
             <div className="triangle">
-              {sortedBy.attr !== 'endDate' ? null : sortedBy.ord ? '▴' : '▾'}
+              {sortedBy.attr !== "endDate" ? null : sortedBy.ord ? "▴" : "▾"}
             </div>
-            </div><div className="handle 9">
           </div>
-          <div 
-            className="table-cell starred"
-          >
+          <div className="handle 9"></div>
+          <div className="table-cell starred">
             <div className="title starred">Starred</div>
           </div>
         </div>
         <div className="table-row-group">
-          {tickets.map(ticket => {
+          {tickets.map((ticket) => {
             return (
-              <div key={ticket._id} onClick={() => this.state.resizing ? null : history.push(`/tickets/${ticket._id}`)}>
-                <TicketTableRow 
-                  key={ticket._id} 
-                  ticket={ticket} 
+              <div
+                key={ticket._id}
+                onClick={() =>
+                  this.state.resizing
+                    ? null
+                    : history.push(`/tickets/${ticket._id}`)
+                }
+              >
+                <TicketTableRow
+                  key={ticket._id}
+                  ticket={ticket}
                   currentUser={currentUser}
                   starredIds={currentUser.starred}
                   updateUser={updateUser}
                   resizing={this.state.resizing}
                 />
               </div>
-            )
+            );
           })}
         </div>
       </div>
     );
-  };
-};
+  }
+}
 
 export default TicketTable;

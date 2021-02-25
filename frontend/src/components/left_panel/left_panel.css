@@ -1,70 +1,70 @@
 .left-panel-container {
-    display: flex;
-    flex-direction: column;
-    color: black;
-    height: 92vh;
-    overflow-y: scroll;
-    /* background-color: rgb(61, 204, 123); */
-    background-color: rgb(173, 236, 200);
-    border-right: 1px solid grey;
-    border-left: 1px solid grey;
-    border-bottom: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  color: black;
+  height: 92vh;
+  overflow-y: scroll;
+  /* background-color: rgb(61, 204, 123); */
+  background-color: rgb(173, 236, 200);
+  border-right: 1px solid grey;
+  border-left: 1px solid grey;
+  border-bottom: 1px solid grey;
 }
 
-.left-panel-container::-webkit-scrollbar{
-    display: none;
+.left-panel-container::-webkit-scrollbar {
+  display: none;
 }
 
 .left-panel-container h1 {
-    color: rgb(92, 92, 92);
-    background-color: lightgrey;
-    font-weight: 600;
-    font-size: 15px;
-    padding:10px;
-    border-bottom: 1px solid grey;
+  color: rgb(92, 92, 92);
+  background-color: lightgrey;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 10px;
+  border-bottom: 1px solid grey;
 }
 
 .left-panel-container .selected {
-    background-color: rgb(208, 219, 215);
+  background-color: rgb(208, 219, 215);
 }
 
 .left-panel-container a:first-child {
-    border-top: 1px solid grey;
+  border-top: 1px solid grey;
 }
 
 .left-panel-container a {
-    text-decoration: none;
-    color: rgb(92, 92, 92);
-    padding: 10px;
-    padding-right: 30px;
-    padding-left: 20px;
-    font-weight: 600;
-    background-color: rgb(227, 241, 235);
-    border-bottom: 1px solid grey;
+  text-decoration: none;
+  color: rgb(92, 92, 92);
+  padding: 10px;
+  padding-right: 30px;
+  padding-left: 20px;
+  font-weight: 600;
+  background-color: rgb(227, 241, 235);
+  border-bottom: 1px solid grey;
 }
 
 .left-panel-container a:hover {
-    cursor: default;
-    background-color: rgb(211, 226, 220);
+  cursor: default;
+  background-color: rgb(211, 226, 220);
 }
 
 a.custom-folder {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 10px;
 }
 
 .folder-name {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .wastebasket {
-    font-size: 12px;
-    opacity: 0.7;
+  font-size: 12px;
+  opacity: 0.7;
 }
 
 .wastebasket:hover {
-    opacity: 1;
-    cursor: pointer;
+  opacity: 1;
+  cursor: pointer;
 }

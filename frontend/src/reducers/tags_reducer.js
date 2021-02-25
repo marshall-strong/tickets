@@ -1,5 +1,4 @@
-import { RECEIVE_TAGS, RECEIVE_TAG } from '../actions/tag_actions';
-
+import { RECEIVE_TAGS, RECEIVE_TAG } from "../actions/tag_actions";
 
 const tagsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -10,11 +9,10 @@ const tagsReducer = (state = {}, action) => {
       return action.payload;
     case RECEIVE_TAG:
       nextState[action.tag.name] = action.tag;
-      return nextState;      
+      return nextState;
     default:
       return state;
   }
 };
-
 
 export default tagsReducer;

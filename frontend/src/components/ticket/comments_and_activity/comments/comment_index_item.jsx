@@ -1,62 +1,61 @@
-import React from 'react'
-import {Link} from "react-router-dom"
+import React from "react";
+import { Link } from "react-router-dom";
 
 class CommentIndexItem extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state =  {
+    this.state = {
       edit: false,
       body: this.props.comment.body,
       _id: this.props.comment.commentId,
-      editErrors: false
-    }
-  
+      editErrors: false,
+    };
+
     this.convertDate = this.convertDate.bind(this);
     this.convertTime = this.convertTime.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.editCommentDiv = this.editCommentDiv.bind(this)
+    this.editCommentDiv = this.editCommentDiv.bind(this);
   }
 
   handleDelete(e) {
-      this.props.deleteComment(this.props.comment.commentId);
+    this.props.deleteComment(this.props.comment.commentId);
   }
-  
+
   handleSubmit(e) {
-      e.preventDefault()
-      if (!this.state.body) {
-        this.setState({editErrors: true})
-        return null
-      }
-      this.props.updateComment(this.state)
-      this.setState({body: ""})
+    e.preventDefault();
+    if (!this.state.body) {
+      this.setState({ editErrors: true });
+      return null;
+    }
+    this.props.updateComment(this.state);
+    this.setState({ body: "" });
   }
 
   editCommentDiv() {
-        return (
-          <div>
-            {this.state.editErrors ? (
-              <div className="errors"> comment must have a body </div>
-            ) : null}
-            <form onSubmit={this.handleSubmit}>
-              <textarea
-                name={this.props.comment.body}
-                value={this.state.body}
-                onChange={this.handleUpdate("body")}
-              />
-              <button className="btn1" type="submit">
-                Save
-              </button>
-            </form>
-          </div>
-        );
+    return (
+      <div>
+        {this.state.editErrors ? (
+          <div className="errors"> comment must have a body </div>
+        ) : null}
+        <form onSubmit={this.handleSubmit}>
+          <textarea
+            name={this.props.comment.body}
+            value={this.state.body}
+            onChange={this.handleUpdate("body")}
+          />
+          <button className="btn1" type="submit">
+            Save
+          </button>
+        </form>
+      </div>
+    );
   }
 
   commentBodyDiv() {
     return (
-      
       <div className="comment-container">
         <div className="author">
           <div className="avitar">
@@ -74,36 +73,37 @@ class CommentIndexItem extends React.Component {
               {this.convertDate(this.props.comment.time)} at
               {this.convertTime(this.props.comment.time)}
             </div>
-              {this.props.currentUserId === this.props.comment.userId ? (
+            {this.props.currentUserId === this.props.comment.userId ? (
               <div className="comment-item-button-group">
                 <div
                   className="comment-item-button"
-                  onClick={() =>
-                    this.setState({ edit: true })
-                  }
+                  onClick={() => this.setState({ edit: true })}
                 >
                   Edit Comment
                 </div>
-                <div className="comment-item-button" onClick={this.handleDelete}>
+                <div
+                  className="comment-item-button"
+                  onClick={this.handleDelete}
+                >
                   Delete
                 </div>
-            </div>
-              ) : null}
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
     );
   }
-  
+
   handleUpdate(field) {
-        return e => {
-          this.setState({ [field]: e.currentTarget.value });
-      }
+    return (e) => {
+      this.setState({ [field]: e.currentTarget.value });
+    };
   }
 
   convertDate(time) {
     let date = new Date(time);
-    return date.toDateString()
+    return date.toDateString();
   }
 
   convertTime(time) {
@@ -115,11 +115,11 @@ class CommentIndexItem extends React.Component {
     let timeString;
 
     if (hours === 0) {
-        timeString = ` 12:${minutes}am `;
+      timeString = ` 12:${minutes}am `;
     } else if (hours === 12) {
       timeString = ` ${hours}:${minutes}pm`;
     } else if (hours > 12) {
-      hours = hours % 12
+      hours = hours % 12;
       timeString = ` ${hours}:${minutes}pm`;
     } else {
       timeString = ` ${hours}:${minutes}am`;
@@ -131,12 +131,10 @@ class CommentIndexItem extends React.Component {
   render() {
     return (
       <div>
-        {this.state.edit ?  this.editCommentDiv()
-        : this.commentBodyDiv()}
+        {this.state.edit ? this.editCommentDiv() : this.commentBodyDiv()}
       </div>
     );
   }
-  
-} 
+}
 
-export default CommentIndexItem
+export default CommentIndexItem;

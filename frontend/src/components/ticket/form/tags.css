@@ -1,19 +1,19 @@
 .subscribed-container .input {
-    max-width: 150px;
-    max-height: 25px;
-    border: none;
+  max-width: 150px;
+  max-height: 25px;
+  border: none;
 }
 
 .subscribed-container .input:active {
-    border: none;
-    outline: none;
+  border: none;
+  outline: none;
 }
 
 .subscribed-container .newTag {
-    float: left;
-    display: flex;
+  float: left;
+  display: flex;
 }
 
 .newTag .btn1 {
-    background-color: green;
+  background-color: green;
 }

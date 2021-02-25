@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
 // Module dependencies.
-const _ = require('lodash');
-const async = require('async');
-const mongoose = require('mongoose');
-const chalk = require('chalk');
-const path = require('path');
+const _ = require("lodash");
+const async = require("async");
+const mongoose = require("mongoose");
+const chalk = require("chalk");
+const path = require("path");
 
 function Seeder() {
   this.connected = false;
@@ -13,7 +13,10 @@ function Seeder() {
 }
 
 function consoleLog(_this, message) {
-  if (_this.consoleLogEnabled !== undefined && _this.consoleLogEnabled === true) {
+  if (
+    _this.consoleLogEnabled !== undefined &&
+    _this.consoleLogEnabled === true
+  ) {
     console.log(message);
   }
 }
@@ -34,7 +37,9 @@ Seeder.prototype.connect = function (...params) {
   source http://mongoosejs.com/docs/api.html#connection_Connection-readyState
 */
 
-  var db, cb, opts = null;
+  var db,
+    cb,
+    opts = null;
 
   if (params.length == 2) {
     db = params[0];
@@ -44,7 +49,7 @@ Seeder.prototype.connect = function (...params) {
     opts = params[1];
     cb = params[2];
   } else {
-    console.error('Pass either 2 or 3 arguments to seeder.connect');
+    console.error("Pass either 2 or 3 arguments to seeder.connect");
     process.exit(1);
   }
 
@@ -53,14 +58,14 @@ Seeder.prototype.connect = function (...params) {
 
   if (mongoose.connection.readyState === 1) {
     _this.connected = true;
-    consoleLog(_this, 'Successfully initialized mongoose-seed');
+    consoleLog(_this, "Successfully initialized mongoose-seed");
     cb();
   } else {
     if (opts) {
       opts.useNewUrlParser = true;
     } else {
       opts = {
-        useNewUrlParser: true
+        useNewUrlParser: true,
       };
     }
 
@@ -73,11 +78,11 @@ Seeder.prototype.connect = function (...params) {
 function afterConnect(_this, err, cb) {
   // Log Error
   if (err) {
-    console.error(chalk.red('Could not connect to MongoDB!'));
+    console.error(chalk.red("Could not connect to MongoDB!"));
     consoleLog(_this, err);
   } else {
     _this.connected = true;
-    consoleLog(_this, 'Successfully initialized mongoose-seed');
+    consoleLog(_this, "Successfully initialized mongoose-seed");
     cb();
   }
 }
@@ -102,7 +107,7 @@ Seeder.prototype.invalidModelCheck = function (models, cb) {
   });
 
   if (invalidModels.length) {
-    cb(new Error('Models not registered in Mongoose: ' + invalidModels));
+    cb(new Error("Models not registered in Mongoose: " + invalidModels));
   } else {
     cb();
   }
@@ -110,7 +115,7 @@ Seeder.prototype.invalidModelCheck = function (models, cb) {
 
 Seeder.prototype.clearModels = function (models, cb) {
   if (!this.connected) {
-    return new Error('Not connected to db, exiting function');
+    return new Error("Not connected to db, exiting function");
   }
 
   var modelNames = [];
@@ -119,75 +124,102 @@ Seeder.prototype.clearModels = function (models, cb) {
   // Convert to array if not already
   if (Array.isArray(models)) {
     modelNames = models;
-  } else if (typeof (models) === 'string') {
+  } else if (typeof models === "string") {
     modelNames.push(models);
   } else {
-    console.error(chalk.red('Error: Invalid model type'));
+    console.error(chalk.red("Error: Invalid model type"));
     return;
   }
 
   // Confirm that all Models have been registered in Mongoose
   this.invalidModelCheck(modelNames, function (err) {
     if (err) {
-      console.error(chalk.red('Error: ' + err.message));
+      console.error(chalk.red("Error: " + err.message));
       return;
     }
 
     // Clear each model
-    async.each(modelNames, function (modelName, done) {
-      var Model = mongoose.model(modelName);
-      Model.deleteMany({}, function (err) {
+    async.each(
+      modelNames,
+      function (modelName, done) {
+        var Model = mongoose.model(modelName);
+        Model.deleteMany({}, function (err) {
+          if (err) {
+            console.error(chalk.red("Error: " + err.message));
+            return;
+          }
+          consoleLog(_this, modelName + "s collection cleared");
+          done();
+        });
+      },
+      function (err) {
+        // Final async callback
         if (err) {
-          console.error(chalk.red('Error: ' + err.message));
           return;
         }
-        consoleLog(_this, modelName + 's collection cleared');
-        done();
-      });
-    }, function (err) {
-      // Final async callback
-      if (err) {
-        return;
+        cb();
       }
-      cb();
-    });
+    );
   });
 };
 
 Seeder.prototype.populateModels = function (seedData, cb) {
   if (!this.connected) {
-    return new Error('Not connected to db, exiting function');
+    return new Error("Not connected to db, exiting function");
   }
 
-  var modelNames = _.uniq(_.map(seedData, 'model'));
+  var modelNames = _.uniq(_.map(seedData, "model"));
   var _this = this;
 
   // Confirm that all Models have been registered in Mongoose
   var invalidModels = this.invalidModelCheck(modelNames, function (err) {
     if (err) {
-      console.error(chalk.red('Error: ' + err.message));
+      console.error(chalk.red("Error: " + err.message));
       return;
     }
 
     // Populate each model
-    async.eachOf(seedData, function (entry, i, outerCallback) {
-      var Model = mongoose.model(entry.model);
-      async.eachOf(entry.documents, function (document, j, innerCallback) {
-        Model.create(document, function (err) {
-          if (err) {
-            console.error(chalk.red('Error creating document [' + j + '] of ' + entry.model + ' model'));
-            console.error(chalk.red('Error: ' + err.message));
-          } else {
-            consoleLog(_this, 'Successfully created document [' + j + '] of ' + entry.model + ' model');
+    async.eachOf(
+      seedData,
+      function (entry, i, outerCallback) {
+        var Model = mongoose.model(entry.model);
+        async.eachOf(
+          entry.documents,
+          function (document, j, innerCallback) {
+            Model.create(document, function (err) {
+              if (err) {
+                console.error(
+                  chalk.red(
+                    "Error creating document [" +
+                      j +
+                      "] of " +
+                      entry.model +
+                      " model"
+                  )
+                );
+                console.error(chalk.red("Error: " + err.message));
+              } else {
+                consoleLog(
+                  _this,
+                  "Successfully created document [" +
+                    j +
+                    "] of " +
+                    entry.model +
+                    " model"
+                );
+              }
+              innerCallback();
+            });
+          },
+          function (err) {
+            outerCallback();
           }
-          innerCallback();
-        });
-      }, function (err) {
-        outerCallback();
-      });
-    }, function (err) {
-      cb();
-    });
+        );
+      },
+      function (err) {
+        cb();
+      }
+    );
   });
 };
 

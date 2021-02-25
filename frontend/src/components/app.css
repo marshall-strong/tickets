@@ -1,73 +1,72 @@
-.html::-webkit-scrollbar{
-    display: none;
+.html::-webkit-scrollbar {
+  display: none;
 }
 
 body {
-    /* display: flex; */
-    height: 100vh;
-    width: 100vw;
+  /* display: flex; */
+  height: 100vh;
+  width: 100vw;
 }
 
 #root {
-    /* display: flex; */
-    height: 100%;
-    width: 100%;
+  /* display: flex; */
+  height: 100%;
+  width: 100%;
 }
 
 .screen-container {
-    height: 100%;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    position: relative;
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .app-container {
-    display: flex;
-    /* justify-content: center; */
-    background-color: rgb(227, 241, 235);
-    height: 92vh;
-    width: 100vw;
-    /* overflow-y: scroll;   */
+  display: flex;
+  /* justify-content: center; */
+  background-color: rgb(227, 241, 235);
+  height: 92vh;
+  width: 100vw;
+  /* overflow-y: scroll;   */
 }
 
-.app-container::-webkit-scrollbar{
-    display: none;
+.app-container::-webkit-scrollbar {
+  display: none;
 }
 
 .btn1 {
-    padding: 5px;
-    /* background-color: rgb(8, 92, 148); */
-    background-color: darkgreen;
-    border-radius: 3px;
-    border: 1px solid black;
-    color: white;
-    font-size: 12px;
-    font-weight: 540;
-    box-sizing: border-box;
-    text-align: center;
-    width: fit-content;
-    display: flex;
-    align-items: center;
+  padding: 5px;
+  /* background-color: rgb(8, 92, 148); */
+  background-color: darkgreen;
+  border-radius: 3px;
+  border: 1px solid black;
+  color: white;
+  font-size: 12px;
+  font-weight: 540;
+  box-sizing: border-box;
+  text-align: center;
+  width: fit-content;
+  display: flex;
+  align-items: center;
 }
 
 .btn1:hover {
-    cursor: pointer;
-    border: 2px solid;
-    box-sizing: border-box;
+  cursor: pointer;
+  border: 2px solid;
+  box-sizing: border-box;
 }
 
 .btn1.not-edited {
-    background-color: rgb(114, 144, 163);
+  background-color: rgb(114, 144, 163);
 }
 
-.comment-errors{
-    color: red;
+.comment-errors {
+  color: red;
 }
-
 
 .react-autosuggest__suggestions-list {
-    box-shadow: 1px 1px 5px 1px black;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
+  box-shadow: 1px 1px 5px 1px black;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
 }

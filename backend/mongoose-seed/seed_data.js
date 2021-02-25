@@ -1,29 +1,26 @@
-const genPasswordDigest = require('../utilities/bcrypt_utils');
+const genPasswordDigest = require("../utilities/bcrypt_utils");
 
 const organizationSeeds = {
-  model: 'Organization',
+  model: "Organization",
   documents: [
     {
       handle: "acme.org",
       name: "ACME",
-      motto: "That's all folks!"
+      motto: "That's all folks!",
     },
-  ]
+  ],
 };
 
-
-
 const userSeeds = {
-  model: 'User',
+  model: "User",
   documents: [
-
     {
       _id: "5e9781e148949b1f6d884ab0",
       firstName: "Michael",
       lastName: "Jordan",
       email: "michael@acme.org",
       orgHandle: "acme.org",
-      password: genPasswordDigest("password")
+      password: genPasswordDigest("password"),
     },
 
     {
@@ -32,7 +29,7 @@ const userSeeds = {
       lastName: "Bunny",
       email: "bugs@acme.org",
       orgHandle: "acme.org",
-      password: genPasswordDigest("password")
+      password: genPasswordDigest("password"),
     },
     {
       _id: "5e9781e148949b1f6d884ab2",
@@ -40,7 +37,7 @@ const userSeeds = {
       lastName: "Duck",
       email: "daffy@acme.org",
       orgHandle: "acme.org",
-      password: genPasswordDigest("password")
+      password: genPasswordDigest("password"),
     },
     {
       _id: "5e9781e148949b1f6d884ab3",
@@ -48,7 +45,7 @@ const userSeeds = {
       lastName: "Pig",
       email: "porky@acme.org",
       orgHandle: "acme.org",
-      password: genPasswordDigest("password")
+      password: genPasswordDigest("password"),
     },
     {
       _id: "5e9781e148949b1f6d884ab4",
@@ -56,7 +53,7 @@ const userSeeds = {
       lastName: "Gonzales",
       email: "speedy@acme.org",
       orgHandle: "acme.org",
-      password: genPasswordDigest("password")
+      password: genPasswordDigest("password"),
     },
     {
       _id: "5e9781e148949b1f6d884ab5",
@@ -64,7 +61,7 @@ const userSeeds = {
       lastName: "Sam",
       email: "sam@acme.org",
       orgHandle: "acme.org",
-      password: genPasswordDigest("password")
+      password: genPasswordDigest("password"),
     },
     {
       _id: "5e9781e148949b1f6d884ab6",
@@ -72,7 +69,7 @@ const userSeeds = {
       lastName: "Bunny",
       email: "lola@acme.org",
       orgHandle: "acme.org",
-      password: genPasswordDigest("password")
+      password: genPasswordDigest("password"),
     },
     {
       _id: "5e9781e148949b1f6d884ab7",
@@ -80,7 +77,7 @@ const userSeeds = {
       lastName: "Devil",
       email: "taz@acme.org",
       orgHandle: "acme.org",
-      password: genPasswordDigest("password")
+      password: genPasswordDigest("password"),
     },
     {
       _id: "5e9781e148949b1f6d884ab8",
@@ -88,7 +85,7 @@ const userSeeds = {
       lastName: "Martian",
       email: "marvin@acme.org",
       orgHandle: "acme.org",
-      password: genPasswordDigest("password")
+      password: genPasswordDigest("password"),
     },
     {
       _id: "5e9781e148949b1f6d884ab9",
@@ -96,7 +93,7 @@ const userSeeds = {
       lastName: "Cat",
       email: "sylvester@acme.org",
       orgHandle: "acme.org",
-      password: genPasswordDigest("password")
+      password: genPasswordDigest("password"),
     },
     {
       _id: "5e9781e148949b1f6d884aba",
@@ -104,7 +101,7 @@ const userSeeds = {
       lastName: "Bird",
       email: "tweety@acme.org",
       orgHandle: "acme.org",
-      password: genPasswordDigest("password")
+      password: genPasswordDigest("password"),
     },
     {
       _id: "5e9781e148949b1f6d884abb",
@@ -112,7 +109,7 @@ const userSeeds = {
       lastName: "Leghorn",
       email: "foghorn@acme.org",
       orgHandle: "acme.org",
-      password: genPasswordDigest("password")
+      password: genPasswordDigest("password"),
     },
     {
       _id: "5e9781e148949b1f6d884abc",
@@ -120,7 +117,7 @@ const userSeeds = {
       lastName: "Le Pew",
       email: "pepe@acme.org",
       orgHandle: "acme.org",
-      password: genPasswordDigest("password")
+      password: genPasswordDigest("password"),
     },
     {
       _id: "5e9781e148949b1f6d884abd",
@@ -128,7 +125,7 @@ const userSeeds = {
       lastName: "Webster",
       email: "granny@acme.org",
       orgHandle: "acme.org",
-      password: genPasswordDigest("password")
+      password: genPasswordDigest("password"),
     },
     {
       _id: "5e9781e148949b1f6d884abe",
@@ -136,7 +133,7 @@ const userSeeds = {
       lastName: "Fudd",
       email: "elmer@acme.org",
       orgHandle: "acme.org",
-      password: genPasswordDigest("password")
+      password: genPasswordDigest("password"),
     },
     {
       _id: "5e9781e148949b1f6d884abf",
@@ -144,7 +141,7 @@ const userSeeds = {
       lastName: "Coyote",
       email: "wilee@acme.org",
       orgHandle: "acme.org",
-      password: genPasswordDigest("password")
+      password: genPasswordDigest("password"),
     },
     {
       _id: "5e9781e148949b1f6d884ac0",
@@ -152,35 +149,30 @@ const userSeeds = {
       lastName: "Runner",
       email: "rr@acme.org",
       orgHandle: "acme.org",
-      password: genPasswordDigest("password")
-    }
-  ]
+      password: genPasswordDigest("password"),
+    },
+  ],
 };
 
-
-
 const ticketSeeds = {
-  model: 'Ticket',
+  model: "Ticket",
   documents: [
-    
     {
       _id: "5e97898fd6de452b68c745a1",
       title: "Challenge Aliens to a Competition",
-      body: "These alien pipsqueeks want to take us to their theme park in outer space and make us slaves! Luckily, the rules give us a chance to defend ourselves...",
+      body:
+        "These alien pipsqueeks want to take us to their theme park in outer space and make us slaves! Luckily, the rules give us a chance to defend ourselves...",
       status: "In Progress",
       priority: "High",
       creator: "5e9781e148949b1f6d884ab1",
       owner: "5e9781e148949b1f6d884ab2",
-      tags: [
-        "5e9781e148949b1f6d884ad0",
-      ],
+      tags: ["5e9781e148949b1f6d884ad0"],
       subscribed: [
         "5e9781e148949b1f6d884ab1",
         "5e9781e148949b1f6d884ab2",
         "5e9781e148949b1f6d884ab3",
         "5e9781e148949b1f6d884ab9",
         "5e9781e148949b1f6d884abe",
-
       ],
       lastUpdateSeenBy: [
         "5e9781e148949b1f6d884ab1",
@@ -198,15 +190,9 @@ const ticketSeeds = {
       priority: "High",
       creator: "5e9781e148949b1f6d884ab1",
       owner: "5e9781e148949b1f6d884ab5",
-      tags: [
-        "5e9781e148949b1f6d884ad0",
-      ],
-      subscribed: [
-        "5e9781e148949b1f6d884ab1",
-      ],
-      lastUpdateSeenBy: [
-
-      ],
+      tags: ["5e9781e148949b1f6d884ad0"],
+      subscribed: ["5e9781e148949b1f6d884ab1"],
+      lastUpdateSeenBy: [],
     },
     {
       _id: "5e97898fd6de452b68c745c3",
@@ -216,15 +202,9 @@ const ticketSeeds = {
       priority: "High",
       creator: "5e9781e148949b1f6d884ab1",
       owner: "5e9781e148949b1f6d884ab3",
-      tags: [
-        "5e9781e148949b1f6d884ad0",
-      ],
-      subscribed: [
-        "5e9781e148949b1f6d884ab1",
-      ],
-      lastUpdateSeenBy: [
-
-      ],
+      tags: ["5e9781e148949b1f6d884ad0"],
+      subscribed: ["5e9781e148949b1f6d884ab1"],
+      lastUpdateSeenBy: [],
     },
     {
       _id: "5e97898fd6de452b68c745d4",
@@ -234,15 +214,9 @@ const ticketSeeds = {
       priority: "High",
       creator: "5e9781e148949b1f6d884ab1",
       owner: "5e9781e148949b1f6d884ab7",
-      tags: [
-        "5e9781e148949b1f6d884ad0",
-      ],
-      subscribed: [
-        "5e9781e148949b1f6d884ab1",
-      ],
-      lastUpdateSeenBy: [
-  
-      ],
+      tags: ["5e9781e148949b1f6d884ad0"],
+      subscribed: ["5e9781e148949b1f6d884ab1"],
+      lastUpdateSeenBy: [],
     },
     {
       _id: "5e978ad78679802d755572e9",
@@ -252,15 +226,9 @@ const ticketSeeds = {
       priority: "High",
       creator: "5e9781e148949b1f6d884ab1",
       owner: "5e9781e148949b1f6d884abc",
-      tags: [
-        "5e9781e148949b1f6d884ad0",
-      ],
-      subscribed: [
-        "5e9781e148949b1f6d884ab1",
-      ],
-      lastUpdateSeenBy: [
-        
-      ],
+      tags: ["5e9781e148949b1f6d884ad0"],
+      subscribed: ["5e9781e148949b1f6d884ab1"],
+      lastUpdateSeenBy: [],
     },
     {
       _id: "5e97898fd6de452b68c745f6",
@@ -270,15 +238,9 @@ const ticketSeeds = {
       priority: "High",
       creator: "5e9781e148949b1f6d884ab1",
       owner: "5e9781e148949b1f6d884abb",
-      tags: [
-        "5e9781e148949b1f6d884ad0",
-      ],
-      subscribed: [
-        "5e9781e148949b1f6d884ab1",
-      ],
-      lastUpdateSeenBy: [
-         
-      ],
+      tags: ["5e9781e148949b1f6d884ad0"],
+      subscribed: ["5e9781e148949b1f6d884ab1"],
+      lastUpdateSeenBy: [],
     },
     {
       _id: "5e978ad78679802d755572eb",
@@ -288,15 +250,9 @@ const ticketSeeds = {
       priority: "High",
       creator: "5e9781e148949b1f6d884ab1",
       owner: "5e9781e148949b1f6d884abd",
-      tags: [
-        "5e9781e148949b1f6d884ad0",
-      ],
-      subscribed: [
-        "5e9781e148949b1f6d884ab1",
-      ],
-      lastUpdateSeenBy: [
-         
-      ],
+      tags: ["5e9781e148949b1f6d884ad0"],
+      subscribed: ["5e9781e148949b1f6d884ab1"],
+      lastUpdateSeenBy: [],
     },
     {
       _id: "5e978ad78679802d755572ec",
@@ -306,15 +262,9 @@ const ticketSeeds = {
       priority: "High",
       creator: "5e9781e148949b1f6d884ab1",
       owner: "5e9781e148949b1f6d884ab1",
-      tags: [
-        "5e9781e148949b1f6d884ad0",
-      ],
-      subscribed: [
-        "5e9781e148949b1f6d884ab1",
-      ],
-      lastUpdateSeenBy: [
-         
-      ],
+      tags: ["5e9781e148949b1f6d884ad0"],
+      subscribed: ["5e9781e148949b1f6d884ab1"],
+      lastUpdateSeenBy: [],
     },
     {
       _id: "5e978ad78679802d755572ed",
@@ -324,15 +274,9 @@ const ticketSeeds = {
       priority: "High",
       creator: "5e9781e148949b1f6d884ab1",
       owner: "5e9781e148949b1f6d884ab0",
-      tags: [
-        "5e9781e148949b1f6d884ad0",
-      ],
-      subscribed: [
-        "5e9781e148949b1f6d884ab1",
-      ],
-      lastUpdateSeenBy: [
-       
-      ],
+      tags: ["5e9781e148949b1f6d884ad0"],
+      subscribed: ["5e9781e148949b1f6d884ab1"],
+      lastUpdateSeenBy: [],
     },
     {
       _id: "5e978ad78679802d755572ee",
@@ -342,32 +286,22 @@ const ticketSeeds = {
       priority: "High",
       creator: "5e9781e148949b1f6d884ab1",
       owner: "5e9781e148949b1f6d884ab6",
-      tags: [
-        "5e9781e148949b1f6d884ad0",
-      ],
-      subscribed: [
-        "5e9781e148949b1f6d884ab1",
-      ],
-      lastUpdateSeenBy: [
-      
-      ],
+      tags: ["5e9781e148949b1f6d884ad0"],
+      subscribed: ["5e9781e148949b1f6d884ab1"],
+      lastUpdateSeenBy: [],
     },
 
     {
       _id: "5e978ad78679802d755572ef",
       title: "Destroy the planet Earth",
-      body: "At last, after 2,000 years of work, the aludium pu-36 explosive space modulator is within my grasp! My dream will finally come true!",
+      body:
+        "At last, after 2,000 years of work, the aludium pu-36 explosive space modulator is within my grasp! My dream will finally come true!",
       status: "Planned",
       priority: "CATastrophic",
       creator: "5e9781e148949b1f6d884ab8",
       owner: "5e9781e148949b1f6d884ab8",
-      subscribed: [
-        "5e9781e148949b1f6d884ab1",
-        "5e9781e148949b1f6d884ab2",
-      ],
-      lastUpdateSeenBy: [
-  
-      ],
+      subscribed: ["5e9781e148949b1f6d884ab1", "5e9781e148949b1f6d884ab2"],
+      lastUpdateSeenBy: [],
     },
     {
       _id: "5e978ad78679802d755572f0",
@@ -377,9 +311,7 @@ const ticketSeeds = {
       priority: "High",
       creator: "5e9781e148949b1f6d884abf",
       owner: "5e9781e148949b1f6d884abf",
-      subscribed: [
-        "5e9781e148949b1f6d884abf",
-      ],
+      subscribed: ["5e9781e148949b1f6d884abf"],
       lastUpdateSeenBy: [
         "5e9781e148949b1f6d884abf",
         "5e9781e148949b1f6d884ac0",
@@ -393,13 +325,8 @@ const ticketSeeds = {
       priority: "High",
       creator: "5e9781e148949b1f6d884abf",
       owner: "5e9781e148949b1f6d884abf",
-      subscribed: [
-        "5e9781e148949b1f6d884abf",
-        "5e9781e148949b1f6d884ac0",
-      ],
-      lastUpdateSeenBy: [
-        "5e9781e148949b1f6d884abf",
-      ],
+      subscribed: ["5e9781e148949b1f6d884abf", "5e9781e148949b1f6d884ac0"],
+      lastUpdateSeenBy: ["5e9781e148949b1f6d884abf"],
     },
     {
       _id: "5e978ad78679802d755572f2",
@@ -409,29 +336,20 @@ const ticketSeeds = {
       priority: "High",
       creator: "5e9781e148949b1f6d884abf",
       owner: "5e9781e148949b1f6d884abf",
-      subscribed: [
-        "5e9781e148949b1f6d884abf",
-        "5e9781e148949b1f6d884ac0",
-      ],
-      lastUpdateSeenBy: [
-        "5e9781e148949b1f6d884abf",
-      ],
+      subscribed: ["5e9781e148949b1f6d884abf", "5e9781e148949b1f6d884ac0"],
+      lastUpdateSeenBy: ["5e9781e148949b1f6d884abf"],
     },
     {
       _id: "5e978ad78679802d755572f3",
       title: "Catch Road Runner using ACME Earthquake Pills",
-      body: "Why wait? Make your own earthquakes -- loads of fun! (DISCLAIMER: has no effect on Road Runners...)",
+      body:
+        "Why wait? Make your own earthquakes -- loads of fun! (DISCLAIMER: has no effect on Road Runners...)",
       status: "Planned",
       priority: "High",
       creator: "5e9781e148949b1f6d884abf",
       owner: "5e9781e148949b1f6d884abf",
-      subscribed: [
-        "5e9781e148949b1f6d884abf",
-        "5e9781e148949b1f6d884ac0",
-      ],
-      lastUpdateSeenBy: [
-        "5e9781e148949b1f6d884abf",
-      ],
+      subscribed: ["5e9781e148949b1f6d884abf", "5e9781e148949b1f6d884ac0"],
+      lastUpdateSeenBy: ["5e9781e148949b1f6d884abf"],
     },
     {
       _id: "5e97898fd6de452b68c745e5",
@@ -446,253 +364,249 @@ const ticketSeeds = {
         "5e9781e148949b1f6d884ab1",
         "5e9781e148949b1f6d884ab2",
       ],
-      lastUpdateSeenBy: [
-        "5e9781e148949b1f6d884ab2"
-      ],
+      lastUpdateSeenBy: ["5e9781e148949b1f6d884ab2"],
     },
-  ]
+  ],
 };
 
-
-
 const commentSeeds = {
-  model: 'Comment',
+  model: "Comment",
   documents: [
-
     {
-      body: "All right troops. It is for us to choose a battlefield that affords us.",
+      body:
+        "All right troops. It is for us to choose a battlefield that affords us.",
       author: "5e9781e148949b1f6d884ab1",
       ticket: "5e97898fd6de452b68c745a1",
-      createdAt: (Date.now() - 190000000),
-      updatedAt: (Date.now() - 190000000)
+      createdAt: Date.now() - 190000000,
+      updatedAt: Date.now() - 190000000,
     },
     {
       body: "Oh, I-I g-got it.",
       author: "5e9781e148949b1f6d884ab3",
       ticket: "5e97898fd6de452b68c745a1",
-      createdAt: (Date.now() - 189000000),
-      updatedAt: (Date.now() - 189000000)
+      createdAt: Date.now() - 189000000,
+      updatedAt: Date.now() - 189000000,
     },
     {
       body: "Yes, Private Porkster?",
       author: "5e9781e148949b1f6d884ab1",
       ticket: "5e97898fd6de452b68c745a1",
-      createdAt: (Date.now() - 188000000),
-      updatedAt: (Date.now() - 188000000)
+      createdAt: Date.now() - 188000000,
+      updatedAt: Date.now() - 188000000,
     },
     {
       body: "How about we challenge them to a spelling bee?",
       author: "5e9781e148949b1f6d884ab3",
       ticket: "5e97898fd6de452b68c745a1",
-      createdAt: (Date.now() - 187000000),
-      updatedAt: (Date.now() - 187000000)
+      createdAt: Date.now() - 187000000,
+      updatedAt: Date.now() - 187000000,
     },
     {
       body: "Say, we could have a bowling tournament...",
       author: "5e9781e148949b1f6d884abe",
       ticket: "5e97898fd6de452b68c745a1",
-      createdAt: (Date.now() - 186000000),
-      updatedAt: (Date.now() - 186000000)
+      createdAt: Date.now() - 186000000,
+      updatedAt: Date.now() - 186000000,
     },
     {
-      body: "Suffering succotash! What's wrong with all of ya? I say we get a ladder, wait til the old lady's out of the room, then grab the little bird.",
+      body:
+        "Suffering succotash! What's wrong with all of ya? I say we get a ladder, wait til the old lady's out of the room, then grab the little bird.",
       author: "5e9781e148949b1f6d884ab9",
       ticket: "5e97898fd6de452b68c745a1",
-      createdAt: (Date.now() - 185000000),
-      updatedAt: (Date.now() - 185000000)
+      createdAt: Date.now() - 185000000,
+      updatedAt: Date.now() - 185000000,
     },
     {
       body: "Whoa, whoa. Take a deep breath Sly.",
       author: "5e9781e148949b1f6d884ab1",
       ticket: "5e97898fd6de452b68c745a1",
-      createdAt: (Date.now() - 184000000),
-      updatedAt: (Date.now() - 184000000)
+      createdAt: Date.now() - 184000000,
+      updatedAt: Date.now() - 184000000,
     },
     {
-      body: "Okay, Let's anaylze the competition here. Now, what are looking at here? We got a small race of invading aliens.",
+      body:
+        "Okay, Let's anaylze the competition here. Now, what are looking at here? We got a small race of invading aliens.",
       author: "5e9781e148949b1f6d884ab1",
       ticket: "5e97898fd6de452b68c745a1",
-      createdAt: (Date.now() - 183000000),
-      updatedAt: (Date.now() - 183000000)
+      createdAt: Date.now() - 183000000,
+      updatedAt: Date.now() - 183000000,
     },
     {
       body: "Small arms, short legs.",
       author: "5e9781e148949b1f6d884ab2",
       ticket: "5e97898fd6de452b68c745a1",
-      createdAt: (Date.now() - 182000000),
-      updatedAt: (Date.now() - 182000000)
+      createdAt: Date.now() - 182000000,
+      updatedAt: Date.now() - 182000000,
     },
     {
       body: "Not vewy fast...",
       author: "5e9781e148949b1f6d884abe",
       ticket: "5e97898fd6de452b68c745a1",
-      createdAt: (Date.now() - 181000000),
-      updatedAt: (Date.now() - 181000000)
+      createdAt: Date.now() - 181000000,
+      updatedAt: Date.now() - 181000000,
     },
     {
       body: "Tiny little guys.",
       author: "5e9781e148949b1f6d884ab9",
       ticket: "5e97898fd6de452b68c745a1",
-      createdAt: (Date.now() - 180000000),
-      updatedAt: (Date.now() - 180000000)
+      createdAt: Date.now() - 180000000,
+      updatedAt: Date.now() - 180000000,
     },
     {
       body: "Can't jump high.",
       author: "5e9781e148949b1f6d884ab3",
       ticket: "5e97898fd6de452b68c745a1",
-      createdAt: (Date.now() - 179000000),
-      updatedAt: (Date.now() - 179000000)
+      createdAt: Date.now() - 179000000,
+      updatedAt: Date.now() - 179000000,
     },
     {
       body: "Ohhhhhhh!!!!",
       author: "5e9781e148949b1f6d884ab2",
       ticket: "5e97898fd6de452b68c745a1",
-      createdAt: (Date.now() - 178900000),
-      updatedAt: (Date.now() - 178900000)
+      createdAt: Date.now() - 178900000,
+      updatedAt: Date.now() - 178900000,
     },
     {
       body: "Ohhhhhhh!!!!",
-            author: "5e9781e148949b1f6d884abe",
+      author: "5e9781e148949b1f6d884abe",
       ticket: "5e97898fd6de452b68c745a1",
-      createdAt: (Date.now() - 178800000),
-      updatedAt: (Date.now() - 178800000)
+      createdAt: Date.now() - 178800000,
+      updatedAt: Date.now() - 178800000,
     },
     {
       body: "Ohhhhhhh!!!!",
       author: "5e9781e148949b1f6d884ab9",
       ticket: "5e97898fd6de452b68c745a1",
-      createdAt: (Date.now() - 178700000),
-      updatedAt: (Date.now() - 178700000)
+      createdAt: Date.now() - 178700000,
+      updatedAt: Date.now() - 178700000,
     },
     {
       body: "Ohhhhhhh!!!!",
       author: "5e9781e148949b1f6d884ab3",
       ticket: "5e97898fd6de452b68c745a1",
-      createdAt: (Date.now() - 178600000),
-      updatedAt: (Date.now() - 178600000)
+      createdAt: Date.now() - 178600000,
+      updatedAt: Date.now() - 178600000,
     },
     {
       body: "Basketball it is then!!",
       author: "5e9781e148949b1f6d884ab1",
       ticket: "5e97898fd6de452b68c745a1",
-      createdAt: (Date.now() - 177000000),
-      updatedAt: (Date.now() - 177000000)
+      createdAt: Date.now() - 177000000,
+      updatedAt: Date.now() - 177000000,
     },
 
-
-
-
-
     {
-      body: "Oh, drat these computers. They're so naughty and complex, I could pinch them.",
+      body:
+        "Oh, drat these computers. They're so naughty and complex, I could pinch them.",
       author: "5e9781e148949b1f6d884ab8",
       ticket: "5e978ad78679802d755572ef",
-      createdAt: (Date.now() - 90000000),
-      updatedAt: (Date.now() - 90000000)
+      createdAt: Date.now() - 90000000,
+      updatedAt: Date.now() - 90000000,
     },
     {
-      body: "Hey, nice lookin' toy you got there kiddo. What else did your daddy get you for Christmas?",
+      body:
+        "Hey, nice lookin' toy you got there kiddo. What else did your daddy get you for Christmas?",
       author: "5e9781e148949b1f6d884ab2",
       ticket: "5e978ad78679802d755572ef",
-      createdAt: (Date.now() - 89000000),
-      updatedAt: (Date.now() - 89000000)
+      createdAt: Date.now() - 89000000,
+      updatedAt: Date.now() - 89000000,
     },
     {
-      body: "Please sir, do not interrupt my chain of thought. I'm a busy Martian.",
+      body:
+        "Please sir, do not interrupt my chain of thought. I'm a busy Martian.",
       author: "5e9781e148949b1f6d884ab8",
       ticket: "5e978ad78679802d755572ef",
-      createdAt: (Date.now() - 88000000),
-      updatedAt: (Date.now() - 88000000)
+      createdAt: Date.now() - 88000000,
+      updatedAt: Date.now() - 88000000,
     },
     {
-      body: "Ehhhh pardon me Doc, but could you rent me a U-Drive flying saucer? I've gotta get back to the Earth.",
+      body:
+        "Ehhhh pardon me Doc, but could you rent me a U-Drive flying saucer? I've gotta get back to the Earth.",
       author: "5e9781e148949b1f6d884ab1",
       ticket: "5e978ad78679802d755572ef",
-      createdAt: (Date.now() - 87000000),
-      updatedAt: (Date.now() - 87000000)
+      createdAt: Date.now() - 87000000,
+      updatedAt: Date.now() - 87000000,
     },
     {
       body: "The Earth? Oh, the Earth will be destroyed in just a few moments.",
       author: "5e9781e148949b1f6d884ab8",
       ticket: "5e978ad78679802d755572ef",
-      createdAt: (Date.now() - 86000000),
-      updatedAt: (Date.now() - 86000000)
+      createdAt: Date.now() - 86000000,
+      updatedAt: Date.now() - 86000000,
     },
     {
-      body: "Ehhhh pardon me again Doc, but just what did you mean by that crack about the Earth being gone?",
+      body:
+        "Ehhhh pardon me again Doc, but just what did you mean by that crack about the Earth being gone?",
       author: "5e9781e148949b1f6d884ab1",
       ticket: "5e978ad78679802d755572ef",
-      createdAt: (Date.now() - 85000000),
-      updatedAt: (Date.now() - 85000000)
+      createdAt: Date.now() - 85000000,
+      updatedAt: Date.now() - 85000000,
     },
     {
       body: "Oh, I'm going to blow it up. It obstructs my view of Venus.",
       author: "5e9781e148949b1f6d884ab8",
       ticket: "5e978ad78679802d755572ef",
-      createdAt: (Date.now() - 84000000),
-      updatedAt: (Date.now() - 84000000)
+      createdAt: Date.now() - 84000000,
+      updatedAt: Date.now() - 84000000,
     },
     {
       body: "What?!?",
       author: "5e9781e148949b1f6d884ab2",
       ticket: "5e978ad78679802d755572ef",
-      createdAt: (Date.now() - 83000000),
-      updatedAt: (Date.now() - 83000000)
+      createdAt: Date.now() - 83000000,
+      updatedAt: Date.now() - 83000000,
     },
 
     {
       body: "Beep beep!",
       author: "5e9781e148949b1f6d884ac0",
       ticket: "5e978ad78679802d755572f0",
-
     },
 
     {
       body: "Beep beep!",
       author: "5e9781e148949b1f6d884ac0",
-      ticket: "5e978ad78679802d755572f1"
+      ticket: "5e978ad78679802d755572f1",
     },
 
     {
       body: "Beep beep!",
       author: "000000000000000000000016",
-      ticket: "5e978ad78679802d755572f2"
+      ticket: "5e978ad78679802d755572f2",
     },
 
     {
       body: "Beep beep!",
       author: "5e9781e148949b1f6d884ac0",
-      ticket: "5e978ad78679802d755572f3"
+      ticket: "5e978ad78679802d755572f3",
     },
-  ]
+  ],
 };
 
-
 const tagSeeds = {
-  model: 'Tag',
+  model: "Tag",
   documents: [
     {
       _id: "5e9781e148949b1f6d884ad0",
       name: "SPACE_JAM",
-      orgHandle: "acme.org"
+      orgHandle: "acme.org",
     },
     {
       _id: "5e9781e148949b1f6d884ad1",
       name: "MERRY_MELODIES",
-      orgHandle: "acme.org"
+      orgHandle: "acme.org",
     },
     {
       _id: "5e9781e148949b1f6d884ad2",
       name: "LOONY_TUNES",
-      orgHandle: "acme.org"
+      orgHandle: "acme.org",
     },
     {
       _id: "5e9781e148949b1f6d884ad3",
       name: "CARTOON_NETWORK",
-      orgHandle: "acme.org"
+      orgHandle: "acme.org",
     },
-
-  ]
+  ],
 };
 
 // Data array containing seed data - documents organized by Model
@@ -703,7 +617,6 @@ const dbSeedData = [
   commentSeeds,
   tagSeeds,
 ];
-
 
 // const organizationSeedsCATS = {
 //   model: 'Organization',
@@ -905,6 +818,4 @@ const dbSeedData = [
 //   tagSeedsCATS
 // ];
 
-
 module.exports = dbSeedData;
-

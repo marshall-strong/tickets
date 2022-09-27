@@ -1,6 +1,6 @@
 # Tickets
 
-[Live Site](https://ticats.herokuapp.com/#/login)
+[Live Site](https://marshall-strong-tickets.herokuapp.com/)
 
 Tickets is a productivity app that helps teams keep track of tasks.
 

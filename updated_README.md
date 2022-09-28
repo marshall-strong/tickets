@@ -38,8 +38,6 @@
 - [Getting Started](#getting-started)
   - [1. Install Prerequisites](#1-install-prerequisites)
   - [2. Clone the GitHub Repository and Install Dependencies](#2-clone-the-github-repository-and-install-dependencies)
-  - [3. Acquire an API Key (for Microsoft's Bing News Search API)](#3-acquire-an-api-key-for-microsofts-bing-news-search-api)
-  - [4. Add the API Key to the Project](#4-add-the-api-key-to-the-project)
   - [5. Run the Project](#5-run-the-project)
 - [Features](#features)
   - [Assign Status, Owner, Priority, and Due Date](#assign-status-owner-priority-and-due-date)
@@ -222,52 +220,6 @@ Install project dependencies:
 ```sh
 npm install
 ```
-
-### 3. Acquire an API Key (for Microsoft's Bing News Search API)
-
-All of the images this site displays are retrieved from Pexels, and are requested and received via the Pexels API. An API key is required in order to interact with the Pexels API. **A Pexels API Key is NOT included in this repository -- you must get your own (free) API key from Pexels.**
-
-Follow these steps to register with Pexels and obtain a Pexels API Key:
-
-- Create a free Pexels account at <https://www.pexels.com/onboarding>
-- Click the "I want to download" button
-- Enter your personal information, then click the "Create New Account" button
-- Complete your account setup by opening the email sent to you by Pexels and clicking the "Confirm email" button
-- Go to <https://www.pexels.com/api/> and click the "Your API Key" button
-- Fill out the form, agree to the Terms of Service, and click the "Generate API Key" button
-- Copy the API key and save it somewhere safe -- you will need it in the next section
-
-The API key should be a 56 character string of numbers and lowercase letters.
-
-example: `sample0api0key123456789abcdefghijklmnopqrstuvwxyz0000000`
-
-If you ever lose or misplace your API key, you can retrieve it by logging in to your Pexels account.
-
-### 4. Add the API Key to the Project
-
-In development mode, the Pexels API Key is stored in a `.env` file and saved as an environment variable. This `.env` file should NOT be committed to GitHub, and is not a secure way to store API keys in a production environment.
-
-Create a new file named `.env` inside of the `react-frontend` sub-directory:
-
-```sh
-touch react-frontend/.env
-```
-
-Add your Pexels API Key to the `.env` file as an environmental variable named `PEXELS_API_KEY`:
-
-```sh
-echo "PEXELS_API_KEY=sample0api0key123456789abcdefghijklmnopqrstuvwxyz0000000" > react-frontend/.env
-```
-
-Once you are done, your `.env` file should look like this:
-
-```js
-// react-photo-search/react-frontend/.env
-
-PEXELS_API_KEY = sample0api0key123456789abcdefghijklmnopqrstuvwxyz0000000;
-```
-
-The file `react-photo-search/react-frontend/example.env` is an example `.env` file with a fake API Key that you can use as a guide when creating your own `.env` file with your own API Key.
 
 ### 5. Run the Project
 

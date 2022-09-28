@@ -12,23 +12,19 @@
 <!-- PROJECT TITLE & LOGO -->
 
 <div align="center">
-  <h1 align="center">YENIUS</h1>
+  <h1 align="center">TICKETS</h1>
 
   <!-- project logo -->
-  <img src="./assets/logo-yenius-1482-207.png" alt="Yenius logo">
+  <!-- <img src="./assets/logo-yenius-1482-207.png" alt="Yenius logo"> -->
 
   <p align="center">
-    a Kanye West-centric full-stack clone of Genius.com -- community sourced music lyrics, interpretations, and metadata.
-    <!-- <img src="images/pexelsLogoOnTransparent.png" alt="Logo" height="40"> -->
+    a full-stack application for managing projects -- create tickets, assign and track work, and receive update notifications
     <br />
-    <!-- <a href="https://github.com/marshall-strong/yenius"><strong>Explore the docs »</strong></a> -->
-    <!-- <br /> -->
-    <!-- <br /> -->
-    <a href="http://yenius.herokuapp.com/">View Demo Site</a>
+    <a href="https://marshall-strong-tickets.herokuapp.com/">View Demo Site</a>
     ·
-    <a href="https://github.com/marshall-strong/yenius/issues">Report Bug</a>
+    <a href="https://github.com/marshall-strong/tickets/issues">Report Bug</a>
     ·
-    <a href="https://github.com/marshall-strong/yenius/issues">Request Feature</a>
+    <a href="https://github.com/marshall-strong/tickets/issues">Request Feature</a>
   </p>
 </div>
 
@@ -46,9 +42,9 @@
   - [4. Add the API Key to the Project](#4-add-the-api-key-to-the-project)
   - [5. Run the Project](#5-run-the-project)
 - [Features](#features)
-  - [the site fetches photos using the Pexels API without exposing the API key to end users](#the-site-fetches-photos-using-the-pexels-api-without-exposing-the-api-key-to-end-users)
-  - [the site displays images using a "masonry" layout](#the-site-displays-images-using-a-masonry-layout)
-  - [the site initially displays photos from the Pexels "Curated Photos" endpoint](#the-site-initially-displays-photos-from-the-pexels-curated-photos-endpoint)
+  - [Assign Status, Owner, Priority, and Due Date](#assign-status-owner-priority-and-due-date)
+  - [Easily add Subscribers and Tags](#easily-add-subscribers-and-tags)
+  - [Build Complex Queries](#build-complex-queries)
 - [Project Style](#project-style)
   - [Pre-commit](#pre-commit)
   - [Prettier](#prettier)
@@ -92,24 +88,30 @@
 
 [![Project Screenshot][project-screenshot]][project-production-url]
 
-This project is a Kanye West-centric fullstack clone of the music encyclopedia [Genius.com](https://genius.com/).
+This project is a productivity app that helps teams keep track of tasks.
 
-A production deployment of this project can be viewed at [yenius.herokuapp.com](https://yenius.herokuapp.com/#/).
+A production deployment of this project can be viewed at [marshall-strong-tickets.herokuapp.com](https://marshall-strong-tickets.herokuapp.com/#/).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
 
-Amazon AWS, Amazon S3, Babel, Microsoft Bing New Search API, Create React App,
-CSS3, ES6, ESLint, GitHub, Google Chrome, Heroku, HTML5, JavaScript, Markdown, Node.js, npm, PostgreSQL, pre-commit, Prettier, React Router, React, Redux, Ruby, Ruby on Rails, RubyGems, SCSS, stylelint, webpack
+<!-- The app is built using a MongoDB / Express / React / Node stack. -->
 
-[![Ruby on Rails 6][rubyonrails-shield]][rubyonrails-url] <!-- #CC0000 -->
+<!-- Amazon AWS, Amazon S3, Babel, Microsoft Bing New Search API, Create React App,
+CSS3, ES6, ESLint, GitHub, Google Chrome, Heroku, HTML5, JavaScript, Markdown, Node.js, npm, PostgreSQL, pre-commit, Prettier, React Router, React, Redux, Ruby, Ruby on Rails, RubyGems, SCSS, stylelint, webpack -->
 
-- Ruby on Rails description...
+[![MongoDB][mongodb-shield]][mongodb-url] <!-- #47A248 -->
 
-[![PostgreSQL][postgresql-shield]][postgresql-url] <!-- #4169E1 -->
+- MongoDB description...
 
-- PostgreSQL description...
+[![Mongoose][mongoose-shield]][mongoose-url] <!-- #880000 -->
+
+- Mongoose description...
+
+[![Express][express-shield]][express-url] <!-- #000000 -->
+
+- Express description...
 
 [![React][react-shield]][react-url] <!-- #61DAFB -->
 
@@ -123,9 +125,9 @@ CSS3, ES6, ESLint, GitHub, Google Chrome, Heroku, HTML5, JavaScript, Markdown, N
 
 - Create React App takes care of setting up and configuring a new React application with useful defaults, eliminating a lot of boilerplate code. It also integrates Jest and React-Testing-Library into the application, making it easy to setup unit tests down the road.
 
-[![Bing News Search API][microsoftbing-shield]][microsoftbing-url] <!-- #258FFA -->
+[![Node.js][nodedotjs-shield]][nodedotjs-url] <!-- #339933 -->
 
-- Microsoft Bing News Search API description...
+- Node.js description...
 
 [![Amazon AWS][amazonaws-shield]][amazonaws-url] <!-- #232F3E -->
 
@@ -289,139 +291,25 @@ _For more examples, please refer to the [Documentation](https://example.com)_ --
 
 ## Features
 
-### the site fetches photos using the Pexels API without exposing the API key to end users
+### Assign Status, Owner, Priority, and Due Date
 
-Sending a request to the Pexels API requires a key, and if the request is created and sent from inside of the Create React App application, the API key will end up being exposed to any site users with access to Chrome DevTools. Netlify provides a solution to this problem. A netlify function is a function that can be used to execute server-side code without having to deploy your own server. Under the hood, Netlify functions indirectly use AWS's serverless Lambda functions to run on-demand server-side code.
+- Let everyone know at a glance the ticket progress, who is responsible, and how urgent it is.
 
-<!-- react-photo-search/react-frontend/src/components/App.jsx -->
+![Ticket](./assets/readme_ticket_form.gif)
 
-```jsx
-// react-photo-search/react-frontend/src/components/App.jsx
+### Easily add Subscribers and Tags
 
-import React, { useEffect, useState } from "react";
+- Want a team member kept in the loop? Add them to the subscribed section so that the ticket shows up in their Subscribed folder.
 
-const App = () => {
-  const [displayedUrl, setDisplayedUrl] = useState(null);
-  const [newUrl, setNewUrl] = useState(null);
-  const [response, setResponse] = useState(null);
-  const [userInput, setUserInput] = useState("");
+- Need to filter your tickets by custom categories? This is what tags are for.
 
-  const attributionUrl = "https://www.pexels.com/api/";
-  const baseUrl = "https://api.pexels.com/v1/";
-  const homeUrl = baseUrl + "curated/?page=1&per_page=10";
+![Subscribed](./assets/readme_subscribed.gif)
 
-  useEffect(() => {
-    const fetchPexelsPhotos = async () => {
-      const apiEndpointSubstring =
-        newUrl.substring(26, 32) === "search"
-          ? "?endpoint=search&"
-          : "?endpoint=curated&";
-      const remainingParamsSubstring = newUrl.split("?")[1];
-      const netlifyUrl =
-        `/.netlify/functions/fetchPexelsPhotos` +
-        apiEndpointSubstring +
-        remainingParamsSubstring;
-      // sends the Pexels API request using a Netlify function to avoid exposing the secret key
-      try {
-        const netlifyRes = await fetch(netlifyUrl).then((res) => res.json());
-        setResponse(netlifyRes);
-        setDisplayedUrl(newUrl);
-        setNewUrl(null);
-      } catch (err) {
-        console.log(err);
-      } finally {
-      }
-    };
+### Build Complex Queries
 
-    // invoke the async fetch function declared above if the conditions are met
-    if (newUrl) {
-      fetchPexelsPhotos();
-    }
-  }, [displayedUrl, newUrl, userInput, response]);
+- Easily find exactly the category of tickets you're looking for using a powerful but elegant interface.
 
-  return (
-    <div className="app-component">
-      <Navbar />
-      <Gallery response={response} />
-      <Footer />
-    </div>
-  );
-};
-
-export default App;
-```
-
-<!-- react-photo-search/react-frontend/netlify/functions/fetchPexelsPhotos.js -->
-
-```js
-// react-photo-search/react-frontend/netlify/functions/fetchPexelsPhotos.js
-
-const axios = require("axios");
-const SECRET = process.env.PEXELS_API_KEY;
-
-exports.handler = async (event, _context) => {
-  try {
-    const { endpoint, page, per_page, query } = event.queryStringParameters;
-
-    const baseUrl = `https://api.pexels.com/v1/`;
-
-    const constructRequestUrl = (
-      baseUrl,
-      apiEndpoint,
-      page,
-      perPage,
-      query
-    ) => {
-      let url = baseUrl + apiEndpoint + `/?page=${page}&per_page=${perPage}`;
-      const requestUrl = !query ? url : url + `&query=${query}`;
-      return requestUrl;
-    };
-
-    const url = constructRequestUrl(baseUrl, endpoint, page, per_page, query);
-
-    // fetch data from the the Pexels API endpoint
-    const response = await axios({
-      method: "get",
-      url: url,
-      headers: {
-        Authorization: `${SECRET}`,
-      },
-    });
-
-    const netlifyResponse = {
-      statusCode: response.status,
-      body: JSON.stringify({
-        statusCode: response.status,
-        statusText: response.statusText,
-        request_url: response.config.url,
-        page: response.data.page,
-        per_page: response.data.per_page,
-        photos: response.data.photos,
-        total_results: response.data.total_results,
-        prev_page: response.data.prev_page,
-        next_page: response.data.next_page,
-      }),
-    };
-
-    return netlifyResponse;
-  } catch (err) {
-    return {
-      statusCode: 404,
-      body: err.toString(),
-    };
-  }
-};
-```
-
-### the site displays images using a "masonry" layout
-
-The `Gallery` component displays photos in a masonry layout, where photos are arranged to completely fill out rows without compromising the images' aspect ratios.
-
-### the site initially displays photos from the Pexels "Curated Photos" endpoint
-
-When the site loads for the first time, the photos it displays in the `Gallery` component are retrieved from Pexels' "Curated Photos" endpoint.
-
-
+![Query](./assets/readme_query.gif)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -572,10 +460,10 @@ At this point in time, the only Unit Tests for this project are basic smoke test
 
 ## Production Deployment
 
-**<http://yenius.herokuapp.com/>**
+**<http://marshall-strong-tickets.herokuapp.com/>**
 
 This project is deployed to Production via Heroku.
-A live version of the site can be viewed [here]("http://yenius.herokuapp.com/).
+A live version of the site can be viewed [here](http://marshall-strong-tickets.herokuapp.com/).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -590,7 +478,7 @@ Plans for future development, testing, and features:
 - [ ] [Add more Unit Testing with Jest](https://github.com/marshall-strong/react-photo-search/issues/67)
 - [ ] [Add End-to-End Testing with Playwright](https://github.com/marshall-strong/react-photo-search/issues/68) -->
 
-See the [open issues](https://github.com/marshall-strong/yenius/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/marshall-strong/tickets/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -643,14 +531,6 @@ Thanks for reading!!!
 
 Resources and How-Tos
 
-- [How to Securely Access Secret API keys using Netlify Functions in a React App](https://www.freecodecamp.org/news/how-to-access-secret-api-keys-using-netlify-functions-in-a-react-app/)
-- [Netlify Blog: How to deploy React Apps in less than 30 Seconds](https://www.netlify.com/blog/2016/07/22/deploy-react-apps-in-less-than-30-seconds/)
-- [Cool grayscale hover effect](https://codepen.io/AnthonyMoss/pen/RwwyQQ)
-- [Emoji Unicode Reference](https://www.w3schools.com/charsets/ref_emoji.asp)
-- [the position property](https://www.w3schools.com/cssref/tryit.asp?filename=trycss_position2)
-- ["Cool and Fresh" color palette](https://visme.co/blog/website-color-schemes/#attachment_13239)
-- [CSS Pulse Effect](https://www.florin-pop.com/blog/2019/03/css-pulse-effect/)
-- [Adaptive Photo Layout with Flexbox](https://css-tricks.com/adaptive-photo-layout-with-flexbox/)
 - [Boxy SVG: A free, browser-based tool for editing SVG elements](https://boxy-svg.com/)
 - [The Difference Between ALT text and Title text](https://blog.spotibo.com/difference-between-alt-text-and-title-text/)
 
@@ -663,16 +543,16 @@ Resources and How-Tos
 
 <!-- PROJECT SHIELDS -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/marshall-strong/yenius.svg?style=for-the-badge
-[contributors-url]: https://github.com/marshall-strong/yenius/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/marshall-strong/yenius.svg?style=for-the-badge
-[forks-url]: https://github.com/marshall-strong/yenius/network/members
-[stars-shield]: https://img.shields.io/github/stars/marshall-strong/yenius.svg?style=for-the-badge
-[stars-url]: https://github.com/marshall-strong/yenius/stargazers
-[issues-shield]: https://img.shields.io/github/issues/marshall-strong/yenius.svg?style=for-the-badge
-[issues-url]: https://github.com/marshall-strong/yenius/issues
-[license-shield]: https://img.shields.io/github/license/marshall-strong/yenius.svg?style=for-the-badge
-[license-url]: https://github.com/marshall-strong/yenius/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/marshall-strong/tickets.svg?style=for-the-badge
+[contributors-url]: https://github.com/marshall-strong/tickets/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/marshall-strong/tickets.svg?style=for-the-badge
+[forks-url]: https://github.com/marshall-strong/tickets/network/members
+[stars-shield]: https://img.shields.io/github/stars/marshall-strong/tickets.svg?style=for-the-badge
+[stars-url]: https://github.com/marshall-strong/tickets/stargazers
+[issues-shield]: https://img.shields.io/github/issues/marshall-strong/tickets.svg?style=for-the-badge
+[issues-url]: https://github.com/marshall-strong/tickets/issues
+[license-shield]: https://img.shields.io/github/license/marshall-strong/tickets.svg?style=for-the-badge
+[license-url]: https://github.com/marshall-strong/tickets/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/marshall-strong
 
@@ -680,8 +560,8 @@ Resources and How-Tos
 <!-- TABLE OF CONTENTS -->
 <!-- ABOUT THE PROJECT -->
 
-[project-screenshot]: ./assets/uncropped-yenius-screenshot.png
-[project-production-url]: http://yenius.herokuapp.com/
+[project-screenshot]: ./assets/ticketsScreenshot-1200-627.png
+[project-production-url]: http://marshall-strong-tickets.herokuapp.com/
 
 <!-- Built With -->
 
@@ -691,14 +571,16 @@ Resources and How-Tos
 [amazons3-url]: https://aws.amazon.com/s3/
 [cra-shield]: https://img.shields.io/badge/Create%20React%20App-09D3AC?style=for-the-badge&logo=createreactapp&logoColor=white
 [cra-url]: https://create-react-app.dev/
+[express-shield]: https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white
+[express-url]: https://expressjs.com/
 [heroku-shield]: https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white
 [heroku-url]: https://www.heroku.com/
-[rubyonrails-shield]: https://img.shields.io/badge/Ruby%20on%20Rails-CC0000?style=for-the-badge&logo=rubyonrails&logoColor=white
-[rubyonrails-url]: https://rubyonrails.org/
-[microsoftbing-shield]: https://img.shields.io/badge/Bing%20News%20Search%20API-258FFA?style=for-the-badge&logo=microsoftbing&logoColor=white
-[microsoftbing-url]: https://www.microsoft.com/en-us/bing/apis/bing-news-search-api/
-[postgresql-shield]: https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white
-[postgresql-url]: https://www.postgresql.org/
+[mongodb-shield]: https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white
+[mongodb-url]: https://www.mongodb.com/
+[mongoose-shield]: https://img.shields.io/badge/Mongoose-20232A?style=for-the-badge&logoColor=white&logo=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIiB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIgdmVyc2lvbj0iMS4xIiBpZD0ic3ZnMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjEyODAiIGhlaWdodD0iNzQ2LjY2NjY5IiB2aWV3Qm94PSIwIDAgMTI4MCA3NDYuNjY2NjkiIHNvZGlwb2RpOmRvY25hbWU9Im1vbmdvb3NlLnN2ZyIgaW5rc2NhcGU6dmVyc2lvbj0iMS4wLjEgKDEuMC4xK3I3NSkiPgogIDxtZXRhZGF0YSBpZD0ibWV0YWRhdGE4Ij4KICAgIDxyZGY6UkRGPgogICAgICA8Y2M6V29yayByZGY6YWJvdXQ9IiI+CiAgICAgICAgPGRjOmZvcm1hdD5pbWFnZS9zdmcreG1sPC9kYzpmb3JtYXQ+CiAgICAgICAgPGRjOnR5cGUgcmRmOnJlc291cmNlPSJodHRwOi8vcHVybC5vcmcvZGMvZGNtaXR5cGUvU3RpbGxJbWFnZSIvPgogICAgICA8L2NjOldvcms+CiAgICA8L3JkZjpSREY+CiAgPC9tZXRhZGF0YT4KICA8ZGVmcyBpZD0iZGVmczYiPgogICAgPGNsaXBQYXRoIGNsaXBQYXRoVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBpZD0iY2xpcFBhdGgyMiI+CiAgICAgIDxwYXRoIGQ9Ik0gMCw1NjAgSCA5NjAgViAwIEggMCBaIiBpZD0icGF0aDIwIi8+CiAgICA8L2NsaXBQYXRoPgogIDwvZGVmcz4KICA8c29kaXBvZGk6bmFtZWR2aWV3IHBhZ2Vjb2xvcj0iI2ZmZmZmZiIgYm9yZGVyY29sb3I9IiM2NjY2NjYiIGJvcmRlcm9wYWNpdHk9IjEiIG9iamVjdHRvbGVyYW5jZT0iMTAiIGdyaWR0b2xlcmFuY2U9IjEwIiBndWlkZXRvbGVyYW5jZT0iMTAiIGlua3NjYXBlOnBhZ2VvcGFjaXR5PSIwIiBpbmtzY2FwZTpwYWdlc2hhZG93PSIyIiBpbmtzY2FwZTp3aW5kb3ctd2lkdGg9IjIyMjciIGlua3NjYXBlOndpbmRvdy1oZWlnaHQ9IjEyMDUiIGlkPSJuYW1lZHZpZXc0IiBpbmtzY2FwZTpkb2N1bWVudC1yb3RhdGlvbj0iMCIgc2hvd2dyaWQ9ImZhbHNlIiBpbmtzY2FwZTp6b29tPSIwLjg1NzAzMTI1IiBpbmtzY2FwZTpjeD0iNTI4LjgwMjE5IiBpbmtzY2FwZTpjeT0iMzczLjMzMzM0IiBpbmtzY2FwZTp3aW5kb3cteD0iMjQiIGlua3NjYXBlOndpbmRvdy15PSIxMzIiIGlua3NjYXBlOndpbmRvdy1tYXhpbWl6ZWQ9IjAiIGlua3NjYXBlOmN1cnJlbnQtbGF5ZXI9ImcxOCIvPgogIDxnIGlkPSJnMTAiIGlua3NjYXBlOmdyb3VwbW9kZT0ibGF5ZXIiIGlua3NjYXBlOmxhYmVsPSJGSVZFUlJNT05HT09TRSIgdHJhbnNmb3JtPSJtYXRyaXgoMiwwLDAsLTIsLTM0MCwxMDAwKSI+CiAgICA8ZyBpZD0iZzEyIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MzkuODk5OSwyNDUuMzMzKSI+CiAgICAgIDxwYXRoIGQ9Im0gMCwwIC0yMy45LDM3LjExNyB2IC02Ni40NSBoIDQ2LjQwMyBsIDEuNTk3LDEuNjM2IHYgNjQuODE0IHoiIHN0eWxlPSJmaWxsOiM4ODAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiIGlkPSJwYXRoMTQiLz4KICAgIDwvZz4KICAgIDxnIGlkPSJnMTYiPgogICAgICA8ZyBpZD0iZzE4IiBjbGlwLXBhdGg9InVybCgjY2xpcFBhdGgyMikiPgogICAgICAgIDxnIGlkPSJnMjQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDY2Mi4xMTMzLDM5MS44OTc5KSI+CiAgICAgICAgICA8cGF0aAogICAgICAgICAgICBkPSJNIDAgMCBjIC05LjA2NyAtMC42NzYgLTE4LjE1NSAtMS4zNzYgLTI3LjI0IC0xLjQyOSBjIC01LjU5MiAtMC4wMzIgLTExLjI4IDAuNjk4IC0xNi43NjYgMS44MzkgYyAtNi45MzIgMS40NDMgLTEyLjc1OCA0Ljg3OCAtMTYuMTg2IDExLjU4MiBjIC0wLjUxIDAuOTkzIC0yLjIxNyAxLjU2NSAtMy40ODQgMS45NDMgYyAtNC40NjggMS4zMjggLTguOTg2IDIuNDg1IC0xMy40OTggNC4xNTQgYyAxLjU3IDAuMTE4IDMuMTQxIDAuMzQ2IDQuNzA4IDAuMzMgYyAzLjg0NiAtMC4wMzggNy43MzUgMC4xNDIgMTEuNTIyIC0wLjM2NiBjIDYuOTIxIC0wLjkyOCAxMy43ODcgLTIuMjggMjAuNjczIC0zLjQ3NSBjIDMuOTI0IC0wLjY4MiA3Ljg2OSAtMS4yOTYgMTEuNzYxIC0yLjEzMyBjIDcuMzg1IC0xLjU4OSAxNC43NDQgLTMuMjk4IDIyLjEwNiAtNC45ODkgQyAtMS41MzkgNi4zMzkgMy4zMTUgNS4xODIgOC4xNjggNC4wMDcgTSAxLjc2OSAtNDkuMTYxIGMgLTExLjMwOCAtMy40ODUgLTIyLjc0MiAtNi42MiAtMzMuODYxIC0xMC42MyBjIC02Ljk2MSAtMi41MTEgLTEzLjUwMiAtNi4yMyAtMjAuMTIgLTkuNjI2IGMgLTUuNzcgLTIuOTU4IC03LjgxMSAtOC4wMDkgLTcuMTAzIC0xNC4yOCBjIDAuNDU3IC00LjAyOSAxLjAwOSAtOC4wNDcgMS4zNzEgLTEyLjEzMyBjIC0yLjk1NyA0LjM2MyAtNS4xNDEgOS4wODIgLTYuNDI0IDE0LjIxOCBjIC0wLjI2NCAxLjA2MiAtMC41MTUgMi4xMjggLTAuNzM3IDMuMiBjIC0wLjg3NCA0LjE4MyAxLjQ0NiA2Ljc4NyA0LjQ3NiA5LjA1NSBjIDUuODk3IDQuNDE1IDEyLjMyIDcuODkyIDE5LjI5MiAxMC4yMDUgYyA4LjY5NiAyLjg4NyAxNy40MTkgNS43NjggMjYuMjg0IDguMDU3IGMgNi4yNDUgMS42MSAxMi43NDUgMi4yMjMgMTkuMTI3IDMuMzA0IGMgMS4xNzggMC4yMDIgMi4zMzcgMC41MiAzLjUwNSAwLjc4MiBjIDAuMDM5IC0wLjE2IDAuMDc5IC0wLjMyMSAwLjEyIC0wLjQ4MSBjIC0xLjk3NyAtMC41NTQgLTMuOTcgLTEuMDY2IC01LjkzIC0xLjY3MSBtIC0xNTkuNDU0IDQ0Ljc0NCBjIC0wLjE4NiAtMC4xODIgLTAuMzc1IC0wLjM2MiAtMC41NjMgLTAuNTQyIGMgLTUuMDQyIDMuNjc3IC0xMC41MTQgNi40MTUgLTE2LjUxIDguMDAzIGMgLTAuMTY4IC0wLjE2MyAtMC4zMzIgLTAuMzI2IC0wLjQ5NiAtMC40OSBjIDUuMTYxIC02LjA0OCAxMC4zMjMgLTEyLjA5NiAxNS43MSAtMTguNDA0IGMgLTMuNjA3IDEuMTggLTYuOTY0IDIuMjggLTEwLjMyMiAzLjM3OSBjIC0wLjE0MyAtMC4xNjkgLTAuMjg0IC0wLjMzOSAtMC40MjggLTAuNTA4IGMgNC4wNjMgLTYuNjk0IDkuMzUzIC0xMi41MSAxNC4zOTYgLTE5LjIyIGMgLTguNzY4IDQuOTc5IC0xNi41MDcgMTAuNDE3IC0yMy43MzEgMTYuNTk1IGMgLTkuOTE2IDguNDgxIC0xOC41NjYgMTguMDQ3IC0yNS4wNDYgMjkuNDM5IGMgLTIuNjY5IDQuNjk0IC01LjAyNSA5LjU1IC01LjUyOSAxNS4wNDMgYyAtMC4xMTMgMS4yMjYgLTAuMDE1IDIuNTIzIDAuMjcxIDMuNzIgYyAwLjQ2NSAxLjk0MyAyLjMwOSAyLjg0IDQuMjAyIDIuMjUyIGMgMTAuNCAtMy4yMzMgMjAuNjIyIC02Ljg5NiAzMC4xODkgLTEyLjIxMSBjIDkuMDU2IC01LjAzMSAxNy4yNTIgLTExLjE1MyAyNC4zMDMgLTE4Ljc2OSBjIDAuMjg1IC0wLjMwOCAwLjQ5NiAtMC42ODQgMC44ODkgLTEuMjM2IGMgLTUuNTIxIDIuNTE2IC0xMC43NiA0LjkwMiAtMTYgNy4yODkgYyAtMC4xNzcgLTAuMjE3IC0wLjM1MyAtMC40MzUgLTAuNTMyIC0wLjY1MyBjIDMuMDY3IC00LjU2MiA2LjEzMiAtOS4xMjUgOS4xOTcgLTEzLjY4NyBtIC0zMTUuMzcyIC01NS4zMTggYyAtMC4xMyAtMC4zNTMgMC4yNzYgLTAuNyAwLjQxNCAtMS4wNDkgYyAyLjE1NiAwLjQ1MyA0LjI5MyAxLjA0NSA2LjQ3IDEuMzM5IGMgMC41NjggMC4wNzUgMS4xMzYgMC4xNDcgMS43MDUgMC4yMjMgYyA4LjAzNCAyLjg2MyAxNi4yNjQgNS4xMTIgMjQuNzYyIDYuMzEgYyAxMi4wMTEgMS42OTEgMjQuNDYzIDMuOTM2IDM2LjcyMiAzLjg3IGMgMTEuNjQ4IC0wLjA1OSAyMy40MzEgLTEuODQzIDM0LjgyOCAtMy44MDggYyAzLjE5NyAtMC41NSA2LjMzNiAtMS4yODggOS40MyAtMi4xNTggYyA4LjMyNiAtMS44NjkgMTYuMTUgLTUuMjAzIDIzLjE4MiAtOS43MDkgYyAwLjUwNyAtMC4yNDIgMSAtMC41MDkgMS41MDIgLTAuNzYzIGMgOS45OTggLTQuNzEgMTguODA3IC0xMS42MzkgMjUuNzYzIC0yMC4xMjggYyAxLjI3MyAtMS40MDkgMy40OTIgLTIuODc4IDQuNjI5IC00LjQyIGMgMi4zOTYgLTIuODI3IDMuNTM3IC01LjgzOSA3LjUzNyAtOC45OTYgdiA0My4xMjYgaCA0OS44OCBsIDIzLjMyMyAtNDMuMDM2IGwgMjMuMzkyIDQzLjAzNiBoIDUxLjQwNSB2IC04My4zNTEgbCA4LjUwOSA1LjYxMSBjIDAgMCA5LjMzIDI0LjgwNiA1Mi41NTYgMjguMjg5IGwgNDkuNTQ0IDEuNjAyIGMgLTcuNjQyIDE1LjgxOSAtNy42MTQgMTUuODE5IC0zLjkyOSAyMC41OTEgYyAzLjY0OSA0LjcyMiAzMS43OTIgNy44MTggMzYuNzQyIDEwLjc3MSBsIDcyLjI5NyAxNC41ODcgYyAwLjE3IDAuNTU2IDAuMzYzIC0wLjI5OCAwLjczNiAtMC4xODEgYyAxLjc5OSAwLjU2NyAzLjY2MyAwLjkyNCA2LjIzMyAxLjUyOSBsIDE2LjM1IDMuOTc5IGMgMS4wNjQgMC41OTkgMi4zMzEgMC44MzYgMy41MDQgMS4yNDIgYyA3LjY0IDIuNjUyIDE0LjMyMSA2LjA2OCAxOC4wMTggMTQuMjA4IGMgMy42IDcuOTMgOC40MjEgMTUuMjk2IDEwLjE2OSAyNC4wMTggYyAwLjU1MSAyLjc1OSAwLjA3NiA1LjE1NyAtMS45MTUgNy4xNCBjIC0yLjQwOSAyLjM5OCAtNS41MTYgMy40MjggLTguNzE1IDQuMjU5IGMgLTEwLjQ0NCA0LjI4NyAtMjAuODUgOC42NzYgLTMxLjM3OSAxMi43NDcgYyAtNi40NzMgMi41MDQgLTEzLjExNCA0LjU4MiAtMTkuNzI0IDYuNzEgYyAtNi41NCAyLjEwNSAtMTMuMTE3IDQuMDkyIC0xOS43MTEgNi4wMTkgYyAtNi4wNzQgMS43NzcgLTEyLjE4NSAzLjQyOSAtMTguMjg4IDUuMDk0IGMgLTUuOTU0IDEuNjI0IC0xMS45IDMuMjk1IC0xNy44OTIgNC43NjcgYyAtNi45ODEgMS43MTYgLTE0LjAxIDMuMjQzIC0yMS4wMiA0Ljg0NSBjIC01LjMyNCAxLjIxNyAtMTAuNjI4IDIuNTE5IC0xNS45NzcgMy42MDggYyAtNS44MjUgMS4xODYgLTExLjY4NyAyLjIwNiAtMTcuNTQzIDMuMjM3IGMgLTcuNDggMS4zMTUgLTE0Ljk0NCAyLjc3MyAtMjIuNDY2IDMuNzk3IGMgLTkuMDgzIDEuMjM2IC0xOC4yMjQgMi4wMzYgLTI3LjMzMiAzLjEwOSBjIC0xNS4yNSAxLjc5OCAtMzAuNTQgMi4yOCAtNDUuODM5IDEuMTExIGMgLTUuNDIyIC0wLjQxNCAtMTAuNzcxIC0xLjc4OCAtMTYuMTUyIC0yLjcyMiBjIDUuNyAtMi45MjkgMTEuMzQgLTUuMjk4IDE2LjkwMyAtNy44MzQgYyA1LjU5NiAtMi41NTEgMTAuODEzIC01Ljc0OCAxNS42MDQgLTkuNjA3IGMgLTYuMjY5IDIuNCAtMTIuMzY4IDUuMTY4IC0xOC42NTUgNy40MTMgYyAtMTMuMTIxIDQuNjg0IC0yNi40NyA4LjU3NCAtNDAuMzMzIDEwLjQ1IGMgLTYuNzgxIDAuOTE3IC0xMy41NDUgMS43OTcgLTIwLjMyIC0wLjExNSBjIC02Ljg2NyAtMS45MzggLTguODA5IC00LjQ4NiAtOS40MzEgLTExLjM3NyBjIC0xLjAzIC0xMS40MjIgMi40MDcgLTIyLjAxNiA2Ljk3MiAtMzIuMjMxIGMgNi44MDcgLTE1LjIzMiAxNi43MjggLTI4LjIwNyAyOS40MTQgLTM5LjA1NyBjIDkuNzE0IC04LjMxMSAyMC40OTIgLTE0Ljg2MSAzMi4zOTggLTE5LjUzMSBjIDMuMzkxIC0xLjMzIDYuODE1IC0yLjU3OSAxMC4yMjEgLTMuODY2IGMgLTAuMDc3IC0wLjI2NSAtMC4xNTQgLTAuNTI3IC0wLjIzMSAtMC43OTMgYyAtNi41MjggMS43ODggLTEzLjIyMSAzLjEyOCAtMTkuNTQ0IDUuNDY2IGMgLTExLjE4MyA0LjEzMyAtMjEuMTgzIDEwLjQ0NyAtMzAuMzMyIDE4LjExNSBjIC0xMC4yMTIgOC41NjEgLTE4LjY5OSAxOC41NjYgLTI1LjAwNyAzMC4yODkgYyAtNi42OTQgMTIuNDM5IC0xMC41MjUgMjUuNzMgLTEwLjY2MyAzOS45NTUiCiAgICAgICAgICAgIHN0eWxlPSJmaWxsOiM4ODAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiCiAgICAgICAgICAgIGlkPSJwYXRoMjYiLz4KICAgICAgICA8L2c+CiAgICAgICAgPGcgaWQ9ImcyOCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTg5LjAzMDgsMzMxLjY2NikiPgogICAgICAgICAgPHBhdGggZD0iTSAwLDAgQyAwLDAgMTE1Ljk2OSwxMTIgMjQ4LjUsOTguMSIgc3R5bGU9ImZpbGw6Izg4MDAwMDtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSIgaWQ9InBhdGgzMCIvPgogICAgICAgIDwvZz4KICAgICAgPC9nPgogICAgPC9nPgogIDwvZz4KPC9zdmc+
+[mongoose-url]: https://mongoosejs.com/
+[nodedotjs-shield]: https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white
+[nodedotjs-url]: https://nodejs.org/
 [react-shield]: https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black
 [react-url]: https://reactjs.org/
 [redux-shield]: https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white

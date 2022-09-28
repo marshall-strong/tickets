@@ -295,7 +295,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_ --
 
 - Let everyone know at a glance the ticket progress, who is responsible, and how urgent it is.
 
-![Ticket](./assets/readme_ticket_form.gif)
+![Ticket](./assets/readme/readme_ticket_form.gif)
 
 ### Easily add Subscribers and Tags
 
@@ -303,13 +303,13 @@ _For more examples, please refer to the [Documentation](https://example.com)_ --
 
 - Need to filter your tickets by custom categories? This is what tags are for.
 
-![Subscribed](./assets/readme_subscribed.gif)
+![Subscribed](./assets/readme/readme_subscribed.gif)
 
 ### Build Complex Queries
 
 - Easily find exactly the category of tickets you're looking for using a powerful but elegant interface.
 
-![Query](./assets/readme_query.gif)
+![Query](./assets/readme/readme_query.gif)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -560,7 +560,7 @@ Resources and How-Tos
 <!-- TABLE OF CONTENTS -->
 <!-- ABOUT THE PROJECT -->
 
-[project-screenshot]: ./assets/ticketsScreenshot-1200-627.png
+[project-screenshot]: ./assets/readme/ticketsScreenshot-1200-627.png
 [project-production-url]: http://marshall-strong-tickets.herokuapp.com/
 
 <!-- Built With -->
